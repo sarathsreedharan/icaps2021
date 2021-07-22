@@ -17,6 +17,7 @@
 		<!-- Bootstrap Overrides -->
 		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
 		<link href="../assets/css/custom.css" rel="stylesheet" />
+    
     <!-- Schedule CSS -->
     <link rel="stylesheet" type="text/css" href="./schedule.css"/> 
 
@@ -33,6 +34,7 @@
 
   </head>
   <body class="bg-light">
+    
     <div id='icaps-header'>
       <myheader curpage='schedule' curitem="index"></myheader>
     </div>
@@ -59,6 +61,7 @@
                   </div>
                 </div>
                 <div class="col col-auto align-self-center">	
+                  <strong>Timezone:</strong>
                   <select v-model="zone" style="margin-top: 1em;">
                     <option v-for="option in zoneOptions" v-bind:value="option.value">
                       {{option.text}}
@@ -67,6 +70,7 @@
                 </div>
               </div>				
             </div>
+            
             <!-- Week1 -->
             <div v-if="week == 1">
               <div class="alert alert-warning" role="alert">
@@ -81,63 +85,129 @@
                     <div class="w-100"></div>						
                     <div class="col" style="margin: 1em 0em 0em 0em">
                       <h2 class="text-center">
-                        <span class="badge badge-primary" style="background-color: #0072bc;"> Day{{j+1}} </span>
+                        <span class="badge badge-primary" style="background-color: #0072bc;"> Day {{j+1}} </span>
                       </h2>
                     </div>
-
-                    <div v-for="item in Workday">
-                      <div class="col">
-                        <!-- talbe time -->
-                        <div v-if="isOver(Week2[j][0].day,item.time)"><div class="style_time">{{showDay(Week2[j][0].day,item.time)}}</div></div>
-                        <div v-else> <div class="style_timeover">{{showDay(Week2[j][0].day,item.time)}}</div> </div>	
-                        <!-- table activities -->
-                        <div v-if="item.type == 'session'">
-                          <div v-if="isOver(Week2[j][0].day,item.time)">
-                            <div class="style_session">
-                              <div style="margin-left: 0.5em;" class="tip tip-right" data-tip="Click to view more!">
-                                <a :href="'session_template.html?sessionNum=Session'+item.num">
-                                  <BIG>Session{{item.num}}:</BIG><br><SMALL><I>{{session[item.num]}}</I></SMALL>
-                                </a>
+                    
+                      <div v-for="item in Workday">
+                        <div class="col">
+                          <!-- talbe time -->
+                          <div v-if="isOver(Week2[j][0].day,item.time)"><div class="style_time">{{showDay(Week2[j][0].day,item.time)}}</div></div>
+                          <div v-else> <div class="style_timeover">{{showDay(Week2[j][0].day,item.time)}}</div> </div>	
+                          <!-- table activities -->
+                          <div v-if="item.type == 'session'">
+                            <div v-if="isOver(Week2[j][0].day,item.time)">
+                              <div class="style_session">
+                                <div style="margin-left: 0.5em;" @click="setModalDetail(item.num, item.type, Week2[j][0].day, item.time, item.end)">
+                                  <div data-bs-toggle="modal" data-bs-target="#modal" class="tip tip-right" data-tip="Show Details">
+                                    <BIG>Session{{item.num}}:</BIG><br><SMALL><I>{{session[item.num]}}<div v-if="item.num==11&&item.time==8">/Opening remarks</div></I></SMALL>
+                                  </div>
+                                </div>
+                              </div>	
+                            </div>
+                            <div v-else> 
+                              <div class="style_sessionover">
+                                <div style="margin-left: 0.5em;">
+                                  <BIG>Session{{item.num}}: (Over)</BIG><br><SMALL><I>{{session[item.num]}}</I></SMALL>
+                                </div>	
+                              </div>
+                            </div>
+                          </div>		
+                          <div v-else-if="item.type == 'Socializing'">
+                            <div class="style_socializing" data-bs-toggle="modal" data-bs-target="#modal">
+                              <div class="tip tip-right" data-tip="Show Time" @click="setModalDetail(0, item.type, Week2[j][0].day, item.time, item.end)">
+                                <strong >Socializing<div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div></strong>
                               </div>
                             </div>	
                           </div>
-                          <div v-else> 
-                            <div class="style_sessionover">
-                              <div style="margin-left: 0.5em;">
-                                <strong  style="color: #51585E;">Session{{item.num}}:</strong><br>{{session[item.num]}}
-                              </div>	
+                          <div v-else-if="item.type == 'gather'" >
+                            <div class="gather">
+                              <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21" target="_blank">
+                                <strong class="tip tip-right" data-tip="Go to Gather.Town">Live Get-Together</strong>
+                              </a>
                             </div>
                           </div>
-                        </div>		
-                        <div v-else-if="item.type == 'socializing'">
-                          <div class="style_socializing">
-                            <strong >Socializing</strong>	
-                          </div>	
-                        </div>
-                        <div v-else-if="item.type == 'gather'">
-                          <div class="col">
-                            <div v-html="gather"></div>
+                          <div v-else>
+                            <div class="style_event" data-bs-toggle="modal" data-bs-target="#modal">
+                              <div class="tip tip-right" data-tip="Show Details" @click="setModalDetail(0, item.type, Week2[j][0].day, item.time, item.end)">
+                                <strong>{{item.type}}<div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div></strong>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div v-else>
-                          <div class="style_event">
-                            <strong>{{item.type}}</strong>
-                          </div>
-                        </div>
+                      
                       </div>
                     </div>
-                    
                   </div>	
                     
                 </div>
               </div>
             </div>
-			
+            <!-- Modal of the table -->
+            <div class="modal fade" id="modal" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" :style="setModalColor(modal_type)">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal">
+                    <div v-if="modal_type == 'session'">Session {{modal_sessionNum}}: {{session[modal_sessionNum]}}</div>
+                    <div v-else>{{modal_type}}</div>
+                  </h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="mb-5">
+                      <p style="margin-top: 1.5em;">
+                        <div v-if="modal_type == 'session'">
+                          <div v-for='item in paper[modal_sessionNum]'>
+                            <p @click="setChannelID(item.id)">
+                              <a href='../exhibition/index.html' style="color: #51585E;">{{item.title}} <br>
+                              <I style="font-size:x-small;">{{item.authors}}</item></I></a>
+                              <hr>
+                            </p>
+                          </div>
+                          <div style="text-align: end;">
+                            <strong>When</strong>: <small><i>{{showModalDay(modal_date,modal_time,modal_end)}}</i></small><br>
+                            <strong>Where</strong>: <small><i>Session room in Gather.town</i></small><br>
+                            <strong>Alternative Date</strong>:
+                          </div>
+                        </div>
+                        <div v-else-if="modal_type == 'Socializing'">
+                          <div class="text-center">
+                            <strong>Would you take a rest now?</strong><br><br>
+                            Time : <small><i>{{showModalDay(modal_date,modal_time,modal_end)}}</i></small>
+                          </div>
+                        </div>
+                        <div v-else-if="modal_type == 'Invited'||modal_type == 'Demos'">
+                          <div style="text-align: end;">
+                            <strong>When</strong>: <small><i>{{showModalDay(modal_date,modal_time,modal_end)}}</i></small><br>
+                            <strong>Where</strong>: <small><i>Session room in Gather.town</i></small><br>
+                          </div>
+                        </div>
+                        <div v-else>
+                          <div style="text-align: end;">
+                            <strong>When</strong>: <small><i>{{showModalDay(modal_date,modal_time,modal_end)}}</i></small><br>
+                            <strong>Where</strong>: <small><i></i></small><br>
+                          </div>
+                        </div>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            </div>
+
           </div>
         </div>
       </div>
+    
+    
+    
+    
+    
     </div> 
-
+   
     <footer class="footer m-5">
       <div class="container">
         <hr />
@@ -158,5 +228,6 @@
       </div>
     </footer>
   </body>
-  <script type="text/javascript" src="./schedule.js"></script> 
+  <script type="module" src="./schedule.js"></script> 
+
 </html>

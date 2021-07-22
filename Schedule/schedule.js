@@ -1,6 +1,8 @@
+import {paperData} from './paperData.js'
 var app = new Vue({
 el: '#app',
 data: {			
+	paper: paperData,
 	titleOfWeek1: "DC, workshops and tutorials <br> (1st week)",
 	titleOfWeek2:"Main Conference <br> (2nd week)",
 	nowYear: new Date().getFullYear(),
@@ -12,30 +14,30 @@ data: {
 	week:1,
 	zone: new Date().getTimezoneOffset() / -60 ,			
 	zoneOptions:[
-		{ text:'Timezone: UTC +12', value:12},
-		{ text:'Timezone: UTC +11', value:11},
-		{ text:'Timezone: UTC +10', value:10},
-		{ text:'Timezone: UTC +9', value:9},
-		{ text:'Timezone: UTC +8', value:8},
-		{ text:'Timezone: UTC +7', value:7},
-		{ text:'Timezone: UTC +6', value:6},
-		{ text:'Timezone: UTC +5', value:5},
-		{ text:'Timezone: UTC +4', value:4},
-		{ text:'Timezone: UTC +3', value:3},
-		{ text:'Timezone: UTC +2', value:2},
-		{ text:'Timezone: UTC +1', value:1},
-		{ text:'Timezone: UTC +0', value:0},
-		{ text:'Timezone: UTC -1', value:-1},
-		{ text:'Timezone: UTC -2', value:-2},
-		{ text:'Timezone: UTC -3', value:-3},
-		{ text:'Timezone: UTC -4', value:-4},
-		{ text:'Timezone: UTC -5', value:-5},
-		{ text:'Timezone: UTC -6', value:-6},
-		{ text:'Timezone: UTC -7', value:-7},
-		{ text:'Timezone: UTC -8', value:-8},
-		{ text:'Timezone: UTC -9', value:-9},
-		{ text:'Timezone: UTC -10', value:-10},
-		{ text:'Timezone: UTC -11', value:-11},
+		{ text:'UTC +12', value:12},
+		{ text:'UTC +11', value:11},
+		{ text:'UTC +10', value:10},
+		{ text:'UTC +9', value:9},
+		{ text:'UTC +8', value:8},
+		{ text:'UTC +7', value:7},
+		{ text:'UTC +6', value:6},
+		{ text:'UTC +5', value:5},
+		{ text:'UTC +4', value:4},
+		{ text:'UTC +3', value:3},
+		{ text:'UTC +2', value:2},
+		{ text:'UTC +1', value:1},
+		{ text:'UTC +0', value:0},
+		{ text:'UTC -1', value:-1},
+		{ text:'UTC -2', value:-2},
+		{ text:'UTC -3', value:-3},
+		{ text:'UTC -4', value:-4},
+		{ text:'UTC -5', value:-5},
+		{ text:'UTC -6', value:-6},
+		{ text:'UTC -7', value:-7},
+		{ text:'UTC -8', value:-8},
+		{ text:'UTC -9', value:-9},
+		{ text:'UTC -10', value:-10},
+		{ text:'UTC -11', value:-11},
 	],
 	date:[' ','1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','11th','12th','13th','14th'],
 	gather:'<div class="gather"><a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21" target="_blank"><strong>Live Get-Together</strong></a></div>',
@@ -51,7 +53,7 @@ data: {
 		'Path/search',
 		'Hybrid/conformant',
 		'ND/OSP',
-		'Probabilistic/Opening remarks',
+		'Probabilistic',
 		'RL',
 		'RL',
 		'Temporal/numeric/RL',
@@ -67,243 +69,248 @@ data: {
 	],
 	Week2:[
 		[
-			{day:8, type:'gather', time:0},
-			{type:'session', num:4, time:1},
-			{type:'session', num:16, time:2},
-			{type:'session', num:19, time:3},
-			{type:'socializing', time:4},
-			{type:'gather', time:6},
-			{type:'session', num:7, time:7},
-			{type:'session', num:11, time:8},
-			{type:'Invited', time:9},
-			{type:'Event', time:10},
-			{type:'socializing', time:12},
-			{type:'session', num:4, time:14},
-			{type:'session', num:16, time:15},
-			{type:'session', num:19, time:16},
-			{type:'gather', time:17},
-			{type:'socializing', time:18},
-			{type:'session', num:7, time:20},
-			{type:'session', num:11, time:21},
-			{type:'gather', time:22}
+			{day:8, type:'gather', time:0, end:1},
+			{type:'session', num:4, time:1, end:2},
+			{type:'session', num:16, time:2, end:3},
+			{type:'session', num:19, time:3, end:4},
+			{type:'Socializing', time:4, end:6},
+			{type:'gather', time:6, end:7},
+			{type:'session', num:7, time:7, end:8},
+			{type:'session', num:11, time:8, end:9},
+			{type:'Invited', time:9, end:10},
+			{type:'Event', time:10, end:12},
+			{type:'Socializing', time:12, end:14},
+			{type:'session', num:4, time:14, end:15},
+			{type:'session', num:16, time:15, end:16},
+			{type:'session', num:19, time:16, end:17},
+			{type:'gather', time:17, end:18},
+			{type:'Socializing', time:18, end:20},
+			{type:'session', num:7, time:20, end:22},
+			{type:'session', num:11, time:21, end:22},
+			{type:'gather', time:22, end:23}
 		],
 		[
-			{day:9, type:'gather', time:0},
-			{type:'session', num:5, time:1},
-			{type:'session', num:10, time:2},
-			{type:'session', num:18, time:3},
-			{type:'socializing', time:4},
-			{type:'gather', time:6},
-			{type:'session', num:6, time:7},
-			{type:'Competitions', time:8},
-			{type:'Invited', time:11},
-			{type:'socializing', time:12},
-			{type:'session', num:10, time:14},
-			{type:'session', num:5, time:15},
-			{type:'session', num:18, time:16},
-			{type:'gather', time:17},
-			{type:'socializing', time:18},
-			{type:'session', num:6, time:20},
-			{type:'gather', time:21}
+			{day:9, type:'gather', time:0, end:1},
+			{type:'session', num:5, time:1, end:2},
+			{type:'session', num:10, time:2, end:3},
+			{type:'session', num:18, time:3, end:4},
+			{type:'Socializing', time:4, end:6},
+			{type:'gather', time:6, end:7},
+			{type:'session', num:6, time:7, end:8},
+			{type:'Competitions', time:8, end:11},
+			{type:'Invited', time:11, end:12},
+			{type:'Socializing', time:12, end:14},
+			{type:'session', num:10, time:14, end:15},
+			{type:'session', num:5, time:15, end:16},
+			{type:'session', num:18, time:16, end:17},
+			{type:'gather', time:17, end:18},
+			{type:'Socializing', time:18, end:20},
+			{type:'session', num:6, time:20, end:21},
+			{type:'gather', time:21, end:23}
 		],
 		[
-			{day:10, type:'gather', time:0},
-			{type:'session', num:22, time:1},
-			{type:'session', num:9, time:2},
-			{type:'session', num:8, time:3},
-			{type:'socializing', time:4},
-			{type:'gather', time:6},
-			{type:'session', num:15, time:7},
-			{type:'session', num:12, time:8},
-			{type:'Invited', time:9},
-			{type:'Demos', time:10},
-			{type:'socializing', time:12},
-			{type:'session', num:8, time:14},
-			{type:'session', num:9, time:15},
-			{type:'session', num:22, time:16},
-			{type:'gather', time:17},
-			{type:'socializing', time:18},
-			{type:'session', num:15, time:20},
-			{type:'session', num:12, time:21},
-			{type:'gather', time:22}
+			{day:10, type:'gather', time:0, end:1},
+			{type:'session', num:22, time:1, end:2},
+			{type:'session', num:9, time:2, end:3},
+			{type:'session', num:8, time:3, end:4},
+			{type:'Socializing', time:4, end:6},
+			{type:'gather', time:6, end:7},
+			{type:'session', num:15, time:7, end:8},
+			{type:'session', num:12, time:8, end:9},
+			{type:'Invited', time:9, end:10},
+			{type:'Demos', time:10, end:12},
+			{type:'Socializing', time:12, end:14},
+			{type:'session', num:8, time:14, end:15},
+			{type:'session', num:9, time:15, end:16},
+			{type:'session', num:22, time:16, end:17},
+			{type:'gather', time:17, end:18},
+			{type:'Socializing', time:18, end:20},
+			{type:'session', num:15, time:20, end:21},
+			{type:'session', num:12, time:21, end:22},
+			{type:'gather', time:22, end:23}
 		],
 		[
-			{day:11, type:'gather', time:0},
-			{type:'session', num:2, time:1},
-			{type:'session', num:3, time:2},
-			{type:'session', num:1, time:3},
-			{type:'socializing', time:4},
-			{type:'gather', time:6},
-			{type:'session', num:17, time:7},
-			{type:'Community Meeting', time:8},
-			{type:'Community Socializing', time:10},
-			{type:'socializing', time:12},
-			{type:'session', num:2, time:14},
-			{type:'session', num:3, time:15},
-			{type:'session', num:1, time:16},
-			{type:'gather', time:17},
-			{type:'socializing', time:18},
-			{type:'session', num:17, time:20},
-			{type:'gather', time:21}
+			{day:11, type:'gather', time:0, end:1},
+			{type:'session', num:2, time:1, end:2},
+			{type:'session', num:3, time:2, end:3},
+			{type:'session', num:1, time:3, end:4},
+			{type:'Socializing', time:4, end:6},
+			{type:'gather', time:6, end:7},
+			{type:'session', num:17, time:7, end:8},
+			{type:'Community Meeting', time:8, end:10},
+			{type:'Community Socializing', time:10, end:12},
+			{type:'Socializing', time:12, end:14},
+			{type:'session', num:2, time:14, end:15},
+			{type:'session', num:3, time:15, end:16},
+			{type:'session', num:1, time:16, end:17},
+			{type:'gather', time:17, end:18},
+			{type:'Socializing', time:18, end:20},
+			{type:'session', num:17, time:20, end:21},
+			{type:'gather', time:21, end:23}
 		],
 		[
-			{day:12, type:'gather', time:0},
-			{type:'session', num:23, time:1},
-			{type:'session', num:14, time:2},
-			{type:'session', num:20, time:3},
-			{type:'socializing', time:4},
-			{type:'gather', time:6},
-			{type:'session', num:21, time:7},
-			{type:'session', num:13, time:8},
-			{type:'Posters', time:9},
-			{type:'Invited', time:11},
-			{type:'socializing', time:12},
-			{type:'session', num:23, time:14},
-			{type:'session', num:14, time:15},
-			{type:'session', num:20, time:16},
-			{type:'gather', time:17},
-			{type:'socializing', time:18},
-			{type:'session', num:21, time:20},
-			{type:'session', num:13, time:21},
-			{type:'gather', time:22}
+			{day:12, type:'gather', time:0, end:1},
+			{type:'session', num:23, time:1, end:2},
+			{type:'session', num:14, time:2, end:3},
+			{type:'session', num:20, time:3, end:4},
+			{type:'Socializing', time:4, end:6},
+			{type:'gather', time:6, end:7},
+			{type:'session', num:21, time:7, end:8},
+			{type:'session', num:13, time:8, end:9},
+			{type:'Posters', time:9, end:11},
+			{type:'Invited', time:11, end:12},
+			{type:'Socializing', time:12, end:14},
+			{type:'session', num:23, time:14, end:15},
+			{type:'session', num:14, time:15, end:16},
+			{type:'session', num:20, time:16, end:17},
+			{type:'gather', time:17, end:18},
+			{type:'Socializing', time:18, end:20},
+			{type:'session', num:21, time:20, end:21},
+			{type:'session', num:13, time:21, end:22},
+			{type:'gather', time:22, end:23}
 		]
 	],
-	sessionNum:'',
-	sessionPaper:{
-		Session1:{
-			139:'Dantzig-Wolfe Decomposition for Cost Partitioning',
-			153:'Exploiting Cyclic Dependencies in Landmark Heuristics',
-			230:'Subset-Saturated Transition Cost Partitioning',
-			287:'Online Saturated Cost Partitioning for Classical Planning'
-		},
-		Session2:{
-			151:'On the Compilability and Expressive Power of State-Dependent Action Costs',
-			152:'Learning Heuristic Selection with Dynamic Algorithm Configuration',
-			282:'Automatic Instance Generation for Classical Planning',
-			368:'Computational Complexity of Computing Symmetries in Finite-Domain Planning'
-		},
-		Session3:{
-			36:'Iterative-deepening Bidirectional Heuristic Search with Restricted Memory',
-			128:'Delete-Relaxation Heuristics for Lifted Classical Planning',
-			146:'Endomorphisms of Lifted Planning Problems',
-			322:'Hierarchical Width-Based Planning and Learning'
-		},
-		Session4:{
-			17:'Approximate bi-criteria search by efficient representation of subsets of the Pareto-optimal frontier',
-			61:'Conflict-Free Multi-Agent Meeting',
-			99:'OMCoRP: An Online Mechanism for Competitive Robot Prioritization',
-			366:'Safe Multi-Agent Pathfinding with Time Uncertainty'
-		},
-		Session5:{
-			191:'A Competitive Analysis of Online Multi-Agent Path Finding',
-			345:'Conflict-Based Increasing Cost Search',
-			353:'Speeding Up Search-Based Motion Planning using Expansion Delay Heuristics',
-			165:'Scalable Rail Planning and Replanning: Winning the 2020 Flatland Challenge'
-		},
-		Session6:{
-			34:'Jump Point Search with Temporal Obstacles',
-			123:'Width-Based Backward Search',
-			140:'The Consistent Case in Bidirectional Search and a Bucket-to-Bucket Algorithm as a Middle Ground between Front-to-End and Front-to-Front',
-			206:'Contracting and Compressing Shortest Path Databases'
-		},
-		Session7:{
-			67:'E2Coop: Energy Efficient and Cooperative Obstacle Detection and Avoidance for UAV Swarms',
-			84:'Hierarchical Freespace Planning for Navigation in Unfamiliar Worlds',
-			187:'Approximate Novelty Search',
-			297:'S*: A Heuristic Information-Based Approximation Framework for Multi-Goal Path Finding'
-		},
-		Session8:{
-			145:'Predicted Composite Signed-Distance Fields for Real-Time Motion Planning in Dynamic Environments',
-			209:'Towards Time-Optimal Any-Angle Path Planning With Dynamic Obstacles',
-			222:'Improving AlphaZero Using Monte-Carlo Graph Search',
-			363:'Attributed Transition-based Domain Control Knowledge for Domain-Independent Planning'
-		},
-		Session9:{
-			4:'Task-Aware Waypoint Sampling for Robotic Planning',
-			76:'Verifying Plans and Scripts for Robotics Tasks Using Performance Level Profiles',
-			261:'In-Station Train Dispatching: A PDDL+ Planning Approach',
-			309:'Non-Deterministic Conformant Planning Using a Counterexample-Guided Incremental Compilation to Classical Planning'
-		},
-		Session10:{
-			132:'Flexible FOND Planning with Explicit Fairness Assumptions',
-			134:'Pattern Databases for Goal-Probability Maximization in Probabilistic Planning',
-			271:'Rule-based shielding for Partially Observable Monte-Carlo Planning',
-			370:'Selecting goals in oversubscription planning using relaxed plans'
-		},
-		Session11:{
-			147:'Data-Driven Decision-Theoretic Planning using Recurrent Sum-Product-Max Networks',
-			305:'Multiple Plans are Better than One: Diverse Stochastic Planning'
-		},
-		Session12:{
-			79:'Robust Opponent Modeling via Adversarial Ensemble Reinforcement Learning',
-			201:'Learning and Exploiting Shaped Reward Models for Large Scale Multiagent RL',
-			208:'Integrating Knowledge Compilation with Reinforcement Learning for Routes',
-			180:'DeepFreight: A Model-free Deep-reinforcement-learning-based Algorithm for Multi-transfer Freight Delivery'
-		},
-		Session13:{
-			86:'Guiding Robot Exploration in Reinforcement Learning via Automated Planning',
-			190:'A Simulator-based Planning Framework for Optimizing Autonomous Greenhouse Control Strategy',
-			354:'A Deep Ensemble Method for Multi-Agent Reinforcement Learning: A Case Study on Air Traffic Control',
-			360:'Constrained Multiagent Markov Decision Processes: a Taxonomy of Problems and Algorithms'
-		},
-		Session14:{
-			24:'Situated Temporal Planning Using Deadline-aware Metareasoning',
-			144:'Abstraction-Guided Policy Recovery from Expert Demonstrations',
-			215:'Translations from Discretised PDDL+ to Numeric Planning',
-			273:'Meta Reinforcement Learning for Heuristic Planing'
-		},
-		Session15:{
-			55:'RePReL: Integrating Relational Planning and Reinforcement Learning for Effective Abstraction',
-			120:'LM-cut and Operator Counting Heuristics for Optimal Numeric Planning with Simple Conditions',
-			257:'Privacy-Preserving Algorithm for Decoupling of Multi-Agent Plans with Uncertainty',
-			312:'Blind Decision Making: Reinforcement Learning with Delayed Observations'
-		},
-		Session16:{
-			300:'Automated Production Scheduling for Artificial Teeth Manufacturing',
-			325:'Scheduling with Complete Multipartite Incompatibility Graph on Parallel Machines',
-			328:'Total Completion Time Minimization for Scheduling with Incompatibility Cliques',
-			361:'Constraint-based Scheduling for Paint Shops in the Automotive Supply Industry'
-		},
-		Session17:{
-			54:'Distributed Fair Scheduling for Information Exchange in Multi-Agent Systems',
-			62:'Online Hedge Reservation for Diverse Plans and Competitive Analysis',
-			109:'Scheduling Stochastic Jobs - Complexity and Approximation Algorithms',
-			238:'GRAND-VISION: An Intelligent System for Optimized Deployment Scheduling of Law Enforcement Agents'
-		},
-		Session18:{
-			48:'Explaining path plan optimality: fast explanation methods for navigation meshes using full and incremental inverse optimization',
-			60:'Compositional Approach to Translate LTLf/LDLf into Deterministic Finite Automata',
-			219:'On Planning with Qualitative State-Trajectory Constraints in PDDL3 by Compiling them Away',
-			306:'vPlanSim: An Open Source Graphical Interface for the Visualisation and Simulation of AI Systems'
-		},
-		Session19:{
-			5:'Block Compression and Invariant Pruning for SAT-based Totally-Ordered HTN Planning',
-			38:'Translating Totally Ordered HTN Planning Problems to Classical Planning Problems Using Regular Approximation of Context-Free Languages',
-			44:'Fully Observable Nondeterministic HTN Planning -- Formalisation and Complexity Results',
-			49:'Loop Detection in the PANDA Planning System'
-		},
-		Session20:{
-			118:'Autonomous Building of Structures in Unstructured Environments via AI Planning',
-			130:'Knowledge Compilation for Nondeterministic Action Languages',
-			264:'Generalized Planning as Heuristic Search',
-			362:'What do you really want to do? Towards a Theory of Intentions for Human-Robot Collaboration'
-		},
-		Session21:{
-			37:'A Closer Look at Causal Links: Complexity Results for Delete-Relaxation in Partial Order Causal Link (POCL) Planning',
-			143:'Decentralized Refinement Planning and Acting',
-			163:'Automated design of fMRI paradigms',
-			364:'Landmark-based approaches for goal recognition as planning'
-		},
-		Session22:{
-			85:'Temporal Reasoning with Kinodynamic Networks',
-			339:'PLGRIM: Hierarchical Value Learning for Large-scale Exploration in Unknown Environments',
-			365:'Self-Reliant Rovers for Increased Mission Productivity'
-		},
-		Session23:{
-			338:'Computing Opportunities to Augment Plans for Novel Replanning during Execution',
-			367:'Adaptive Smoothing for Path Integral Control'
-		}
-},
+	modal_sessionNum:'',
+	modal_type:'',
+	modal_date:'',
+	modal_time:'',
+	modal_end:'',
+	sessionPaper:[
+		[],
+		[
+			{id:139, paper:'Dantzig-Wolfe Decomposition for Cost Partitioning'},
+			{id:153, paper:'Exploiting Cyclic Dependencies in Landmark Heuristics'},
+			{id:230, paper:'Subset-Saturated Transition Cost Partitioning'},
+			{id:287, paper:'Online Saturated Cost Partitioning for Classical Planning'}
+		],
+		[
+			{id:151, paper:'On the Compilability and Expressive Power of State-Dependent Action Costs'},
+			{id:152, paper:'Learning Heuristic Selection with Dynamic Algorithm Configuration'},
+			{id:282, paper:'Automatic Instance Generation for Classical Planning'},
+			{id:368, paper:'Computational Complexity of Computing Symmetries in Finite-Domain Planning'}
+		],
+		[
+			{id:36, paper:'Iterative-deepening Bidirectional Heuristic Search with Restricted Memory'},
+			{id:128, paper:'Delete-Relaxation Heuristics for Lifted Classical Planning'},
+			{id:146, paper:'Endomorphisms of Lifted Planning Problems'},
+			{id:322, paper:'Hierarchical Width-Based Planning and Learning'}
+		],
+		[
+			{id:17, paper:'Approximate bi-criteria search by efficient representation of subsets of the Pareto-optimal frontier'},
+			{id:61, paper:'Conflict-Free Multi-Agent Meeting'},
+			{id:99, paper:'OMCoRP: An Online Mechanism for Competitive Robot Prioritization'},
+			{id:366, paper:'Safe Multi-Agent Pathfinding with Time Uncertainty'}
+		],
+		[
+			{id:191, paper:'A Competitive Analysis of Online Multi-Agent Path Finding'},
+			{id:345, paper:'Conflict-Based Increasing Cost Search'},
+			{id:353, paper:'Speeding Up Search-Based Motion Planning using Expansion Delay Heuristics'},
+			{id:165, paper:'Scalable Rail Planning and Replanning: Winning the 2020 Flatland Challenge'}
+		],
+		[
+			{id:34, paper:'Jump Point Search with Temporal Obstacles'},
+			{id:123, paper:'Width-Based Backward Search'},
+			{id:140, paper:'The Consistent Case in Bidirectional Search and a Bucket-to-Bucket Algorithm as a Middle Ground between Front-to-End and Front-to-Front'},
+			{id:206, paper:'Contracting and Compressing Shortest Path Databases'}
+		],
+		[
+			{id:67, paper:'E2Coop: Energy Efficient and Cooperative Obstacle Detection and Avoidance for UAV Swarms'},
+			{id:84, paper:'Hierarchical Freespace Planning for Navigation in Unfamiliar Worlds'},
+			{id:187, paper:'Approximate Novelty Search'},
+			{id:297, paper:'S*: A Heuristic Information-Based Approximation Framework for Multi-Goal Path Finding'}
+		],
+		[
+			{id:145, paper:'Predicted Composite Signed-Distance Fields for Real-Time Motion Planning in Dynamic Environments'},
+			{id:209, paper:'Towards Time-Optimal Any-Angle Path Planning With Dynamic Obstacles'},
+			{id:222, paper:'Improving AlphaZero Using Monte-Carlo Graph Search'},
+			{id:363, paper:'Attributed Transition-based Domain Control Knowledge for Domain-Independent Planning'}
+		],
+		[
+			{id:4, paper:'Task-Aware Waypoint Sampling for Robotic Planning'},
+			{id:76, paper:'Verifying Plans and Scripts for Robotics Tasks Using Performance Level Profiles'},
+			{id:261, paper:'In-Station Train Dispatching: A PDDL+ Planning Approach'},
+			{id:309, paper:'Non-Deterministic Conformant Planning Using a Counterexample-Guided Incremental Compilation to Classical Planning'}
+		],
+		[
+			{id:132, paper:'Flexible FOND Planning with Explicit Fairness Assumptions'},
+			{id:134, paper:'Pattern Databases for Goal-Probability Maximization in Probabilistic Planning'},
+			{id:274, paper:'Rule-based shielding for Partially Observable Monte-Carlo Planning'},
+			{id:370, paper:'Selecting goals in oversubscription planning using relaxed plans'}
+		],
+		[
+			{id:147, paper:'Data-Driven Decision-Theoretic Planning using Recurrent Sum-Product-Max Networks'},
+			{id:305, paper:'Multiple Plans are Better than One: Diverse Stochastic Planning'}
+		],
+		[
+			{id:79, paper:'Robust Opponent Modeling via Adversarial Ensemble Reinforcement Learning'},
+			{id:201, paper:'Learning and Exploiting Shaped Reward Models for Large Scale Multiagent RL'},
+			{id:208, paper:'Integrating Knowledge Compilation with Reinforcement Learning for Routes'},
+			{id:180, paper:'DeepFreight: A Model-free Deep-reinforcement-learning-based Algorithm for Multi-transfer Freight Delivery'}
+		],
+		[
+			{id:86, paper:'Guiding Robot Exploration in Reinforcement Learning via Automated Planning'},
+			{id:190, paper:'A Simulator-based Planning Framework for Optimizing Autonomous Greenhouse Control Strategy'},
+			{id:354, paper:'A Deep Ensemble Method for Multi-Agent Reinforcement Learning: A Case Study on Air Traffic Control'},
+			{id:360, paper:'Constrained Multiagent Markov Decision Processes: a Taxonomy of Problems and Algorithms'}
+		],
+		[
+			{id:24, paper:'Situated Temporal Planning Using Deadline-aware Metareasoning'},
+			{id:144, paper:'Abstraction-Guided Policy Recovery from Expert Demonstrations'},
+			{id:215, paper:'Translations from Discretised PDDL+ to Numeric Planning'},
+			{id:273, paper:'Meta Reinforcement Learning for Heuristic Planing'}
+		],
+		[
+			{id:55, paper:'RePReL: Integrating Relational Planning and Reinforcement Learning for Effective Abstraction'},
+			{id:120, paper:'LM-cut and Operator Counting Heuristics for Optimal Numeric Planning with Simple Conditions'},
+			{id:257, paper:'Privacy-Preserving Algorithm for Decoupling of Multi-Agent Plans with Uncertainty'},
+			{id:312, paper:'Blind Decision Making: Reinforcement Learning with Delayed Observations'}
+		],
+		[
+			{id:300, paper:'Automated Production Scheduling for Artificial Teeth Manufacturing'},
+			{id:35, paper:'Scheduling with Complete Multipartite Incompatibility Graph on Parallel Machines'},
+			{id:328, paper:'Total Completion Time Minimization for Scheduling with Incompatibility Cliques'},
+			{id:361, paper:'Constraint-based Scheduling for Paint Shops in the Automotive Supply Industry'}
+		],
+		[
+			{id:54, paper:'Distributed Fair Scheduling for Information Exchange in Multi-Agent Systems'},
+			{id:62, paper:'Online Hedge Reservation for Diverse Plans and Competitive Analysis'},
+			{id:109, paper:'Scheduling Stochastic Jobs - Complexity and Approximation Algorithms'},
+			{id:238, paper:'GRAND-VISION: An Intelligent System for Optimized Deployment Scheduling of Law Enforcement Agents'}
+		],
+		[
+			{id:48, paper:'Explaining path plan optimality: fast explanation methods for navigation meshes using full and incremental inverse optimization'},
+			{id:60, paper:'Compositional Approach to Translate LTLf/LDLf into Deterministic Finite Automata'},
+			{id:219, paper:'On Planning with Qualitative State-Trajectory Constraints in PDDL3 by Compiling them Away'},
+			{id:306, paper:'vPlanSim: An Open Source Graphical Interface for the Visualisation and Simulation of AI Systems'}
+		],
+		[
+			{id:5, paper:'Block Compression and Invariant Pruning for SAT-based Totally-Ordered HTN Planning'},
+			{id:38, paper:'Translating Totally Ordered HTN Planning Problems to Classical Planning Problems Using Regular Approximation of Context-Free Languages'},
+			{id:44, paper:'Fully Observable Nondeterministic HTN Planning -- Formalisation and Complexity Results'},
+			{id:49, paper:'Loop Detection in the PANDA Planning System'}
+		],
+		[
+			{id:118, paper:'Autonomous Building of Structures in Unstructured Environments via AI Planning'},
+			{id:130, paper:'Knowledge Compilation for Nondeterministic Action Languages'},
+			{id:264, paper:'Generalized Planning as Heuristic Search'},
+			{id:362, paper:'What do you really want to do? Towards a Theory of Intentions for Human-Robot Collaboration'}
+		],
+		[
+			{id:37, paper:'A Closer Look at Causal Links: Complexity Results for Delete-Relaxation in Partial Order Causal Link (POCL) Planning'},
+			{id:143, paper:'Decentralized Refinement Planning and Acting'},
+			{id:163, paper:'Automated design of fMRI paradigms'},
+			{id:364, paper:'Landmark-based approaches for goal recognition as planning'}
+		],
+		[
+			{id:85, paper:'Temporal Reasoning with Kinodynamic Networks'},
+			{id:339, paper:'PLGRIM: Hierarchical Value Learning for Large-scale Exploration in Unknown Environments'},
+			{id:365, paper:'Self-Reliant Rovers for Increased Mission Productivity'}
+		],
+		[
+			{id:338, paper:'Computing Opportunities to Augment Plans for Novel Replanning during Execution'},
+			{id:367, paper:'Adaptive Smoothing for Path Integral Control'}
+		]
+	],
 	sum: 0,
 	oldTime: new Date,
 },
@@ -312,7 +319,12 @@ methods:{
 		if (this.zone + hour + 4 < 0) return ('Aug ' + this.date[day-1] + ' ' + (this.zone + hour + 28) + ':00')
 		else if (this.zone + hour + 4 > 23) return ('Aug ' + this.date[day+1] + ' ' + (this.zone + hour - 20) + ':00')
 		else return ('Aug ' + this.date[day] + ' ' + (this.zone + hour + 4) + ':00');
-	},		
+	},
+	showModalDay: function(day,time,end){
+		if (this.zone + time + 4 < 0) return ('Aug ' + this.date[day-1] + ' ' + (this.zone + time + 28) + ':00 - ' + (this.zone + end + 28) + ':00')
+		else if (this.zone + time + 4 > 23) return ('Aug ' + this.date[day+1] + ' ' + (this.zone + time - 20) + ':00 - ' + (this.zone + end - 20) + ':00')
+		else return ('Aug ' + this.date[day] + ' ' + (this.zone + time + 4) + ':00 - ' + (this.zone + end + 4) + ':00');
+	},
 	isOver: function(day,hour){
 		if (this.nowHour < 0) {
 			this.nowHour = this.nowHour + 24;
@@ -329,14 +341,20 @@ methods:{
 		else if (this.nowYear == 2021 && this.nowMonth == 8 && this.nowDay == day && this.nowHour > hour) return false
 		else return true;
 	},
-	setID:function(id){
+	setModalDetail: function(num,type,date,time,end){
+		this.modal_sessionNum =  num.toString();
+		this.modal_type = type;
+		this.modal_date = date;
+		this.modal_time = time;
+		this.modal_end = end;
+	},
+	setModalColor: function(type){
+		if (type == 'session') return "background:#E2EFDA"
+		else if (type == 'Socializing') return "background:#ACB9CA"
+		else return "background:#ffdea3";
+	},
+	setChannelID: function(id){
 		window.localStorage.setItem("channel",id);
 	}
-},	
-mounted(){
-	this.sessionNum = decodeURI(window.location.href).split('=')[1];
-	// setInterval(function(){
-	// 	axios.post(backendBaseUrl+'/api/users/forgotemailverify',this.user)
-	// },60000)
 }
 })

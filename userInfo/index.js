@@ -1,8 +1,9 @@
 import {backendBaseUrl} from '../assets/js/backendBaseUrl.js';
 import {country} from '../assets/js/data.js';
-import {Vue} from '/assets/component/myheader.js'
+import {Vue, store} from '/assets/component/myheader.js'
 var app = new Vue({
     el: '#app',
+    store: store,
     data: {
         isLogin: false,
         user: {

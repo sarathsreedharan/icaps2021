@@ -1,6 +1,6 @@
 import {backendBaseUrl} from '../assets/js/backendBaseUrl.js';
-import {country,eduMail} from '../assets/js/data.js';
-import { Vue , header} from '/assets/component/myheader.js';
+import {country,eduMail, Tshirt_style,workshopsData} from '../assets/js/data.js';
+import { Vue, header, store } from '/assets/component/myheader.js';
 import { paypal_url } from '../assets/config/paypal.js';
 // inject js file and export a handle after load it complete
 function injectJS(src, onload) {
@@ -57,6 +57,7 @@ injectJS(paypal_url,()=>{
             if (!app.reg_info.registration && !app.reg_info.publication) {
                 message = "you have not selected any sessions!";
             }
+            app.paySuccessful = false;
             console.log("now in error");
             app.modalmsg = message;
             app.tipsModal.show();
@@ -91,9 +92,43 @@ injectJS(paypal_url,()=>{
 // document.head.appendChild(s);
 var app = new Vue({
     el: '#app',
+    store: store,
     data: {
+        myheader:header,
+        survey:{
+            Tshirt_style:'',
+            Tshirt_size:'',
+            country:'',
+            full_name:'',
+            address1:'',
+            address2:'',
+            address_state:'',
+            postal_code:'',
+            attend_event:false,
+            attend_workshops:{
+                HPlan:false,
+                HSDIP:false,
+                IntEx:false,
+                KEPS:false,
+                PRL:false,
+                WIPC:false,
+                XAIP:false,
+                FinPlan:false,
+                SPARK:false,
+                PlanRob:false,
+            },
+            submit:{
+                fail:false,
+                success:false,
+            }
+        },
+        Tshirt_size: ['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'],
+        Tshirt_size_to_height: [155, 160, 165, 170, 175, 180, 185],
+        Tshirt_style:Tshirt_style,
+        workshopsData:workshopsData,
         token: "",
         message: "Hello ",
+        code_resend_cnt: 0, //used for the resend email verification code count down
         first_name: "",
         last_name: "",
         user_info: {},
@@ -108,7 +143,11 @@ var app = new Vue({
             publication: 150,
             non_student: 50
         },
+        DWTshirt:false,
+        paySuccessful:true,
+        hideSix:true,
         modalmsg: '',
+        alreadySelectTOrder:false,
         isErrorPaper: false,
         check_form:false,
         collapse: [],
@@ -125,6 +164,8 @@ var app = new Vue({
         tipsModal: {},
         eduMail: eduMail,
         flag:false,
+        Tflag:false,
+        surveySubmit:false,
         uploadFile: {
             cvFile: {},
             success: false,
@@ -132,8 +173,8 @@ var app = new Vue({
             share_inform: false,
             add_mail_list: false,
             errmsg:'',
-        }
-
+        },
+        
     },
     methods: {
         Create() {
@@ -153,18 +194,34 @@ var app = new Vue({
                 this.isErrorCode = true
             })
         },
-        checkEmail() {
+        getWorkshops(value){
+            return 'survey.attend_workshops.'+value;
+        },
+        async checkEmail() {
             this.check_form = true;
-            if(!this.checkflag) return;
-            axios.post(backendBaseUrl + '/api/users/emailverify', {
-                email: this.user_info.email
-            }).then(res => {
+            if (!this.checkflag) return;
+            try {
                 this.codeModal.show();
-            }).catch(err => {
+                // setting the counter down
+                if (!this.sendCodeDisable) {
+                    await axios.post(backendBaseUrl + '/api/users/emailverify', {
+                        email: this.user_info.email
+                    });
+                    this.code_resend_cnt = 60;
+                    this.countDown = setInterval(() => {
+                        if (this.code_resend_cnt <= 0) {
+                            clearInterval(this.countDown);
+                        } else {
+                            this.code_resend_cnt--;
+                        }
+                    }, 1000);
+                }
+
+            } catch (err) {
                 console.dir(err)
                 this.emailErrorMsg = err.response.data.message;
                 this.errorModal.show();
-            })
+            }
         },
         getfile(e) {
             if (e.target.files[0].size < 1024 * 1024 * 20) {
@@ -199,8 +256,10 @@ var app = new Vue({
                 this.modalmsg = 'Submission Successful!';
                 this.tipsModal.show();
                 setTimeout(() => {
-                    window.location.href = "../userInfo"
+                    this.tipsModal.hide();
+                    this.collapse[5].show();
                 }, 1500);
+                
             }).catch(err => {
                 this.uploadFile.fail = true;
                 this.uploadFile.errmsg = err.response.data.message;
@@ -265,9 +324,32 @@ var app = new Vue({
                 })
             }
         },
+        submitSurvey(){
+            axios.post(backendBaseUrl + '/api/registrations/survey', this.survey,{
+                headers: {
+                    "Authorization": localStorage.getItem('token')
+                }
+            }).then(res => {
+                
+                this.modalmsg = 'Submission Successful!'
+                this.tipsModal.show();
+                setTimeout(() => {
+                    window.location.href='./index.html'
+                }, 2000);
+            }).catch(err => {
+                this.survey.submit.fail = true;
+            })
+        },
         nextWindow() {
             this.collapse[3].hide();
             this.collapse[4].show();
+        },
+        nextWindow2() {
+            this.Tflag = true;
+            if(this.isTshirt && !this.alreadySelectTOrder) return ;
+            this.hideSix =false;
+            this.collapse[5].hide();
+            this.collapse[6].show();
         }
     },
     mounted: function () {
@@ -277,7 +359,6 @@ var app = new Vue({
         this.publicationModal = new bootstrap.Modal(document.getElementById('publication'));
         this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
         
-
         var myModalEl = document.getElementById('publication')
         myModalEl.addEventListener('hidden.bs.modal', function (event) {
             if (app.reg_info.papers.length == 0) {
@@ -287,17 +368,17 @@ var app = new Vue({
 
 
         var collapse_doc = [];
-        for(var i=1;i < 5;i++){
-            let name=["","One","Two","Three","Four"];
+        for(var i=1;i < 7;i++){
+            let name=["","One","Two","Three","Four","Five","Six"];
             collapse_doc[i]=document.getElementById('collapse'+name[i]);
             this.collapse[i] = new bootstrap.Collapse(collapse_doc[i],{
                 toggle: false
             })
         }
         let that = this;
-        for(var i = 1; i < 5; i++){
+        for(var i = 1; i < 7; i++){
             collapse_doc[i].addEventListener('show.bs.collapse',function(){
-                for(var j=1;j < 5;j++){
+                for(var j=1;j < 7;j++){
                     if(i != j){
                         that.collapse[j].hide()
                     }
@@ -312,22 +393,26 @@ var app = new Vue({
                     "Authorization": localStorage.getItem('token')
                 }
             }).then(res => {
-                if (this.isRegistration) {
+                if(res.data.cv_info){
+                    this.collapse[5].show()
+                }
+                else if (this.isRegistration ) {
                     this.collapse[3].show();
                 } else {
                     this.collapse[2].show();
                 }
                 this.user = res.data;
                 this.user_info = this.user.profile;
+                this.reg_info.registration = false;
                 this.user_info.email = this.user.email;
                 if (this.isRegistration) {
                     this.reg_info.registration = false;
+                } else {
+                    this.reg_info.registration = true;
                 }
                 if (this.user.cv_info) {
                     this.uploadFile.share_inform = Boolean(this.user.cv_info.share_inform)
                     this.uploadFile.add_mail_list = Boolean(this.user.cv_info.add_mail_list)
-                } else {
-                    this.reg_info.registration = true;
                 }
             }).catch(err => {
                 this.collapse[1].show()
@@ -335,6 +420,19 @@ var app = new Vue({
         } else {
             this.collapse[1].show()
         }
+        axios.get(backendBaseUrl + '/api/registrations/survey',{
+            headers: {
+                "Authorization": localStorage.getItem('token')
+            }
+        }).then(res => {
+            this.alreadySelectTOrder = true;
+            this.surveySubmit = true;
+            this.hideSix = false;
+            res.data.submit = this.survey.submit;
+            this.survey = res.data;
+        }).catch(err => {
+            console.log(err)
+        })
     },
     watch: {
         token: async function () {
@@ -356,10 +454,28 @@ var app = new Vue({
                 });
             }
         },
+        DWTshirt:function(){
+            if(this.DWTshirt == true){
+                this.survey.Tshirt_style = '',
+                this.survey.Tshirt_size = '',
+                this.survey.country = '',
+                this.survey.full_name = '',
+                this.survey.address1 = '',
+                this.survey.address2 = '',
+                this.survey.postal_code = '',
+                this.collapse[5].hide();
+                this.collapse[6].show();
+            }
+        },
         'reg_info.publication': {
             handler: function () {
                 if (this.reg_info.publication)
                     this.publicationModal.show()
+            }
+        },
+        isRegistration: {
+            handler: function () {
+                this.reg_info.registration = !this.isRegistration;
             }
         },
         
@@ -400,11 +516,24 @@ var app = new Vue({
         checkflag:function(){
             return !(this.isEmail || this.isFirst_name || this.isLast_name || this.isPronoun || this.isLessSix || this.isPassword || this.isPassword2 || this.isCountry || this.passwdMisMatch) && this.check_form
         },
-        isLogin:function(){
-            return header.$refs.header.status.isLogin
+        isLogin: function () {
+            return this.$store.state.isLogin;
         },
         isRegistration:function(){
-            return header.$refs.header.status.isRegistration
+            return this.$store.state.isRegistration;
+        },
+        isTshirt:function(){
+            if(this.alreadySelectTOrder){
+                return false;
+            }
+            return (!this.survey.Tshirt_style || !this.survey.Tshirt_size || !this.survey.country || !this.survey.address1 || !this.survey.address_state || !this.survey.postal_code || !this.survey.full_name) && this.Tflag; 
+        },
+        isNSTshirt:function(){
+            let flag = this.survey.Tshirt_style + this.survey.Tshirt_size + this.survey.country + this.survey.full_name + this.survey.address1 + this.survey.address2 + this.survey.address_state + this.survey.postal_code;
+            return flag==''?true:false;
+        },
+        sendCodeDisable: function () {
+            return this.code_resend_cnt > 0;
         }
     }
 });

@@ -14,12 +14,17 @@ $(document).ready(function () {
   });
 
   $(".log-software-click").click(function (e) {
-    data = {
-      type: "software",
-      name: e.currentTarget.innerText,
-    };
-
-    console.log(data);
+    $.ajax({
+      url: e.currentTarget.attributes.loggerref.value,
+      type: "GET",
+      dataType: "json",
+      cors: true,
+      contentType: "application/json",
+      secure: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   });
 
   let demo_element =

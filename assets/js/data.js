@@ -339,98 +339,22 @@ export let eduMail = [
     ".edu"
 ]
 
-export async function isLogin(arg_window){
-    let token=arg_window.localStorage.getItem("token");
-    if(token==null||token==""){
-        return false;
-    }
-    let res;
-    try {
-        res = await fetch("http://192.168.0.224/api/users/profile", {
-            headers: {"Authorization": token},
-            method: 'GET'
-        });
-        return true;
-    } catch (err){
-        return false;
-    }
-};
 
-export function checkForm(user_info){
-    let flag = false;
-    let check = [];
-    if(user_info.email){
-        const regEmail = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-        if(regEmail.test(user_info.email)){
-            check[isEmail] = false;
-        }else{
-            check[isEmail] = true
-            flag = true
-        }
-    }else{
-        check[isEmail] = true
-        flag = true
-    }
-    if(!user_info.first_name || user_info.first_name == undefined){
-        check[isFirst_name] = true
-        flag = true
-    }else{
-        check[isFirst_name] = false
-    }
-    if(!user_info.last_name){
-        check[isLast_name] = true
-        flag = true
-    }else{
-        check[isLast_name] = false
-    }
-    if(!user_info.password){
-        check[isPassword] = true
-        flag = true
-    }else{
-        check[isPassword] = false
-        if(user_info.password != user_info.password2){
-            flag = true
-        }
-        if(user_info.password.length < 6){
-            check[isLessSix]= true
-            flag = true
-        }
-        else
-            check[isLessSix] = false
-    }
-    if(!user_info.password2){
-        check[isPassword2] = true
-        flag = true
-    }else{
-        check[isPassword2] = false
-        if(user_info.password != user_info.password2){
-            check[passwdMisMatch] = true
-            flag = true
-        }
-        else
-            check[passwdMisMatch] = false
-    }
-    if(!user_info.pronoun){
-        check[isPronoun] = true
-        flag = true
-    }else{
-        check[isPronoun] = false
-    }
-    if(!user_info.institution){
-        check[isInstitution] = true
-        flag = true
-    }else{
-        check[isInstitution] = false
-    }
-    if(!user_info.country){
-        check[isCountry] = true
-        flag = true
-    }else{
-        check[isCountry] = false
-    }
-    if(flag == true){
-        return false
-    }
-    return {flag:!flag,check:check}
-}
-
+export let Tshirt_style = [
+    {src:'../assets/images/T-shirt/typ1.png',value:'pink'},
+    {src:'../assets/images/T-shirt/typ2.png',value:'yellow'},
+    {src:'../assets/images/T-shirt/type3.jpg',value:'blue'},
+    {src:'../assets/images/T-shirt/type4.jpg',value:'white'},
+]
+export let workshopsData=[
+    {value:"Workshop on Hierarchical Planning ",keyword:"HPlan"},
+    {value:"Workshop on Heuristics and Search for Domain-independent Planning ",keyword:"HSDIP"},
+    {value:"Workshop on Integrating Planning,Acting,and Execution ",keyword:"IntEx"},
+    {value:"Workshop on Knowledge Engineering for Planning and Scheduling ",keyword:"KEPS"},
+    {value:"Workshop on Bridging the Gap Between AI Planning and Reinforcement Learning ",keyword:"PRL"},
+    {value:"Workshop on the International Planning Competition ",keyword:"WIPC"},
+    {value:"Workshop on Explainable AI Planning ",keyword:"XAIP"},
+    {value:"Workshop on Planning for Financial Services ",keyword:"FinPlan"},
+    {value:"Scheduling and Planning Applications woRKshop",keyword:"SPARK"},
+    {value:"Workshop on Planning and Robotics ",keyword:"PlanRob"},
+]

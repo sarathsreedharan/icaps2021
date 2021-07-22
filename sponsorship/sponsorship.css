@@ -1,7 +1,36 @@
-.golden {
-  color: #ffd11e;
+.platinum,
+.platinum .list-group-item {
+  background-color: rgba(245, 130, 31, 0.1) !important;
 }
 
-.money-green {
-  color: #00a20a;
+.platinum .badge {
+  background-color: rgba(245, 130, 31, 1);
+}
+
+.platinum p {
+  color: rgba(255, 192, 192, 1);
+}
+
+.gold,
+.gold .list-group-item {
+  background-color: rgba(255, 215, 0, 0.1) !important;
+}
+
+.gold .badge {
+  color: black;
+  background-color: gold;
+}
+
+.gold p {
+  color: #c7a801;
+}
+
+.silver,
+.silver .list-group-item {
+  background-color: rgba(229, 226, 228, 0.1) !important;
+}
+
+.silver .badge {
+  color: black;
+  background-color: rgba(229, 226, 228, 1);
 }

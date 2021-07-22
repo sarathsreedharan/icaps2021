@@ -24,8 +24,8 @@
     <script src="../../assets/js/custom.js"></script>
   </head>
   <body>
-    <div id='icaps-header'>
-      <myheader curpage='workshops'></myheader>
+    <div id="icaps-header">
+      <myheader curpage="workshops"></myheader>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
 
@@ -182,50 +182,89 @@ submission around the end of March. Note that we allow and encourage
 submissions that are currently under review at other conferences (see
 submission details).</p>-->
                   <ul>
-                    <li>
-                      Paper submission: 12 May (Papers may be updated until 17
-                      May, but they need to be submitted and complete until the
-                      12th. The additional days are only intended for optional
-                      minor improvements.)
-                    </li>
+                    <li>Paper submission: 12 May (Papers may be updated until 17 May, but they need to be submitted and complete until the 12th. The additional days are only intended for optional minor improvements.)</li>
                     <li>Notification: 21 June</li>
-                    <li>Publish list of accepted papers: 22 July</li>
+					<li>Publish list of accepted papers: 22 July</li>
                     <li>Camera-ready paper submission: 26 July</li>
-                    <li>Proceedings/papers online: before ICAPS</li>
+					<li>Proceedings/papers online: before ICAPS</li>
                   </ul>
-                  <p>
-                    The reference timezone for all deadlines is UTC-12, i.e.,
-                    AOE.
-                  </p>
+                  <p>The reference timezone for all deadlines is UTC-12, i.e., AOE.</p>
 
                   <h3 class="mt-4">Invited Talk</h3>
 
-                  <h4>
-                    Malik Ghallab, Directeur de recherche emeritus at CNRS<br />
-                    LAAS-CNRS, 7 Av. Colonel Roche, 31077 Toulouse, France
-                  </h4>
+                  Malik Ghallab gives an invited talk about:<br><br>
+                                  
+                  <h4>Hierarchical Online Reasoning for the Integration of Planning and Acting</h4>
+                  
+                  <p>Hierarchization in planning has often been viewed mainly as a means for reducing the search complexity, to be paid for with additional domain modeling efforts. HTN planning, for example, has sometime been opposed to generative planning techniques, and referred to as a programming paradigm in planning. We pursue here a quite different motivation for hierarchization than tractable computations in a huge search space. Namely, we are interested in planning for the purpose of acting, and consider hierarchization as a central concept for the integration of reasoning on actions and performing them.<br><br>
+                  
+                  We have argued in [1] that the design of a cognitive actor has to rely on two interconnected principles: (i) <i>hierarchically organized deliberation</i>, and (ii) <i>continual online planning and reasoning</i>. Many challenging problems for such a design have been underlined in [1], several of which remain pending, while a few have progressed towards acceptable solutions. This talk will report on a line of work that illustrates such a progress.<sup>1</sup> Initiated in [2, Chap. 3], the work was pursued through several algorithmic developments and trials, e.g., in [3, 5, 6]; it reached a comprehensive stage in [4]. The talk will motivate the integrated planning and acting issues and present three technical com ponents:<br>
 
-                  <img src="ghallab.jpg" alt="Malik Ghallab" align="”left”" />
+                  <ul>
+                    <li>A hierarchical task-oriented knowledge representation for expressing <i>operational models</i> of actions (<i>how</i> to do things), which relies on a collection of refinement methods describing alternative ways to handle tasks and react to events. A refinement method can be any complex algorithm, with subtasks to be refined recursively and <i> nondeterministic</i>  primitive actions which query and change the world.</li>
 
-                  <p>
-                    <strong>Bio.</strong>The research activity of Malik Ghallab
-                    is focused on AI and Robotics. He contributed to topics such
-                    as knowledge representation and reasoning, planning, and
-                    learning of skills and models of behaviors. He (co-)authored
-                    over 200 technical papers and several books. He taught AI at
-                    a few universities in France and abroad; he advised 32 PhDs.
-                    He was director of several AI research programs in France,
-                    director of LAAS-CNRS and CTO of INRIA. He chairs the
-                    Steering Committee of ANITI, the interdisciplinary AI
-                    institute of Toulouse. His is involved in initiatives
-                    regarding socially responsible research in AI and
-                    computational sciences. He is ECCAI Fellow, and Docteur
-                    Honoris Causa of Linköping University, Sweden.
+                    <li>A Refinement Acting Engine (RAE) which interacts with an execution platform and performs online reasoning for the achievement of tasks and reaction to events by following refinement methods adapted to the current dynamic context, and retrying alternative methods when needed. RAE chooses its refinement methods with the help of a online optimizing planner.</li>
+
+                    <li>A Monte Carlo Tree Search planner, called UPOM, which assesses the utility of possible methods and finds an approximately optimal one for RAE to pursue an ongoing activity. UPOM is a progressive deepening, receding-horizon anytime planner which relies on domain-dependent heuristics, learned from simulations and/or real-world interactions.</li>
+                  </ul>
+
+                  A few empirical results will be presented.<sup>2</sup> Extensions of the approach for handling temporal issues as well as space and motion planning issues (to address the well known <i>“Task and Motion Planning”</i> TAMP problems) will be briefly discussed, together with perspectives for learning refinement methods for operational models.
                   </p>
+                  
+                  <sup>1</sup>: A line of work in collaboration with my co-authors Dana Nau, Paolo Traverso, Sunandita Patra and James Mason.<br>
+                  <sup>2</sup>: A <i>“Demonstration of Refinement Acting, Planning and Learning System Using Operational Models”</i> will be presented at the ICAPS 2021 demonstration session.<br><br>
 
-                  <h4>Title and Abstract</h4>
-                  <p>Will be available soon.</p>
-
+                  <h5>References</h5>
+                  
+                  <ol>
+                    <li>Ghallab, M., Nau, D., and Traverso, P. (2014). <i>The actor’s view of automated planning and acting: A position paper.</i> Artificial Intelligence, 208:1–17.</li>
+                    <li>Ghallab, M., Nau, D., and Traverso, P. (2016). <i>Automated Planning and Acting.</i> Cambridge University Press.</li>
+                    <li> Patra, S., Ghallab, M., Nau, D., and Traverso, P. (2019). <i>APE: An Acting and Planning Engine.</i> Advances in Cognitive systems, 7:175–194.</li>
+                    <li> Patra, S., Mason, J., Ghallab, M., Nau, D., and Traverso, P. (2021). <i>Deliberative acting, planning and learning with hierarchical operational models.</i> Artificial Intelligence, 299:103523.</li>
+                    <li> Patra, S., Mason, J., Ghallab, M., Traverso, P., and Nau, D. (2020). <i>Integrating Acting, Planning, and Learning in Hierarchical Operational Models.</i> In International Conference on Automated Planning and Scheduling (ICAPS 2020), pages 1–10.</li>
+                    <li> Patra, S., Traverso, P., Ghallab, M., and Nau, D. (2019). <i>Acting and planning using operational models.</i> In AAAI Conference on Artificial Intelligence (AAAI 2019), pages 7691–7698.</li>
+                  </ol>
+                  
+                  <br><br>
+                  <h4>Bio</h4>
+                  
+                  Malik Ghallab, Directeur de recherche emeritus at CNRS<br />
+                  LAAS-CNRS, 7 Av. Colonel Roche, 31077 Toulouse, France<br><br>
+                  <br/>
+                  <div>
+                    <div class="row">
+                      <div class="col col-md-4">
+			           <div class="col-md-12">
+                          <img
+                            src="ghallab.jpg"
+                            alt="Malik Ghallab"
+                          />
+                       </div>
+                      </div>
+                      <div class="col col-md-8">
+			           <div class="col-md-12" style="padding-left:20px;">
+                        <p>
+                          The research activity of Malik Ghallab is focused on
+                          AI and Robotics. He contributed to topics such as
+                          knowledge representation and reasoning, planning, and
+                          learning of skills and models of behaviors. He
+                          (co-)authored over 200 technical papers and several
+                          books. He taught AI at a few universities in France
+                          and abroad; he advised 32 PhDs. He was director of
+                          several AI research programs in France, director of
+                          LAAS-CNRS and CTO of INRIA. He chairs the Steering
+                          Committee of ANITI, the interdisciplinary AI institute
+                          of Toulouse. His is involved in initiatives regarding
+                          socially responsible research in AI and computational
+                          sciences. He is ECCAI Fellow, and Docteur Honoris
+                          Causa of Linköping University, Sweden.
+                        </p>
+                       </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
                   <h3 class="mt-4">Various</h3>
                   <ul>
                     <li>
@@ -264,28 +303,12 @@ submission details).</p>-->
 
                   <p>Previous workshops are available here:</p>
                   <ul>
-                    <li>
-                      <a
-                        href="http://icaps18.icaps-conference.org/hierarchicalplanning/"
-                        >HPlan 2018</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://icaps19.icaps-conference.org/workshops/Hierarchical-Planning/"
-                        >HPlan 2019</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="https://icaps20subpages.icaps-conference.org/workshops/hplan/"
-                        >HPlan 2020</a
-                      >
-                    </li>
+                    <li><a href="https://icaps20subpages.icaps-conference.org/workshops/hplan/">HPlan 2020</a></li>
+                    <li><a href="http://icaps19.icaps-conference.org/workshops/Hierarchical-Planning/">HPlan 2019</a></li>
+                    <li><a href="http://icaps18.icaps-conference.org/hierarchicalplanning/">HPlan 2018</a></li>
                   </ul>
                   <p>
-                    Or simply http://hplanYYYY.hierarchical-task.net (with YYYY
-                    being the year)
+                    Or simply http://hplanYYYY.hierarchical-task.net (with YYYY being the year)
                   </p>
 
                   <h3 class="mt-4">Program Committee</h3>
@@ -318,26 +341,9 @@ submission details).</p>-->
                   </ul>
                   <h3 class="mt-4">Organizing Committee</h3>
                   <ul>
-                    <li>
-                      <a href="https://cecs.anu.edu.au/people/pascal-bercher"
-                        >Pascal Bercher</a
-                      >, pascal.bercher at anu.edu.au
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.unibw.de/fmff-en/persons/m-sc-jane-jean-kiam"
-                        >Jane Jean Kiam</a
-                      >, jane.kiam at unibw.de
-                    </li>
-                    <li>
-                      <a href="https://dblp.org/pid/117/7297.htm"
-                        >Zhanhao Xiao</a
-                      >, xiaozhh9 at mail.sysu.edu.cn
-                    </li>
-                    <li>
-                      <a href="http://www.volus.net/">Ron Alford</a>, ralford at
-                      mitre.org
-                    </li>
+                    <li><a href="https://cecs.anu.edu.au/people/pascal-bercher">Pascal Bercher</a>, pascal.bercher at anu.edu.au</li>                    <li><a href="https://www.unibw.de/fmff-en/persons/m-sc-jane-jean-kiam">Jane Jean Kiam</a>, jane.kiam at unibw.de</li>
+                    <li><a href="https://dblp.org/pid/117/7297.htm">Zhanhao Xiao</a>, xiaozhh9 at mail.sysu.edu.cn</li>
+                    <li><a href="http://www.volus.net/">Ron Alford</a>, ralford at mitre.org</li>
                   </ul>
                 </ul>
               </div>

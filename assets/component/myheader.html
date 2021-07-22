@@ -55,9 +55,10 @@
                         <li class="nav-item">
                             <a href="/workshops" class="nav-link px-2"  :class="{active:curpage=='workshops'}">Workshops</a>
                         </li>
-<!--                        <li class="nav-item">-->
-<!--                            <a href="/demos/" class="nav-link px-2"  :class="{active:curpage=='demos'}">Demos</a>-->
-<!--                        </li>-->
+
+                        <li class="nav-item">
+                            <a href="/demos/" class="nav-link px-2"  :class="{active:curpage=='demos'}">Demos</a>
+                        </li>
                         <li class="nav-item">
                             <a href="/Competitions" class="nav-link px-2"  :class="{active:curpage=='competitions'}">Competitions</a>
                         </li>
@@ -67,12 +68,12 @@
                         <li class="nav-item">
                             <a href="/sponsorship" class="nav-link px-2"  :class="{active:curpage=='Sponsorship'}">Sponsorship</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
                             <a href="/Schedule/" class="nav-link px-2"  :class="{active:curpage=='schedule'}">Schedule</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="/code-of-conduct.html" class="nav-link px-2"  :class="{active:curpage=='codeOfConduct'}">Code of conduct</a>
                         </li>
@@ -80,19 +81,21 @@
                             <a href="/registration/" class="nav-link px-2"  :class="{active:curpage=='registration'}">Registration</a>
                         </li>
                     </ul>
-                    <!--login and user info button-->
+                    <!-- login and user info button -->
                     <span class="btn-group dropdown navbar-right">
-                        <button type="button" class="btn btn-primary" @click="userInfo()" v-if="status.isLogin && user.profile.first_name" style="color: white;">
-                            {{user.profile.first_name}}
-                        </button>
-                        <button type="button" class="btn btn-primary" @click="login()" v-if="!status.isLogin" style="color: white;">
+                        <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">
                         Login
                         </button>
-                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" v-if="status.isLogin">
-                            <span class="visually-hidden">Toggle Dropdown</span>
+                        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">
+                            <span >{{user.profile.first_name  }}</span>
                         </button>
                         <ul class="dropdown-menu">
-                        <li><button class="dropdown-item " @click="logout" v-if="status.isLogin">Logout</button></li>
+                        <li>
+                            <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >
+                                Profile
+                            </button>
+                            <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>
+                        </li>
                         </ul>
                     </span>
                 </div>
