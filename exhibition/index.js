@@ -11,7 +11,9 @@ var app = new Vue({
         pdfLink:pdf,
     },
     mounted() {
-        this.curPaper = this.paperData.find(Element => Element.id == localStorage.getItem('channel'))
+        //this.curPaper = this.paperData.find(Element => Element.id == localStorage.getItem('channel'))
+        let url = window.location.href;
+        this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1])
         this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
         window.a = this
         console.log(this.curPdf)
@@ -29,19 +31,10 @@ var app = new Vue({
         channel:"",
         timer:""
     },
-    methods:{
-        logout:function(){
-            console.log("logout",document.getElementById('iframe').title);
-            document.getElementById('iframe').contentWindow.postMessage({
-                externalCommand: 'logout'
-              }, '*')
-        }
-    },
     mounted() {
-        if(localStorage.getItem("channel")){
-            this.channel=localStorage.getItem("channel");
-        }
-        //this.logout();
+        //this.channel=localStorage.getItem("channel");
+        let url = window.location.href;
+        this.channel = url.split('?channel=')[1];
     },
     beforeDestroy() {
         clearInterval(this.timer);

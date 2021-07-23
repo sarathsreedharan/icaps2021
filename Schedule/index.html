@@ -168,7 +168,7 @@
                     <div class="mb-5">
                       <p style="margin-top: 1.5em;">
                         <div v-if="modal_type == 'session'">
-                          <a v-for='item in paper[modal_sessionNum]' @click="setChannelID(item.id)" style="color: #51585E;" href='../exhibition/index.html' target="blank">
+                          <a v-for='item in paper[modal_sessionNum]' @click="setChannelID(item.id)" style="color: #51585E;" :href="'../exhibition/index.html?channel='+item.id" target="_blank">
                             <p class="paperTitle">{{item.title}} <br>
                             <span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>
                             <span v-if="item.keywords != ''"><br><strong>Keywords: </strong><I>{{item.keywords}}</I></P></span></span>
