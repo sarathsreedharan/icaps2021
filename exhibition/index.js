@@ -9,14 +9,12 @@ var app = new Vue({
         paperData: paper,
         curPdf:'',
         pdfLink:pdf,
-        // channel:"general"
     },
     mounted() {
-        if(localStorage.getItem("channel")){
-            this.channel=localStorage.getItem("channel");
-        }
-        this.curPaper = this.paperData.find(Element => Element.id == this.channel)
-        this.curPdf = this.pdfLink.find(Element => Element.title == this.curPaper.title) 
+        this.curPaper = this.paperData.find(Element => Element.id == localStorage.getItem('channel'))
+        this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
+        window.a = this
+        console.log(this.curPdf)
     },
     computed:{
         isPdf:function(){
@@ -28,7 +26,7 @@ var app = new Vue({
     el: '#app2',
     store: store,
     data: {
-        channel:"general",
+        channel:"",
         timer:""
     },
     methods:{

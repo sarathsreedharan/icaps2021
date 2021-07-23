@@ -12,6 +12,8 @@ data: {
 	nowHour: (new Date().getTimezoneOffset() / 60) - 4 + new Date().getHours(),
 	day:[{sty:'style_day'},2,3,4,5,6,7,8,9,10,11,12,13,14],
 	week:1,
+	keywords:'',
+	searchShow:{},
 	zone: new Date().getTimezoneOffset() / -60 ,			
 	zoneOptions:[
 		{ text:'UTC +12', value:12},
@@ -42,7 +44,7 @@ data: {
 	date:[' ','1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','11th','12th','13th','14th'],
 	gather:'<div class="gather"><a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21" target="_blank"><strong>Live Get-Together</strong></a></div>',
 	session:[
-		' ',
+		'',
 		'Classical',
 		'Classical',
 		'Classical/search',
@@ -77,7 +79,7 @@ data: {
 			{type:'gather', time:6, end:7},
 			{type:'session', num:7, time:7, end:8},
 			{type:'session', num:11, time:8, end:9},
-			{type:'Invited', time:9, end:10},
+			{type:'Invited Talk', time:9, end:10},
 			{type:'Event', time:10, end:12},
 			{type:'Socializing', time:12, end:14},
 			{type:'session', num:4, time:14, end:15},
@@ -98,7 +100,7 @@ data: {
 			{type:'gather', time:6, end:7},
 			{type:'session', num:6, time:7, end:8},
 			{type:'Competitions', time:8, end:11},
-			{type:'Invited', time:11, end:12},
+			{type:'Invited Talk', time:11, end:12},
 			{type:'Socializing', time:12, end:14},
 			{type:'session', num:10, time:14, end:15},
 			{type:'session', num:5, time:15, end:16},
@@ -117,7 +119,7 @@ data: {
 			{type:'gather', time:6, end:7},
 			{type:'session', num:15, time:7, end:8},
 			{type:'session', num:12, time:8, end:9},
-			{type:'Invited', time:9, end:10},
+			{type:'Invited Talk', time:9, end:10},
 			{type:'Demos', time:10, end:12},
 			{type:'Socializing', time:12, end:14},
 			{type:'session', num:8, time:14, end:15},
@@ -158,7 +160,7 @@ data: {
 			{type:'session', num:21, time:7, end:8},
 			{type:'session', num:13, time:8, end:9},
 			{type:'Posters', time:9, end:11},
-			{type:'Invited', time:11, end:12},
+			{type:'Invited Talk', time:11, end:12},
 			{type:'Socializing', time:12, end:14},
 			{type:'session', num:23, time:14, end:15},
 			{type:'session', num:14, time:15, end:16},
@@ -315,6 +317,36 @@ data: {
 	oldTime: new Date,
 },
 methods:{
+	searchEnter: function(){
+		let i='',j='',k='';
+		for (k in this.searchShow) this.$set(this.searchShow,k,false);
+		for (i in this.paper){
+			for (j in this.paper[i]){
+				if (this.paper[i][j].id == this.keywords.toLowerCase()) this.$set(this.searchShow,'session'+i.toString(),true)
+				else if (this.paper[i][j].title.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session'+i.toString(),true)
+				else if (this.paper[i][j].authors.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session'+i.toString(),true)
+				else if (this.paper[i][j].keywords.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session'+i.toString(),true);
+			};
+		};
+		for (i in this.session){
+			if (this.session[i].toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session'+i.toString(),true);
+			if (i.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session'+i.toString(),true);			
+		};
+		if ('Session'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'session',true);
+		if ('Live Get-Together'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'gather',true);
+		if ('Socializing'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Socializing',true);
+		if ('Community Meeting'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Community Meeting',true);
+		if ('Community Socializing'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Community Socializing',true);
+		if ('Invited Talk'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Invited Talk',true);
+		if ('Event'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Event',true);
+		if ('Competitions'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Competitions',true);
+		if ('Demos'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Demos',true);
+		if ('Posters'.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow,'Posters',true); 
+	},
+	searchReset: function(){
+		this.keywords = '';
+		this.searchEnter();
+	},
 	showDay: function(day,hour){
 		if (this.zone + hour + 4 < 0) return ('Aug ' + this.date[day-1] + ' ' + (this.zone + hour + 28) + ':00')
 		else if (this.zone + hour + 4 > 23) return ('Aug ' + this.date[day+1] + ' ' + (this.zone + hour - 20) + ':00')
@@ -355,6 +387,27 @@ methods:{
 	},
 	setChannelID: function(id){
 		window.localStorage.setItem("channel",id);
+	},
+	setHeight: function(begin,end){
+		if (end - begin == 2) return "heigth:20vh"
+		else if (end - begin == 3) return "height:30vh"
+		else return "height:10vh";
 	}
+},
+mounted:function(){
+	for (let i=1;i<24;i++){
+			let j='session' + i.toString();
+			this.$set(this.searchShow,j,true);
+	}
+	this.$set(this.searchShow,'session',true);
+	this.$set(this.searchShow,'gather',true);
+	this.$set(this.searchShow,'Socializing',true);
+	this.$set(this.searchShow,'Community Meeting',true);
+	this.$set(this.searchShow,'Community Socializing',true);
+	this.$set(this.searchShow,'Invited Talk',true);
+	this.$set(this.searchShow,'Event',true);
+	this.$set(this.searchShow,'Competitions',true);
+	this.$set(this.searchShow,'Demos',true);
+	this.$set(this.searchShow,'Posters',true);
 }
 })

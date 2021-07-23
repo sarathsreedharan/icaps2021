@@ -311,7 +311,10 @@ var app = new Vue({
                 }
             }
             if (this.reg_info.id && this.reg_info.title) {
-                axios.post(url, this.reg_info).then(res => {
+                axios.post(url, this.reg_info, {
+                    headers: {
+                        "Authorization": localStorage.getItem('token')
+                    }}).then(res => {
                     this.reg_info.papers.push({
                         id: this.reg_info.id,
                         title: this.reg_info.title

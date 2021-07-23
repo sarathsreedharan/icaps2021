@@ -1,4 +1,5 @@
 import {backendBaseUrl} from '../js/backendBaseUrl.js';
+import { resetItem } from '../js/data.js';
 import Vue from '../js/vue.esm.browser.js';
 import Vuex from '../js/vuex.esm.browser.js';
 import axios from '../js/axios.js';
@@ -7,7 +8,8 @@ const store = new Vuex.Store({
     state: {
         isLogin: false,
         isRegistration: false,
-        user: {}
+        user: {},
+        flag: '',
     },
     mutations: {
         setLogin(state, payload) {
@@ -37,9 +39,10 @@ async function getTemplate(){
 Vue.component('myheader',async function(resolve,reject){
     return resolve({
         props: ['curpage', 'curitem'],
-        store:store,
+        store: store,
         data: function () {
             return {
+                token: "",
             }
         },
         template: await getTemplate(),
@@ -60,7 +63,37 @@ Vue.component('myheader',async function(resolve,reject){
                 }).catch(err => {
                     console.log(err)
                 });
+                localStorage.setItem('flag', 0);
+                localStorage.setItem('tokenTime', Date.parse(new Date()))
+                setInterval(() => {
+                    if (Date.parse(new Date) - localStorage.getItem('tokenTime') > 59000) {
+                        resetItem('flag', 0)
+                    }
+                }, 60000)
             }
+        },
+        mounted() {
+            window.addEventListener("setItemEvent", (e) => {
+                if (e.newValue == 0 && this.isLogin) {
+                    axios.get(backendBaseUrl + '/api/test/heartbeat', {
+                        headers: {
+                            "Authorization": localStorage.getItem('token')
+                        }
+                    }).then(res => {
+                        if (res.data.message == "refresh") {
+                            let token = res.data.token;
+                            localStorage.setItem('token', token)
+                        }
+                        console.log(Date.parse(new Date) - localStorage.getItem('tokenTime'))
+                        resetItem('flag', 1)
+                        localStorage.setItem('tokenTime', Date.parse(new Date()))
+                    }).catch(err => {
+                        if (err.response.status == 401) {
+                           axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
+                        }
+                    })
+                }
+            })
         },
         computed: {
             isLogin: function () {
@@ -71,7 +104,7 @@ Vue.component('myheader',async function(resolve,reject){
             },
             user: function () {
                 return this.$store.state.user;
-            }
+            },
         },
         methods: {
             async logout() {
