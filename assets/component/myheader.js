@@ -73,6 +73,7 @@ Vue.component('myheader',async function(resolve,reject){
             }
         },
         mounted() {
+            axios.defaults.withCredentials = true;
             window.addEventListener("setItemEvent", (e) => {
                 if (e.newValue == 0 && this.isLogin) {
                     axios.get(backendBaseUrl + '/api/test/heartbeat', {
