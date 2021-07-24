@@ -47,7 +47,7 @@
   </head>
   <body class="bg-light">
     <div id='icaps-header'>
-      <myheader curpage='schedule' curitem="index"></myheader>
+      <myheader></myheader>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
     <div id="app" v-cloak class="album mt-3 p-4" style="min-height: 80vh;">
@@ -56,13 +56,15 @@
 			<div class="mb-5">
 				<h4>Senior/Junior Chat Signup Sheet</h4>
 				<hr>
+                * - required fields.
+                <br>
                 <form action="../survey/chat" method="post">
-                      <label for="name">Name:</label>
-                      <input type="text" id="name" name="name"><br><br>
-                      <label for="email">Email Id:</label>
-                      <input type="email" id="email" name="email"><br><br>
-                      <label>Are you </label><br/>
-                      <input type="radio" id="senior" name="status" value="senior" onchange="flip_other_researcher_visibility('senior')">
+                      <label for="name">*Name:</label>
+                      <input type="text" id="name" name="name" required><br><br>
+                      <label for="email">*Email Id:</label>
+                      <input type="email" id="email" name="email" required><br><br>
+                      <label>*Are you </label><br/>
+                      <input type="radio" id="senior" name="status" value="senior" onchange="flip_other_researcher_visibility('senior')" required>
                       <label for="senior">A Senior researcher who would like to talk to junior community members </label><br><br>
                       <input type="radio" id="junior" name="status" value="junior" onchange="flip_other_researcher_visibility('junior')">
                       <label for="junior">A Junior researcher who would like to talk to senior community members </label><br><br>
