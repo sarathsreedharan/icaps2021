@@ -59,9 +59,9 @@ injectJS(paypal_url,()=>{
             }
             app.paySuccessful = false;
             console.log("now in error");
-            app.modalmsg = message;
-            app.tipsModal.show();
-            setTimeout(()=>{app.tipsModal.hide()}, 2000);
+            // app.modalmsg = message;
+            // app.tipsModal.show();
+            // setTimeout(()=>{app.tipsModal.hide()}, 2000);
         },
         onApprove: (data) => {
             console.log("now is in onApprove");
@@ -399,7 +399,7 @@ var app = new Vue({
                 if(res.data.cv_info){
                     this.collapse[5].show()
                 }
-                else if (this.isRegistration ) {
+                else if (this.res.data.reg.registration) {
                     this.collapse[3].show();
                 } else {
                     this.collapse[2].show();

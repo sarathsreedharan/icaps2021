@@ -63,6 +63,20 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body " style="padding-bottom:0px" :hidden="isLogin">
+                                    <div>
+                                        
+					    <!--<>Notes</h5>:--> 
+					    <ul>
+						    <li>Registration for the main conference includes workshops, tutorials and expo.</li>
+						    <li>ICAPS 2021 participants will have free admission to SOCS 2021.</li>
+						    <li>Should you have any questions about registration, please send email to <a href="mailto:icapsGZ2021@gmail.com">icapsGZ2021@gmail.com</a></li>
+					    </ul>
+                                            <p><strong>Registration Fee:</strong>
+                                            $50 (non student), $20 (student). <strong>Publication Fee:</strong>
+                                            $150 per paper.</p>
+                                    </div>
+                                </div>
                                 <div class="accordion-body">
                                     <div class="row">
                                         <div class="clearfix col-md-6 col-xs-12 col-sm-12 col-lg-3">
@@ -203,18 +217,11 @@
                                     data-bs-target="#collapseTwo" aria-controls="collapseTwo" >
                                     <strong>2.Register and Payment</strong>
                                     <span v-if="!isLogin" style="font-weight: lighter;margin-left: 1rem">Only logged-in
-                                        users can register and pay, you can check cost in here</span>
+                                        users can register and pay</span>
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body " :hidden="isLogin">
-                                    <strong>Registration Fee:</strong>
-                                    <p>$50 (non student), $20 (student)</p>
-                                    <strong>Publication Fee:</strong>
-                                    <p>$150 per paper</p>
-                                
-                                </div>
                                 <div class="accordion-body " :hidden="!isLogin">
                                     <div class="row">
                                         <div class="clearfix col-md-12 col-xs-12 col-sm-12 col-lg-12">
@@ -537,7 +544,7 @@
                                             </div>
                                             <div class="clearfix col-md-6 col-xs-12 col-sm-12 col-lg-3">
                                                 <div class="mb-3">
-                                                    <label class="form-label" style="margin: 1em 0 0.5em 0.8em">Postal Code</label>
+                                                    <label class="form-label" style="margin: 1.45em 0 0.5em 0.8em">Postal Code</label>
                                                     <input type="text" class="form-control" :class="{warn:isLast_name}" placeholder=""
                                                         v-model="survey.postal_code" :disabled="surveySubmit">
                                                 </div>
