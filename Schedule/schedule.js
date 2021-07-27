@@ -1033,10 +1033,10 @@ var app = new Vue({
       else return true;
     },
 	sessionText: function(num){
-		if (this.session[num].length > 20){
-			return this.session[num].substring(0,20) + "..."
+		if (this.session[num].length > 16){
+			return this.session[num].substring(0,16) + "..."
 		}
-		else return this.session[num].substring(0,20)
+		else return this.session[num].substring(0,16)
 	},
     setModalDetail: function (num, type, date, time, end, data = "") {
       this.modal_sessionNum = num.toString();

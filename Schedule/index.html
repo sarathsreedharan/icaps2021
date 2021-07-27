@@ -536,7 +536,7 @@
                             <div class="tip tip-buttom col align-self-center" data-tip="Socializing">
                               <strong>
                                 Socializing
-                                <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
+                                <div v-if="!isOver(Week2[j][0].day,item.time) && item.end - item.time > 1">(Over)</div>
                               </strong>
                             </div>
                           </div>

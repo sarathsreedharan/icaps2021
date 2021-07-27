@@ -387,13 +387,13 @@
   background-color: #bedbac !important;
 }
 
-@media (max-width: 767px){
+@media (max-width: 1490px){
 	.mobileVanished{
 		display:none;
 	}
 }
 
-@media (min-width: 768px){
+@media (min-width: 1491px){
 	.pcVanished{
 		display:none;
 	}
