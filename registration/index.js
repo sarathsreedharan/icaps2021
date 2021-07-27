@@ -135,6 +135,7 @@ var app = new Vue({
         user: {},
         reg_info: {
             publication: false,
+            registration:true,
             is_student: false,
             papers: [],
         },
@@ -188,9 +189,10 @@ var app = new Vue({
                 axios.post(backendBaseUrl + '/api/users/login', this.user_info).then(res => {
                     window.location.href = './index.html'
                 }).catch(err => {
-
+                    console.error(err);
                 })
             }).catch(err => {
+                console.debug(err);
                 this.isErrorCode = true
             })
         },
@@ -399,7 +401,7 @@ var app = new Vue({
                 if(res.data.cv_info){
                     this.collapse[5].show()
                 }
-                else if (res.data.reg.registration) {
+                else if (res.data.reg&&res.data.reg.registration) {
                     this.collapse[3].show();
                 } else {
                     this.collapse[2].show();
@@ -418,6 +420,7 @@ var app = new Vue({
                     this.uploadFile.add_mail_list = Boolean(this.user.cv_info.add_mail_list)
                 }
             }).catch(err => {
+                console.error(err);
                 this.collapse[1].show()
             });
         } else {
