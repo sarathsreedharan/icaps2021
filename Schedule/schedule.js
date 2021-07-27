@@ -258,8 +258,7 @@ var app = new Vue({
         { type: "Socializing", time: 4, end: 6 },
         { type: "gather", time: 6, end: 7 },
         { type: "session", num: 4, time: 7, end: 8 },
-        { type: "session", num: 5, time: 8, timeMin: 0, end: 8, endMin: 45},
-		{ type: "Opening Remarks", time: 8, timeMin: 45, end: 9, endMin: 0},
+        { type: "session", num: 5, time: 8, timeMin: 0, end: 8, endMin: 45, type2: "Opening Remarks", time2: 8, timeMin2: 45, end2: 9, endMin2: 0},
         { type: "Invited Talk", time: 9, end: 10 },
         { type: "Industry Talks", time: 10, end: 12 },
         { type: "Socializing", time: 12, end: 14 },
@@ -268,7 +267,7 @@ var app = new Vue({
         { type: "session", num: 3, time: 16, end: 17 },
         { type: "gather", time: 17, end: 18 },
         { type: "Socializing", time: 18, end: 20 },
-        { type: "session", num: 4, time: 20, end: 22 },
+        { type: "session", num: 4, time: 20, end: 21 },
         { type: "session", num: 5, time: 21, end: 22 },
         { type: "gather", time: 22, end: 23 },
       ],
@@ -893,6 +892,28 @@ var app = new Vue({
       this.keywords = "";
       this.searchEnter();
     },
+	setHeigth: function(begin, end){
+		if (end - begin == 1 || end - begin == 0){
+			return "height: 100px"
+		}
+		else if (end - begin == 2){
+			return "height: 200px"
+		}
+		else if (end - begin == 3){
+			return "height: 300px"
+		}
+	},
+	setInsideHeight: function(begin, end){
+		if (end - begin == 1 || end - begin == 0){
+			return "height: 41px"
+		}
+		else if (end - begin == 2){
+			return "height: 141px"
+		}
+		else if (end - begin == 3){
+			return "height: 241px"
+		}
+	},
     showDay: function (day, hour) {
 		if (this.zone + hour + 4 < 0)
 		  return (
@@ -1011,6 +1032,12 @@ var app = new Vue({
         return false;
       else return true;
     },
+	sessionText: function(num){
+		if (this.session[num].length > 20){
+			return this.session[num].substring(0,20) + "..."
+		}
+		else return this.session[num].substring(0,20)
+	},
     setModalDetail: function (num, type, date, time, end, data = "") {
       this.modal_sessionNum = num.toString();
       this.modal_type = type;
