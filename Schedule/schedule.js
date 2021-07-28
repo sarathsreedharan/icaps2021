@@ -45,6 +45,7 @@ var app = new Vue({
       { text: "UTC -11", value: -11 },
     ],
     week1_prog: 1,
+    HSDIP_DAY: 4,
     Workshop_Days: [4, 5, 6],
     Tutorials: [
       "",

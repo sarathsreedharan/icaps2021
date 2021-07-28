@@ -1,4 +1,4 @@
-    export let WorkshopContent = {HSDIP: {timepoints:{4:[6,7,8,9,10,11,12,13,14], 5:[], 6:[]}, link:'https://icaps21.icaps-conference.org/workshops/HSDIP/'},
+    export let WorkshopContent = {HSDIP: {timepoints:{4:[7,8,9,10,11,12,13,14], 5:[], 6:[]}, link:'https://icaps21.icaps-conference.org/workshops/HSDIP/'},
                                     WIPC: {timepoints:{4:[3,4], 5:[], 6:[]}, link:'https://icaps21.icaps-conference.org/workshops/WIPC/'},
                                     INTEX: {timepoints:{6:[9,10,11,12,13,14,15], 5:[], 4:[]}, link:'https://icaps21.icaps-conference.org/workshops/IntEx/'},
                                     XAIP: {timepoints:{6:[9,10,11,12,13,14,15,16,17,18,19], 5:[], 4:[]}, link:'http://xaip.mybluemix.net/'},
