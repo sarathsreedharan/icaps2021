@@ -180,25 +180,39 @@
                         </div>
                       </div>
                       <!--                  &lt;!&ndash; table activities &ndash;&gt;-->
-                      <div v-if="item.type == 'dc_session'">
-                        <div v-if="isOver(DC_day,item.endHour)">
-                          <div class="style_session">
-                            <div class="text-center" style="margin-left: 0.5em">
-                              <strong>{{DC_programs[item.num]}}</strong>
-                            </div>
+                      <div v-if="item.type == 'dc_start'">
+                        <div class="gather">
+                          <div class="text-center" style="margin-left: 0.5em">
+                            <strong>{{DC_programs[item.num]}}</strong>
+                            <strong><div v-if="!isOver(DC_day,item.endHour)">(Over)</div></strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div v-else-if="item.type == 'dc_session'">
+                        <div
+                          class="style_session"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modal"
+                          style="text-align: center;"
+                          @click="setModalDetail(item.session_num, item.type, 0, 0, 0, DC_session_info[item.num])"
+                        >
+                          <div class="tip tip-right" data-tip="Show Details">
+                            <div class="text-center">
+                            <strong
+                              >Session
+                              <div v-if="!isOver(DC_day,item.endHour)">
+                                (Over)
+                              </div></strong
+                            ></div>
                           </div>
                         </div>
                       </div>
                       <div v-else-if="item.type == 'Socializing'">
                         <div class="style_socializing">
-                          <div>
-                            <strong
-                              >{{DC_programs[item.num]}}
-                              <div v-if="!isOver(DC_day,item.endHour)">
-                                (Over)
-                              </div></strong
-                            >
-                          </div>
+                          <strong>
+                            {{DC_programs[item.num]}}
+                            <div v-if="!isOver(DC_day,item.endHour)">(Over)</div>
+                          </strong>
                         </div>
                       </div>
                       <div v-else-if="item.type == 'break'">
@@ -260,29 +274,18 @@
                               {{showDay(Workday.day,item.endtime)}}
                             </div>
                           </div>
-                          <!---------------------------------------------- table activities ----------------------------------------------------->
+                          <!----------------------------------------------------- table activities ----------------------------------------------------->
                           <div v-if="item.type == 'tutorial_session'">
-                            <div v-if="isOver(Workday.day,item.endtime)">
-                              <div class="style_session">
-                                <a
-                                    :href="'tutorial_template.html?tutNum=Tutorial'+item.num"
-                                  >
-                                  <div
-                                    style="margin-left: 0.5em"
-                                    class="tip tip-right"
-                                    data-tip="Tutorial Description"
-                                  >
-                                    <big>{{Tutorials[item.num]}}</big>
-                                  </div>
-                                </a>
-                              </div>
-                            </div>
-                            <div v-else>
-                              <div class="style_timeover">
-                                <div style="margin-left: 0.5em">
-                                  {{Tutorials[item.num]}}
+                            <div class="style_session">
+                              <a :href="'tutorial_template.html?tutNum=Tutorial'+item.num">
+                                <div
+                                  style="margin-left: 0.5em"
+                                  class="tip tip-right"
+                                  data-tip="Tutorial Description"
+                                >
+                                  <big>{{Tutorials[item.num]}}</big>
                                 </div>
-                              </div>
+                              </a>
                             </div>
                           </div>
                           <div v-else>
@@ -470,33 +473,20 @@
                       <div>
                         <div v-if="item.timeMin != undefined">
                           <div v-if="item.type == 'session'">
-                            <div v-if="isOver(Week2[j][0].day,item.time)">
+                            <div
+                              class="style_session"
+                              class="row align-items-center"
+                              data-bs-toggle="modal"
+                              data-bs-target="#modal"
+                              @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
+                            >
                               <div
-                                class="style_session"
-                                class="row align-items-center"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modal"
-                                @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
+                                style="margin-left: 0.5em"
+                                class="tip tip-right"
+                                data-tip="Show Details"
                               >
-                                <div
-                                  style="margin-left: 0.5em"
-                                  class="tip tip-right"
-                                  data-tip="Show Details"
-                                >
-                                  <i><font size="2">Session{{item.num}}:</font></i
-                                  ><br /><strong class="sessionText"
-                                    >{{session[item.num]}}</strong
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                            <div v-else>
-                              <div class="style_sessionover">
-                                <div style="margin-left: 0.5em">
-                                  <font size="2"
-                                    ><strong>Session{{item.num}}:</strong></font
-                                  ><br /><font size="1" ><i>{{session[item.num]}}</i></font>
-                                </div>
+                                <i><font size="2">Session{{item.num}}: </font></i><br>
+                                <strong class="sessionText">{{session[item.num]}}</strong>
                               </div>
                             </div>
                           </div>
@@ -508,49 +498,28 @@
                               @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin);setInvitedNum(j)"
                             >
                               <div class="tip tip-right" data-tip="Show Details">
-                                <strong
-                                  >{{item.type}}
-                                  <div v-if="!isOver(Week2[j][0].day,item.time)">
-                                    (Over)
-                                  </div></strong
-                                >
+                                <strong>
+                                  {{item.type}}
+                                  <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
+                                </strong>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div v-else-if="item.type == 'session'">
-                          <div v-if="isOver(Week2[j][0].day,item.time)">
+                          <div
+                            class="style_session"
+                            class="row align-items-center"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal"
+                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                          >
                             <div
-                              class="style_session"
-                              class="row align-items-center"
-                              data-bs-toggle="modal"
-                              data-bs-target="#modal"
-                              @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                              style="margin-left: 0.5em"
+                              class="tip tip-right"
+                              data-tip="Show Details"
                             >
-                              <div
-                                style="margin-left: 0.5em"
-                                class="tip tip-right"
-                                data-tip="Show Details"
-                              >
-                                <i><font size="2">Session{{item.num}}:</font></i
-                                ><br /><strong class="sessionText"
-                                  >{{session[item.num]}}</strong
-                                >
-                              </div>
-                            </div>
-                          </div>
-                          <div v-else>
-                            <div class="style_sessionover">
-                              <div style="margin-left: 0.5em">
-                                <font size="2"
-                                  ><strong>Session{{item.num}}:</strong></font
-                                ><br /><font size="1"
-                                  ><i
-                                    >{{session[item.num]}}
-                                    </i
-                                  ></font
-                                >
-                              </div>
+                              <i><font size="2">Session{{item.num}}:</font></i><br><strong class="sessionText">{{session[item.num]}}</strong>
                             </div>
                           </div>
                         </div>
@@ -562,12 +531,10 @@
                             @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
                           >
                             <div class="tip tip-right" data-tip="Show Time">
-                              <strong
-                                >Socializing
-                                <div v-if="!isOver(Week2[j][0].day,item.time)">
-                                  (Over)
-                                </div></strong
-                              >
+                              <strong>
+                                Socializing
+                                <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
+                              </strong>
                             </div>
                           </div>
                         </div>
@@ -593,12 +560,10 @@
                             @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0');setInvitedNum(j)"
                           >
                             <div class="tip tip-right" data-tip="Show Details">
-                              <strong
-                                >{{item.type}}
-                                <div v-if="!isOver(Week2[j][0].day,item.time)">
-                                  (Over)
-                                </div></strong
-                              >
+                              <strong>
+                                {{item.type}}
+                                <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
+                              </strong>
                             </div>
                           </div>
                         </div>
@@ -627,6 +592,9 @@
                     <div v-if="modal_type == 'session'">
                       Session {{modal_sessionNum}}:
                       {{session[modal_sessionNum]}}
+                    </div>
+                    <div v-else-if="modal_type == 'dc_session'">
+                      Session {{modal_sessionNum}}
                     </div>
                     <div v-else>{{modal_type}}</div>
                   </h4>
@@ -731,6 +699,11 @@
                               </a></i></small><br>
                         </div>
                       </div>
+                      <div v-else-if="modal_type == 'dc_session'" >
+                        <div style="text-align: end">
+                          <strong>Student Presenters:<br/> {{modal_data}}</strong><br />
+                        </div>
+                      </div>
                       <div v-else-if="modal_type == 'DC Invited Talk'||modal_type == 'DC Panel'" >
                         <div style="text-align: end">
                           <strong>{{modal_data}}</strong><br />
@@ -738,7 +711,7 @@
                       </div>
                       <div v-else-if="modal_type == 'Industry Talks'">
                         <div v-for="item in IndustryTalk">
-                          <strong>{{item.title}}<br></strong><small><strong>Authors:</strong> {{item.authors}}<hr></small>
+                          <strong>{{item.title}}<br></strong><div style="font-size: x-small"><strong><br>Authors:</strong> {{item.authors}}<hr></div>
                         </div>
                         <div style="text-align: end">
                           <strong>Time</strong>:

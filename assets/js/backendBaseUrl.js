@@ -1,8 +1,10 @@
 import { test } from "../config/env.js";
-let backendBaseUrl;
+let backendBaseUrl,rocketchatUrl;
 if(test) {
-    backendBaseUrl = "http://3.13.255.173:5440";
+    backendBaseUrl = "http://192.168.0.224:5444";
+    rocketchatUrl = "http://192.168.0.224:3000";
 } else {
-    backendBaseUrl = 'https://icaps21.icaps-conference.org';
+    backendBaseUrl = 'http://icaps21.icaps-conference.org:5444';
+    rocketchatUrl = "http://icaps21.icaps-conference.org:3000";
 }
-export {backendBaseUrl};
+export { backendBaseUrl, rocketchatUrl};

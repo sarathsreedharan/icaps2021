@@ -122,7 +122,7 @@ var app = new Vue({
     ],
     DC_sched: [
       {
-        type: "dc_session",
+        type: "dc_start",
         num: 1,
         startHour: 10,
         startMin: 0,
@@ -140,6 +140,7 @@ var app = new Vue({
       {
         type: "dc_session",
         num: 3,
+        session_num: 1,
         startHour: 10,
         startMin: 30,
         endHour: 11,
@@ -164,6 +165,7 @@ var app = new Vue({
       {
         type: "dc_session",
         num: 6,
+        session_num: 2,
         startHour: 11,
         startMin: 40,
         endHour: 12,
@@ -188,6 +190,7 @@ var app = new Vue({
       {
         type: "dc_session",
         num: 9,
+        session_num: 3,
         startHour: 13,
         startMin: 10,
         endHour: 13,
@@ -243,6 +246,9 @@ var app = new Vue({
       "Quiz Show/Bingo card?",
       "END",
     ],
+    DC_session_info: ["","","","Ebaa Alnazer, Matan Sudry, Qisong Yang, Shahaf S. Shperberg, Anubhav Singh,Marshall Clifton",
+                      "","","Alexander Tuisov, Ronen Nir, Simona Ondrckova, Clemens Buchner, Augusto B. Correa, Luigi Bonassi",
+                      "","","Chao Lei, Thiago D. Simao , Andrew Murray, Ruoxi Li, Kristyna Pantuckova","","",""],
     Week2: [
       [
         { day: 9, type: "gather", time: 0, end: 1 },
@@ -1023,7 +1029,7 @@ var app = new Vue({
 		this.modal_endMin = endMin;
 	},
     setModalColor: function (type) {
-      if (type == "session") return "background:#E2EFDA";
+      if (type == "session" || type == "dc_session") return "background:#E2EFDA";
       else if (type == "Socializing") return "background:#ACB9CA";
       else return "background:#ffdea3";
     },

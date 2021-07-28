@@ -43,6 +43,7 @@ Vue.component('myheader',async function(resolve,reject){
         data: function () {
             return {
                 token: "",
+                begin:''
             }
         },
         template: await getTemplate(),
@@ -65,11 +66,13 @@ Vue.component('myheader',async function(resolve,reject){
                 });
                 localStorage.setItem('flag', 0);
                 localStorage.setItem('tokenTime', Date.parse(new Date()))
-                setInterval(() => {
+                this.begin = setInterval(() => {
                     if (Date.parse(new Date) - localStorage.getItem('tokenTime') > 59000) {
                         resetItem('flag', 0)
                     }
                 }, 60000)
+            } else {
+                axios.post(backendBaseUrl + '/api/users/logout').then(res => { })
             }
         },
         mounted() {
@@ -82,6 +85,7 @@ Vue.component('myheader',async function(resolve,reject){
                         }
                     }).then(res => {
                         if (res.data.message == "refresh") {
+                            console.log(res.data)
                             let token = res.data.token;
                             localStorage.setItem('token', token)
                         }
@@ -90,7 +94,8 @@ Vue.component('myheader',async function(resolve,reject){
                         localStorage.setItem('tokenTime', Date.parse(new Date()))
                     }).catch(err => {
                         if (err.response.status == 401) {
-                           axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
+                            clearInterval(this.begin);
+                            axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
                         }
                     })
                 }
@@ -109,6 +114,7 @@ Vue.component('myheader',async function(resolve,reject){
         },
         methods: {
             async logout() {
+                clearInterval(this.begin);
                 localStorage.setItem('token', '');
                 await axios.post(backendBaseUrl+'/api/users/logout'
                 ).then(res=>{
