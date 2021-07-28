@@ -90,6 +90,7 @@
   margin: 0.7em 0em 0.7em 0em;
   word-break: break-word;
   border-left: solid 7px #e2efda;
+  text-align: center;
 }
 
 .style_session:hover {
@@ -97,12 +98,14 @@
   word-break: break-word;
   background-color: #e2efda;
   cursor: pointer;
+  text-align: center;
 }
 
 .style_sessionover {
   margin: 0.7em 0em 0.7em 0em;
   word-break: break-word;
   border-left: solid 7px #e2efda;
+  text-align: center;
 }
 
 .style_socializing {
@@ -197,6 +200,30 @@
 .tip:hover:after {
   opacity: 1; /*鼠标放上时透明度为完全显示*/
   z-index: 1000;
+}
+
+ /*bottom*/
+ .tip-bottom:before {
+	top: 100%;
+	left: 50%;
+	border-bottom-color: rgba(0, 0, 0, 0.8);
+	margin-left: -3px;
+	margin-top: -9px;
+}
+
+.tip-bottom:after {
+	top: 100%;
+	left: 50%;
+	margin-left: -6px;
+	margin-top: 3px;
+}
+
+.tip-bottom:hover:before {
+	margin-top: -3px;
+}
+
+.tip-bottom:hover:after {
+	margin-top: 9px;
 }
 
 /*right*/
@@ -358,4 +385,16 @@
 
 .paperTitle-link:hover {
   background-color: #bedbac !important;
+}
+
+@media (max-width: 1490px){
+	.mobileVanished{
+		display:none;
+	}
+}
+
+@media (min-width: 1491px){
+	.pcVanished{
+		display:none;
+	}
 }
