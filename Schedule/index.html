@@ -618,7 +618,7 @@
                         <a
                           v-for="item in paper[modal_sessionNum]"
                           @click="setChannelID(item.id)"
-                          style="color: #51585e;"
+                          style="color: #51585e;pointer-events: none;"
                           :href="'../exhibition/index.html?channel='+item.id"
                           target="_blank"
                         >
