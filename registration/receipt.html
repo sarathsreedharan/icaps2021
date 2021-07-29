@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/assets/js/axios.min.js"></script>
+    <link href="/assets/bootstrap/css/styles.css" rel="stylesheet" />
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/vue.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app" v-cloak >
+        <div id="print" style="border: solid 1px black;">
+        <div style="position: relative;top: 0;height: 33px;">
+            <div
+                style="position:absolute;font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 35px;font-weight: bold;color: #e67213d9;left: 15px;top: 0;">
+                ICAPS</div>
+            <!-- <div
+                style="position:absolute;left: 7em;top:0.3em;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 16px;font-weight: bold">
+                Registration</div>
+            <div
+                style="position:absolute;left: 7em;top:1.3em;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 16px;font-weight: bold;">
+                System</div> -->
+            <div
+                style="position:absolute;right: 16px;top:0; font-family: sans-serif;font-weight:lighter;font-size: 30px;color: #03a9f4;">
+                RECEIPT
+            </div>
+        </div>
+       
+        <!-- <div style="height: 30px;"></div> -->
+        <div style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: 16px;margin-left: 15px;">Registration System</div>
+        <div style="text-align:right;margin: 0 15px;" id="date">Date:   {{Date}}</div>
+        <div style="height: 20px;"></div>
+        <div style="position: relative;height: 120px;">
+            <div
+                style="position:absolute;text-align: left;left:15px;font-size:small;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;line-height: 1.8em;">
+                International Conference on<br>
+                Automated Planning and Scheduling<br>
+                information Sciences Institute,<br>
+                4676 Admiralty Way, Suite 1001,<br>
+                Marina del Rey,<br>
+                CA 90292
+            </div>
+            <img src="data:image/png;base64,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"
+                style="position: absolute;right: 13%;top:2em;width: 15%;" alt="">
+        </div>
+        <pre id="address" style="text-align: right;width: 95%;margin: 0 auto;font-size:small;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;line-height: 1.8em;">
+            To
+            {{name}}
+            {{address}}
+        </pre>
+        <div
+            style="position:relative;background-color: #d4dfe6;height: 350px;width: 100%;margin: 0 auto;font-size:large;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <table style="padding-top:1em;padding-left: 1em;" cellspacing="0">
+                <thead>
+                    <tr >
+                        <th width="tcol-1">QTY</th>
+                        <th class="tcol-2">Content</th>
+                        <th class="tcol-3" align="right">Price</th>
+                    </tr>
+                    <tr  v-for="item in reg_data">
+                        <td class="tcol-1">1</td>
+                        <td class="tcol-2">{{item.des}}</td>
+                        <td class="tcol-3" align="right">{{item.value}}$</td>
+                    </tr>
+                </thead>
+                <tbody id="tbMain"></tbody>
+            </table>
+            <div id="total" style="position: absolute;bottom: 10%;right: 5%;">
+                <hr>
+                Total:{{total}}$
+            </div>
+        </div>
+        <br>
+        <div style="width: 95%;margin: 0 auto;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size: samll;line-height: 2em;text-align: justify;">
+             <span style="font-weight: bolder;">Important Note:</span> 
+              The property of this corporationis irrevocably dedicated to educational purposes meeting the requirements of 
+              Section 214 of the California Revenue and Taxation Code and no part of the netincome or assets of the organization 
+              shall ever inure to the benefit of any director, officer ormember thereof or to the benefit of any private person
+        </div>
+    </div>
+        <br>
+        <br>
+        <br>
+   
+        <button style="width: 100%;margin-bottom: 30px;" class="btn btn-primary" @click="print()">Print</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="Information" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Completion information</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div style="font-size: small;color: grey;">
+                Because we didn't collect your address information at the time of registration. You need to fill in the address information required for the receipt
+            </div>
+            <div style="text-align: right;border: solid 1px rgb(161, 214, 236);padding-right: 1em;font-size: small;">
+                School of Data and Computer Sciences<br>
+                Sun Yat-sen University<br>
+                132 Waihuan East Road, High Education Mega City<br>
+                510006 Guangzhou<br>
+                China 
+            </div>
+            <p style="font-weight: bolder;">Fill in your information according to the template above</p>
+            
+            <textarea  style="width:100%;text-align: right;padding-right: 1em;height: 150px;border: solid 1px rgb(161, 214, 236)" v-model="address"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+          <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<!-- Button trigger modal -->
+
+ 
+
+<script src="./receipt.js" type="module"></script>
+
+</html>
+<style media="print">
+    @page {
+      size: auto;  /* auto is the initial value */
+      margin: 0mm; /* this affects the margin in the printer settings */
+    }
+</style>
+
+<style>
+    [cloak] {
+        display: none;
+    }
+    @media print{
+        .tcol-1{
+        width: 10%;
+    }
+    .tcol-2{
+        width:80%;
+    }
+    .tcol-3{
+        width:10%
+    }
+    }
+    body {
+        width: 800px;
+        margin: 0 auto;
+        background-color: white;
+    }
+    .tcol-1{
+        width: 80px;
+    }
+    .tcol-2{
+        width:640px;
+    }
+    .tcol-3{
+        width:80px
+    }
+    tr{
+        text-align: left;
+    }
+    td{
+        padding-left: 1em;
+    }
+    th{
+        padding-left: 1em;
+    }
+</style>
