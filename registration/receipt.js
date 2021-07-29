@@ -36,6 +36,9 @@ var app = new Vue({
         }
     },
     methods:{
+        editInfo(){
+            this.InfoModal.show();
+        },
         print(){
             var bdhtml=window.document.body.innerHTML; 
             var jubuData = document.getElementById("print").innerHTML;
