@@ -65,14 +65,14 @@
                     <tr  v-for="item in reg_data">
                         <td class="tcol-1">1</td>
                         <td class="tcol-2">{{item.des}}</td>
-                        <td class="tcol-3">{{item.value}}$</td>
+                        <td class="tcol-3">$ {{item.value}}</td>
                     </tr>
                 </thead>
                 <tbody id="tbMain"></tbody>
             </table>
             <div id="total" style="position: absolute;bottom: 10%;right: 5%;">
                 <hr>
-                Total:{{total}}$
+                Total:$ {{total}}
             </div>
         </div>
         <br>
@@ -163,7 +163,6 @@
     }
     .tcol-3{
         width:80px;
-        text-align: right;
     }
     tr{
         text-align: left;
