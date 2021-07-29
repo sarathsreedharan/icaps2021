@@ -25,7 +25,7 @@ const store = new Vuex.Store({
 })
 async function getTemplate(){
     let storage=window.localStorage;
-    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>3) {
+    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>2) {
         storage.setItem("header",(await axios.get("/assets/component/myheader.html")).data);
         storage.setItem("header_cnt",0);
     }
