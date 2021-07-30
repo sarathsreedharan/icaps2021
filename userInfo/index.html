@@ -88,11 +88,12 @@
             </li>
             <li class="list-group-item" v-if='isRc_name'>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 "  style="text-align: right;font-weight: bold">Rocket Chat</div> 
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 "  style="text-align: right;font-weight: bold">Chat Name</div> 
                     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9"  style="text-align: left" v-if='Edit'>{{rc_name}} </div>
                     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9"  style="text-align: left"v-else><input type="text" v-model="rc_name" class="form-control" > </div>
-                    
+                    <div class="col-12" style="border-top: none;color: grey;padding-left: 5em;font-size: smaller; ">This is the name you use to chat with others </div>
                 </div>
+
             </li>
         </ul>
     </div>
