@@ -4,8 +4,8 @@ var app = new Vue({
   data:{
       goal_url:'',
       select:{
-        sponsor:['http://0.0.0.0/link/sponsors/','.html'],
-        posters:['http://0.0.0.0/link/posters/index.html?id=','']
+        sponsor:['http://'+window.location.host+'/link/sponsors/','.html'],
+        posters:['http://'+window.location.host+'/link/posters/index.html?id=','']
     }
   },
   mounted(){
@@ -16,7 +16,6 @@ var app = new Vue({
       if(id == 'huawei'){
         this.goal_url = 'https://www.noahlab.com.hk/#/about'
       }else{
-        console.log(this.select[type])
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
       }
       
