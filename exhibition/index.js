@@ -1,20 +1,64 @@
-import {Vue, store, header} from '/assets/component/myheader.js';
-let paper = await fetch('/assets/data/paper.json').then(res => res.json());
-let pdf = await fetch('/assets/data/pdf.json').then(res => res.json());
-import {paperData} from '../Schedule/paperData.js';
+import { Vue, store, header } from '/assets/component/myheader.js';
+import { paperData } from '../Schedule/paperData.js';
+import { rocketchatUrl } from '/assets/js/backendBaseUrl.js';
+import { backendBaseUrl } from '/assets/js/backendBaseUrl.js';
+import axios from '/assets/js/axios.js';
 var app = new Vue({
     el: '#app',
     store: store,
     data: {
         curPaper: {},
-        paperData: paper,
+        paperData: {},
         curPdf:'',
-        pdfLink:pdf,
+        pdfLink: {},
+        tipsModal: {},
+        modalmsg: '',
+        keywords: {},
     },
-    mounted() {
+    methods: {
+        forceQuit: function (msg) {
+            this.modalmsg = msg;
+            this.tipsModal.show();
+            setTimeout(() => {
+                window.location.href = "/login"
+            }, 1500);
+        }
+    },
+    async mounted() {
+        axios.defaults.withCredentials = true;
+        this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
+        let token = window.localStorage.getItem("token");
+        if (token == null || token == "") {
+            console.log("No token detected");
+            return this.forceQuit("Please login to visit this page!");
+        } else {
+            axios.get(backendBaseUrl + '/api/users/profile', {
+                headers: {
+                    "Authorization": localStorage.getItem('token')
+                }
+            }).then(res => {
+                if (!res.data.reg || !res.data.reg.registration) {
+                    console.log("have not registration");
+                    return this.forceQuit("Please visit this page after payment of registration!");
+                }
+            }).catch(err => {
+                console.log(err);
+                return this.forceQuit("Please login to visit this page!");
+            })
+        }
+        let paper, pdf;
+        try {
+            paper = await fetch('/assets/data/paper.json').then(res => res.json());
+            pdf = await fetch('/assets/data/pdf.json').then(res => res.json());
+        } catch (err) {
+            console.error(err);
+        }
+        this.paperData = paper;
+        this.pdfLink = pdf;
         //this.curPaper = this.paperData.find(Element => Element.id == localStorage.getItem('channel'))
         let url = window.location.href;
-        this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1])
+        this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1]);
+        this.keywords = this.curPaper.keywords.split("\n ");
         this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
         window.a = this
         console.log(this.curPdf)
@@ -30,7 +74,8 @@ var app = new Vue({
     store: store,
     data: {
         channel:"",
-        timer:""
+        timer: "",
+        rocketchatUrl: rocketchatUrl
     },
     mounted() {
         //this.channel=localStorage.getItem("channel");

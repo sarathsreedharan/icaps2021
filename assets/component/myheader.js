@@ -25,7 +25,7 @@ const store = new Vuex.Store({
 })
 async function getTemplate(){
     let storage=window.localStorage;
-    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>3) {
+    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>2) {
         storage.setItem("header",(await axios.get("/assets/component/myheader.html")).data);
         storage.setItem("header_cnt",0);
     }
@@ -43,6 +43,7 @@ Vue.component('myheader',async function(resolve,reject){
         data: function () {
             return {
                 token: "",
+                begin:''
             }
         },
         template: await getTemplate(),
@@ -63,37 +64,42 @@ Vue.component('myheader',async function(resolve,reject){
                 }).catch(err => {
                     console.log(err)
                 });
-                // localStorage.setItem('flag', 0);
-                // localStorage.setItem('tokenTime', Date.parse(new Date()))
-                // setInterval(() => {
-                //     if (Date.parse(new Date) - localStorage.getItem('tokenTime') > 59000) {
-                //         resetItem('flag', 0)
-                //     }
-                // }, 60000)
+                localStorage.setItem('flag', 0);
+                localStorage.setItem('tokenTime', Date.parse(new Date()))
+                this.begin = setInterval(() => {
+                    if (Date.parse(new Date) - localStorage.getItem('tokenTime') > 59000) {
+                        resetItem('flag', 0)
+                    }
+                }, 60000)
+            } else {
+                axios.post(backendBaseUrl + '/api/users/logout').then(res => { })
             }
         },
         mounted() {
-            // window.addEventListener("setItemEvent", (e) => {
-            //     if (e.newValue == 0 && this.isLogin) {
-            //         axios.get(backendBaseUrl + '/api/test/heartbeat', {
-            //             headers: {
-            //                 "Authorization": localStorage.getItem('token')
-            //             }
-            //         }).then(res => {
-            //             if (res.data.message == "refresh") {
-            //                 let token = res.data.token;
-            //                 localStorage.setItem('token', token)
-            //             }
-            //             console.log(Date.parse(new Date) - localStorage.getItem('tokenTime'))
-            //             resetItem('flag', 1)
-            //             localStorage.setItem('tokenTime', Date.parse(new Date()))
-            //         }).catch(err => {
-            //             if (err.response.status == 401) {
-            //                axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
-            //             }
-            //         })
-            //     }
-            // })
+            axios.defaults.withCredentials = true;
+            window.addEventListener("setItemEvent", (e) => {
+                if (e.newValue == 0 && this.isLogin) {
+                    axios.get(backendBaseUrl + '/api/test/heartbeat', {
+                        headers: {
+                            "Authorization": localStorage.getItem('token')
+                        }
+                    }).then(res => {
+                        if (res.data.message == "refresh") {
+                            console.log(res.data)
+                            let token = res.data.token;
+                            localStorage.setItem('token', token)
+                        }
+                        console.log(Date.parse(new Date) - localStorage.getItem('tokenTime'))
+                        resetItem('flag', 1)
+                        localStorage.setItem('tokenTime', Date.parse(new Date()))
+                    }).catch(err => {
+                        if (err.response.status == 401) {
+                            clearInterval(this.begin);
+                            axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
+                        }
+                    })
+                }
+            })
         },
         computed: {
             isLogin: function () {
@@ -108,12 +114,13 @@ Vue.component('myheader',async function(resolve,reject){
         },
         methods: {
             async logout() {
+                clearInterval(this.begin);
                 localStorage.setItem('token', '');
-                // await axios.post(backendBaseUrl+'/api/users/logout'
-                // ).then(res=>{
-                // }).catch(err=>{
-                //     console.log(err)
-                // })
+                await axios.post(backendBaseUrl+'/api/users/logout'
+                ).then(res=>{
+                }).catch(err=>{
+                    console.log(err)
+                })
                 window.location.reload();
             },
             login() {

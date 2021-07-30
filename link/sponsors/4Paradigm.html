@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+    <script src="/assets/js/vue.min.js"></script>
+    <title>ICAPS2021</title>
+</head>
+<body>
+    <div style="position: relative;top: 0;">
+        <img src="./assets/4Paradigm/banner图.png" style="width:100%;" alt="">
+        <img src="./assets/4Paradigm/logo.png" class="logo" alt="">
+        <div class="slogan">4Paradigm 
+            <br>
+            &nbsp &nbsp &nbsp Empower AI Transformation and Advance AI for everyone</div>
+    </div>
+    <div class="title">About 4Paradigm</div>
+    <div  id="video">
+    <video  controls preload="auto">
+        <source :src="src" type="video/mp4" >
+        {{src}}
+    </video>
+</div>
+    <script type="module">
+       import {backendBaseUrl} from "/assets/js/backendBaseUrl.js"
+        var app = new Vue({
+            el: '#video',
+            data:{
+                src:backendBaseUrl + '/api/link/video?name=4Paradigm'
+            },
+        })
+    </script>
+    <div class="container">
+        <div class="text">
+            <p>
+                4Paradigm is committed to unlocking the efficient growth and intelligent transition of competitiveness for enterprises and eventually driving the change in the way they do business, using the new business model of enabling enterprise transformation by AI decisions.
+            </p>
+            <p>
+                Relying on the state-of-the-art machine learning technologies and practical experiences, 4Paradigm has developed a series of strategic products for intelligent transformation of enterprises. At this stage, 4Paradigm has served in a wide range of industries such as finance, retail, medical, manufacturing, internet, media, government, energy and telecom, empowering their AI transformation.
+            </p>
+    
+            <p>
+                In respect of decision-making technology research and development, 4Paradigm has built a decision-making technology system consisting of core technologies such as reinforcement learning, environmental learning, and AutoML. This system is widely used in business scenes such as product research and development, manufacturing dispatching and scheduling, gaming, recommendation and marketing etc. All have proven efficient in application.
+                <a href="https://www.4paradigm.com/about/research.html" style="color: blue;">Click here</a> to have a comprehensive view of the technical strength of 4Paradigm.
+            </p>
+        </div>
+        <div class="title">Participation in ICAPS events</div>
+        <div>
+            <div class="sm-title">1. 2021 ICAPS Competition——Automatic Reinforcement Learning for Dynamic JobShop Scheduling Problem</div>
+            <div class="text">
+                <img  class="Icapslogo" src="./assets/4Paradigm/autorl-logo.jpg"  alt="">
+                <p class="padding">In recent years, reinforcement-learning based intelligent decision-making programs have emerged in application fields such as supply chain management, advertising and marketing and manufacturing production planning, which can help enterprises make high-valued accurate decisions. However, the high dependence on the professional knowledge in business areas and immense computing power increases the difficulty of implementing reinforcement learning in industrial applications, and highly limits its development. Therefore, it becomes valuable to study in designing AutoRL(Automated reinforcement learning) programs for different scenes and tasks. </p>
+                <p>The competition is jointly organized by 4Paradigm, Université Paris-Saclay, Hong Kong University of Science and Technology and ChaLearn. Participants are invited use AutoRL to design an auto-generated intelligent decision program for Dynamic Job-shop scheduling problem (DJSSP) and further explore the development and implementation of reinforcement learning.</p>
+                <p>A total of 13 DJSSP virtual environments (simulators) are developed for this competition that are based on real-world production lines. Configurations of machines, jobs, metrics, and events vary among tasks to test the generalization ability of submitted solutions.</p>
+                <p>To have more details in the competition champion team’s technical solution, please follow <span style="color: blue;">ICAPS 2021 Competition Session (Time: 9 August 20:00)</span> .</p>
+                <p>Our registration is still open. Please follow <a href="https://www.4paradigm.com/content/details_85_2026.html"> 2021 ICAPS Competition</a> official website</p>
+            </div>
+        </div>
+        <div >
+            <div class="sm-title">2. Invited Talk</div>
+            <div class="text">
+                <p> <span style="font-weight: 600;"> Title:</span>  Environment Learning - Data-Driven Approaches for Real-World Decision Optimization</p>
+                <img src="./assets/4Paradigm/涂威威2寸照片.jpg"  class="weiwei" alt="">
+                <p> <span style="font-weight: 600;"> Speaker：</span> Wei-Wei Tu is Vice President, Principal Scientist, of 4Paradigm Inc., board member of ChaLearn. He has rich experience in large-scale distributed machine learning system architecture, large-scale machine learning algorithm design and application, and online marketing system. Wei-Wei Tu was engaged in computational advertisment-related work in Baidu Fengchao, and designed and developed Baidu's machine learning computing framework ELF. Currently Wei-Wei Tu is working in 4Paradigm Inc., he is the designer of the core large-scale distributed machine learning framework GDBT for 4Paradigm's Sage platform. He has applied AutoML and transfer learning at over 12,000 real applications and achieved significant results. Wei-Wei Tu has published over 20 papers in AAAI, IJCAI, KDD, ICML, NeurIPS, ICLR and other conferences and workshops. Wei-Wei Tu served as the competition chair of PAKDD 2018/2019, chair of PRICAI 2018 AutoML Workshop,co-chair of KDD 2020 AutoML Workshop, program co-chair of International Workshop on Federated and Transfer Learning 2021 (IJCAI 2021), main organizer of ICCV 2021 Understanding Social Behavior in Dyadic and Small Group Interactions Workshop, the main organizer of NeurIPS 2018 AutoML competition, organizer of IJCNN 2019 AutoCV competition, main organizer of NeurIPS 2019 AutoDL competition, and main organizer of the first and second KDD Cup AutoML competitions , main organizer of WAIC 2019 AutoNLP competition, main organizer of ACML 2019 / INTERSPEECH 2020 AutoSpeech and AutoWSL competition, co-founder and guest editor of IEEE TPAMI's first AutoML special issue. Wei-Wei Tu also served as the co-chair of NeurIPS 2019 CiML Workshop, advisor of NeurIPS 2019 / ICML 2020 / NeurIPS 2020 New In ML session. </p>
+                <span style="font-weight: 600;">Abstract:</span>
+                <span> Decision-making is the key to many real-world applications. Many decision optimization methods, e.g., reinforcement learning, have been developed for better decision making. In decision optimization tasks, we often need to interact with the real world or environment. However, accessing the real world may take risks or cost too much. For example, car accidents for automatic driving and production line adjustment in manufacturing plants for smart manufacturing are too dangerous or costly, and we can hardly afford them, and the subsequent decision making will also be badly affected. In many real-world decision optimization paradigms, we often obtain virtual environments that can mimic the real world by manually building or learning from data to avoid unnecessary risks or costs. We call the resulting research area that targets building virtual environments using experiences(e.g., data, knowledge, Etc.) gathered from real decision environments - Environment Learning. In this talk, we will go through several virtual environment driven decision optimization paradigms and present data-driven environment learning approaches that have shown significant benefits for many real-world applications, e.g., Covid-19 pandemic prevention and control.</span>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+<style>
+@media(min-width:1200px){
+    p{
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    .title{
+        font-size: 40px;
+        font-weight: bolder;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-bottom: 0.5em;
+    }
+    .text{
+        font-size: large;
+        text-align: left;
+        font-family:monospace;
+        line-height: 2rem;
+        /* letter-spacing:0ch; */
+        overflow: hidden;
+    }
+    .container{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .sm-title{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 27px;
+        font-weight: 500;
+    }
+    .weiwei{
+        float: right;margin-left: 1em;width:25%
+    }
+    video{
+        width:100%;
+        margin: 0 auto;
+    }
+    .Icapslogo{
+        float: right;
+        width: 50%;
+        margin-left: 1em;
+    }
+    .slogan{
+        position: absolute;
+        top:30%;
+        left: 1em;
+        font-size:2.2em;
+        color: aliceblue;
+        font-weight: bolder;
+    }
+    .logo{
+        width:5%;position: absolute;top: 0;left: 0
+    }
+}
+@media(max-width:1199px) and (min-width:600px){
+    p{
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    .title{
+        font-size: 40px;
+        font-weight: bolder;
+        font-family: 'Gill Sans';
+    }
+    .text{
+        font-size: large;
+        text-align: justify;
+        font-family:monospace;
+        /* letter-spacing: 1px; */
+        line-height: 1.8rem;
+        overflow: hidden;
+    }
+    .container{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .sm-title{
+        font-family: 'Gill Sans';
+        font-size: 25px;
+        font-weight: bolder;
+    }
+    .weiwei{
+        float: right;
+        margin-left: 1em;
+        width:25%
+    }
+    .Icapslogo{
+        float: right;
+        width: 50%;
+        margin-left: 1em;
+    }
+    video{
+        width:100%;
+    }
+    .slogan{
+        position: absolute;
+        top:30%;
+        left: 1em;
+        font-size:2em;
+        color: aliceblue;
+        font-weight: bolder;
+    }
+    .logo{
+        width:6%;position: absolute;top: 0;left: 0
+    }
+}
+
+@media(max-width:599px) {
+    p{
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+    .title{
+        font-size: 28px;
+        font-weight: bolder;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .text{
+        text-align: justify;
+        font-family: monospace;
+        overflow: hidden;
+    }
+    .container{
+        width: 96%;
+        margin: 0 auto;
+    }
+    .sm-title{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: large;
+    }
+    .weiwei{
+        float: right;
+        margin-left: 1em;
+        width:35%
+    }
+    .Icapslogo{
+        float: right;
+        width: 100%;
+        margin-bottom: 1em;
+        margin-top: 1em;
+    }
+    video{
+        width:100%;
+    }
+    .slogan{
+        position: absolute;
+        top:30%;
+        left: 1em;
+        font-size:0.8em;
+        color: aliceblue;
+        font-weight: bolder;
+    }
+    .logo{
+        width:8%;position: absolute;top: 0;left: 0
+    }
+    
+}
+
+</style>

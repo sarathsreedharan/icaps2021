@@ -22,12 +22,17 @@
     <!-- jQuery -->
     <script src="../../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../../assets/js/custom.js"></script>
+        <!-- import axios  -->
+    <script src="../../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../../assets/js/vue.min.js"></script>
   </head>
   <body>
     <div id='icaps-header'>
-      <myheader curpage='workshops'></myheader>
+      <myheader curpage='program' curitem="workshops"></myheader>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak>
 
     <div class="album mt-3">
       <div style="height: 100px" class="d-none d-md-block">
@@ -59,6 +64,14 @@
           </div>
           <div class="col col-12 col-xs-12 col-sm-12 col-md-12 col-lg-8 p-4">
             <section>
+              <div class="col col-auto align-self-center" style="margin-top: 1em">
+                <strong>Timezone:</strong>
+                <select v-model="zone">
+                <option v-for="option in zoneOptions" :value="option.value">
+                  {{option.text}}
+                </option>
+                </select>
+              </div>
               <header>
                 <h1 class="top">
                   Heuristics and Search for Domain-independent Planning (HSDIP)
@@ -88,35 +101,20 @@
                   <table class="table table-sm">
                   <thead>
                     <tr>
-                      <th scope="col" style="width:5%">UTC-7 (PDT)</th>
-                      <th scope="col" style="width:5%">UTC-4 (EDT)</th>
-                      <th scope="col" style="width:5%">UTC (GMT)</th>
-                      <th scope="col" style="width:5%">UTC+2 (CET)</th>
-                      <th scope="col" style="width:5%">UTC+8 (CST)</th>
-                      <th scope="col" style="width:5%">UTC+10 (AEST)</th>
+                      <th scope="col" style="width:25%">Time</th>
                       <th scope="col" style="width:10%"></th>
                       <th scope="col" style="width:60%"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="table-secondary">
-                      <td>04:00</td>
-                      <td>07:00</td>
-                      <td>11:00</td>
-                      <td>13:00</td>
-                      <td>19:00</td>
-                      <td>21:00</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,7,00)}}</td>
                       <td align="center" colspan=2>
           						  Opening Remarks
                       </td>
                     </tr>
                     <tr class="table-primary">
-                      <td>04:10</td>
-                      <td>07:10</td>
-                      <td>11:10</td>
-                      <td>13:10</td>
-                      <td>19:10</td>
-                      <td>21:10</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,7,10)}}</td>
                       <td><b>Keynote</b></td>
                       <td align="center">
                         <b>Shirin Sohrabi</b><br> 
@@ -124,21 +122,11 @@
                       </td>
                     </tr>
                     <tr class="table-secondary">
-                      <td>05:10</td>
-                      <td>08:10</td>
-                      <td>12:10</td>
-                      <td>14:10</td>
-                      <td>20:10</td>
-                      <td>22:10</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,8,10)}}</td>
                       <td align="center" colspan=3>Break</td>
                     </tr>
                     <tr class="table-primary">
-                      <td>05:30</td>
-                      <td>08:30</td>
-                      <td>12:30</td>
-                      <td>14:30</td>
-                      <td>20:30</td>
-                      <td>22:30</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,8,30)}}</td>
                       <td align="center"><b>Session 1</b></td>
                       <td>
                         <ul>
@@ -151,21 +139,11 @@
                       </td>
                     </tr>
                     <tr class="table-secondary">
-                      <td>07:00</td>
-                      <td>10:00</td>
-                      <td>14:00</td>
-                      <td>16:00</td>
-                      <td>22:00</td>
-                      <td>00:00</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,10,00)}}</td>
                       <td align="center" colspan=3>Break</td>
                     </tr>
                     <tr class="table-primary">
-                      <td>07:30</td>
-                      <td>10:30</td>
-                      <td>14:30</td>
-                      <td>16:30</td>
-                      <td>22:30</td>
-                      <td>00:30</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,10,30)}}</td>
                       <td align="center"><b>Session 2</b></td>
                       <td>
                         <ul>
@@ -178,21 +156,11 @@
                       </td>
                     </tr>
                     <tr class="table-secondary">
-                      <td>09:00</td>
-                      <td>12:00</td>
-                      <td>16:00</td>
-                      <td>18:00</td>
-                      <td>00:00</td>
-                      <td>02:00</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,12,00)}}</td>
                       <td align="center" colspan=3>Break</td>
                     </tr>
                     <tr class="table-primary">
-                      <td>10:00</td>
-                      <td>13:00</td>
-                      <td>17:00</td>
-                      <td>19:00</td>
-                      <td>01:00</td>
-                      <td>03:00</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,13,00)}}</td>
                       <td align="center"><b>Session 3</b></td>
                       <td>
                         <ul>
@@ -205,12 +173,7 @@
                       </td>
                     </tr>
                     <tr class="table-secondary">
-                      <td>11:30</td>
-                      <td>14:30</td>
-                      <td>18:30</td>
-                      <td>20:30</td>
-                      <td>02:30</td>
-                      <td>04:30</td>
+                      <td>{{showDayWithMin(HSDIP_DAY,14,30)}}</td>
                       <td align="center" colspan=2>Closing, Social Meeting, Discussions</td>
                     </tr>
                   </tbody>
@@ -524,7 +487,7 @@
         </div>
       </div>
     </div>
-
+    </div>
     <footer class="footer m-5">
       <div class="container">
         <hr />
@@ -545,5 +508,10 @@
       </div>
     </footer>
     <script src="../../assets/js/bootstrap.min.js"></script>
+    <script
+    type="module"
+    src="/Schedule/schedule.js"
+    crossorigin="anonymous"
+  ></script>
   </body>
 </html>
