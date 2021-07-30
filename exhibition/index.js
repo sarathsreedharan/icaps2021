@@ -28,24 +28,24 @@ var app = new Vue({
         axios.defaults.withCredentials = true;
         this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
         let token = window.localStorage.getItem("token");
-        // if (token == null || token == "") {
-        //     console.log("No token detected");
-        //     return this.forceQuit("Please login to visit this page!");
-        // } else {
-        //     axios.get(backendBaseUrl + '/api/users/profile', {
-        //         headers: {
-        //             "Authorization": localStorage.getItem('token')
-        //         }
-        //     }).then(res => {
-        //         if (!res.data.reg || !res.data.reg.registration) {
-        //             console.log("have not registration");
-        //             return this.forceQuit("Please visit this page after payment of registration!");
-        //         }
-        //     }).catch(err => {
-        //         console.log(err);
-        //         return this.forceQuit("Please login to visit this page!");
-        //     })
-        // }
+        if (token == null || token == "") {
+            console.log("No token detected");
+            return this.forceQuit("Please login to visit this page!");
+        } else {
+            axios.get(backendBaseUrl + '/api/users/profile', {
+                headers: {
+                    "Authorization": localStorage.getItem('token')
+                }
+            }).then(res => {
+                if (!res.data.reg || !res.data.reg.registration) {
+                    console.log("have not registration");
+                    return this.forceQuit("Please visit this page after payment of registration!");
+                }
+            }).catch(err => {
+                console.log(err);
+                return this.forceQuit("Please login to visit this page!");
+            })
+        }
         let paper, pdf;
         try {
             paper = await fetch('/assets/data/paper.json').then(res => res.json());
