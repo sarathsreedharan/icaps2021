@@ -13,6 +13,7 @@ var app = new Vue({
         pdfLink: {},
         tipsModal: {},
         modalmsg: '',
+        keywords: {},
     },
     methods: {
         forceQuit: function (msg) {
@@ -56,7 +57,8 @@ var app = new Vue({
         this.pdfLink = pdf;
         //this.curPaper = this.paperData.find(Element => Element.id == localStorage.getItem('channel'))
         let url = window.location.href;
-        this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1])
+        this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1]);
+        this.keywords = this.curPaper.keywords.split("\n ");
         this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
         window.a = this
         console.log(this.curPdf)

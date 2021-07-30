@@ -53,7 +53,7 @@
 			<table style="width:100%">
 				<tr>
 					<td style="vertical-align: middle;" class="card-text">
-						<h5>{{curPaper.keywords}}</h5>
+						<span v-for="key in keywords" class="badge bg-secondary" style="margin-right: 1em;">{{key}}</span>
 					</td>
 					<td style="text-align: right;vertical-align: middle;">
 						<span class="d-inline-flex text-center text-white rounded p-1 card-text" data-toggle="tooltip"
