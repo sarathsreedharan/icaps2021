@@ -41,107 +41,125 @@
 	</div>
 	
 	<div class="album mt-3">
-		<div style="height: 50px;" class="d-none d-md-block">
+		<div style="height: 100px;" class="d-none d-md-block">
 			<!-- padding hack for the fixed navbar -->
 		</div>
 	</div>
-	<main  style="min-height: 80vh;padding: 0 3rem 3rem 3rem;" >
+	<main style="min-height: 80vh;padding: 0 3rem 3rem 3rem;">
 		<div class="album mt-3">
 		</div>
-  <div id="app" v-cloak>
-		<h1>{{curPaper.title}}</h1>
-		<table style="width:100%">
-			<tr>
-				<td style="vertical-align: middle;">
-					<h3>{{curPaper.keywords}}</h3>
-				</td>
-				<td style="text-align: right;vertical-align: middle;">
-						<span class="d-inline-flex text-center text-white rounded p-1" data-toggle="tooltip" title="Poster ID in the virtual conference center." style="cursor: default;background-color: #f5821f;">
-							<small class="my-auto">PosterID:</small>
-							<span class="my-auto pl-1 font-weight-bold">{{curPaper.id}}</span>
+		<div id="app" v-cloak style="margin-bottom: 2em;">
+			<h4><strong>{{curPaper.title}}</strong></h4>
+			<table style="width:100%">
+				<tr>
+					<td style="vertical-align: middle;" class="card-text">
+						<h5>{{curPaper.keywords}}</h5>
+					</td>
+					<td style="text-align: right;vertical-align: middle;">
+						<span class="d-inline-flex text-center text-white rounded p-1 card-text" data-toggle="tooltip"
+							title="Poster ID in the virtual conference center."
+							style="cursor: default;background-color: #f5821f;">
+							<span class="my-auto pl-1 font-weight-bold">PaperID: {{curPaper.id}}</span>
 						</span>
 						<a :href="curPdf.link" class="btn btn-link" target="_blank" v-if="isPdf">
 							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>picture_as_pdf</small>
-							</span>
-							<span class="">
-								PDF
-							</span>
+								<img src="../assets/images/pdflogo.jpg" style="width: 2.5em; height: 3em;" alt="">
 							</div>
 						</a>
-						
-<!-- 						
-						<a href="" class="btn btn-link">
-							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>library_books</small>
-							</span>
-							<span class="">
-								Poster
-							</span>
-							</div>
-						</a> -->
-						
-						
+	
+						<!-- 						
+							<a href="" class="btn btn-link">
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>library_books</small>
+								</span>
+								<span class="">
+									Poster
+								</span>
+								</div>
+							</a> -->
+	
+	
 						<!-- <a href="" class="btn btn-link">
-							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>menu_book</small>
-							</span>
-							<span class="">
-								BibTeX
-							</span>
-							</div>
-						</a> -->
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align:justify;">
-					{{curPaper.abstract}}
-				</td>
-			</tr>
-		</table>
-  </div>
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>menu_book</small>
+								</span>
+								<span class="">
+									BibTeX
+								</span>
+								</div>
+							</a> -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:justify;">
+						{{curPaper.abstract}}
+					</td>
+				</tr>
+			</table>
+			<div class="modal" tabindex="-1" id='tips'>
+				<div class="modal-dialog ">
+					<div class="modal-content">
+						<div class="modal-body" style="background-color: rgb(231, 241, 255);">
+							<p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
+								{{modalmsg}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row">
-			<div class=" col-xs-12 col-sm-12 col-md-9">
+			<div class=" col-xs-12 col-sm-12 col-md-9" style="position: relative;">
 				<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
-					<div class="card-body" style="padding: 0 0 0 0;">
-						<div id="presentation-embed-38942367" ></div>
-						<script src='https://slideslive.com/embed_presentation.js'></script>
-						<script>
-						embed = new SlidesLiveEmbed('presentation-embed-38942367', {
-							presentationId: '38942367',
-							autoPlay: false, // change to true to autoplay the embedded presentation
-							verticalEnabled: true
-						});
-						</script>
+					<div class="card-body" style="padding: 0 0 0 0;background-color: #f5e3d3;">
+						<div style="position: absolute;top:40%;left: 50%;">
+							<div style="position: relative;left:-50%;font-size: 3em;font-weight: bolder;color: #f5821f;">
+								Slideslive coming soon</div>
+						</div>
+	
+						<!-- <div id="presentation-embed-38942367" ></div>
+							<script src='https://slideslive.com/embed_presentation.js'></script>
+							<script type="module">
+								import axios from '/assets/js/axios.js';
+								import {backendBaseUrl} from '/assets/js/backendBaseUrl.js';
+								let res = await axios.get(backendBaseUrl+'/api/test');
+								console.debug(res); 
+								embed = new SlidesLiveEmbed('presentation-embed-38942367', {
+									presentationId: '38942367',
+									autoPlay: false, // change to true to autoplay the embedded presentation
+									verticalEnabled: true
+								});
+							</script> -->
 					</div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-3 ">
 				<div id="app2" v-cloak>
-				<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
-					<div class="card-body" style="padding: 0 0 0 0;">
-						<ul class="list-group list-group-flush">
-							<iframe v-bind:src="'http://192.168.0.224:3000/channel/'+channel+'/?layout=embedded'"
-				height=600 title="myframe" id="iframe"></iframe>
-						</ul>
+					<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
+						<div class="card-body" style="padding: 0 0 0 0;">
+							<ul class="list-group list-group-flush">
+								<iframe v-bind:src="rocketchatUrl+'/channel/'+channel+'/?layout=embedded'" height=600
+									title="myframe" id="iframe"></iframe>
+							</ul>
+						</div>
 					</div>
-				</div>
 				</div>
 			</div>
 		</div>
 		<div id="app3" v-cloak style="border: solid 2px #d7dcdf;border-radius: 5px;">
 			<div style="margin:2% 2% 2% 2%">
-				
+	
 				<div class="container">
 					<div class="mb-5">
 						<h4>Session {{sessionNum}}: {{session[sessionNum]}}</h4>
-						<a v-for='item in paper[sessionNum]' style="color: #51585E;" :href="'../exhibition/index.html?channel='+item.id" target="_blank">
-							<hr><p class="paperTitle" :style="sessionSelect(item.id)">{{item.title}} <br>
-							<span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>
-							<span v-if="item.keywords != ''"><br><strong>Keywords: </strong><I>{{item.keywords}}</I></P></span></span>
+						<a v-for='item in paper[sessionNum]' style="color: #51585E;"
+							:href="'../exhibition/index.html?channel='+item.id" target="_blank">
+							<hr>
+							<p class="paperTitle" :style="sessionSelect(item.id)">{{item.title}} <br>
+								<span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>
+									<span v-if="item.keywords != ''"><br><strong>Keywords: </strong><I>{{item.keywords}}</I>
+							</P></span></span>
 						</a>
 					</div>
 				</div>
