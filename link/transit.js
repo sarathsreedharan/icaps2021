@@ -1,11 +1,13 @@
-
+var url=window.location.host
 var app = new Vue({
   el:'#app',
   data:{
       goal_url:'',
       select:{
-        sponsor:['http://'+window.location.host+'/link/sponsors/','.html'],
-        posters:['http://'+window.location.host+'/link/posters/index.html?id=','']
+        sponsor:['http://'+url+'/link/sponsors/','.html'],
+        posters:['http://'+url+'/link/posters/index.html?id=',''],
+        workshops:['http://'+url+'/link/workshops/',''],
+        slideslive:['http://'+url+'/exhibition?channel=','']
     }
   },
   mounted(){

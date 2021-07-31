@@ -10,7 +10,7 @@
     <title>ICAPS</title>
 </head>
 <body>
-    <div id="app" style="position: absolute;left: 50%;top: 40%;">
+    <div id="app" style="position: absolute;left: 50%;top: 40%;" v-cloak>
         <p style="text-align: center;position:relative;top: -50%;left: -50%;">
             To enter click this external link:
             <br>
@@ -24,3 +24,8 @@
     </div>
 </body>
 </html>
+<style>
+    [cloak]{
+        display: none;
+    }
+</style>
