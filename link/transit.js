@@ -3,6 +3,8 @@ var app = new Vue({
   el:'#app',
   data:{
       goal_url:'',
+      type:'',
+      id:'',
       select:{
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
@@ -23,13 +25,15 @@ var app = new Vue({
         SPARK:'https://us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09',
         PlanRob_1:'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
         DC:'https://us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09'
-      }
+      },
   },
   mounted(){
       let query = location.search;
       let searchParams = new URLSearchParams(query);
       var type = searchParams.get('type');
       var id = searchParams.get('id');
+      this.type = type;
+      this.id = id;
       if(type=='workshops'){
         if(id=='tutroial-dcss-AI-wrapper'){
           id = 'tutroial_d'
@@ -48,14 +52,22 @@ var app = new Vue({
         console.log(this.goal_url)
       }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence'){
         this.goal_url = this.sponsor[id]
+        console.log(this.goal_url)
       }else{
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
+        console.log(this.goal_url)
       }
       
       // console.log(this.goal_url)
       // var open = window.open();
       // open.location.href = this.goal_url
       // window.history.go(-1);
+  },
+  methods:{
+    open(){
+      console.log(this.goal_url)
+      window.open(this.goal_url)
+    }
   }
 })
 
