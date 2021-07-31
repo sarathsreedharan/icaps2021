@@ -941,18 +941,19 @@ var app = new Vue({
 		else
 		  return "Aug " + this.date[day] + " " + (this.zone + hour + 4) + ":00";
 	},
-	showDayMin: function (day, hour, min) {
-		if (min == 0){min = '00'}
-		if (this.zone + hour + 4 < 0)
+	showDayMin: function (day, begin, bmin, end, emin) {
+		if (bmin == 0){bmin = '00'}
+    if (emin == 0){emin = '00'}
+		if (this.zone + begin + 4 < 0)
 		  return (
-			"Aug " + this.date[day - 1] + " " + (this.zone + hour + 28) + ":" + min
+			"Aug " + this.date[day - 1] + " " + (this.zone + begin + 28) + ":" + bmin + "-" + (this.zone + end + 28) + ":" + emin
 		  );
-		else if (this.zone + hour + 4 > 23)
+		else if (this.zone + begin + 4 > 23)
 		  return (
-			"Aug " + this.date[day + 1] + " " + (this.zone + hour - 20) + ":" + min
+			"Aug " + this.date[day + 1] + " " + (this.zone + begin - 20) + ":" + bmin + "-" + (this.zone + end - 20) + ":" + emin
 		  );
 		else
-		  return "Aug " + this.date[day] + " " + (this.zone + hour + 4) + ":" + min;
+		  return "Aug " + this.date[day] + " " + (this.zone + begin + 4) + ":" + bmin + "-" + (this.zone + end + 4) + ":" + emin
 	  },
     showDayWithMin: function (day, hour, min) {
       if (min == 0) {

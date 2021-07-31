@@ -457,16 +457,16 @@
                       <div v-if="isOver(Week2[j][0].day,item.time)">
                         <div class="style_time">
                           <font size="2">
-                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
-                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
                       <div v-else>
                         <div class="style_timeover" style="line-height: 18px">
                           <font size="2">
-                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
-                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
