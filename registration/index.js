@@ -207,7 +207,7 @@ var app = new Vue({
                 // setting the counter down
                 if (!this.sendCodeDisable) {
                     await axios.post(backendBaseUrl + '/api/users/emailverify', {
-                        email: this.user_info.email
+                        Email: this.user_info.email
                     });
                     this.code_resend_cnt = 60;
                     this.countDown = setInterval(() => {
