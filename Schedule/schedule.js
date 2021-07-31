@@ -293,7 +293,7 @@ var app = new Vue({
       ],
       [
         { day: 11, type: "gather", time: 0, end: 1 },
-        { type: "session", num: 10, time: 1, end: 2 },
+        { type: "gather", num: 10, time: 1, tiemMin:0, end: 2, endMin:15, type2:"session", time2:1, timeMin2: 15, end2: 2, endMin2: 0 },
         { type: "session", num: 11, time: 2, end: 3 },
         { type: "session", num: 12, time: 3, end: 4 },
         { type: "Socializing", time: 4, end: 6 },
@@ -306,7 +306,7 @@ var app = new Vue({
         { type: "Socializing", time: 13, end: 14 },
         { type: "session", num: 12, time: 14, end: 15 },
         { type: "session", num: 11, time: 15, end: 16 },
-        { type: "session", num: 10, time: 16, end: 17 },
+        { type: "gather", num: 10, time: 16, tiemMin:0, end: 17, endMin:15, type2:"session", time2:16, timeMin2: 15, end2: 17, endMin2: 0 },
         { type: "gather", time: 17, end: 18 },
         { type: "Socializing", time: 18, end: 20 },
         { type: "session", num: 13, time: 20, end: 21 },
@@ -334,7 +334,7 @@ var app = new Vue({
       ],
       [
         { day: 13, type: "gather", time: 0, end: 1 },
-        { type: "session", num: 19, time: 1, end: 2 },
+        { type: "gather", num: 19, time: 1, tiemMin:0, end: 2, endMin:30, type2:"session", time2:1, timeMin2: 30, end2: 2, endMin2: 0 },
         { type: "session", num: 20, time: 2, end: 3 },
         { type: "session", num: 21, time: 3, end: 4 },
         { type: "Socializing", time: 4, end: 6 },
@@ -344,7 +344,7 @@ var app = new Vue({
         { type: "Posters", time: 9, end: 11 },
         { type: "Invited Talk", time: 11, end: 12 },
         { type: "Socializing", time: 12, end: 14 },
-        { type: "session", num: 19, time: 14, end: 15 },
+        { type: "gather", num: 19, time: 14, tiemMin:0, end: 15, endMin:30, type2:"session", time2:14, timeMin2: 30, end2: 15, endMin2: 0 },
         { type: "session", num: 20, time: 15, end: 16 },
         { type: "session", num: 21, time: 16, end: 17 },
         { type: "gather", time: 17, end: 18 },
@@ -848,6 +848,9 @@ var app = new Vue({
         if (i.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
           this.$set(this.searchShow, "session" + i.toString(), true);
       }
+	  for (i = 1; i < 24; i++) {
+		  if (("session" + i).indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow, "session" + i, true);
+	  }
       if ("Session".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
         this.$set(this.searchShow, "session", true);
       if (
@@ -902,6 +905,17 @@ var app = new Vue({
 		}
 		else if (end - begin == 3){
 			return "height: 300px"
+		}
+	},
+	activityWidth: function(begin, end) {
+		if (end - begin == 15) {
+			return "width: 25%"
+		}
+		else if (end - begin == 30) {
+			return "width: 50%"
+		}
+		else {
+			return "width: 75%"
 		}
 	},
 	setInsideHeight: function(begin, end){
