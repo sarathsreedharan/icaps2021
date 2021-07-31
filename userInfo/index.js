@@ -14,7 +14,7 @@ var app = new Vue({
             last_name: "Last name",
             pronoun: "Pronoun",
             institution: "Institution",
-            country: "Country"
+            country: "Country/Regions"
         },
         Edit:true,
         country:country,
