@@ -141,6 +141,7 @@
 							<ul class="list-group list-group-flush">
 								<iframe v-bind:src="rocketchatUrl+'/channel/'+channel+'/?layout=embedded'" height=600
 									title="myframe" id="iframe"></iframe>
+									<div style="font-size: small;color:grey;text-align: center;">You can modify your chat name on the profile page</div>
 							</ul>
 						</div>
 					</div>
@@ -154,7 +155,7 @@
 					<div class="mb-5">
 						<h4>Session {{sessionNum}}: {{session[sessionNum]}}</h4>
 						<a v-for='item in paper[sessionNum]' style="color: #51585E;"
-							:href="'../exhibition/index.html?channel='+item.id" target="_blank">
+							:href="'../exhibition/index.html?channel='+item.id" >
 							<hr>
 							<p class="paperTitle" :style="sessionSelect(item.id)">{{item.title}} <br>
 								<span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>

@@ -1,3 +1,4 @@
+import axios from '../assets/js/axios.js';
 import {backendBaseUrl} from '../assets/js/backendBaseUrl.js';
 import {country} from '../assets/js/data.js';
 import {Vue, store} from '/assets/component/myheader.js'
@@ -13,12 +14,14 @@ var app = new Vue({
             last_name: "Last name",
             pronoun: "Pronoun",
             institution: "Institution",
-            country: "Country"
+            country: "Country/Regions"
         },
         Edit:true,
         country:country,
         tipsModal:{},
         modalmsg:'',
+        rc_name:'',
+        isRc_name:false,
     },
     methods: {
         updateProfile: function () {
@@ -26,6 +29,13 @@ var app = new Vue({
             axios.patch(backendBaseUrl+'/api/users/profile',this.user.profile,{ headers: { Authorization: window.localStorage.getItem("token") }})
             .then(res=>{
                 console.log(res);
+            }).catch(err => {
+                
+            })
+
+            axios.post(backendBaseUrl+'/api/rocketchat/updateName',{newName:this.rc_name},{ headers: { Authorization: window.localStorage.getItem("token") }})
+            .then(res=>{
+              
             })
         },
         toRegistration(){
@@ -40,12 +50,17 @@ var app = new Vue({
             this.tipsModal.show();
             setTimeout(() => {
                 window.location.href = "/login"
-            }, 1500);
-            
-        }
+            }, 1500); 
+        },
     },
     mounted: function () {
         axios.defaults.withCredentials = true;
+        axios.get(backendBaseUrl+'/api/rocketchat/getName',{ headers: { Authorization: window.localStorage.getItem("token") } }).then(res => {
+           this.rc_name = res.data.rocketchatName;
+           this.isRc_name = true;
+        }).catch(err => {
+            this.isRc_name = false;
+        })
         this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
         let token = window.localStorage.getItem("token");
         if (token == null || token == "") {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/images/favicon.png">
+    <script src="/assets/js/vue.min.js"></script>
+    <script src="./transit.js" type="module"></script>
+    <title>ICAPS</title>
+</head>
+<body>
+    <div id="app" style="position: absolute;left: 50%;top: 40%;" v-cloak>
+        <p style="text-align: center;position:relative;top: -50%;left: -50%;">
+            To enter, click this external link:
+            <br>
+            <a :href="goal_url" target="_blank" id="open_link">{{goal_url}}</a>
+            <br>
+            <br>
+            Clidking the link will disable your audio/video on Gather, so it won't interfere
+            <br>
+            To enter back into Gather, just come back to this tab!
+        </p>
+    </div>
+</body>
+</html>
+<style>
+    [cloak]{
+        display: none;
+    }
+</style>
