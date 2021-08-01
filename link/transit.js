@@ -8,7 +8,6 @@ var app = new Vue({
       select:{
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
-        // workshops:['http://'+url+'/link/workshops/',''],
         slideslive:['http://'+url+'/exhibition?channel=','']
     },
       sponsor:{
