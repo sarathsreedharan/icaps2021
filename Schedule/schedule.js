@@ -293,7 +293,7 @@ var app = new Vue({
       ],
       [
         { day: 11, type: "gather", time: 0, end: 1 },
-        { type: "gather", num: 10, time: 1, tiemMin:0, end: 2, endMin:15, type2:"session", time2:1, timeMin2: 15, end2: 2, endMin2: 0 },
+        { type: "gather", num: 10, time: 1, tiemMin:0, end: 1, endMin:15, type2:"session", time2:1, timeMin2: 15, end2: 2, endMin2: 0 },
         { type: "session", num: 11, time: 2, end: 3 },
         { type: "session", num: 12, time: 3, end: 4 },
         { type: "Socializing", time: 4, end: 6 },
@@ -301,12 +301,13 @@ var app = new Vue({
         { type: "session", num: 13, time: 7, end: 8 },
         { type: "session", num: 14, time: 8, end: 9 },
         { type: "Invited Talk", time: 9, end: 10 },
-        { type: "Demos/ Diversity Event", time: 10, end: 12 },
+		{ type: "Demos", time: 10, end: 11 },		
+        { type: "Demos/ Diversity Event", time: 11, end: 12 },
 		{ type: "Diversity Event", time: 12, end: 13 },
         { type: "Socializing", time: 13, end: 14 },
         { type: "session", num: 12, time: 14, end: 15 },
         { type: "session", num: 11, time: 15, end: 16 },
-        { type: "gather", num: 10, time: 16, tiemMin:0, end: 17, endMin:15, type2:"session", time2:16, timeMin2: 15, end2: 17, endMin2: 0 },
+        { type: "session", num: 10, time: 16, timeMin:0, end: 16, endMin:45},
         { type: "gather", time: 17, end: 18 },
         { type: "Socializing", time: 18, end: 20 },
         { type: "session", num: 13, time: 20, end: 21 },
@@ -883,6 +884,8 @@ var app = new Vue({
         "Competitions".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0
       )
         this.$set(this.searchShow, "Competitions", true);
+	  if ("Demos".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
+        this.$set(this.searchShow, "Demos", true);
       if ("Demos/ Diversity Event".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
         this.$set(this.searchShow, "Demos/ Diversity Event", true);
       if ("Posters".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
@@ -1126,6 +1129,7 @@ var app = new Vue({
     this.$set(this.searchShow, "Invited Talk", true);
     this.$set(this.searchShow, "Industry Talks", true);
     this.$set(this.searchShow, "Competitions", true);
+    this.$set(this.searchShow, "Demos", true);
     this.$set(this.searchShow, "Demos/ Diversity Event", true);
     this.$set(this.searchShow, "Posters", true);
 	this.$set(this.searchShow, "Opening Remarks", true);	

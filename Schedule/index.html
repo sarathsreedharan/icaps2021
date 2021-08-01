@@ -457,14 +457,16 @@
                       <div v-if="isOver(Week2[j][0].day,item.time)" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
                         <div class="style_time">
                           <font size="2">
-                            {{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}
+                            <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
                       <div v-else>
                         <div class="style_timeover" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
                           <font size="2">
-                            {{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}
+                            <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
@@ -544,7 +546,7 @@
                             class="row align-items-center"
                             data-bs-toggle="modal"
                             data-bs-target="#modal"
-                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
                           >
                             <div
                               class="tip tip-buttom col align-self-center"
@@ -763,11 +765,31 @@
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small> <br></div>
                         </div>
                       </div>
+                      <div v-else-if="modal_type == 'Demos/ Diversity Event'">
+                        <strong>Demos: </strong><br>
+                        <div style="text-align: center">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <strong>Place</strong>: <small><i>Demo room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                        </div><br>
+                        <strong>Diversity Event: </strong><br>
+                        <div style="text-align: center">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <strong>Place</strong>: <small><i>Session room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                        </div>
+                      </div>
                       <div v-else>
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo room in 
+                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo room in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
