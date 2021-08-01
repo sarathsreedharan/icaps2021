@@ -49,11 +49,14 @@ var app = new Vue({
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
         console.log(this.goal_url)
       }
+
+
+      if(id == 'sysu') this.id='Sun Yat-Sen University'
+      if(id == 'artificial_intelligence') this.id='artificial-intelligenc'
+      if(id == 'huawei' || id=='huaweiVideo') this.id='Huawei'
       
-      // console.log(this.goal_url)
-      // var open = window.open();
-      // open.location.href = this.goal_url
-      // window.history.go(-1);
+      document.getElementById('open_link').click()
+
   },
   methods:{
     open(){
