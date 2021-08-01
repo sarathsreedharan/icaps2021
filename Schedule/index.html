@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link
-		rel="shortcut icon"
-		type="image/png"
-		href="../assets/images/favicon.png"
-		/>
-		<title>ICAPS 2021</title>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <meta http-equiv="refresh" content="0;url=../InvitedSpeakers/" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/images/favicon.png"
+    />
+    <title>ICAPS 2021</title>
 
-		<!-- Bootstrap core CSS -->
-		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
 
-		<!-- Bootstrap Overrides -->
-		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
-		<link href="../assets/css/custom.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="schedule.css"/>
+    <!-- Bootstrap Overrides -->
+    <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+
+    <!-- Schedule CSS -->
+    <link rel="stylesheet" type="text/css" href="./schedule.css" />
+    <link rel="stylesheet" type="text/css" href="./workshop.css" />
 
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -24,31 +28,741 @@
     <script src="../assets/js/bootstrap.min.js"></script>
 
     <!-- import axios  -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../assets/js/axios.min.js"></script>
     <!-- vue dev version -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="../assets/js/vue.min.js"></script>
   </head>
   <body class="bg-light">
-    <div id='icaps-header'>
-      <myheader curpage='schedule' curitem="index"></myheader>
+    <div id="icaps-header">
+      <myheader curpage="schedule" curitem="index"></myheader>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
     <div id="app" v-cloak>
-      <div class="album mt-3 p-4">
-        <div style="height: 100px" class="d-none d-md-block">
-          <!-- padding hack for the fixed navbar -->
-        </div>
+      <div class="album mt-3 p-4" style="min-height: 80vh">
+        <div style="height: 100px" class="d-none d-md-block"></div>
 
-        <div class="container">
-          <div class="mb-5">
-            <h4>Schedule</h4>
-            <hr />
+        <div class="">
+          <div class="row justify-content-between">
+            <!-- Week choice -->
+            <div class="col">
+              <div
+                class="btn-group btn-block"
+                role="group"
+                v-model="week"
+                data-toggle="buttons"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  autocomplete="off"
+                  checked
+                />
+                <label
+                  class="btn btn-outline-primary"
+                  for="btnradio1"
+                  @click="week = 1;week1_prog = 1"
+                  v-html="titleOfWeek1"
+                ></label>
 
-            <div class="alert alert-icaps" role="alert">Coming soon!</div>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  autocomplete="off"
+                />
+                <label
+                  class="btn btn-outline-primary"
+                  for="btnradio2"
+                  @click="week = 2"
+                  v-html="titleOfWeek2"
+                ></label>
+              </div>
+            </div>
+            <!-- Search function -->
+            <div class="col col-auto align-self-center" v-if="week == 2">
+              <div class="input-group" style="margin-top: 1em">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Paper ID/Title/Authors"
+                  v-model="keywords"
+                  @keyup.enter="searchEnter"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  @click="searchEnter"
+                >
+                  Search
+                </button>
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  @click="searchReset"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+            <!-- Timezone btn  -->
+            <div class="col col-auto align-self-center" style="margin-top: 1em">
+              <strong>Timezone:</strong>
+              <select v-model="zone">
+                <option v-for="option in zoneOptions" :value="option.value">
+                  {{option.text}}
+                </option>
+              </select>
+            </div>
+            
+          </div>
+
+          <hr />
+
+          <!------------------------------------------------------------------------- Week1 --------------------------------------------------------------------------------->
+          <div v-if="week == 1">
+            <div class="row">
+              <div class="col-3 col-md-3 d-none d-md-block schedule-nav pt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <a href="#dc"
+                      ><span class="badge bg-primary">Day 1</span> Doctoral
+                      Consortium</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#tutorials"
+                      ><span class="badge bg-primary">Day 2</span> Tutorials</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#0"
+                      ><span class="badge bg-primary">Day 3</span> Workshops</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#1"
+                      ><span class="badge bg-primary">Day 4</span> Workshops</a
+                    >
+                  </li>
+                  <li class="list-group-item">
+                    <a href="#2"
+                      ><span class="badge bg-primary">Day 5</span> Workshops</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-9 col-sm-12 col-md-9 pt-3">
+                <div id="dc" class="mb-5">
+                  <h4>
+                    <span class="badge bg-secondary">Day 1</span> Doctoral
+                    Consortium
+                  </h4>
+                  <hr />
+
+                  <div class="col" v-for="item in DC_sched">
+                    <!--                  &lt;!&ndash; talbe time &ndash;&gt;-->
+                    <div v-if="item.type != 'End'">
+                      <div v-if="isOver(DC_day,item.startHour)">
+                        <div class="style_time">
+                          {{showDayWithMin(DC_day, item.startHour,
+                          item.startMin)}} - {{showDayWithMin(DC_day,
+                          item.endHour, item.endMin)}}
+                        </div>
+                      </div>
+                      <div v-else>
+                        <div class="style_timeover">
+                          {{showDayWithMin(DC_day, item.startHour,
+                          item.startMin)}} - {{showDayWithMin(DC_day,
+                          item.endHour, item.endMin)}}
+                        </div>
+                      </div>
+                      <!--                  &lt;!&ndash; table activities &ndash;&gt;-->
+                      <div v-if="item.type == 'dc_start'">
+                        <div class="gather">
+                          <div class="text-center" style="margin-left: 0.5em">
+                            <strong>{{DC_programs[item.num]}}</strong>
+                            <strong><div v-if="!isOver(DC_day,item.endHour)">(Over)</div></strong>
+                          </div>
+                        </div>
+                      </div>
+                      <div v-else-if="item.type == 'dc_session'">
+                        <div
+                          class="style_session"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modal"
+                          style="text-align: center;"
+                          @click="setModalDetail(item.session_num, item.type, 0, 0, 0, DC_session_info[item.num])"
+                        >
+                          <div class="tip tip-buttom" data-tip="Show Details">
+                            <div class="text-center">
+                            <strong
+                              >Session
+                              <div v-if="!isOver(DC_day,item.endHour)">
+                                (Over)
+                              </div></strong
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div v-else-if="item.type == 'Socializing'">
+                        <div class="style_socializing">
+                          <strong>
+                            {{DC_programs[item.num]}}
+                            <div v-if="!isOver(DC_day,item.endHour)">(Over)</div>
+                          </strong>
+                        </div>
+                      </div>
+                      <div v-else-if="item.type == 'break'">
+                        <div class="gather">
+                          <strong>{{DC_programs[item.num]}}</strong>
+                        </div>
+                      </div>
+                      <div v-else>
+                        <div
+                          class="style_event"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modal"
+                          @click="setModalDetail(0, item.type, 0, 0, 0, DC_programs[item.num])"
+                        >
+                          <div class="tip tip-buttom" data-tip="Show Details">
+                            <strong
+                              >{{item.type}}
+                              <div v-if="!isOver(DC_day,item.endHour)">
+                                (Over)
+                              </div></strong
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div v-else>
+                      <div class="style_time">End</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="tutorials" class="pt-5 mb-5">
+                  <h4>
+                    <span class="badge bg-secondary">Day 2</span> Tutorials
+                  </h4>
+                  <hr />
+
+                  <div
+                    class="col-12"
+                    class="tutorial day 1"
+                    v-for="(Workday,j) in Week1_tutorial"
+                  >
+                    <div class="row row-cols-2">
+                      <div
+                        class="col-6 col-sm-12 col-md-6"
+                        v-for="tutorial in Workday.tutorial_list"
+                      >
+                        <div v-for="item in tutorial">
+                          <!--------------------------------------------- talbe time -------------------------------------------------->
+                          <div v-if="isOver(Workday.day,item.time)">
+                            <div class="style_time">
+                              {{showDay(Workday.day,item.time)}} -
+                              {{showDay(Workday.day,item.endtime)}}
+                            </div>
+                          </div>
+                          <div v-else>
+                            <div class="style_timeover">
+                              {{showDay(Workday.day,item.time)}} -
+                              {{showDay(Workday.day,item.endtime)}}
+                            </div>
+                          </div>
+                          <!----------------------------------------------------- table activities ----------------------------------------------------->
+                          <div v-if="item.type == 'tutorial_session'">
+                            <div class="style_session">
+                              <a :href="'tutorial_template.html?tutNum=Tutorial'+item.num">
+                                <div
+                                  style="margin-left: 0.5em"
+                                  class="tip tip-buttom"
+                                  data-tip="Tutorial Description"
+                                >
+                                  <big>{{Tutorials[item.num]}}</big>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                          <div v-else>
+                            <div class="style_event">
+                              <strong>{{item.type}}</strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="workshops" class="pt-5">
+                  <div
+                    v-for="(workshop_day,i) in Workshop_Days"
+                    v-bind:key="i.id"
+                  >
+                    <div class="d-none d-lg-block mb-5">
+                      <h4 v-bind:id="i">
+                        <span class="badge bg-secondary">Day {{i+3}}</span>
+                        Workshops
+                      </h4>
+                      <hr />
+
+                      <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-11">
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="row">
+                                <div
+                                  class="col-1 workshop-calendar-time-cell p-1"
+                                  v-for="time in 12"
+                                >
+                                  <p class="m-0">
+                                    {{showDay(workshop_day,time - 1)}}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="row">
+                                <div
+                                  class="col-1 workshop-calendar-time-cell p-1"
+                                  v-for="time in 12"
+                                >
+                                  <p class="m-0">
+                                    {{showDay(workshop_day,time + 11)}}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" v-for="workshop in workshop_list">
+                        <div
+                          class="col-1"
+                          style="border: 0.3px #cccccc; border-style: solid"
+                        >
+                          <a
+                            class="tip tip-buttom"
+                            data-tip="Go to workshop website"
+                            :href="getWorkShopUrl(workshop)"
+                            target="_blank"
+                            >{{workshop}}</a
+                          >
+                        </div>
+                        <div class="col-11">
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="row">
+                                <div
+                                  class="col-1"
+                                  v-for="time in 12"
+                                  style="
+                                    border: 0.3px #cccccc;
+                                    border-style: solid;
+                                  "
+                                >
+                                  <div
+                                    v-if="isWorkshopTime(time-1, workshop, workshop_day)"
+                                  >
+                                    <a
+                                      class="
+                                        btn btn-outline-primary
+                                        tip tip-buttom
+                                      "
+                                      data-tip="Go to workshop website"
+                                      v-bind:class="setWorkShopClassFunc(workshop)"
+                                      :href="getWorkShopUrl(workshop)"
+                                      target="_blank"
+                                    ></a>
+                                  </div>
+                                  <div v-else class=""><label></label></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="row">
+                                <div
+                                  class="col-1"
+                                  v-for="time in 12"
+                                  style="
+                                    border: 0.3px #cccccc;
+                                    border-style: solid;
+                                  "
+                                >
+                                  <div
+                                    v-if="isWorkshopTime(time+11, workshop, workshop_day)"
+                                  >
+                                    <a
+                                      class="
+                                        btn btn-outline-primary
+                                        tip tip-buttom
+                                      "
+                                      data-tip="Go to workshop website"
+                                      v-bind:class="setWorkShopClassFunc(workshop)"
+                                      :href="getWorkShopUrl(workshop)"
+                                      target="_blank"
+                                    ></a>
+                                  </div>
+                                  <div v-else class=""><label></label></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!------------------------------------------------------------------------- Week2 ---------------------------------------------------------------------------------->
+          <div v-if="week == 2">
+            <div class="">
+              <div class="row row-cols-2">
+                <!-------------------------------- title "Day"------------------------------->
+                <div
+                  class="col-md-1-5 col-lg-1-5"
+                  style="
+                    border: 0.3px #cccccc;
+                    border-left-style: solid;
+                    border-right-style: solid;
+                  "
+                  v-for="(Workday,j) in Week2"
+                >
+                  <div class="w-100"></div>
+                  <div class="col" style="margin: 1em 0em 0em 0em">
+                    <h3 class="text-center">
+                      <span class="badge badge-light text-dark">
+                        Day {{j+1}}
+                      </span>
+                    </h3>
+                    <hr />
+                  </div>
+
+                  <div v-for="item in Workday" >
+                    <div
+                      class="col"
+                      v-if="searchShow[item.type+item.num]||searchShow[item.type]"
+                      :style="setHeigth(item.time, item.end)"
+                    >
+                      <!----------------------------------------------------------------- talbe time ----------------------------------------------------------------->
+                      <div v-if="isOver(Week2[j][0].day,item.time)">
+                        <div class="style_time">
+                          <font size="2">
+                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                          </font>
+                        </div>
+                      </div>
+                      <div v-else>
+                        <div class="style_timeover" style="line-height: 18px">
+                          <font size="2">
+                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                          </font>
+                        </div>
+                      </div>
+                      <!--------------------------------------------------------------- table activities  -------------------------------------------------------------->
+                      <div>
+                        <div v-if="item.timeMin != undefined">
+                          <div class="row">
+                            <div class="col">
+                              <div
+                                class="style_session row"
+                                class="row align-items-center"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal"
+                                @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
+                              >
+                                <div
+                                  style="margin-left: 0.5em"
+                                  class="tip tip-buttom col align-self-center"
+                                  :data-tip=session[item.num]
+                                >
+                                <I class="mobileVanished"><font size="2" class="sessionText">Session5</font></I>
+                                <I class="pcVanished"><font size="2" class="sessionText">S5</font></I>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div
+                                class="style_event row"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modal"
+                                @click="setModalDetailMin(0, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2);setInvitedNum(j)"
+                              >
+                                <div class="tip tip-buttom col align-self-center" :data-tip=item.type2>
+                                  <strong>OR</strong>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div v-else-if="item.type == 'session'">
+                          <div
+                            class="style_session row"
+                            class="row align-items-center"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal"
+                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                          >
+                            <div
+                              style="margin-left: 0.5em"
+                              class="tip tip-buttom col align-self-center"
+                              :data-tip=session[item.num]
+                            >
+                              <div class="mobileVanished"><I><font size="2" class="sessionText">Session{{item.num}} </font></I><strong>{{sessionText(item.num)}}</strong></div> 
+                              <div class="pcVanished"><I><font size="2" class="sessionText">Session{{item.num}}</font></I></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div v-else-if="item.type == 'Socializing'">
+                          <div
+                            class="style_socializing row"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal"
+                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                            :style="setInsideHeight(item.time, item.end)"
+                          >
+                            <div class="tip tip-buttom col align-self-center" data-tip="Socializing">
+                              <strong>
+                                Socializing
+                                <div v-if="!isOver(Week2[j][0].day,item.time) && item.end - item.time > 1">(Over)</div>
+                              </strong>
+                            </div>
+                          </div>
+                        </div>
+                        <div v-else-if="item.type == 'gather'">
+                          <a
+                            href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                            target="_blank"
+                          >
+                            <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
+                              <div
+                                class="tip tip-buttom col align-self-center"
+                                data-tip="Go to Gather.Town"
+                                >
+                                <strong class="mobileVanished">Live Get-Together</strong>
+                                <small class="pcVanished">Live Get-Together</small>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <div v-else>
+                          <div
+                            class="style_event row"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal"
+                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0');setInvitedNum(j)"
+                            :style="setInsideHeight(item.time, item.end)"
+                          >
+                            <div class="tip tip-buttom col align-self-center" :data-tip=item.type>
+                              <strong>
+                                {{item.type}}
+                                <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
+                              </strong>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------- Modal of the table --------------------------------------------------------------------------------->
+          
+          <div
+            class="modal fade"
+            id="modal"
+            data-bs-keyboard="false"
+            aria-labelledby="staticBackdropLabel"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content" :style="setModalColor(modal_type)">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal">
+                    <div v-if="modal_type == 'session'">
+                      Session {{modal_sessionNum}}:
+                      {{session[modal_sessionNum]}}
+                    </div>
+                    <div v-else-if="modal_type == 'dc_session'">
+                      Session {{modal_sessionNum}}
+                    </div>
+                    <div v-else>{{modal_type}}</div>
+                  </h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="mb-5">
+                      <p style="margin-top: 1.5em"></p>
+                      <div v-if="modal_type == 'session'">
+                        <a
+                          v-for="item in paper[modal_sessionNum]"
+                          @click="setChannelID(item.id)"
+                          style="color: #51585e;pointer-events: none;"
+                          :href="'../exhibition/index.html?channel='+item.id"
+                          target="_blank"
+                        >
+                          <div class="paperTitle-link p-2">
+                            <strong class="mb-1">{{item.title}}</strong>
+                            <div style="font-size: x-small" class="mb-1">
+                              <strong><br>Authors: </strong>{{item.authors}}
+                            </div>
+                            <p
+                              style="font-size: x-small"
+                              class="mb-0"
+                              v-if="item.keywords != ''"
+                            >
+                              <strong>Keywords: </strong>{{item.keywords}}
+                            </p>
+                          </div>
+                          <hr />
+                        </a>
+                        <div style="text-align: end">
+                          <strong>Time</strong>:
+                          <small
+                            ><i
+                              >{{showModalDay()}}</i
+                            ></small
+                          ><br />
+                          <strong>Place</strong>:
+                          <small
+                            ><i
+                              >Session room in
+                              <a
+                                href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"
+                              >
+                                <span class="modalGather">Gather.Town</span>
+                              </a></i
+                            ></small
+                          ><br />
+                        </div>
+                      </div>
+                      <div v-else-if="modal_type == 'Socializing'">
+                        <div class="text-center">
+                          <strong
+                            >Go to the bar and chat with others!<br /><br />Time
+                            :
+                          </strong>
+                          <small
+                            ><i
+                              >{{showModalDay()}}</i
+                            ></small
+                          ><br />
+                          <strong>Place</strong>:
+                          <small
+                            ><i
+                              >Bar room in
+                              <a
+                                href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"
+                              >
+                                <span class="modalGather">Gather.Town</span>
+                              </a></i
+                            ></small
+                          ><br />
+                        </div>
+                      </div>
+                      <div v-else-if="modal_type == 'Invited Talk'">
+                        <div class="text-center">
+                          <font size="3"><strong>Invited Speakers: {{InvitedSpeakers[invitedNum]}}<br><br>
+                          Chairs: {{Chairs[invitedNum]}}<br><br></strong></font>
+                        </div>
+                        <div style="text-align: end">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <strong>Place</strong>:
+                          <small><i>Session room in
+                              <a
+                                href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"
+                              >
+                                <span class="modalGather">Gather.Town</span>
+                              </a></i></small><br>
+                        </div>
+                      </div>
+                      <div v-else-if="modal_type == 'dc_session'" >
+                        <div style="text-align: end">
+                          <strong>Student Presenters:<br/> {{modal_data}}</strong><br />
+                        </div>
+                      </div>
+                      <div v-else-if="modal_type == 'DC Invited Talk'||modal_type == 'DC Panel'" >
+                        <div style="text-align: end">
+                          <strong>{{modal_data}}</strong><br />
+                        </div>
+                      </div>
+                      <div v-else-if="modal_type == 'Industry Talks'">
+                        <div v-for="item in IndustryTalk">
+                          <strong>{{item.title}}<br></strong><div style="font-size: x-small"><strong><br>Authors:</strong> {{item.authors}}<hr></div>
+                        </div>
+                        <div style="text-align: end">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
+                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
+                          <div v-else><strong>Place</strong>: <small><i>Session room in
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small> <br></div>
+                        </div>
+                      </div>
+                      <div v-else>
+                        <div style="text-align: end">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
+                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
+                          <div v-else><strong>Place</strong>: <small><i>Session room in
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small> <br></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <footer class="footer m-5">
       <div class="container">
         <hr />
@@ -69,5 +783,9 @@
       </div>
     </footer>
   </body>
-  <script src="./index.js"></script>
+  <script
+    type="module"
+    src="/Schedule/schedule.js"
+    crossorigin="anonymous"
+  ></script>
 </html>

@@ -6,7 +6,7 @@
     <title>ICAPS 2021</title>
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <!-- Bootstrap Overrides -->
     <link href="../../assets/bootstrap/css/styles.css" rel="stylesheet" />
@@ -22,12 +22,17 @@
     <!-- jQuery -->
     <script src="../../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../../assets/js/custom.js"></script>
+        <!-- import axios  -->
+    <script src="../../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../../assets/js/vue.min.js"></script>
   </head>
   <body>
     <div id='icaps-header'>
-      <myheader curpage='workshops'></myheader>
+      <myheader curpage='program' curitem="workshops"></myheader>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak>
 
     <div class="album mt-3">
       <div style="height: 100px" class="d-none d-md-block">
@@ -59,6 +64,14 @@
           </div>
           <div class="col col-12 col-xs-12 col-sm-12 col-md-12 col-lg-8 p-4">
             <section>
+              <div class="col col-auto align-self-center" style="margin-top: 1em">
+                <strong>Timezone:</strong>
+                <select v-model="zone">
+                <option v-for="option in zoneOptions" :value="option.value">
+                  {{option.text}}
+                </option>
+                </select>
+              </div>
               <header>
                 <h1 class="top">
                   Heuristics and Search for Domain-independent Planning (HSDIP)
@@ -77,29 +90,95 @@
                     those limitations, as well as the synergy between heuristics
                     and search.
                   </p>
-
-                  <h3>Deadlines and Dates</h3>
-                  <p>
-                    <strong
-                      >Due to ICAPS being postponed we decided to extend the
-                      workshop deadline. We will announce a new deadline as soon
-                      as possible, submission will remain open.</strong
-                    >
-                  </p>
-
-                  <p><ul>
-                    <li>
-                      Paper submission deadline:<br />
-                      <s>10 March 2021 (UTC-12 timezone)</s><br />
-                      <s>18 March 2021 (UTC-12 timezone)</s><br />
-                      13 May 2021 (UTC-12 timezone)
-                    </li>
-                    <li>Open Discussion: 27 May - 8 June 2021</li>
-                    <li>Notification: 10 June 2021</li>
-                    <li>Camera-ready paper submission: 19 July 2021</li>
-                    <li>Workshop: TBA</li>
-                  </ul></p>
-
+                  
+                  
+                  <h3>Schedule (tentative) - August 4</h3>
+                  
+                  Presentations are allocated 12 min per paper, plus 5 min discussion. 
+                  Details about how to join the workshop will be posted soon.<br>
+                  For some time zones, the workshop ends on August 5.<br><br>
+                  
+                  <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="width:25%">Time</th>
+                      <th scope="col" style="width:10%"></th>
+                      <th scope="col" style="width:60%"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-secondary">
+                      <td>{{showDayWithMin(HSDIP_DAY,7,00)}}</td>
+                      <td align="center" colspan=2>
+          						  Opening Remarks
+                      </td>
+                    </tr>
+                    <tr class="table-primary">
+                      <td>{{showDayWithMin(HSDIP_DAY,7,10)}}</td>
+                      <td><b>Keynote</b></td>
+                      <td align="center">
+                        <b>Shirin Sohrabi</b><br> 
+                        AI Planning: Challenges and Opportunities
+                      </td>
+                    </tr>
+                    <tr class="table-secondary">
+                      <td>{{showDayWithMin(HSDIP_DAY,8,10)}}</td>
+                      <td align="center" colspan=3>Break</td>
+                    </tr>
+                    <tr class="table-primary">
+                      <td>{{showDayWithMin(HSDIP_DAY,8,30)}}</td>
+                      <td align="center"><b>Session 1</b></td>
+                      <td>
+                        <ul>
+                          <li><b>A Branch-and-Cut Approach for a Mixed Integer Linear Programming Compilation of Optimal Numeric Planning</b> <br> Ryo Kuroiwa, Chris Beck</li>
+                          <li><b>Polynomial-Time in PDDL Input Size: Making the Delete Relaxation Feasible for Lifted Planning</b> <br> Pascal Lauer, &Aacute;lvaro Torralba, Daniel Fi&scaron;er, Daniel H&ouml;ller, Julia Wichlacz, J&ouml;rg Hoffmann</li>
+                          <li><b>Custom-Design of FDR Encodings: The Case of Red-Black Planning</b> <br> Daniel Fi&scaron;er, Daniel Gnad, Michael Katz, J&ouml;rg Hoffmann</li>
+                          <li><b>A Compilation Based Approach to Finding Centroids and Minimum Covering States in Planning</b> <br> Erez Karpas</li>
+                          <li><b>Classical Planning with Avoid Conditions</b> <br> Marcel Steinmetz, J&ouml;rg Hoffmann, Stefan Borgwardt, Alisa Kovtunova</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="table-secondary">
+                      <td>{{showDayWithMin(HSDIP_DAY,10,00)}}</td>
+                      <td align="center" colspan=3>Break</td>
+                    </tr>
+                    <tr class="table-primary">
+                      <td>{{showDayWithMin(HSDIP_DAY,10,30)}}</td>
+                      <td align="center"><b>Session 2</b></td>
+                      <td>
+                        <ul>
+                          <li><b>Learning To Estimate Search Progress Using Sequence Of States</b> <br> Matan Sudry, Erez Karpas</li>
+                          <li><b>Learning-based Synthesis of Social Laws in STRIPS</b> <br> Ronen Nir, Alexander Shleyfman, Erez Karpas</li>
+                          <li><b>Metareasoning for Tuning the Hyperparameters of Anytime Planning: A Deep Reinforcement Learning Approach</b> <br> Abhinav Bhatia, Justin Svegliato, Shlomo Zilberstein</li>
+                          <li><b>Efficient Black-Box Planning Using Macro-Actions with Focused Effects</b> <br> Cameron Allen, Michael Katz, Tim Klinger, George Konidaris, Matthew D Riemer, Gerald Tesauro</li>
+                          <li><b>Cost Optimal Planning as Satisfiability</b> <br> Mohammad Abdulaziz</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="table-secondary">
+                      <td>{{showDayWithMin(HSDIP_DAY,12,00)}}</td>
+                      <td align="center" colspan=3>Break</td>
+                    </tr>
+                    <tr class="table-primary">
+                      <td>{{showDayWithMin(HSDIP_DAY,13,00)}}</td>
+                      <td align="center"><b>Session 3</b></td>
+                      <td>
+                        <ul>
+                          <li><b>LM-BFS: A Framework for Landmarks in Planning</b> <br> Clemens B&uuml;chner, Thomas Keller</li>
+                          <li><b>Introducing Operator-Potential Heuristics for Symbolic Search</b> <br> Daniel Fi&scaron;er, &Aacute;lvaro Torralba, J&ouml;rg Hoffmann</li>
+                          <li><b>Expressing and Exploiting the Common Subgoal Structure of Classical Planning Domains Using Sketches</b> <br> Dominik Drexler, Jendrik Seipp, Hector Geffner</li>
+                          <li><b>The Fewer the Merrier: Pruning Preferred Operators with Novelty</b> <br> Alexander Tuisov, Michael Katz</li>
+                          <li><b>A*+BFHS: A Hybrid Heuristic Search Algorithm</b> <br> Zhaoxing Bu, Richard Korf</li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr class="table-secondary">
+                      <td>{{showDayWithMin(HSDIP_DAY,14,30)}}</td>
+                      <td align="center" colspan=2>Closing, Social Meeting, Discussions</td>
+                    </tr>
+                  </tbody>
+                  </table>
+                  
                   <h3>Keynote Speaker</h3>
 
                   <p>The HSDIP workshop is proud to announce that
@@ -266,6 +345,28 @@
                     but we expect the authors to argue for the significance of
                     the presented results.
                   </p>
+                  
+                  <h3>Deadlines and Dates</h3>
+                  <p>
+                    <strong
+                      >Due to ICAPS being postponed we decided to extend the
+                      workshop deadline. We will announce a new deadline as soon
+                      as possible, submission will remain open.</strong
+                    >
+                  </p>
+
+                  <p><ul>
+                    <li>
+                      Paper submission deadline:<br />
+                      <s>10 March 2021 (UTC-12 timezone)</s><br />
+                      <s>18 March 2021 (UTC-12 timezone)</s><br />
+                      <s>13 May 2021 (UTC-12 timezone)</s>
+                    </li>
+                    <li><s>Open Discussion: 27 May - 8 June 2021</s></li>
+                    <li><s>Notification: 10 June 2021</s></li>
+                    <li><s>Camera-ready paper submission: 19 July 2021</s></li>
+                    <li>Workshop: August 4 (for some time zones it ends on August 5)</li>
+                  </ul></p>
 
                   <h3>Submissions</h3>
 
@@ -386,7 +487,7 @@
         </div>
       </div>
     </div>
-
+    </div>
     <footer class="footer m-5">
       <div class="container">
         <hr />
@@ -407,5 +508,10 @@
       </div>
     </footer>
     <script src="../../assets/js/bootstrap.min.js"></script>
+    <script
+    type="module"
+    src="/Schedule/schedule.js"
+    crossorigin="anonymous"
+  ></script>
   </body>
 </html>

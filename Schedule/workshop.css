@@ -1,0 +1,60 @@
+.HSDIP{
+	background-color:rgb(195,189,155);
+	font-color: rgb(195,189,155);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;	
+}
+.WIPC{
+	background-color:rgb(237,49,34);
+	font-color: rgb(237,49,34);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.INTEX{
+	background-color:rgb(160,205,99);
+	font-color: rgb(160,205,99);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.XAIP{
+	background-color:rgb(188,204,226);
+	font-color: rgb(188,204,226);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.HPLAN{
+	background-color:rgb(237,116,248);
+	font-color: rgb(237,116,248);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.FINPLAN{
+	background-color:rgb(218,227,192);
+	font-color: rgb(218,227,192);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.PRL{
+	background-color:rgb(246,214,184);
+	font-color: rgb(246,214,184);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.KEPS{
+	background-color:rgb(255,253,84);
+	font-color: rgb(255,253,84);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.PLANROB{
+	background-color:rgb(202,193,216);
+	font-color: rgb(202,193,216);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}
+.SPARK{
+	background-color:rgb(223,186,184);
+	font-color: rgb(195,189,155);
+	font-family: ‘Gill Sans’, ‘Gill Sans MT’, Calibri, ‘Trebuchet MS’, sans-serif;
+	text-align:center;
+}

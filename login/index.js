@@ -32,5 +32,7 @@ var app = new Vue({
             this.errorTip.isError = false;
         }
     },
-    
+    mounted(){
+        axios.defaults.withCredentials = true;
+    }
 })

@@ -1,114 +1,174 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<!-- <meta http-equiv="refresh" content="0;url=../home/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-	<link rel="shortcut icon" type="image/png" href="../assets/images/favicon.png" />
-	<title>ICAPS 2021</title>
-	<!-- Bootstrap Overrides -->
-	<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
-	<link href="../assets/css/custom.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- <script src="../assets/js/vue.min.js"></script> -->
+    <link rel="shortcut icon" type="image/png" href="../assets/images/favicon.png" />
+    <link rel="stylesheet" href="../assets/bootstrap/css/styles.css">
+    <script src="../assets/js/bootstrap.min.js"></script>
 
-	<script src="../assets/js/bootstrap.min.js"></script>
+    <title>ICAPS 2021</title>
 
-	<!-- jQuery -->
-	<script src="../assets/js/jquery-3.6.0.min.js"></script>
-	<script src="/assets/component/myheader.js" type="module"></script>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+
+    <!-- Bootstrap Overrides -->
+    <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+	<link href="./style.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="../Schedule/schedule.css">
+	<script type="application/json" src="../assets/data/paper.json"></script> 
+    <!--    <link href="home.css" rel="stylesheet" />-->
+
+    <!-- Bootstrap Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="/assets/component/myheader.js" type='module'></script>
+    <script type="module" src="./index.js"></script>
+    
 </head>
+
 
 <body class="bg-light">
 	<div id='icaps-header'>
 		<myheader curpage='exhibition'></myheader>
 	</div>
-	<main class="container" style="min-height: 80vh;">
-		<div class="album mt-3">
-			<div style="height: 100px" class="d-none d-md-block">
-				<!-- padding hack for the fixed navbar -->
-			</div>
+	
+	<div class="album mt-3">
+		<div style="height: 100px;" class="d-none d-md-block">
+			<!-- padding hack for the fixed navbar -->
 		</div>
-		<table style="width:100%">
-			<tr>
-				<td style="vertical-align: middle;">
-					<h3>Anahita Mohseni-Kabir, Manuela Veloso, Maxim Likhachev</h3>
-				</td>
-				<td style="text-align: right;vertical-align: middle;">
-						<span class="d-inline-flex text-center text-white rounded p-1 bg-info" data-toggle="tooltip" title="Poster ID in the virtual conference center." style="cursor: default;">
-							<small class="my-auto">PosterID:</small>
-							<span class="my-auto pl-1 font-weight-bold">29</span>
+	</div>
+	<main style="min-height: 80vh;padding: 0 3rem 3rem 3rem;">
+		<div class="album mt-3">
+		</div>
+		<div id="app" v-cloak style="margin-bottom: 2em;">
+			<h4><strong>{{curPaper.title}}</strong></h4>
+			<table style="width:100%">
+				<tr>
+					<td style="vertical-align: middle;" class="card-text">
+						<span v-for="key in keywords" class="badge bg-secondary" style="margin-right: 1em;">{{key}}</span>
+					</td>
+					<td style="text-align: right;vertical-align: middle;">
+						<span class="d-inline-flex text-center text-white rounded p-1 card-text" data-toggle="tooltip"
+							title="Poster ID in the virtual conference center."
+							style="cursor: default;background-color: #f5821f;">
+							<span class="my-auto pl-1 font-weight-bold">PaperID: {{curPaper.id}}</span>
 						</span>
-						<a href="https://www.aaai.org/ojs/index.php/ICAPS/article/view/6662" class="btn btn-link" target="_blank">
+						<a :href="curPdf.link" class="btn btn-link" target="_blank" v-if="isPdf">
 							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>picture_as_pdf</small>
-							</span>
-							<span class="">
-								PDF
-							</span>
+								<img src="../assets/images/pdflogo.jpg" style="width: 2.5em; height: 3em;" alt="">
 							</div>
 						</a>
-						
-						
-						<a href="posters/poster131.pdf" class="btn btn-link">
-							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>library_books</small>
-							</span>
-							<span class="">
-								Poster
-							</span>
-							</div>
-						</a>
-						
-						
-						<a href="bibtex/paper131.bib" class="btn btn-link">
-							<div class="d-inline-flex">
-							<span class="d-inline-flex my-auto material-icons pr-1">
-								<small>menu_book</small>
-							</span>
-							<span class="">
-								BibTeX
-							</span>
-							</div>
-						</a>
-						
-						
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align:justify;">
-					We focus on domains where a robot is required to accomplish a set of tasks that are partially observable and evolve independently of each other according to their dynamics. An example domain is a restaurant setting where a robot waiter should take care of an ongoing stream of tasks, namely serving a number of tables, including delivering food to the tables and checking on customers. An action that the robot should take next at any point of time typically depends on the duration of possible actions, the state of each table, and how these tables evolve over time, e.g., the food becomes cold after a few time steps. As most of these domains are dynamic and tasks are frequently being added and removed, the robot typically needs to plan for a short h-step horizon to quickly decide on the next action and replans at each time step. A conventional approach to deal with this problem is to combine all the tasks&#39; states and robot actions into one large model and to compute an h-step optimal policy for this combined model. For the problems that we are interested in, the number of tasks, e.g., the number of tables in the restaurant domain, can be large making this planning approach computationally impractical. The observation that we make however is that in many domains the number of tasks that the robot can accomplish within h-steps is very limited. We present an algorithm that exploits this observation and decomposes the problem into a series of much smaller planning problems, the solution to which gives us an optimal solution. We demonstrate the efficiency of our algorithm on the restaurant domain.
-				</td>
-			</tr>
-		</table>
-		<div class="row">
-			<div class="col-12 col-lg-9 col-md-9 col-sm-12">
-				<div class="card shadow-sm mb-4" style="height: 40.75rem;">
-					<div class="card-body">
-						<div id="presentation-embed-38942367"></div>
-						<script src='https://slideslive.com/embed_presentation.js'></script>
-						<script>
-							embed = new SlidesLiveEmbed('presentation-embed-38942367', {
-								presentationId: '38942367',
-								autoPlay: false, // change to true to autoplay the embedded presentation
-								verticalEnabled: true
-							});
-						</script>
+	
+						<!-- 						
+							<a href="" class="btn btn-link">
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>library_books</small>
+								</span>
+								<span class="">
+									Poster
+								</span>
+								</div>
+							</a> -->
+	
+	
+						<!-- <a href="" class="btn btn-link">
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>menu_book</small>
+								</span>
+								<span class="">
+									BibTeX
+								</span>
+								</div>
+							</a> -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:justify;">
+						{{curPaper.abstract}}
+					</td>
+				</tr>
+			</table>
+			<div class="modal" tabindex="-1" id='tips'>
+				<div class="modal-dialog ">
+					<div class="modal-content">
+						<div class="modal-body" style="background-color: rgb(231, 241, 255);">
+							<p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
+								{{modalmsg}}</p>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-lg-3 col-md-9 col-sm-12">
-				<div class="card shadow-sm mb-4" style="height: 40.75rem;">
-					<div class="card-body">
-						<ul class="list-group list-group-flush">
-							<h1>Rocketchat</h1>
-						</ul>
+		</div>
+		<div class="row">
+			<div class=" col-xs-12 col-sm-12 col-md-9" style="position: relative;">
+				<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
+					<div class="card-body" style="padding: 0 0 0 0;background-color: #f5e3d3;">
+						<div style="position: absolute;top:40%;left: 50%;">
+							<div style="position: relative;left:-50%;font-size: 3em;font-weight: bolder;color: #f5821f;">
+								Slideslive coming soon</div>
+						</div>
+	
+						<!-- <div id="presentation-embed-38942367" ></div>
+							<script src='https://slideslive.com/embed_presentation.js'></script>
+							<script type="module">
+								import axios from '/assets/js/axios.js';
+								import {backendBaseUrl} from '/assets/js/backendBaseUrl.js';
+								let res = await axios.get(backendBaseUrl+'/api/test');
+								console.debug(res); 
+								embed = new SlidesLiveEmbed('presentation-embed-38942367', {
+									presentationId: '38942367',
+									autoPlay: false, // change to true to autoplay the embedded presentation
+									verticalEnabled: true
+								});
+							</script> -->
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-3 ">
+				<div id="app2" v-cloak>
+					<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
+						<div class="card-body" style="padding: 0 0 0 0;">
+							<ul class="list-group list-group-flush">
+								<iframe v-bind:src="rocketchatUrl+'/channel/'+channel+'/?layout=embedded'" height=600
+									title="myframe" id="iframe"></iframe>
+									<div style="font-size: small;color:grey;text-align: center;">You can modify your chat name on the profile page</div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="app3" v-cloak style="border: solid 2px #d7dcdf;border-radius: 5px;">
+			<div style="margin:2% 2% 2% 2%">
+	
+				<div class="container">
+					<div class="mb-5">
+						<h4>Session {{sessionNum}}: {{session[sessionNum]}}</h4>
+						<a v-for='item in paper[sessionNum]' style="color: #51585E;"
+							:href="'../exhibition/index.html?channel='+item.id" >
+							<hr>
+							<p class="paperTitle" :style="sessionSelect(item.id)">{{item.title}} <br>
+								<span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>
+									<span v-if="item.keywords != ''"><br><strong>Keywords: </strong><I>{{item.keywords}}</I>
+							</P></span></span>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
+		
+
 			<footer class="footer m-5">
 				<div class="container">
 					<hr />

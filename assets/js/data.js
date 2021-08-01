@@ -1,3 +1,4 @@
+
 export let country =   [
     "AFGHANISTAN",
     "ÅLAND ISLANDS",
@@ -358,3 +359,13 @@ export let workshopsData=[
     {value:"Scheduling and Planning Applications woRKshop",keyword:"SPARK"},
     {value:"Workshop on Planning and Robotics ",keyword:"PlanRob"},
 ]
+
+
+let orignalSetItem = window.localStorage.setItem;   // 原生localStorage.setItem方法
+export  function resetItem(key,newValue){
+  let setItemEvent = new Event("setItemEvent");  // 重写注册setItem
+  setItemEvent.key = key;                        
+  setItemEvent.newValue = newValue;              
+  window.dispatchEvent(setItemEvent);            // 派发setItem
+//   orignalSetItem.apply(this, arguments);         // 设置值
+}  

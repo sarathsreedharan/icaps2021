@@ -1,4 +1,5 @@
 import {backendBaseUrl} from '../js/backendBaseUrl.js';
+import { resetItem } from '../js/data.js';
 import Vue from '../js/vue.esm.browser.js';
 import Vuex from '../js/vuex.esm.browser.js';
 import axios from '../js/axios.js';
@@ -7,7 +8,8 @@ const store = new Vuex.Store({
     state: {
         isLogin: false,
         isRegistration: false,
-        user: {}
+        user: {},
+        flag: '',
     },
     mutations: {
         setLogin(state, payload) {
@@ -23,7 +25,7 @@ const store = new Vuex.Store({
 })
 async function getTemplate(){
     let storage=window.localStorage;
-    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>3) {
+    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>2) {
         storage.setItem("header",(await axios.get("/assets/component/myheader.html")).data);
         storage.setItem("header_cnt",0);
     }
@@ -37,13 +39,16 @@ async function getTemplate(){
 Vue.component('myheader',async function(resolve,reject){
     return resolve({
         props: ['curpage', 'curitem'],
-        store:store,
+        store: store,
         data: function () {
             return {
+                token: "",
+                begin:''
             }
         },
         template: await getTemplate(),
         created: function () {
+            axios.defaults.withCredentials = true;
             if (window.localStorage.getItem('token')) {
                 axios.get(backendBaseUrl + '/api/users/profile', {
                     headers: {
@@ -59,7 +64,42 @@ Vue.component('myheader',async function(resolve,reject){
                 }).catch(err => {
                     console.log(err)
                 });
+                localStorage.setItem('flag', 0);
+                localStorage.setItem('tokenTime', Date.parse(new Date()))
+                this.begin = setInterval(() => {
+                    if (Date.parse(new Date) - localStorage.getItem('tokenTime') > 59000) {
+                        resetItem('flag', 0)
+                    }
+                }, 60000)
+            } else {
+                axios.post(backendBaseUrl + '/api/users/logout').then(res => { })
             }
+        },
+        mounted() {
+            axios.defaults.withCredentials = true;
+            window.addEventListener("setItemEvent", (e) => {
+                if (e.newValue == 0 && this.isLogin) {
+                    axios.get(backendBaseUrl + '/api/test/heartbeat', {
+                        headers: {
+                            "Authorization": localStorage.getItem('token')
+                        }
+                    }).then(res => {
+                        if (res.data.message == "refresh") {
+                            console.log(res.data)
+                            let token = res.data.token;
+                            localStorage.setItem('token', token)
+                        }
+                        console.log(Date.parse(new Date) - localStorage.getItem('tokenTime'))
+                        resetItem('flag', 1)
+                        localStorage.setItem('tokenTime', Date.parse(new Date()))
+                    }).catch(err => {
+                        if (err.response.status == 401) {
+                            clearInterval(this.begin);
+                            axios.post(backendBaseUrl + '/api/users/logout').then(res => {})
+                        }
+                    })
+                }
+            })
         },
         computed: {
             isLogin: function () {
@@ -70,11 +110,17 @@ Vue.component('myheader',async function(resolve,reject){
             },
             user: function () {
                 return this.$store.state.user;
-            }
+            },
         },
         methods: {
-            logout() {
+            async logout() {
+                clearInterval(this.begin);
                 localStorage.setItem('token', '');
+                await axios.post(backendBaseUrl+'/api/users/logout'
+                ).then(res=>{
+                }).catch(err=>{
+                    console.log(err)
+                })
                 window.location.reload();
             },
             login() {

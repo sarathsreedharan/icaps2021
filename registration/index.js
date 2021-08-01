@@ -2,7 +2,6 @@ import {backendBaseUrl} from '../assets/js/backendBaseUrl.js';
 import {country,eduMail, Tshirt_style,workshopsData} from '../assets/js/data.js';
 import { Vue, header, store } from '/assets/component/myheader.js';
 import { paypal_url } from '../assets/config/paypal.js';
-
 // inject js file and export a handle after load it complete
 function injectJS(src, onload) {
     var loaded = Array.from(document.scripts).some(it => it.getAttribute('src') === src); // Warn：script.src !== script.getAttribute('src')
@@ -60,9 +59,9 @@ injectJS(paypal_url,()=>{
             }
             app.paySuccessful = false;
             console.log("now in error");
-            app.modalmsg = message;
-            app.tipsModal.show();
-            setTimeout(()=>{app.tipsModal.hide()}, 2000);
+            // app.modalmsg = message;
+            // app.tipsModal.show();
+            // setTimeout(()=>{app.tipsModal.hide()}, 2000);
         },
         onApprove: (data) => {
             console.log("now is in onApprove");
@@ -136,6 +135,7 @@ var app = new Vue({
         user: {},
         reg_info: {
             publication: false,
+            registration:true,
             is_student: false,
             papers: [],
         },
@@ -189,9 +189,10 @@ var app = new Vue({
                 axios.post(backendBaseUrl + '/api/users/login', this.user_info).then(res => {
                     window.location.href = './index.html'
                 }).catch(err => {
-
+                    console.error(err);
                 })
             }).catch(err => {
+                console.debug(err);
                 this.isErrorCode = true
             })
         },
@@ -357,6 +358,7 @@ var app = new Vue({
         }
     },
     mounted: function () {
+        axios.defaults.withCredentials = true;
         this.codeModal = new bootstrap.Modal(document.getElementById('verifyCode'));
         this.errorModal = new bootstrap.Modal(document.getElementById('Registered'));
         this.publicationModal = new bootstrap.Modal(document.getElementById('publication'));
@@ -396,15 +398,19 @@ var app = new Vue({
                     "Authorization": localStorage.getItem('token')
                 }
             }).then(res => {
+                console.debug("1",res.data);
                 if(res.data.cv_info){
                     this.collapse[5].show()
                 }
-                else if (this.isRegistration ) {
+                else if (res.data.reg&&res.data.reg.registration) {
                     this.collapse[3].show();
-                } else {
-                    this.collapse[2].show();
-                }
+                 }
+                // else {
+                //     this.collapse[2].show();
+                // }
+                console.debug("2",res.data);
                 this.user = res.data;
+                console.debug("3",this.user);
                 this.user_info = this.user.profile;
                 this.reg_info.registration = false;
                 this.user_info.email = this.user.email;
@@ -418,6 +424,7 @@ var app = new Vue({
                     this.uploadFile.add_mail_list = Boolean(this.user.cv_info.add_mail_list)
                 }
             }).catch(err => {
+                console.error(err);
                 this.collapse[1].show()
             });
         } else {
