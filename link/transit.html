@@ -12,9 +12,9 @@
 <body>
     <div id="app" style="position: absolute;left: 50%;top: 40%;" v-cloak>
         <p style="text-align: center;position:relative;top: -50%;left: -50%;">
-            To enter, click this external link:
+            To enter, click this button:
             <br>
-            <a :href="goal_url" target="_blank" id="open_link">{{goal_url}}</a>
+            <button @click="open()" target="_blank" id="open_link" style="background-color: rgb(67, 88, 220);border: solid 1px rgb(67, 88, 220);color: white;font-size: larger;border-radius: 4px;">{{type}}:{{id}}</button>
             <br>
             <br>
             Clidking the link will disable your audio/video on Gather, so it won't interfere

@@ -6,7 +6,6 @@ var app = new Vue({
     el: '#app',
     store: store,
     data: {
-        isLogin: false,
         user: {
         },
         columns: {
@@ -14,7 +13,7 @@ var app = new Vue({
             last_name: "Last name",
             pronoun: "Pronoun",
             institution: "Institution",
-            country: "Country/Regions"
+            country: "Country/Region"
         },
         Edit:true,
         country:country,
@@ -82,4 +81,12 @@ var app = new Vue({
         })
         
     },
+    computed:{
+        isLogin: function () {
+            return this.$store.state.isLogin;
+        },
+        isRegistration:function(){
+            return this.$store.state.isRegistration;
+        },
+    }
 })
