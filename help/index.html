@@ -28,330 +28,301 @@
   <script src="/assets/js/custom.js"></script>
   <script src="/assets/component/myheader.js" type="module"></script>
   <link href="./index.css"  rel="stylesheet" />
-</head>
-
-<body>
-
-  <div id='icaps-header'>
-    <myheader curpage='codeOfConduct'></myheader>
-  </div>
-  <main class="container" style="min-height: 80vh">
+    <link rel="stylesheet" href="/assets/css/outline.css">
+    <script src="/assets/js/DocumentOutline.js"></script>
+  </head>
+  <body>
+    <div id='icaps-header'>
+        <myheader curpage='codeOfConduct'></myheader>
+    </div>
     <div class="album mt-3">
-      <div style="height: 100px" class="d-none d-md-block">
+        <div style="height: 70px" class="d-none d-md-block">
+        </div>
       </div>
-    </div>
+        <!-- Wrap your main content in a div -->
+    <div hidden>
+        <!-- Use heading tags to structure your document -->
+        <!-- <h2><a href="#t1">What if I have a problem?</a></h2>
+        <h2><a href="#t2">Attending the Conference</a></h2>
+        <h3><a href="#t21">How to attend Doctroal Consortium?</a> </h3>
+        <h3><a href="#t22">How to attend Tutorials/Workshops?</a> </h3>
+        <h3><a href="#t23">Guide for virtual conference</a> </h3>
+        <h4><a href="#t231">1 Main area</a> </h4>
+        <h4><a href="#t232">2 The Session tower</a> </h4>
+        <h4><a href="#t233">3 The workshop building</a></h4>
+        <h4><a href="#t234">4 Workshop rooms</a></h4>
+        <h4><a href="#t235">5 The Bar tower</a></h4>
+        <h4><a href="#t236">6 The Poster buildings</a></h4>
+        <h4><a href="#t237">7 The Demo opera</a> </h4>
+        <h3><a href="#t24">Virtual conference center basics:</a> </h3>
+        <h3><a href="#t25">Private spaces and spotlighted positions:</a> </h3>
+        <h3><a href="#t26">Locating people:</a></h3>
+        <h3><a href="#t27">What if the quality of videos streamed in zoom is bad at my end?</a> </h3>
+        <h2><a href="#t3">Technicalities</a></h2>
+        <h3><a href="#t31">What tools and logins do I need?</a></h3>
+        <h3><a href="#t32">What are the systems requirements?</a></h3>
+        <h3><a href="#t33">Can I join the main-conference zoom sessions by telephone instead?</a> </h3>
+        <h2><a href="#t4">Accessibility and Safety</a></h2>
+        <h3><a href="#t41">How do you ensure safe online engagement?</a> </h3>
+        <h3><a href="#t42">How do I report disrespectful engagement, trolling, or other breaches of the code of conduct?</a> </h3>
+        <h3><a href="#t43">General data protection</a> </h3>
+        <h2><a href="#t5">For Authors</a></h2>
+        <h3><a href="#t51">How do I submit my material?</a></h3>
+        <h3><a href="#t52">What do I need to know to present my poster?</a></h3>
+        <h3><a href="#t53">Recommendations for recording your talk:</a></h3>
+        <h3><a href="#t54">How do I present my paper?</a></h3> -->
+    </div>  
+    <!-- Import the library -->    
+    <div class="doc-margin">
+        <h2 id='t1'>What if I have a problem?</h2>
+        <p style="text-align: left;">Contact ICAPS' 2021 Support:<a href="mailto:icapsgz2021@gmail.com">icapsGZ2021@gmail.com</a></p> 
+        
+        <h2 id='t2'>Attending the Conference</h2>
+        
+        <h3 id='t21'>How to attend Doctroal Consortium?</h3>
+        <p>
+            This year Doctoral Consortium (DC) will be held in Zoom. <br>
+            After you login on our ICAPS-21 website, you can join DC by clicking the DC button in the table below:
+        </p>
+        <img class='ps' src="/assets/images/help/profile-schedule.png"/>
+        
+        
+        <h3 id='t22'>How to attend Tutorials/Workshops?</h3>
+        <p>
+            There are two options for you to attend tutorials and workshops:<br>
+            1.   Similar to DC, you could attend Tutorials and Workshops by clicking the corresponding button (Tu+1 (<a href="https://icaps21.icaps-conference.org/Schedule/tutorial_template.html?tutNum=Tutorial1"> Hands-on Introduction to dcss-ai-wrapper</a>), Tu+2 (<a href="https://icaps21.icaps-conference.org/Schedule/tutorial_template.html?tutNum=Tutorial2">Trustworthy AI</a>) or workshop names) in the above table.<br>
+            2.   You can also go to Gather  (by simply clicking the <button style="background-color: rgb(122, 128, 230);border-radius: 4px;color: white;" onclick="window.open('https\:\/\/gather.town/app/V6z77iZjpGdUzBPo/ICAPS21')">Go to Gather</button> button as shown right above the table) where you can see the tutorial and/or workshop rooms and attend tutorials and workshops by pressing "x" when you are in the corresponding rooms. We strongly suggest you attending tutorials and workshops via our Gather platform such that you could meet and talk to other participants in Gather.<br>
+            Tutorials and workshops will be held in the "Tutorial/Workshop" building. More details please refer to the following section about Guide for Gather.
+        </p>
 
-    <!--
+        <h3 id='t23'>Guide for virtual conference</h3>
+        <p>
+            If it is the first time for you to enter our gather space, you will be required to input your name and choose avatar and clothing you like. After that, you will be required to set up your camera, audio and microphone (if you prefer not to use them, you can just ignore them). Then you can enter our ICAPS-21 space by clicking "Join the Gathering".<br>
+            <br>
+            When you are in Gather, if you are blocked by other participants, please move by holding down 'g' in your keyboard.
+        </p>
 
-      <div class="col col-12 p-4">
-        <section>
-          <header>
-            <h1 class="top">ICAPS 2021 Code of Conduct</h1>
-            <hr />
-          </header>
-
-          <div>
+        <h4 id='t231'>1. Main area</h4>
             <p>
-              It is against the
-              <a
-                href="https://www.icaps-conference.org/index.php/Main/CodeOfConduct"
-                >ICAPS Code of Conduct</a
-              >
-              to engage in discriminatory harassment against individuals
-              participating at ICAPS. If you have been harassed or disparaged in
-              violation of the
-              <a href="https://www.icaps-conference.org/icaps-code-of-conduct/"
-                >ICAPS Code of Conduct</a
-              >, please inform the ICAPS 2021 Advocates
-              <a href="mailto:fangld@jnu.edu.cn">Liangda Fang</a> or
-              <a href="mailto:ssohrab@us.ibm.com">Shirin Sohrabi</a>
-              either in person or through electronic means.
+                <img src="/assets/images/help/main-area.png" />
+                When you enter our ICAPS gather space at the first time, you will start in a main area with Canton elements. It contains six buildings: a Sessions tower, a Tutorials/Workshops mansion, a Bar tower, a Demo opera, a Diversity Event mansion, and a Poster building. Following the red arrows, by entering the white squares, you can jump into the corresponding room. <br>
+                In the left-bottom side of the main area, you can find our sponsors. Please go to talk to our sponsors if you are interested in their job posts. 
             </p>
-          </div>
-        </section>
-      </div>
-    </main> -->
-    <div class="iclr-2021-hero-image">&nbsp;</div>
-    <div class="container">
-      <h2><strong>What if I have a problem?</strong></h2>
-      <p>Contact ICAPS’ 2021 Support: <a href="mailto:icapsGZ2021@gmail.com">icapsGZ2021@gmail.com</a></p>
-      <h2>&nbsp;</h2>
+        
+        <h4 id='t232'>2. The Session tower</h4>
+            <p>
+                <img src="/assets/images/help/the-session-tower.png" />
+                The invited talks, main sessions and competition session will be held in the Session tower (as shown below). When you enter the tower, you can press 'x' in your keyboard to go to a new webpage for the live streaming.
+            </p>
 
-      <div class="row">
+        <h4 id='t233'>3. The workshop building</h4>
+            <p>
+                <img src="/assets/images/help/the-workshop-building.png" />
+                When you enter the Tutorial/Workshop building, you will arrive at a hall with 6 rooms, including five rooms and a doctoral consortium room. On the wall you can find the schedule about the room. You can go back to the main area via going across the exit.
+            </p>
 
+        <h4 id='t234'>4. Workshop rooms</h4>
+            <p>
+                <img src="/assets/images/help/workshop.png" />
+                The plenum talk of every workshop will be held via Zoom meeting and you can press 'x' to obtain the link to the Zoom meeting. When the plenum talk is finished, you can go back to the workshop poster session and communicate with other participants freely. There are two cases in the workshop rooms:<br>
+                In case 1, posters were put in both sides of workshop rooms. Each poster stand contains a private area where participants can chat locally. <br>
+                In case 2, the poster session will be held in the form of group discussion.  A workshop room includes four private areas where authors can share their screen to participants in the same areas.  
+            </p>
 
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div>
-            <div>
-              <h2><strong>Attending the Conference</strong></h2>
-              <h4><strong>How do I attend Doctroal Consortium?</strong></h4>
+        <h4 id='t235'>5. The Bar tower</h4>
+            <p>
+            <img src="/assets/images/help/the-bar-tower.png" />
 
-              <p>This year Doctoral Consortium (DC) will be hold in Zoom meeting.</p>
-              <p>After loggin in ICAPS-21, you could join the Zoom meeting via clicking the DC button in the table.
-                Please ref to the
-                following:</p>
-              <img src="/assets/images/help/profile-schedule.png" style="width:300px" />
-              <br />
+                Social events and "coffee" breaks will be held in the Bar tower. 
+            </p>
 
-              <h4><strong>How do I attend Tutorials/Workshops?</strong></h4>
-              <p>There are two ways to attend tutorials and workshops:</p>
-              <ol>
-                <li>Similar to DC, you could joint the Zoom meetingfvia clicking the corresponding button (Tu+1 (<a
-                    href="/Schedule/tutorial_template.html?tutNum=Tutorial1">Hands-on Introduction
-                    to
-                    dcss-ai-wrapper</a>), Tu+2 (<a
-                    href="/Schedule/tutorial_template.html?tutNum=Tutorial2">Trustworthy AI</a>)
-                  or workshop names);</li>
-                <li>If you want to have a better attend experience, we strongly suggest you to attend tutorials and workshops via our
-                  Gather
-                  platform! Just clicking <strong>Go to Gather!</strong></li>
-              </ol>
-              <p>Tutorials and workshops will be held in the "Workshop" building. More details please refer to the following section
-                about Guide for Gather.
-              </p>
-              <br />
+        <h4 id='t236'>6. The Poster buildings</h4>
+            <p>
+                <img src="/assets/images/help/the-poster-buildings.png" />
+                The main conference poster session will be held in the Poster buildings. The Poster buildings have two entrances which are located in the front and rear respectively. Posters are arranged according to tracks. The signs on the floor can help you to find the posters you are interested in. Each poster contains a private area to allow you to communicate with the authors personally. Similarly, you can obtain a webpage containing a poster pdf via pressing 'x' in you keyboard.
+            </p>
+        <h4 id='t237'>7. The Demo opera</h4>
+        <p>
+            <img src="/assets/images/help/the-demo-opera.png" />
+            The system demonstration session will be held in the Demo opera, where can find 19 tables and in each table you can find a demo video via pressing 'x'.
+        </p>
 
+        <h3 id='t24'>Virtual conference center basics:</h3>
+        <p>
+            The layout and usage is fairly obvious. Just <a href="https://gather.town/Z1SdmgDu1rDoaMlD/ICAPS2020" target="_blank">go there</a>  and have a look around. We hope you like it!<br>
+            You can choose your avatar character and appearance from a limited set of options. <br>
+            The only attribute by which people will actually be able to "recognize" you is your name tag.<br>
+            "Local" chat in Gather is visible only to people in your interaction distance (the people you can currently talk to); "global" chat is visible everywhere.<br>
+            The session rooms in Gather contain an internet link leading to the online meeting (e.g. zoom). You follow that link, leaving Gather temporarily, by pressing `x'. There also is a variety of other internet links in our center: sponsor web pages (Main Area); shared whiteboard tables in the workshop rooms; feedback to the organizers (Main Area); bar jokes (guess what, in the Bar).
+        </p>
 
-              <h4><strong>Guide for virtual conference</strong></h4>
+        <h3 id='t25'>Private spaces and spotlighted positions:</h3>
+        <p>
+            The map contains a variety of so-called "private spaces". People within such a space all see and hear each other; nobody outside the space does. Rectangular marked areas (mostly around posters) identify such private spaces. At tables with chairs (mostly Bar and Place Stanislas), the private space contains exactly the people sitting on the chairs. (Note: you cannot sit "on top of each other"; these tables are for small meetings just like at a real conference.)
+            Some rooms contain spotlighted positions. If you stand in such a position, your audio goes to all people present in the room. This feature is included in the DC/Diversity Event room (announcements), workshop and tutorial rooms (announcements, explanations), and in the Bar (feeling expansive? wanna sing a song?).
+        </p>
 
-              <p>If it is your first time to enter our ICAPS-21 gather space, you will be required to input your name and to choose
-              avatar and clothing you like. Next, you are required to set up your camera, audio and microphone. Then you can enter our
-              ICAPS-21 space by clicking "Join the Gathering".</p>
-              <p>When you are in Gather, if you were blocked in by other people, please move by holding down 'g' in your keyboard.</p>
-              <br />
+        <h3 id='t26'>Locating people:</h3>
+        <p>To find somebody in the virtual conference center you can search for her/him in the participants tab. If she/he is online, you can click her/his name and then the locate button. This function will show you a path on the map to the person you are looking for.</p>
+        
+        <h3 id='t27'>What if the quality of videos streamed in zoom is bad at my end?</h3>
+        <p>
+            All main-conference videos are available on this web page. You can choose to play the video on your own computer, in parallel to the zoom meeting. <br>
+            To navigate to the video, simply open the session in the <a href="https://icaps20.icaps-conference.org/schedule.html" target="_blank">Schedule</a> and click on the paper. <br><br>
+            We chose to stream videos into zoom in order to make sessions as "Live" as possible, with everything happening in a single platform. We apologize for any inconvenience caused.
+        </p>
+        <h2 id='t3'>Technicalities</h2>
 
-              <h6><strong>1. Main area</strong></h6>
-              <p>When you enter our ICAPS gather space at the first time, you will start in a main area with Canton elements. It contains
-              five buildings: the Sessions tower, the Workshops mansion, the Bar tower, the Demo opera, and the Poster buildings.
-              Following the red arrows, by entering the white squares, you can jump into the corresponding room.
-              In the left-bottom side of the main area, you can find our sponsors, some of which are hiring, you might get close to
-              the Sponsors area.</p>
-              <img src="/assets/images/help/main-area.png" />
-              <br />
+        <h3 id='t31'>What tools and logins do I need?</h3>
+        <p>
+            The conference takes place in our virtual conference center, on the <a href="https://gather.town/" target="_blank">Gather</a> platform. <br>
+            Please use your REAL and FULL name in Gather, as this is how other participants will identify you (it will be the "name tag" of your virtual character). The password for the virtual conference center is given in the e-mail confirming your registration. That same password also is used to access the main-conference paper sessions. <br>
+            All main-conference sessions will be done in <a href="https://zoom.us/" target="_blank">Zoom</a>. Please use your REAL and FULL name in Zoom. The videos will be streamed into the Zoom meeting by a host. Session chairs will decide when to start the next talk video. Paper discussion will be in live audio/video, plus textual chat while the videos are streaming.
+        </p>
+        <h3 id='t32'>What are the systems requirements?</h3>
+        <p>
+            The virtual conference center runs on <a href="https://gather.town/" target="_blank">Gather</a>. Gather runs in the browser, and can in principle be used on any computer (laptop, desktop) on any OS (Windows, Mac OS, Linux). Currently only Google Chrome and Firefox are supported though. We recommend to use Chrome, which tends to give best results. <br>
+            All main-conference sessions will be done in <a href="https://zoom.us/" target="_blank">Zoom</a>. You can use Zoom via their web client (Google Chrome, Firefox and Chromium Edge), but only with restricted functionality. We recommend to install and use the Zoom app.
+        </p>
+        <h3 id='t33'>Can I join the main-conference zoom sessions by telephone instead?</h3>
+        <p>
+            Yes you can. Dial into zoom as usual, finding your local number<a href="https://www.icaps-conference.org/icaps-code-of-conduct/" target="_blank">here</a>. The Meeting ID is 945 8473 0447. The Passcode is given in the e-mail confirming your registration.
+        </p>
+        <h2 id='t4'>Accessibility and Safety</h2>
+        <h3 id='t41'>How do you ensure safe online engagement?</h3>
+        <p>
+            All participants are bound and expected to uphold the conference’s Code of Conduct, which can be found here. We guard against "Zoom Bombing" by requiring a password, and having moderators with the ability to evict participants.
+        </p>
 
-              <h6><strong>2. The Session tower</strong></h6>
-              <p>The invited talk, main sessions and competition session will be done in the Session tower. When you enter the tower,
-                you can press 'x' in you keyboard to obtain a new webpage for living stream.</p>
-              <img src="/assets/images/help/the-session-tower.png" />
-              <br />
+        <h3 id='t42'>How do I report disrespectful engagement, trolling, or other breaches of the code of conduct?</h3>
+        <p>
+            Please contact the ICAPS advocates <a href="mailto:onaindia@dsic.upv.es" target="_blank">Eva Onaindia</a> and <a href="https://www.icaps-conference.org/icaps-code-of-conduct/" target="_blank">here</a>.
+        </p>
+        <h3 id='t43'>General data protection</h3>
+        <p>
+            This site records a very limited amount of data. Zoom sessions will not be recorded. The material you submit (slides, posters and videos), will be made publicly available on the ICAPS Web pages.
+        </p>
 
-              <h6><strong>3. The Workshop building</strong></h6>
-              <p>When you enter the Workshop building, you will arrive at a hall with 6 rooms, including five rooms and a doctoral
-                consortium room. On the wall you can find the schedule about the room. You can go back to the main area via going
-                across the exit.</p>
-              <img src="/assets/images/help/the-workshop-building.png" />
-              <br />
+        <h2 id='t5'>For Authors</h2>
+        <h3 id='t51'>How do I submit my material?</h3>
+        <p>
+            Main-conference authors will upload their material (talk video, poster PDF, optionally slides) to a cloud folder via a link. The link for each submission is sent to the authors individually, along with detailed instructions. <span style="font-weight: bolder;">The deadline for material upload is October 16. </span><br>
+            If you are a main-conference author and have not received a mail with further instruction until October 6, please contact:<a href="mailto:icapsgz2021@gmail.com">icapsGZ2021@gmail.com</a>
+        </p>
 
-
-              <h6><strong>4. Workshop rooms</strong></h6>
-              <p>The plenum talk of every workshop will be held via Zoom meeting and you can press 'x' to obtain the link to the Zoom
-                meeting. When the plenum talk is finished, you can go on with the workshop poster session or communicate with other
-                participants freely. Here there two cases, which has been decided by the workshop organziers.</p>
-              <p>In case 1, posters have been collected and embeded in poster stands on both sides of the room. Each poster stand
-                contains a private area where people can communicate personally. You can visit the poster stands you are interested in
-                and the authors will be in the poster stand about their paper. It looks like attending physically.</p>
-              <img src="/assets/images/help/workshop.png" />
-              <p>In case 2, the poster session will be done in the form of group discussion. The workshop room contains four private
-                areas where authors can share their screen to the participants in the same areas.</p>
-              <p>Also, in different rooms, you can find different sceneries in Guangzhou when looking at outside the window.</p>
-              <br />
-
-              <h6><strong>5. The Bar tower</strong></h6>
-              <p>The social events will happen in the Bar tower. During the confernece time, you can also take a break here.</p>
-              <img src="/assets/images/help/the-bar-tower.png" />
-              <br />
-
-              <h6><strong>6. The Poster buildings</strong></h6>
-              <p>The main conference poster session will be held in the Poster buildings. The Poster buildings have two entrances which
-              are located in the front and rear respectively. Posters are arranged according to tracks. The signs on the floor can
-              help you to find the posters you are interested in. Each poster contains a private area to allow you to communicate with
-              the authors personally. Similarly, you can obtain a webpage containing a poster pdf via pressing 'x' in you keyboard.</p>
-              <img src="/assets/images/help/the-poster-buildings.png" />
-              <br />
-
-              <h6><strong>7. The Demo opera</strong></h6>
-              <p>The system demonstration session will be held in the Demo opera. Here you can find 19 tables and in each table you can
-              find a demo video via pressing 'x'.</p>
-              <img src="/assets/images/help/the-demo-opera.png" />
-              <br />
-
-
-
-
-
-
-              <!-- <p><strong>System Requirements</strong></p>
-
-              <p>JavaScript must be enabled in your browser. A 10 mb of inbound bandwidth is recommended. A Chromium
-                browser
-                is recommended.</p>
-
-              <p><strong>Navigating the Website</strong></p>
-
-              <p>All of ICLR 2021 will be accessed through the main webpage. You may access all parts of the conference
-                using the top menu bar. Check the Schedule to get an overview of when the live sessions for all events
-                are
-                taking place. You may navigate all the papers in the Papers section. You may search for titles and
-                authors
-                or look through all papers by skimming titles and bookmarking them. You can bookmark other sessions as
-                well.
-                If you go to your name in the top right corner and click on My Bookmarks in the dropdown menu, you can
-                Download the schedule with all sessions you bookmarked and you can import it in your calendar.
-                <strong>You
-                  can take a break and socialize in the <a
-                    href="https://eventhosts.gather.town/app/skRRdnvqA0iH1UXk/iclr-2021-social-15">ICLR cafe</a> any
-                  time
-                  during the conference.</strong></p>
-
-              <p><strong>ICLR Poster Sessions</strong></p>
-
-              <p>The poster sessions will be held in GatherTown. You can access the poster in GatherTown by clicking
-                "Visit
-                Poster at Spot XX in Virtual World" on the paper's page.</p>
-
-              <p><strong>Sponsors</strong></p>
-
-              <p>We encourage everyone to visit the <a href="/Expo/Conferences/2021/SponsorHall">sponsor hall</a> just
-                like
-                you would at the physical conference<strong>. </strong> The sponsors have job listings, demonstrations,
-                and
-                chats ready for you. </p>
-
-              <p>Some sponsors have a Topia virtual (spatial) world. Topia only supports Chromium browsers. When
-                authenticating choose "Sign in with Email" in red rather than authenticating with Facebook or Google,
-                and
-                use your ICLR.cc email address.</p>
-
-              <p><strong>Rocket.Chat</strong></p>
-
-              <p>All attendees with registration will automatically have access to Rocket.Chat, a separate Rocket.Chat
-                account is not needed. If you have problems with Rocket.Chat try refreshing the page. If that does not
-                work
-                try <a href="/logout">logging out</a> and then logging back in.</p>
-
-              <p>Each session has a Rocket.Chat channel. Questions for the speakers should be posted there. Other
-                participants that are also interested in the question can comment or put emoji on the post to increase
-                its
-                visibility. Eventually, the moderator will select questions to ask the speaker. Speakers will be able to
-                continue answering questions on Rocket.Chat after the end of their talk for approximately one hour.</p>
-
-              <ul>
-                <li><strong>HelpDesk</strong><br>
-                  There is a <a href="https://chat.iclr.cc/channel/HelpDesk" target="_blank">#HelpDesk</a> channel in
-                  Rocket.Chat where you can post any conference support questions. If you are not able to access
-                  Rocket.Chat, send an email to helpdesk@iclr.cc.</li>
-                <li><strong>Full Screen Mode </strong><br>
-                  You can run Rocket.Chat in Full Screen Mode which lists all the channels you've visited. To go to
-                  Full-Screen Mode click on the <strong>Full [ ]</strong> icon in the top right corner. When prompted
-                  select
-                  Authenticate with OAuth and then click the blue Authorize button in the Authorize Rocket.Chat window
-                </li>
-                <li><strong>Desktop Client</strong><br>
-                  You can also use the desktop client which provides better notification. You can download the desktop
-                  client for your platform <a href="https://rocket.chat/install" target="_blank">here</a>. When you run
-                  it
-                  enter the server URL: https://chat.iclr.cc. You may be prompted to log into iclr.cc. After you log in,
-                  select Authenticate with OAuth and then click the blue Authorize button in the Authorize Rocket.Chat
-                  window</li>
-              </ul>
-
-              <p><strong>Video</strong></p>
-
-              <ul>
-                <li>Each event has a live stream on the top of the page that you can watch during and after the
-                  presentation.</li>
-                <li>Finished videos will be available after the conference.</li>
-                <li>The live stream</li>
-              </ul>
-
-              <p><strong>GatherTown</strong></p>
-
-              <ul>
-                <li><a href="https://slideslive.com/38946995/poster-sessions-in-gathertown" target="_blank">Watch</a>
-                  the
-                  video on how to use GatherTown.</li>
-                <li>GatherTown can be used on a laptop or desktop using Google Chrome, Microsoft Edge, Brave or Firefox.
-                </li>
-                <li>In each town, there will be a user named "Helpdesk - Firstame". If you need help, find them or write
-                  in
-                  the #HelpDesk channel.</li>
-                <li>For internet speeds, we recommend 10 Mbps download and 3 Mbps upload.</li>
-                <li>To get all advantages of GatherTown, you should have a camera and microphone on.</li>
-                <li>You may be asked to log into "gathertown.eventhosts.cc" the first time you access GatherTown.</li>
-                <li>Join the GatherTown <a
-                    href="https://eventhosts.gather.town/skRRdnvqA0iH1UXk/iclr-2021-social-15">lounge</a> to hang out
-                  and
-                  chat with others!</li>
-              </ul>
-
-              <p><strong>Timezones</strong></p>
-
-              <p>This is a cautionary tale about timezones. Several attendees have noticed that the times shown in the
-                <a href="/virtual/2021/calendar">virtual website</a> appeared incorrect. The problem was that they chose
-                a
-                timezone that did not adjust for daylight savings time. We highly recommend picking a timezome based off
-                a
-                nearby city, especially if your area observes daylight savings time. Timezones are <a
-                  href="https://en.wikipedia.org/wiki/Tz_database">political and complex </a>and thus confusing. Please
-                <a href="/set_timezone?nextp=/virtual/2021/index.html">check your timezone</a>, and preferably choose a
-                zone
-                based on a city. Note that we are currently in Daylight Savings Time rather than Standard time in most,
-                but
-                not all of the US and Europe. </p>
-
-              <p>Your current timezone: <a href="/set_timezone?nextp=/virtual/2021/index.html">America/Los_Angeles</a>
-              </p>
-
-              <div>
-                <p><strong>Getting Help </strong></p>
-
-                <ul>
-                  <li>For technical difficulties, please contact <strong><a href="https://chat.iclr.cc/channel/HelpDesk"
-                        target="_blank">#HelpDesk</a></strong> on Rocket.Chat. Schedule and Papers page may be a bit
-                    slower
-                    to load the first time to access them.</li>
-                  <li>If you have problems with Rocket.Chat try refreshing the page and if that does not work try
-                    logging
-                    out and then logging back in. If you still can't access it, send an email to helpdesk@iclr.cc.</li>
-                  <li>If you have concerns related to your inclusion at that conference, or observe someone else's
-                    difficulties, or have any other concerns related to inclusion, please use this <strong><u><a
-                          href="/Help/Contact?select=Conduct" target="_blank">form</a></u></strong>.</li>
-                </ul>
-
-                <p> </p>
-
-                <p> </p>
-              </div>
-            </div> -->
-
-          </div>
-        </div>
-      </div>
+        <h3 id='t52'>What do I need to know to present my poster?</h3>
+        <p>
+            Each paper will also get a poster. There will be a poster session on the last day of the conference. To take part in the poster session you have to upload your poster until October 16 (see also the preceding question). <br>
+            Format The poster must be a PDF in portrait format (this constraint is imposed by gather.town). <br>
+            Presentation At least one author should be at the poster stand during the whole poster session. The marked area around each poster is a "private space", meaning that the poster conversation includes all, and only, the people in that space. Also, the people in the marked area see the poster in full screen. 
+        </p>
+        <h3 id='t53'>Recommendations for recording your talk:</h3>
+        <p>
+            Your talk video should be 10min long. Please make sure that the video has at least HD (720p) quality and a decent sound quality by using an external microphone to reduce fan noise. The video should be in a format compatible with <a href="https://support.google.com/youtube/answer/4603579" target="_blank">YouTube</a>. A free recording program for Windows, Mac and Linux is <a href="https://obsproject.com/" target="_blank">OBS Studio</a>. This allows in particular to include the presenter in a corner of the video (if you so wish, see next).
+            Word of caution: The talk videos will be streamed into zoom (by the conference team). While we will do so from powerful machines with good internet connection, video quality may still be bad for highly dynamic data-intensive parts of the video, in particular a) the presenter face, b) embedded videos, and c) fancy animations. The choice is yours. We disadvise the use of b) and c).
+        </p>
+        <h3 id='t54'>How do I present my paper?</h3>
+        <p>
+            You, or at least one of your co-authors, should be present in each of the two occurrences of your paper's session. Your job is to 1) answer questions in the chat while the video is being streamed, and 2) answer questions in the subsequent live audio/video discussion just like at a physical conference.
+            Your paper talk video will be streamed into the zoom meeting by the conference team, so you do not need to worry about that. Your job is to produce the video and to answer questions.
+        </p>
 
     </div>
-  </main>
-  <footer class="footer m-5">
-    <div class="container">
-      <hr />
-      <div class="row d-flex justify-content-center">
-        <div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
-          &copy; ICAPS 2021
+    <footer class="footer m-5">
+        <div class="container">
+          <hr />
+          <div class="row d-flex justify-content-center">
+            <div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
+              &copy; ICAPS 2021
+            </div>
+            <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+              <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+            <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+              <a href="terms-of-use.html">Terms of Use</a>
+            </div>
+            <div class="col col-12 col-lg-2 d-flex justify-content-center">
+              <a href="code-of-conduct.html">Code of Conduct</a>
+            </div>
+          </div>
         </div>
-        <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
-          <a href="privacy-policy.html">Privacy Policy</a>
-        </div>
-        <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
-          <a href="terms-of-use.html">Terms of Use</a>
-        </div>
-        <div class="col col-12 col-lg-2 d-flex justify-content-center">
-          <a href="code-of-conduct.html">Code of Conduct</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="/assets/js/bootstrap.min.js"></script>
-</body>
-
+      </footer>
+  </body>
+  
 </html>
+<script>
+    window.onload = function(){
+        let outline = new DocumentOutline({
+            backgroundColor: 'white',
+            textColor: '#0d6efd',
+            textColorLight: '#0d6efd',
+            accentColor: '#0d6efd',
+            defaultOpen: false
+        });
+        outline.hideOutline();
+        var header = document.querySelector('#icaps-header')
+        console.log(header.style.height)
+    }
+    
+</script>
+<style>
+h3{
+    margin-bottom: 0.5em;
+    margin-top:0.5em
+}
+/* h1{
+    margin-left: 0.5em;
+}
+h2{
+    margin-left: 1em;
+} */
+
+.clearfix{
+    overflow: hidden;
+}
+ @media(min-width:700px){
+img{
+    float: right;
+    width: 40%;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+.ps{
+    float: none;
+    width: 50%;
+}
+ }
+ p{
+    /* margin-left: 3em; */
+    text-align: justify;
+    overflow: hidden;
+    margin-right: 1em;
+}
+.doc-margin{
+    margin-left: 5%
+}
+@media(max-width:699px){
+body{
+    width: 95%;
+    margin: 0 auto;    
+}
+img{
+    width: 100%;
+    margin-bottom: 1em;
+    /* margin-left:1em ; */
+    /* float: right; */
+}
+.ps{
+    width: 100%;
+}
+p{
+    /* margin-left: 1em; */
+    text-align: justify;
+    overflow: hidden;
+    margin-right: 1em;
+}
+}
+</style>
+
+
+
