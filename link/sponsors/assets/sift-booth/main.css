@@ -1,0 +1,307 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+  font-family: Helvetica, Arial, sans-serif; }
+
+.font-light {
+  font-weight: 300; }
+
+.font-regular {
+  font-weight: 400; }
+
+.font-heavy {
+  font-weight: 700; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto; }
+
+.justify {
+  text-align: justify; }
+
+.hidden-sm {
+  display: none; }
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+  @media only screen and (min-width: 33.75em) {
+    .container {
+      width: 80%; } }
+  @media only screen and (min-width: 60em) {
+    .container {
+      width: 75%;
+      max-width: 60rem; } }
+.row {
+  position: relative;
+  width: 100%; }
+
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem; }
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  width: 96%; }
+
+.col-1-sm {
+  width: 4.33333333%; }
+
+.col-2-sm {
+  width: 12.66666667%; }
+
+.col-3-sm {
+  width: 21%; }
+
+.col-4-sm {
+  width: 29.33333333%; }
+
+.col-5-sm {
+  width: 37.66666667%; }
+
+.col-6-sm {
+  width: 46%; }
+
+.col-7-sm {
+  width: 54.33333333%; }
+
+.col-8-sm {
+  width: 62.66666667%; }
+
+.col-9-sm {
+  width: 71%; }
+
+.col-10-sm {
+  width: 79.33333333%; }
+
+.col-11-sm {
+  width: 87.66666667%; }
+
+.col-12-sm {
+  width: 96%; }
+
+@media only screen and (min-width: 45em) {
+  .col-1 {
+    width: 4.33333333%; }
+  .col-2 {
+    width: 12.66666667%; }
+  .col-3 {
+    width: 21%; }
+  .col-4 {
+    width: 29.33333333%; }
+  .col-5 {
+    width: 37.66666667%; }
+  .col-6 {
+    width: 46%; }
+  .col-7 {
+    width: 54.33333333%; }
+  .col-8 {
+    width: 62.66666667%; }
+  .col-9 {
+    width: 71%; }
+  .col-10 {
+    width: 79.33333333%; }
+  .col-11 {
+    width: 87.66666667%; }
+  .col-12 {
+    width: 96%; }
+  .hidden-sm {
+    display: block; } }
+
+body {
+  background-size: 20px 20px;
+  background-image: radial-gradient(circle, #e8e8e6 1px, #f1f2ed 1px);
+  font-family: "Helvetica", "Arial", sans-serif; }
+  body a {
+    color: #309296; }
+
+h1.title {
+  margin: 10px auto;
+  line-height: 0; }
+  h1.title img {
+    max-width: 100%; }
+
+.green-bar {
+  background: linear-gradient(#107275, #399b9f); }
+
+.menu-toggle {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 20px; }
+  .menu-toggle:hover, .menu-toggle:focus {
+    background-color: black; }
+
+.main-menu {
+  position: absolute;
+  display: none;
+  left: -200px;
+  top: 0;
+  height: 100%;
+  z-index: 999; }
+  .main-menu .arrow {
+    display: none; }
+  .main-menu ul {
+    list-style: none;
+    margin: 0; }
+  .main-menu > ul {
+    min-height: 100%;
+    width: 250px;
+    background: #1a1a1a;
+    padding-left: 0; }
+    .main-menu > ul a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #383838;
+      padding: 12px; }
+      .main-menu > ul a:hover {
+        text-decoration: underline;
+        background-color: gray; }
+    .main-menu > ul ul.dropdown {
+      padding-left: 12px; }
+  .main-menu:target {
+    display: block;
+    left: 0;
+    outline: none; }
+    .main-menu:target .menu-close {
+      z-index: 1001; }
+    .main-menu:target ul {
+      position: relative;
+      z-index: 1000; }
+    .main-menu:target + .backdrop {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 998;
+      background: #000;
+      background: rgba(0, 0, 0, 0.65);
+      cursor: default; }
+      @supports (position: fixed) {
+        .main-menu:target + .backdrop {
+          position: fixed; } }
+
+@media (min-width: 916px) {
+  .menu-toggle,
+  .main-menu .menu-close {
+    display: none; }
+  .main-menu {
+    position: relative;
+    left: auto;
+    top: auto;
+    height: auto;
+    display: block; }
+    .main-menu .arrow {
+      display: inline; }
+    .main-menu ul {
+      list-style: none; }
+    .main-menu > ul {
+      display: flex;
+      padding: 0;
+      height: auto;
+      width: auto;
+      background: none; }
+      .main-menu > ul a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-bottom: none;
+        padding: 20px; }
+        .main-menu > ul a:hover, .main-menu > ul a:focus-within {
+          text-decoration: none;
+          background-color: black; }
+      .main-menu > ul li {
+        position: relative; }
+        .main-menu > ul li:hover, .main-menu > ul li:focus-within {
+          background-color: black; }
+        .main-menu > ul li > ul.dropdown {
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+          display: none;
+          padding-left: 0;
+          left: 0; }
+          .main-menu > ul li > ul.dropdown > li a {
+            background-color: black;
+            clear: both;
+            width: 100%; }
+            .main-menu > ul li > ul.dropdown > li a:hover, .main-menu > ul li > ul.dropdown > li a:focus-within {
+              background-color: #333; }
+        .main-menu > ul li:hover > ul.dropdown, .main-menu > ul li:focus-within > ul.dropdown,
+        .main-menu > ul li > ul.dropdown:hover {
+          visibility: visible;
+          opacity: 1;
+          display: block; } }
+
+table.table {
+  border-collapse: collapse;
+  background-color: #eee; }
+  table.table, table.table th, table.table td {
+    border: 1px solid #ddd; }
+  table.table thead {
+    background-color: #555;
+    color: white; }
+  table.table th, table.table td {
+    padding: 5px 10px; }
+
+.content {
+  background-color: #f6f6f6;
+  padding: 20px;
+  box-sizing: border-box; }
+
+.staff-picture {
+  position: relative;
+  width: 100%;
+  border: 1px solid #999;
+  padding: 0;
+  display: block;
+  margin: auto auto 8px auto; }
+  .staff-picture:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; }
+  .staff-picture img {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute; }
+
+footer {
+  margin: 20px auto;
+  text-align: center;
+  white-space: initial; }
