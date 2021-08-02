@@ -293,7 +293,7 @@ var app = new Vue({
       ],
       [
         { day: 11, type: "gather", time: 0, end: 1 },
-        { type: "session", num: 10, time: 1, end: 2 },
+        { type: "gather", num: 10, time: 1, tiemMin:0, end: 1, endMin:15, type2:"session", time2:1, timeMin2: 15, end2: 2, endMin2: 0 },
         { type: "session", num: 11, time: 2, end: 3 },
         { type: "session", num: 12, time: 3, end: 4 },
         { type: "Socializing", time: 4, end: 6 },
@@ -301,12 +301,13 @@ var app = new Vue({
         { type: "session", num: 13, time: 7, end: 8 },
         { type: "session", num: 14, time: 8, end: 9 },
         { type: "Invited Talk", time: 9, end: 10 },
-        { type: "Demos/ Diversity Event", time: 10, end: 12 },
+		{ type: "Demos", time: 10, end: 11 },		
+        { type: "Demos/ Diversity Event", time: 11, end: 12 },
 		{ type: "Diversity Event", time: 12, end: 13 },
         { type: "Socializing", time: 13, end: 14 },
         { type: "session", num: 12, time: 14, end: 15 },
         { type: "session", num: 11, time: 15, end: 16 },
-        { type: "session", num: 10, time: 16, end: 17 },
+        { type: "session", num: 10, time: 16, timeMin:0, end: 16, endMin:45},
         { type: "gather", time: 17, end: 18 },
         { type: "Socializing", time: 18, end: 20 },
         { type: "session", num: 13, time: 20, end: 21 },
@@ -334,7 +335,7 @@ var app = new Vue({
       ],
       [
         { day: 13, type: "gather", time: 0, end: 1 },
-        { type: "session", num: 19, time: 1, end: 2 },
+        { type: "gather", num: 19, time: 1, tiemMin:0, end: 2, endMin:30, type2:"session", time2:1, timeMin2: 30, end2: 2, endMin2: 0 },
         { type: "session", num: 20, time: 2, end: 3 },
         { type: "session", num: 21, time: 3, end: 4 },
         { type: "Socializing", time: 4, end: 6 },
@@ -344,7 +345,7 @@ var app = new Vue({
         { type: "Posters", time: 9, end: 11 },
         { type: "Invited Talk", time: 11, end: 12 },
         { type: "Socializing", time: 12, end: 14 },
-        { type: "session", num: 19, time: 14, end: 15 },
+        { type: "gather", num: 19, time: 14, tiemMin:0, end: 15, endMin:30, type2:"session", time2:14, timeMin2: 30, end2: 15, endMin2: 0 },
         { type: "session", num: 20, time: 15, end: 16 },
         { type: "session", num: 21, time: 16, end: 17 },
         { type: "gather", time: 17, end: 18 },
@@ -848,6 +849,9 @@ var app = new Vue({
         if (i.toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
           this.$set(this.searchShow, "session" + i.toString(), true);
       }
+	  for (i = 1; i < 24; i++) {
+		  if (("session" + i).indexOf(this.keywords.toLowerCase()) >= 0) this.$set(this.searchShow, "session" + i, true);
+	  }
       if ("Session".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
         this.$set(this.searchShow, "session", true);
       if (
@@ -880,6 +884,8 @@ var app = new Vue({
         "Competitions".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0
       )
         this.$set(this.searchShow, "Competitions", true);
+	  if ("Demos".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
+        this.$set(this.searchShow, "Demos", true);
       if ("Demos/ Diversity Event".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
         this.$set(this.searchShow, "Demos/ Diversity Event", true);
       if ("Posters".toLowerCase().indexOf(this.keywords.toLowerCase()) >= 0)
@@ -893,6 +899,20 @@ var app = new Vue({
       this.keywords = "";
       this.searchEnter();
     },
+	styleType: function (type) {
+		if (type == 'session'){
+			return "background-color: #eff7eb;"
+		}
+		else if (type == 'gather'){
+			return "background-color: #bbdfff;"
+		}
+		else if (type == 'Socializing'){
+			return "background-color: #ced5df;"
+		}
+		else{
+			return "background-color: #ffeac5;"
+		}
+	},
 	setHeigth: function(begin, end){
 		if (end - begin == 1 || end - begin == 0){
 			return "height: 100px"
@@ -902,6 +922,17 @@ var app = new Vue({
 		}
 		else if (end - begin == 3){
 			return "height: 300px"
+		}
+	},
+	activityWidth: function(begin, end) {
+		if (end - begin == 15) {
+			return "width: 25%"
+		}
+		else if (end - begin == 30) {
+			return "width: 50%"
+		}
+		else {
+			return "width: 75%"
 		}
 	},
 	setInsideHeight: function(begin, end){
@@ -927,18 +958,19 @@ var app = new Vue({
 		else
 		  return "Aug " + this.date[day] + " " + (this.zone + hour + 4) + ":00";
 	},
-	showDayMin: function (day, hour, min) {
-		if (min == 0){min = '00'}
-		if (this.zone + hour + 4 < 0)
+	showDayMin: function (day, begin, bmin, end, emin) {
+		if (bmin == 0){bmin = '00'}
+		if (emin == 0){emin = '00'}
+		if (this.zone + begin + 4 < 0)
 		  return (
-			"Aug " + this.date[day - 1] + " " + (this.zone + hour + 28) + ":" + min
+			"Aug " + this.date[day - 1] + " " + (this.zone + begin + 28) + ":" + bmin + "-" + (this.zone + end + 28) + ":" + emin 
 		  );
-		else if (this.zone + hour + 4 > 23)
+		else if (this.zone + begin + 4 > 23)
 		  return (
-			"Aug " + this.date[day + 1] + " " + (this.zone + hour - 20) + ":" + min
+			"Aug " + this.date[day + 1] + " " + (this.zone + begin - 20) + ":" + bmin + "-" + (this.zone + end - 20) + ":" + emin
 		  );
 		else
-		  return "Aug " + this.date[day] + " " + (this.zone + hour + 4) + ":" + min;
+		  return "Aug " + this.date[day] + " " + (this.zone + begin + 4) + ":" + bmin + "-" + (this.zone + end + 4) + ":" + emin
 	  },
     showDayWithMin: function (day, hour, min) {
       if (min == 0) {
@@ -1097,6 +1129,7 @@ var app = new Vue({
     this.$set(this.searchShow, "Invited Talk", true);
     this.$set(this.searchShow, "Industry Talks", true);
     this.$set(this.searchShow, "Competitions", true);
+    this.$set(this.searchShow, "Demos", true);
     this.$set(this.searchShow, "Demos/ Diversity Event", true);
     this.$set(this.searchShow, "Posters", true);
 	this.$set(this.searchShow, "Opening Remarks", true);	

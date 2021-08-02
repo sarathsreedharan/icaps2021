@@ -162,7 +162,7 @@
                   </h4>
                   <hr />
 
-                  <div class="col" v-for="item in DC_sched">
+                  <div class="col" v-for="item in DC_sched" style="margin:1em 0em 1em 0em;">
                     <!--                  &lt;!&ndash; talbe time &ndash;&gt;-->
                     <div v-if="item.type != 'End'">
                       <div v-if="isOver(DC_day,item.startHour)">
@@ -181,8 +181,8 @@
                       </div>
                       <!--                  &lt;!&ndash; table activities &ndash;&gt;-->
                       <div v-if="item.type == 'dc_start'">
-                        <div class="gather">
-                          <div class="text-center" style="margin-left: 0.5em">
+                        <div class="gather" style="padding-top: 10px;padding-bottom: 10px;">
+                          <div class="text-center">
                             <strong>{{DC_programs[item.num]}}</strong>
                             <strong><div v-if="!isOver(DC_day,item.endHour)">(Over)</div></strong>
                           </div>
@@ -208,7 +208,7 @@
                         </div>
                       </div>
                       <div v-else-if="item.type == 'Socializing'">
-                        <div class="style_socializing">
+                        <div class="style_socializing" style="padding-top: 10px;padding-bottom: 10px;">
                           <strong>
                             {{DC_programs[item.num]}}
                             <div v-if="!isOver(DC_day,item.endHour)">(Over)</div>
@@ -216,7 +216,7 @@
                         </div>
                       </div>
                       <div v-else-if="item.type == 'break'">
-                        <div class="gather">
+                        <div class="gather" style="padding-top: 10px;padding-bottom: 10px;">
                           <strong>{{DC_programs[item.num]}}</strong>
                         </div>
                       </div>
@@ -279,7 +279,6 @@
                             <div class="style_session">
                               <a :href="'tutorial_template.html?tutNum=Tutorial'+item.num">
                                 <div
-                                  style="margin-left: 0.5em"
                                   class="tip tip-buttom"
                                   data-tip="Tutorial Description"
                                 >
@@ -450,57 +449,92 @@
                   <div v-for="item in Workday" >
                     <div
                       class="col"
-                      v-if="searchShow[item.type+item.num]||searchShow[item.type]"
+                      v-if="searchShow[item.type+item.num]||searchShow[item.type]||searchShow[item.type2]||searchShow[item.type2+item.num]"
                       :style="setHeigth(item.time, item.end)"
+                      style="border-top: solid 1px #ddd"
                     >
                       <!----------------------------------------------------------------- talbe time ----------------------------------------------------------------->
-                      <div v-if="isOver(Week2[j][0].day,item.time)">
+                      <div v-if="isOver(Week2[j][0].day,item.time)" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
                         <div class="style_time">
                           <font size="2">
-                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
-                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                            <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
                       <div v-else>
-                        <div class="style_timeover" style="line-height: 18px">
+                        <div class="style_timeover" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
                           <font size="2">
-                            <div v-if="item.timeMin != undefined">{{showDayMin(Week2[j][0].day, item.time, item.timeMin)}}</div>
-                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0')}}</div>
+                            <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
                       </div>
                       <!--------------------------------------------------------------- table activities  -------------------------------------------------------------->
-                      <div>
-                        <div v-if="item.timeMin != undefined">
+                      <div style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;border-bottom: solid 1px #ddd;">
+                        <div v-if="item.type2 != undefined">
                           <div class="row">
-                            <div class="col">
-                              <div
-                                class="style_session row"
-                                class="row align-items-center"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modal"
-                                @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
-                              >
+                            <div class="col" v-if="searchShow[item.type+item.num]||searchShow[item.type]">
+                              <div v-if="item.type == 'session'">
                                 <div
-                                  style="margin-left: 0.5em"
-                                  class="tip tip-buttom col align-self-center"
-                                  :data-tip=session[item.num]
+                                  class="style_session row"
+                                  class="row align-items-center"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modal"
+                                  @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
                                 >
-                                <I class="mobileVanished"><font size="2" class="sessionText">Session5</font></I>
-                                <I class="pcVanished"><font size="2" class="sessionText">S5</font></I>
+                                  <div
+                                    class="tip tip-buttom col align-self-center"
+                                    :data-tip=session[item.num]
+                                  >
+                                  <I class="mobileVanished"><font size="2" class="sessionText">Session{{item.num}}</font></I>
+                                  <I class="pcVanished"><font size="2" class="sessionText">S5</font></I>
+                                  </div>
                                 </div>
                               </div>
+                              <div v-else>
+                                <a
+                                  href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                  target="_blank"
+                                >
+                                  <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
+                                    <div class="col align-self-center">
+                                      <strong class="mobileVanished">Gather</strong>
+                                      <small class="pcVanished">Gather</small>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
                             </div>
-                            <div class="col">
-                              <div
-                                class="style_event row"
-                                data-bs-toggle="modal"
-                                data-bs-target="#modal"
-                                @click="setModalDetailMin(0, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2);setInvitedNum(j)"
-                              >
-                                <div class="tip tip-buttom col align-self-center" :data-tip=item.type2>
-                                  <strong>OR</strong>
+                            <div class="col" v-if="searchShow[item.type2+item.num]||searchShow[item.type2]">
+                              <div v-if="item.type2 == 'session'">
+                                <div
+                                  class="style_session row"
+                                  class="row align-items-center"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modal"
+                                  @click="setModalDetailMin(item.num, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2)"
+                                >
+                                  <div
+                                    class="tip tip-buttom col align-self-center"
+                                    :data-tip=session[item.num]
+                                  >
+                                  <I class="mobileVanished"><font size="2" class="sessionText">Session{{item.num}}</font></I>
+                                  <I class="pcVanished"><font size="2" class="sessionText">S{{item.num}}</font></I>
+                                  </div>
+                                </div>
+                              </div>
+                              <div v-else>
+                                <div
+                                  class="style_event row"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#modal"
+                                  @click="setModalDetailMin(0, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2);setInvitedNum(j)"
+                                  :style="setInsideHeight(item.time2, item.end2)"
+                                >
+                                  <div class="tip tip-buttom col align-self-center" :data-tip=item.type2>
+                                    <strong>OR</strong>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -512,10 +546,9 @@
                             class="row align-items-center"
                             data-bs-toggle="modal"
                             data-bs-target="#modal"
-                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
                           >
                             <div
-                              style="margin-left: 0.5em"
                               class="tip tip-buttom col align-self-center"
                               :data-tip=session[item.num]
                             >
@@ -546,10 +579,7 @@
                             target="_blank"
                           >
                             <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
-                              <div
-                                class="tip tip-buttom col align-self-center"
-                                data-tip="Go to Gather.Town"
-                                >
+                              <div class="col align-self-center">
                                 <strong class="mobileVanished">Live Get-Together</strong>
                                 <small class="pcVanished">Live Get-Together</small>
                               </div>
@@ -566,7 +596,8 @@
                           >
                             <div class="tip tip-buttom col align-self-center" :data-tip=item.type>
                               <strong>
-                                {{item.type}}
+                                <div v-if="item.type == 'Demos/ Diversity Event'">Demos/ DE</div>
+                                <div v-else>{{item.type}}</div>
                                 <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
                               </strong>
                             </div>
@@ -735,11 +766,31 @@
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small> <br></div>
                         </div>
                       </div>
+                      <div v-else-if="modal_type == 'Demos/ Diversity Event'">
+                        <strong>Demos: </strong><br>
+                        <div style="text-align: center">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <strong>Place</strong>: <small><i>Demo room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                        </div><br>
+                        <strong>Diversity Event: </strong><br>
+                        <div style="text-align: center">
+                          <strong>Time</strong>:
+                          <small><i>{{showModalDay()}}</i></small><br>
+                          <strong>Place</strong>: <small><i>Session room in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                        </div>
+                      </div>
                       <div v-else>
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo room in 
+                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo room in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>

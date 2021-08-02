@@ -68,32 +68,30 @@
 }
 
 .gather {
-  margin: 1em 0em 1em 0em;
+	margin: 0em 0em 0em 0em;
   border-radius: 25px;
   border: solid 4px #80bff9;
   text-align: center;
   font-size: 15px;
-  line-height: 2.5;
 }
 
 .gather:hover {
-  margin: 1em 0em 1em 0em;
+	margin: 0em 0em 0em 0em;
   border-radius: 25px;
   background-color: #80bff9;
   text-align: center;
   font-size: 15px;
-  line-height: 2.5;
   cursor: pointer;
 }
 
 .style_session {
-  margin: 0.7em 0em 0.7em 0em;
+	margin: 0em 0em 0em 0em;
   word-break: break-word;
   text-align: center;
 }
 
 .style_session:hover {
-  margin: 0.7em 0em 0.7em 0em;
+	margin: 0em 0em 0em 0em;
   word-break: break-word;
   background-color: #e2efda;
   cursor: pointer;
@@ -101,13 +99,13 @@
 }
 
 .style_sessionover {
-  margin: 0.7em 0em 0.7em 0em;
+	margin: 0em 0em 0em 0em;
   word-break: break-word;
   text-align: center;
 }
 
 .style_socializing {
-  margin: 1em 0em 1em 0em;
+	margin: 0em 0em 0em 0em;
   border: solid 4px #acb9ca;
   text-align: center;
   font-size: 15px;
@@ -115,7 +113,7 @@
 }
 
 .style_socializing:hover {
-  margin: 1em 0em 1em 0em;
+	margin: 0em 0em 0em 0em;
   background-color: #acb9ca;
   text-align: center;
   font-size: 15px;
@@ -124,7 +122,7 @@
 }
 
 .style_event {
-  margin: 1em 0em 1em 0em;
+	margin: 0em 0em 0em 0em;
   border: solid 4px #ffdea3;
   text-align: center;
   font-size: 15px;
@@ -132,7 +130,7 @@
 }
 
 .style_event:hover {
-  margin: 1em 0em 1em 0em;
+  margin: 0em 0em 0em 0em;
   background-color: #ffdea3;
   text-align: center;
   font-size: 15px;
@@ -141,7 +139,7 @@
 }
 
 .style_community {
-  margin: 1em 0em 1em 0em;
+  margin: 0em 0em 0em 0em;
   border: solid 4px #198754;
   text-align: center;
   font-size: 15px;
@@ -149,7 +147,7 @@
 }
 
 .style_community:hover {
-  margin: 1em 0em 1em 0em;
+  margin: 0em 0em 0em 0em;
   background-color: #198754;
   text-align: center;
   font-size: 15px;

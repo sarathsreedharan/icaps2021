@@ -33,7 +33,7 @@
   </head>
   <body>
     <div id='icaps-header'>
-        <myheader curpage='codeOfConduct'></myheader>
+        <myheader curpage='help'></myheader>
     </div>
     <div class="album mt-3">
         <div style="height: 70px" class="d-none d-md-block">
@@ -257,11 +257,12 @@
             textColor: '#0d6efd',
             textColorLight: '#0d6efd',
             accentColor: '#0d6efd',
-            defaultOpen: false
+            // defaultOpen: false
         });
-        outline.hideOutline();
-        var header = document.querySelector('#icaps-header')
-        console.log(header.style.height)
+        // outline.hideOutline();
+        document.getElementById('outline-list-root').onclick = function(){
+            outline.hideOutline()
+        }
     }
     
 </script>
