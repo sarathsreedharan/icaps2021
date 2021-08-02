@@ -11,7 +11,7 @@ var app = new Vue({
         slideslive:['http://'+url+'/exhibition?channel=','']
     },
       sponsor:{
-        ibm:'https://www.ibm.com',
+        ibm:'https://ibm.biz/icaps2021',
         artificial_intelligence:'https://www.journals.elsevier.com/artificial-intelligence',
         huawei:'https://www.noahlab.com.hk/#/about',
       },
@@ -19,7 +19,7 @@ var app = new Vue({
         'tutroial-dcss-AI-wrapper':'https://us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09',
         'tutroial-Trustworthy-AI':'https://us02web.zoom.us/j/86228072958?pwd=dXZyVWNLdG12bTVLWUFvZWk4UmxjQT09',
         'HSDIP':'https://us02web.zoom.us/j/83730978067?pwd=blcwUEJDRXJpRWxjaXg4YVlmN3RyUT09',
-        'HPlan':'https://us02web.zoom.us/j/89495082360?pwd=SXk2TlJvT0tNZFViUE5GWE5sRGZnZz09',
+        'HPlan':'https://anu.zoom.us/j/88399882726?pwd=WFFxeVNSUEtWTSttS3dQS1N6bm9IZz09',
         'WIPC':'https://us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09',
         'SPARK':'https://us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09',
         'PlanRob-1':'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
