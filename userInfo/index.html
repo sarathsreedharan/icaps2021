@@ -70,7 +70,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9" style="text-align: left"  >
-                    <select class="form-select"  v-model="user.profile[key]" v-if="!Edit && columns[key] == 'Country'">
+                    <select class="form-select"  v-model="user.profile[key]" v-if="!Edit && columns[key] == 'Country/Region'">
                         <option v-for="item in country" :value="item" >{{item}}</option>
                     </select>
                     <select class="form-select"   v-model="user.profile[key]" v-else-if="!Edit && columns[key]=='Pronoun'">
