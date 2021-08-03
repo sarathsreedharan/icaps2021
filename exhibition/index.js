@@ -9,7 +9,7 @@ var app = new Vue({
     data: {
         curPaper: {},
         paperData: {},
-        curPdf:'',
+        curPdf: '',
         pdfLink: {},
         tipsModal: {},
         modalmsg: '',
@@ -59,13 +59,13 @@ var app = new Vue({
         let url = window.location.href;
         this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1]);
         this.keywords = this.curPaper.keywords.split("\n ");
-        this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
+        this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase())
         window.a = this
         console.log(this.curPdf)
     },
-    computed:{
-        isPdf:function(){
-            return this.curPdf?true:false;
+    computed: {
+        isPdf: function () {
+            return this.curPdf ? true : false;
         }
     }
 })
@@ -73,14 +73,28 @@ var app = new Vue({
     el: '#app2',
     store: store,
     data: {
-        channel:"",
+        channel: "",
         timer: "",
+        slideId: "",
         rocketchatUrl: rocketchatUrl
     },
-    mounted() {
+    async mounted() {
         //this.channel=localStorage.getItem("channel");
         let url = window.location.href;
         this.channel = url.split('?channel=')[1];
+        let slide;
+        try {
+            slide = await fetch('/assets/data/slideId.js').then(res => res.json());
+        } catch (err) {
+            console.error(err);
+        }
+        this.slideId = slide.find(Element => Element.id === this.channel).slideId;
+        console.log("slide", this.slideId);
+        let embed = new SlidesLiveEmbed('presentation-embed', {
+            presentationId: this.slideId,
+            autoPlay: false, // change to true to autoplay the embedded presentation
+            verticalEnabled: true
+        });
     },
     beforeDestroy() {
         clearInterval(this.timer);
@@ -130,44 +144,44 @@ var app = new Vue({
             if (this.timeMin == 0) this.timeMin = '00';
             if (this.endMin == 0) this.endMin = '00';
             if (this.zone + this.time + 4 < 0)
-              return (
-                "Aug " +
-                this.date[this.date2 - 1] +
-                " " +
-                (this.zone + this.time + 28) +
-                ":" + 
-                this.timeMin +
-                " - " +
-                (this.zone + this.modal_end + 28) +
-                ":" +
-                this.endMin
-              );
+                return (
+                    "Aug " +
+                    this.date[this.date2 - 1] +
+                    " " +
+                    (this.zone + this.time + 28) +
+                    ":" +
+                    this.timeMin +
+                    " - " +
+                    (this.zone + this.modal_end + 28) +
+                    ":" +
+                    this.endMin
+                );
             else if (this.zone + this.time + 4 > 23)
-              return (
-                "Aug " +
-                this.date[this.date2 + 1] +
-                " " +
-                (this.zone + this.time - 20) +
-                ":" + 
-                this.timeMin +
-                " - " +
-                (this.zone + this.modal_end - 20) +
-                ":" +
-                this.endMin
-              );
+                return (
+                    "Aug " +
+                    this.date[this.date2 + 1] +
+                    " " +
+                    (this.zone + this.time - 20) +
+                    ":" +
+                    this.timeMin +
+                    " - " +
+                    (this.zone + this.modal_end - 20) +
+                    ":" +
+                    this.endMin
+                );
             else
-              return (
-                "Aug " +
-                this.date[this.date2] +
-                " " +
-                (this.zone + this.time + 4) +
-                ":" + 
-                this.timeMin +
-                " - " +
-                (this.zone + this.modal_end + 4) +
-                ":" +
-                this.endMin
-              );
+                return (
+                    "Aug " +
+                    this.date[this.date2] +
+                    " " +
+                    (this.zone + this.time + 4) +
+                    ":" +
+                    this.timeMin +
+                    " - " +
+                    (this.zone + this.modal_end + 4) +
+                    ":" +
+                    this.endMin
+                );
         },
         sessionSelect: function (id) {
             if (id == this.channel) {
@@ -178,9 +192,9 @@ var app = new Vue({
     mounted() {
         let url = window.location.href;
         this.channel = parseInt(url.split('?channel=')[1]);
-        for (let itemi in this.paper){
-            for (let itemj in this.paper[itemi]){
-                if (this.paper[itemi][itemj].id == this.channel){
+        for (let itemi in this.paper) {
+            for (let itemj in this.paper[itemi]) {
+                if (this.paper[itemi][itemj].id == this.channel) {
                     this.sessionNum = itemi;
                 }
             }
