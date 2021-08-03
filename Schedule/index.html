@@ -458,6 +458,7 @@
                         <div class="style_time">
                           <font size="2">
                             <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else-if="item.type2 != undefined">{{showDayMin(Week2[j][0].day, item.time, '0', item.end2, '0')}}</div>
                             <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
@@ -466,6 +467,7 @@
                         <div class="style_timeover" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
                           <font size="2">
                             <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else-if="item.type2 != undefined">{{showDayMin(Week2[j][0].day, item.time, '0', item.end2, '0')}}</div>
                             <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
