@@ -17,6 +17,7 @@ var app = new Vue({
         ibm:'https://ibm.biz/icaps2021',
         artificial_intelligence:'https://www.journals.elsevier.com/artificial-intelligence',
         huawei:'https://www.noahlab.com.hk/#/about',
+        portrait:'http://psresearch.xyz/',
       },
       workshops:{
         'tutroial-dcss-AI-wrapper':'https://us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09',
@@ -45,7 +46,7 @@ var app = new Vue({
       if(type=='workshops'){
         this.goal_url = this.workshops[id]
         console.log(this.goal_url)
-      }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence'){
+      }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence' || id=='portrait'){
         this.goal_url = this.sponsor[id]
         console.log(this.goal_url)
       }else{
