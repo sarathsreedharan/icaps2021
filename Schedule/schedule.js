@@ -1052,18 +1052,17 @@ var app = new Vue({
         this.nowDay++;
       }
       // console.log(this.nowYear,this.nowMonth,this.nowDay,this.nowHour);
-      if (this.nowYear > 2021) return false;
-      else if (this.nowYear == 2021 && this.nowMonth > 8) return false;
+      if (this.nowYear > 2021) return "text-decoration: line-through;";
+      else if (this.nowYear == 2021 && this.nowMonth > 8) return "text-decoration: line-through;"
       else if (this.nowYear == 2021 && this.nowMonth == 8 && this.nowDay > day)
-        return false;
+        return "text-decoration: line-through;"
       else if (
         this.nowYear == 2021 &&
         this.nowMonth == 8 &&
         this.nowDay == day &&
         this.nowHour > hour
       )
-        return false;
-      else return true;
+        return "text-decoration: line-through;";
     },
 	sessionText: function(num){
 		if (this.session[num].length > 16){
