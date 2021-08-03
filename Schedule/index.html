@@ -165,7 +165,7 @@
                   <div class="col" v-for="item in DC_sched" style="margin:1em 0em 1em 0em;">
                     <!--                  &lt;!&ndash; talbe time &ndash;&gt;-->
                     <div v-if="item.type != 'End'">
-                      <div v-if="isOver(DC_day,item.startHour)">
+                      <div v-if="!isOver(DC_day,item.startHour)">
                         <div class="style_time">
                           {{showDayWithMin(DC_day, item.startHour,
                           item.startMin)}} - {{showDayWithMin(DC_day,
@@ -262,7 +262,7 @@
                       >
                         <div v-for="item in tutorial">
                           <!--------------------------------------------- talbe time -------------------------------------------------->
-                          <div v-if="isOver(Workday.day,item.time)">
+                          <div v-if="!isOver(Workday.day,item.time)">
                             <div class="style_time">
                               {{showDay(Workday.day,item.time)}} -
                               {{showDay(Workday.day,item.endtime)}}
@@ -454,18 +454,11 @@
                       style="border-top: solid 1px #ddd"
                     >
                       <!----------------------------------------------------------------- talbe time ----------------------------------------------------------------->
-                      <div v-if="isOver(Week2[j][0].day,item.time)" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
-                        <div class="style_time">
+                      <div style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
+                        <div class="style_time" :style="isOver(Week2[j][0].day,item.time)">
                           <font size="2">
                             <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
-                            <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
-                          </font>
-                        </div>
-                      </div>
-                      <div v-else>
-                        <div class="style_timeover" style="border-right: solid 1px #ddd;border-left: solid 1px #ddd;">
-                          <font size="2">
-                            <div v-if="item.type == 'session' && item.num == 10">{{showDayMin(Week2[j][0].day, item.time, 0, item.end, 45)}}</div>
+                            <div v-else-if="item.type2 != undefined">{{showDayMin(Week2[j][0].day, item.time, '0', item.end2, '0')}}</div>
                             <div v-else>{{showDayMin(Week2[j][0].day, item.time, '0', item.end, '0')}}</div>
                           </font>
                         </div>
@@ -566,10 +559,7 @@
                             :style="setInsideHeight(item.time, item.end)"
                           >
                             <div class="tip tip-buttom col align-self-center" data-tip="Socializing">
-                              <strong>
-                                Socializing
-                                <div v-if="!isOver(Week2[j][0].day,item.time) && item.end - item.time > 1">(Over)</div>
-                              </strong>
+                              <strong>Socializing</strong>
                             </div>
                           </div>
                         </div>
@@ -598,7 +588,6 @@
                               <strong>
                                 <div v-if="item.type == 'Demos/ Diversity Event'">Demos/ DE</div>
                                 <div v-else>{{item.type}}</div>
-                                <div v-if="!isOver(Week2[j][0].day,item.time)">(Over)</div>
                               </strong>
                             </div>
                           </div>
@@ -752,11 +741,11 @@
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo room in 
+                          <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
-                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster room in 
+                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
@@ -771,7 +760,7 @@
                         <div style="text-align: center">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <strong>Place</strong>: <small><i>Demo room in 
+                          <strong>Place</strong>: <small><i>Demo Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
@@ -780,7 +769,7 @@
                         <div style="text-align: center">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <strong>Place</strong>: <small><i>Session room in 
+                          <strong>Place</strong>: <small><i>Diversity Event Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
@@ -790,11 +779,15 @@
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo room in 
+                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
-                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster room in 
+                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster Building in 
+                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
+                                target="_blank"
+                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
+                          <div v-else-if="modal_type == 'Diversity Event'"><strong>Place</strong>: <small><i>Diversity Event Building in 
                             <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
                                 target="_blank"
                                 style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
