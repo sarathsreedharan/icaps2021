@@ -9,7 +9,9 @@ var app = new Vue({
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
         slideslive:['http://'+url+'/exhibition?channel=',''],
-        'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=','']
+        'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=',''],
+        'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=','']
+        
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
