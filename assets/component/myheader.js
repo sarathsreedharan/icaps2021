@@ -126,6 +126,9 @@ Vue.component('myheader',async function(resolve,reject){
             login() {
                 window.location.href = '/login';
             },
+            attending() {
+                window.location.href = '/attending';
+            },
             userInfo() {
                 window.location.href = '/userInfo';
             }
