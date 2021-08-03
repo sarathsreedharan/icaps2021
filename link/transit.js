@@ -8,7 +8,8 @@ var app = new Vue({
       select:{
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
-        slideslive:['http://'+url+'/exhibition?channel=','']
+        slideslive:['http://'+url+'/exhibition?channel=',''],
+        'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=','']
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
@@ -23,13 +24,13 @@ var app = new Vue({
         'WIPC':'https://us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09',
         'SPARK':'https://us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09',
         'PlanRob-1':'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
-        'PlanRob-2':'https://us02web.zoom.us/j/88689666146?pwd=VW9jOWNYc3lGQ24zZ3RyU1dzWGpLZz09',
+        'PlanRob-2':'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
         'DC':'https://us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09',
         'IntEx':'https://us02web.zoom.us/j/82007557737?pwd=SXhlcUxWeG9pNUtJT2liTjFLaktDZz09',
         'KEPS-1':'https://us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09',
-        'KEPS-2':'https://us02web.zoom.us/j/84656615869?pwd=TlR3emRpTEZxR2JVL2ZBbm9hanZoZz09',
+        'KEPS-2':'https://us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09',
         'PRL-1':'https://us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09',
-        'PRL-2':'https://us02web.zoom.us/j/87289877571?pwd=VVZDNjBIYkNVVG5OcllKWU00MzVmdz09',
+        'PRL-2':'https://us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09',
       },
   },
   mounted(){
