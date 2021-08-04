@@ -14,6 +14,7 @@ var app = new Vue({
         tipsModal: {},
         modalmsg: '',
         keywords: {},
+        posterLink:'',
     },
     methods: {
         forceQuit: function (msg) {
@@ -46,6 +47,11 @@ var app = new Vue({
                 return this.forceQuit("Please login to visit this page!");
             })
         }
+        let query = location.search;
+        let searchParams = new URLSearchParams(query);
+        var id = searchParams.get('channel');
+        var host = window.location.host;
+        this.posterLink='http://'+host+'/link/posters/index.html?id='+id;
         let paper, pdf;
         try {
             paper = await fetch('/assets/data/paper.json').then(res => res.json());
@@ -60,13 +66,14 @@ var app = new Vue({
         this.curPaper = this.paperData.find(Element => Element.id == url.split('?channel=')[1]);
         this.keywords = this.curPaper.keywords.split("\n ");
         this.curPdf = this.pdfLink.find(Element => Element.title.toLowerCase() == this.curPaper.title.toLowerCase()) 
-        window.a = this
-        console.log(this.curPdf)
     },
     computed:{
         isPdf:function(){
             return this.curPdf?true:false;
-        }
+        },
+        isPoster:function(){
+            return this.posterLink==''?false:true;
+        },
     }
 })
 var app = new Vue({
