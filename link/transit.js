@@ -22,7 +22,7 @@ var app = new Vue({
       workshops:{
         'tutroial-dcss-AI-wrapper':'https://us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09',
         'tutroial-Trustworthy-AI':'https://us02web.zoom.us/j/86228072958?pwd=dXZyVWNLdG12bTVLWUFvZWk4UmxjQT09',
-        'HSDIP':'https://us02web.zoom.us/j/83730978067?pwd=blcwUEJDRXJpRWxjaXg4YVlmN3RyUT09',
+        'HSDIP':'https://us02web.zoom.us/j/83401704292',
         'HPlan':'https://anu.zoom.us/j/88399882726?pwd=WFFxeVNSUEtWTSttS3dQS1N6bm9IZz09',
         'WIPC':'https://us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09',
         'SPARK':'https://us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09',
