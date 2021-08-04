@@ -1,0 +1,138 @@
+:root {
+    --live-color: #e30000;
+    --icaps-primary: #FF611C;
+    --icaps-secondary: #021D40;
+}
+
+[v-cloak]{
+    display:none;
+}
+.onlyIfNoJs {}
+
+.onlyIfJs {
+    display: none;
+}
+
+.activity_icon::after {
+    content: "online_prediction";
+}
+
+.gather_icon::after {
+    content: "account_balance";
+}
+
+.custom-navbar {
+    background-color: var(--icaps-secondary);
+}
+
+.nav-bar-icon-background {
+    content: "";
+    background: white;
+    height: 100%;
+    width: 120px;
+    position: absolute;
+    left: 0;
+    z-index: 0;
+}
+
+#navBarContainer {
+    transition: 0.4s;
+}
+
+#navBar {
+    font-size: medium;
+    color: white;
+}
+
+#navBarContainer img {
+    height: 44px;
+}
+
+#navBarContainer.mini img {
+    height: 32px;
+}
+
+.mini #navBar,
+.mini #navBar a,
+.mini #navBar button {
+    font-size: small;
+}
+
+#navBar .nav-link {
+    color: white;
+}
+
+#navBar .active>a {
+    color: var(--icaps-primary);
+    font-weight: bold;
+}
+
+#navBar .myNavItem.active,
+#navBar .myDropDownItem.active {
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    border-color: var(--icaps-primary);
+}
+
+#navBar .myNavItem,
+#navBar .myDisabledNavItem {
+    padding: 0px 0px 3px 0px;
+}
+
+#navBar .myNavItem:hover {
+    border-style: solid;
+    border-width: 0px 0px 3px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+#navBar .myNavItem.active:hover {
+    padding: 0px 0px 3px 0px;
+}
+
+.buttonBar button:disabled {
+    opacity: 1;
+    color: rgba(247, 247, 247, 0.5)
+}
+
+.myshadow2 {
+    -webkit-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+}
+
+.myshadow {
+    -webkit-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.53);
+}
+
+.myshadow:hover,
+:disabled {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.53);
+    -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.53);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.53);
+}
+
+.joinNow {
+    color: white !important;
+    background-color: var(--live-color);
+}
+
+.myDropDownItem {
+    padding: 0px 0px 3px 0px;
+}
+
+.myDropDownItem:hover .dropdown-menu {
+    display: block;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
+
+.capitalized {
+    text-transform: capitalize;
+}
