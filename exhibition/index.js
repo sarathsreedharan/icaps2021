@@ -96,7 +96,6 @@ var app = new Vue({
             console.error(err);
         }
         this.slideId = slide.find(Element => Element.id === this.channel).slideId;
-        console.log("slide", this.slideId);
         let embed = new SlidesLiveEmbed('presentation-embed', {
             presentationId: this.slideId,
             autoPlay: false, // change to true to autoplay the embedded presentation
