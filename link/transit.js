@@ -10,8 +10,8 @@ var app = new Vue({
         posters:['http://'+url+'/link/posters/index.html?id=',''],
         slideslive:['http://'+url+'/exhibition?channel=',''],
         'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=',''],
-        'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=','']
-        
+        'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=',''],
+        'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=','']
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
