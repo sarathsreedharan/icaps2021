@@ -34,6 +34,8 @@ var app = new Vue({
         'KEPS-2':'https://us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09',
         'PRL-1':'https://us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09',
         'PRL-2':'https://us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09',
+        'FinPlan':'https://us02web.zoom.us/j/89832598315',
+        'XAIP':'https://us02web.zoom.us/j/85846596481?pwd=bHYvNTRjRm5RUUFsV0MwQ0hmc0dHUT09',
       },
   },
   mounted(){
