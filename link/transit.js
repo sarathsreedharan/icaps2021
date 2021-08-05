@@ -11,7 +11,8 @@ var app = new Vue({
         slideslive:['http://'+url+'/exhibition?channel=',''],
         'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=',''],
         'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=',''],
-        'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=','']
+        'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=',''],
+        'HPlan-posters':['http://'+url+'/link/posters/hplan-posters.html?id=',''],
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
@@ -35,7 +36,7 @@ var app = new Vue({
         'PRL-1':'https://us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09',
         'PRL-2':'https://us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09',
         'FinPlan':'https://us02web.zoom.us/j/89832598315',
-        'XAIP':'https://us02web.zoom.us/j/85846596481?pwd=bHYvNTRjRm5RUUFsV0MwQ0hmc0dHUT09',
+        'XAIP':'https://us02web.zoom.us/j/88519098495?pwd=Wnd0TXlGQTNZd1g5RmtmQTJ5aThiZz09',
       },
   },
   mounted(){
