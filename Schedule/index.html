@@ -486,17 +486,12 @@
                                 </div>
                               </div>
                               <div v-else>
-                                <a
-                                  href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                  target="_blank"
-                                >
-                                  <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
-                                    <div class="col align-self-center">
-                                      <strong class="mobileVanished">Gather</strong>
-                                      <small class="pcVanished">Gather</small>
-                                    </div>
+                                <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
+                                  <div class="col align-self-center">
+                                    <strong class="mobileVanished">Gather</strong>
+                                    <small class="pcVanished">Gather</small>
                                   </div>
-                                </a>
+                                </div>
                               </div>
                             </div>
                             <div class="col" v-if="searchShow[item.type2+item.num]||searchShow[item.type2]">
@@ -564,17 +559,12 @@
                           </div>
                         </div>
                         <div v-else-if="item.type == 'gather'">
-                          <a
-                            href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                            target="_blank"
-                          >
-                            <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
-                              <div class="col align-self-center">
-                                <strong class="mobileVanished">Live Get-Together</strong>
-                                <small class="pcVanished">Live Get-Together</small>
-                              </div>
+                          <div class="gather row" :style="setInsideHeight(item.time, item.end)" >
+                            <div class="col align-self-center">
+                              <strong class="mobileVanished">Live Get-Together</strong>
+                              <small class="pcVanished">Live Get-Together</small>
                             </div>
-                          </a>
+                          </div>
                         </div>
                         <div v-else>
                           <div
