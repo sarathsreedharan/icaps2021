@@ -44,7 +44,12 @@
         <div class="row">
           <div class="col-12 col-md-8">
             <div class="alert alert-icaps" role="alert">
-              Demo links will go live at the time of the conference on Aug 9th.
+              Demos are now live!
+              <a
+                class="btn btn-sm btn-icaps text-white vote"
+                href="#voting-area"
+                >Vote</a
+              >
             </div>
 
             <div class="row">
@@ -53,6 +58,44 @@
               <div class="col-12 col-md-6 col-lg-4" id="demo-area-2"></div>
 
               <div class="col-12 col-md-6 col-lg-4" id="demo-area-3"></div>
+            </div>
+
+            <div class="card" id="voting-area">
+              <div class="card-body">
+                <div class="alert alert-primary" role="alert">
+                  You must log in to vote.
+                  <a class="btn btn-sm btn-primary text-white" href="../login"
+                    >Login</a
+                  >
+                </div>
+
+                <form class="row g-3 needs-validation" novalidate>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <div id="vote-candidates"></div>
+
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="invalidCheck"
+                        required
+                      />
+                      <label class="form-check-label" for="invalidCheck">
+                        I am not voting for myself.
+                      </label>
+                      <div class="invalid-feedback">
+                        You must agree before submitting.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary" type="submit">
+                      Submit vote
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 
@@ -64,7 +107,6 @@
                 <p class="card-text small">
                   The best system demo is decided by people's choice. Vote for
                   your favorite demo now!
-                  <span class="text-icaps">Voting starts Aug 9.</span>
                 </p>
 
                 <div class="mb-3">
@@ -124,7 +166,7 @@
                   </p>
                 </div>
 
-                <a class="btn btn-icaps text-white disabled-button" id="vote"
+                <a class="btn btn-icaps text-white vote" href="#voting-area"
                   >Vote</a
                 >
 
