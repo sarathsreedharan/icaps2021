@@ -57,7 +57,6 @@
                   name="btnradio"
                   id="btnradio1"
                   autocomplete="off"
-                  checked
                 />
                 <label
                   class="btn btn-outline-primary"
@@ -72,6 +71,7 @@
                   name="btnradio"
                   id="btnradio2"
                   autocomplete="off"
+                  checked
                 />
                 <label
                   class="btn btn-outline-primary"
@@ -766,6 +766,19 @@
                         </div>
                       </div>
                       <div v-else>
+                        <div v-if="modal_type == 'Competitions'">
+                          <div>
+                            <strong>Introduction</strong><small style="text-align: end"> (5 min)</small><br><br>
+                            <strong>The Dynamic Pickup and Delivery Problem for Huawei</strong><small style="text-align: end"> (30 min)</small><br><br>
+                            <small>Break  (10 min)</small><br><br>
+                            <strong>Automatic Reinforcement Learning for Dynamic Job Shop Scheduling Problem</strong><small style="text-align: end"> (30 min)</small><br><br>
+                            <small>Break  (10 min)</small><br><br>
+                            <strong>The Flatland Challenge: Multi-Agent Reinforcement Learning on Trains</strong><small style="text-align: end"> (30 min)</small><br><br>
+                            <small>Break  (10 min)</small><br><br>
+                            <strong>L2RPN with Trust: Learning to Run a Power Network</strong><small style="text-align: end"> (30 min)</small><br><br>
+                            <strong>Breakout Session</strong><small style="text-align: end"> (30 min)</small><br><br>
+                          </div>
+                        </div>
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>

@@ -14,7 +14,7 @@ var app = new Vue({
     nowZone: new Date().getTimezoneOffset() / -60,
     nowHour: new Date().getTimezoneOffset() / 60 - 4 + new Date().getHours(),
     day: [{ sty: "style_day" }, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-    week: 1,
+    week: 2,
     keywords: "",
     searchShow: {},
     zone: new Date().getTimezoneOffset() / -60,
