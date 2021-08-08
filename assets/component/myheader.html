@@ -1,133 +1,174 @@
-<header class="p-3 border-bottom fixed-top" style="white-space:nowrap">
-    <link href="/assets/component/myheader.css" rel="stylesheet" />
-    <nav class="navbar navbar-light  navbar-expand-lg ">
-        <div class="container-fluid d-flex">
-           <a class="navbar-brand text-dark">ICAPS 2021</a>
-                <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="/home" class="nav-link px-2" :class="{active:curpage=='home'}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/papers" class="nav-link px-2"  :class="{active:curpage=='papers'}">Papers</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
-                        </li> -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" :class="{active:curpage=='schedule'}" href="" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Schedule
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="/Schedule/index.html" :class="{active:curitem=='index'}">Schedule
-                                        Overview</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/Schedule/invited-speakers.html"
-                                        :class="{active:curitem=='invited-speakers'}">Invited Speakers</a>
-                                </li>
-                                <!-- <li>
-                                    <a class="dropdown-item" href="/Schedule/industry-session.html"
-                                        :class="{active:curitem=='industry-session'}">Industry Session</a>
-                                </li> -->
-                            </ul>
-                        </li>
-			            <!-- <li class="nav-item">
-                            <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
-                        </li> -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" :class="{active:curpage=='program'}" href="" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Program
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="/workshops" :class="{active:curitem=='workshops'}">Workshops</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/tutorials" :class="{active:curitem=='tutorials'}">Tutorials</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/demos" :class="{active:curitem=='demos'}">Demos</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/Competitions" :class="{active:curitem=='competitions'}">Competitions</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" :class="{active:curpage=='calls'}" href="" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Calls
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="/Calls" :class="{active:curitem=='calls4par'}">Calls for Participation</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/sponsorship" :class="{active:curitem=='sponsorship'}">Sponsorship</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" :class="{active:curpage=='attending'}" href="" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Attending
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="/registration" :class="{active:curitem=='registration'}">Registration</a>
-                                </li>
-                            </ul>
-                        </li> -->
-                        <li class="nav-item">
-                            <a href="/Committee" class="nav-link px-2"  :class="{active:curpage=='committee'}">Committee</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
-                        </li> --><li class="nav-item">
-                            <a href="/registration/" class="nav-link px-2" :class="{active:curpage=='registration'}">Registration</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/code-of-conduct.html" class="nav-link px-2"  :class="{active:curpage=='codeOfConduct'}">Code of conduct</a>
-                        </li>
-                        <li class="nav-item" v-if="isRegistration">
-                            <a href="/help" class="nav-link px-2"  :class="{active:curpage=='help'}">Help</a>
-                        </li>
-                    </ul>
-                    <!-- login and user info button -->
-                    <span class="btn-group dropdown navbar-right">
-                        <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">
-                        Login
-                        </button>
-                        <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">
-                            <span >{{user.profile.first_name  }}</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                        <li>
-                            <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >
-                                Profile
-                            </button>
-                            <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>
-                        </li>
+<div>
+    <header class="p-3 border-bottom fixed-top" style="white-space:nowrap">
+        <link href="/assets/component/myheader.css" rel="stylesheet" />
+        <nav class="navbar navbar-light  navbar-expand-lg ">
+            <div class="container-fluid d-flex">
+               <a class="navbar-brand text-dark">ICAPS 2021</a>
+                    <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link px-2" :class="{active:curpage=='home'}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/papers" class="nav-link px-2"  :class="{active:curpage=='papers'}">Papers</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
+                            </li> -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='schedule'}" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Schedule
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/index.html" :class="{active:curitem=='index'}">Schedule
+                                            Overview</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/invited-speakers.html"
+                                            :class="{active:curitem=='invited-speakers'}">Invited Speakers</a>
+                                    </li>
+                                    <!-- <li>
+                                        <a class="dropdown-item" href="/Schedule/industry-session.html"
+                                            :class="{active:curitem=='industry-session'}">Industry Session</a>
+                                    </li> -->
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
+                            </li> -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='program'}" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Program
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="/workshops" :class="{active:curitem=='workshops'}">Workshops</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/tutorials" :class="{active:curitem=='tutorials'}">Tutorials</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/demos" :class="{active:curitem=='demos'}">Demos</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Competitions" :class="{active:curitem=='competitions'}">Competitions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='calls'}" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Calls
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="/Calls" :class="{active:curitem=='calls4par'}">Calls for Participation</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sponsorship" :class="{active:curitem=='sponsorship'}">Sponsorship</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='attending'}" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Attending
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" href="/registration" :class="{active:curitem=='registration'}">Registration</a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                            <li class="nav-item">
+                                <a href="/Committee" class="nav-link px-2"  :class="{active:curpage=='committee'}">Committee</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
+                            </li> --><li class="nav-item">
+                                <a href="/registration/" class="nav-link px-2" :class="{active:curpage=='registration'}">Registration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/code-of-conduct.html" class="nav-link px-2"  :class="{active:curpage=='codeOfConduct'}">Code of conduct</a>
+                            </li>
+                            <li class="nav-item" v-if="isRegistration">
+                                <a href="/help" class="nav-link px-2"  :class="{active:curpage=='help'}">Help</a>
+                            </li>
                         </ul>
-                        &ensp;
-                        <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">
-                            <span>Attending</span>
-                        </button>
-                    </span>
+                        <!-- login and user info button -->
+                        <span class="btn-group dropdown navbar-right">
+                            <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">
+                            Login
+                            </button>
+                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">
+                                <span >{{user.profile.first_name  }}</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                            <li>
+                                <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >
+                                    Profile
+                                </button>
+                                <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>
+                            </li>
+                            </ul>
+                            &ensp;
+                            <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">
+                                <span>Attending</span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+    </header>
+
+    <div class="modal" tabindex="-1" id='tips' aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-body" style="background-color: rgb(231, 241, 255);">
+                    <p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
+                        {{modalmsg}}</p>
                 </div>
             </div>
-            
-        </nav>
-</header>
+        </div>
+    </div>
+    <div class="modal" id="phone" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p class="modal-title" id="exampleModalLabel"
+                                    style="text-align: justify;font-size: small;color: grey;">
+                                    We are sorry that we didn't ask you to fill in the phone when we asked
+                                     you to fill in the T-shirt order. You may not receive the express, 
+                                     so you need to fill in the mobile phone number of the express
+                                </p>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Phone Number"
+                                        v-model="survey.phone">
+                                    <p style="color: red;text-align: center;" :hidden='!fail'>
+                                            Submission fail,please try again
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" @click = submitSurvey()>Save</button>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</div>
+
+

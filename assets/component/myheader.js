@@ -10,6 +10,7 @@ const store = new Vuex.Store({
         isRegistration: false,
         user: {},
         flag: '',
+        
     },
     mutations: {
         setLogin(state, payload) {
@@ -43,7 +44,37 @@ Vue.component('myheader',async function(resolve,reject){
         data: function () {
             return {
                 token: "",
-                begin:''
+                begin: '',
+                isOrderT: false,
+                // isFillPhone: false,
+                tipsModal: {},
+                phoneModal:{},
+                modalmsg:'',
+                survey:{
+                    Tshirt_style:'',
+                    Tshirt_size:'',
+                    country:'',
+                    full_name:'',
+                    address1:'',
+                    address2:'',
+                    address_state: '',
+                    phone:'',
+                    postal_code:'',
+                    attend_event:false,
+                    attend_workshops:{
+                        HPlan:false,
+                        HSDIP:false,
+                        IntEx:false,
+                        KEPS:false,
+                        PRL:false,
+                        WIPC:false,
+                        XAIP:false,
+                        FinPlan:false,
+                        SPARK:false,
+                        PlanRob:false,
+                    },
+                },
+                fail: false,
             }
         },
         template: await getTemplate(),
@@ -76,6 +107,21 @@ Vue.component('myheader',async function(resolve,reject){
             }
         },
         mounted() {
+            window.a = this
+            this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
+            this.phoneModal = new bootstrap.Modal(document.getElementById('phone'))
+            axios.get(backendBaseUrl + '/api/registrations/survey',{
+                headers: {
+                    "Authorization": localStorage.getItem('token')
+                }
+            }).then(res => {
+                this.survey = res.data;
+                if (!this.isNSTshirt && (this.survey.phone == '' || this.survey.phone==null)) {
+                    this.phoneModal.show()
+                }
+            }).catch(err => {
+                console.log(err)
+            })
             axios.defaults.withCredentials = true;
             window.addEventListener("setItemEvent", (e) => {
                 if (e.newValue == 0 && this.isLogin) {
@@ -111,8 +157,33 @@ Vue.component('myheader',async function(resolve,reject){
             user: function () {
                 return this.$store.state.user;
             },
+            isNSTshirt:function(){
+                let flag = this.survey.Tshirt_style + this.survey.Tshirt_size + this.survey.country + this.survey.full_name + this.survey.address1 + this.survey.address2 + this.survey.address_state + this.survey.postal_code;
+                return flag==''?true:false;
+            },
         },
         methods: {
+            submitSurvey() {
+                if (!this.survey.phone || this.survey.phone == '') {
+                    this.fail = true
+                    return;
+                }
+                axios.post(backendBaseUrl + '/api/registrations/survey', this.survey,{
+                    headers: {
+                        "Authorization": localStorage.getItem('token')
+                    }
+                }).then(res => {
+                    this.phoneModal.hide()
+                    this.fail = false
+                    this.modalmsg = 'Submission Successful!'
+                    this.tipsModal.show()
+                    setTimeout(() => {
+                        this.tipsModal.hide()
+                    }, 2000);
+                }).catch(err => {
+                    this.fail = true;
+                })
+            },
             async logout() {
                 clearInterval(this.begin);
                 localStorage.setItem('token', '');
