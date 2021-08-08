@@ -52,12 +52,12 @@ var app = new Vue({
       this.id = id;
 
       
-      if(type=='workshops'  ){
+      if(type=='workshops'){
         this.goal_url = this.workshops[id]
       }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence' || id=='portrait'){
         this.goal_url = this.sponsor[id]
       }else if(type=='Diversity_Event'){
-        this.goal_url = this.Diversity_Event [id]
+        this.goal_url = this.Diversity_Event[id]
       }else{
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
       }
