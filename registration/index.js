@@ -102,7 +102,8 @@ var app = new Vue({
             full_name:'',
             address1:'',
             address2:'',
-            address_state:'',
+            address_state: '',
+            phone:'',
             postal_code:'',
             attend_event:false,
             attend_workshops:{
@@ -536,10 +537,10 @@ var app = new Vue({
             if(this.alreadySelectTOrder){
                 return false;
             }
-            return (!this.survey.Tshirt_style || !this.survey.Tshirt_size || !this.survey.country || !this.survey.address1 || !this.survey.address_state || !this.survey.postal_code || !this.survey.full_name) && this.Tflag; 
+            return (!this.survey.Tshirt_style || !this.survey.Tshirt_size || !this.survey.country || !this.survey.address1 || !this.survey.address_state || !this.survey.postal_code || !this.survey.full_name || !this.survey.phone) && this.Tflag; 
         },
         isNSTshirt:function(){
-            let flag = this.survey.Tshirt_style + this.survey.Tshirt_size + this.survey.country + this.survey.full_name + this.survey.address1 + this.survey.address2 + this.survey.address_state + this.survey.postal_code;
+            let flag = this.survey.Tshirt_style + this.survey.Tshirt_size + this.survey.country + this.survey.full_name + this.survey.address1 + this.survey.address2 + this.survey.address_state + this.survey.postal_code + this.survey.phone;
             return flag==''?true:false;
         },
         sendCodeDisable: function () {

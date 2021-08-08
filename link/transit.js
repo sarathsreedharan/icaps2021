@@ -10,8 +10,11 @@ var app = new Vue({
         posters:['http://'+url+'/link/posters/index.html?id=',''],
         slideslive:['http://'+url+'/exhibition?channel=',''],
         'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=',''],
-        'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=','']
-        
+        'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=',''],
+        'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=',''],
+        'HPlan-posters': ['http://' + url + '/link/posters/hplan-posters.html?id=', ''],
+        'Demo-posters':['http://' + url + '/link/posters/demo-posters.html?id=', ''],
+        Demo:['http://'+url+'/link/demo/index.html?id=','']
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
@@ -29,14 +32,17 @@ var app = new Vue({
         'PlanRob-1':'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
         'PlanRob-2':'https://us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09',
         'DC':'https://us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09',
-        'IntEx':'https://us02web.zoom.us/j/82007557737?pwd=SXhlcUxWeG9pNUtJT2liTjFLaktDZz09',
+        'IntEx':'https://us02web.zoom.us/j/84563671218?pwd=NktlOGhud1c3U1ZidXlRaG40RTNFdz09',
         'KEPS-1':'https://us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09',
         'KEPS-2':'https://us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09',
         'PRL-1':'https://us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09',
         'PRL-2':'https://us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09',
         'FinPlan':'https://us02web.zoom.us/j/89832598315',
-        'XAIP':'https://us02web.zoom.us/j/85846596481?pwd=bHYvNTRjRm5RUUFsV0MwQ0hmc0dHUT09',
+        'XAIP':'https://us02web.zoom.us/j/88519098495?pwd=Wnd0TXlGQTNZd1g5RmtmQTJ5aThiZz09',
       },
+      Diversity_Event:{
+          '01':'https://us02web.zoom.us/j/81744386811?pwd=eGZqMGdIRjJiS1ozMmhuUzNlMG1yZz09#success'
+      }
   },
   mounted(){
       let query = location.search;
@@ -46,18 +52,15 @@ var app = new Vue({
       this.type = type;
       this.id = id;
 
-
-
-
+      
       if(type=='workshops'){
         this.goal_url = this.workshops[id]
-        console.log(this.goal_url)
       }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence' || id=='portrait'){
         this.goal_url = this.sponsor[id]
-        console.log(this.goal_url)
+      }else if(type=='Diversity_Event'){
+        this.goal_url = this.Diversity_Event[id]
       }else{
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
-        console.log(this.goal_url)
       }
 
       if(id == 'sysu') this.id='Sun Yat-Sen University'

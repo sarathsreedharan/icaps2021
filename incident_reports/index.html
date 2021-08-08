@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+		rel="shortcut icon"
+		type="image/png"
+		href="../assets/images/favicon.png"
+		/>
+		<title>ICAPS 2021</title>
+
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+
+		<!-- Bootstrap Overrides -->
+		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+		<link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- Schedule CSS -->
+<!--    <link rel="stylesheet" type="text/css" href="./schedule.css"/> -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- import axios  -->
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../assets/js/vue.min.js"></script>
+
+        <script type="text/javascript">
+                function flip_other_researcher_visibility(value) {
+                if (value == "junior") {
+                    document.getElementById("other_researchers_div").style.display = "block";
+<!--                    document.getElementById("other_researchers_label").style.display = "block";-->
+
+                } else {
+                    document.getElementById("other_researchers_div").style.display = "none";
+<!--                    document.getElementById("other_researchers_label").style.display = "none";-->
+
+                }
+            }
+        </script>
+
+
+  </head>
+  <body class="bg-light">
+    <div id='icaps-header'>
+      <myheader></myheader>
+    </div>
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak class="album mt-3 p-4" style="min-height: 80vh;">
+		<div style="height: 100px" class="d-none d-md-block"></div>
+		<div class="container">
+			<div class="mb-5">
+				<h4>Incident Report Form - ICAPS 2021</h4>
+                <p>
+                    This form collects information on incidents of sexual assault, sexual harassment, discriminatory harassment, or stalking related to the ICAPS conference.
+                    This includes in-person or virtual ICAPS events, events during ICAPS dates at or near an ICAPS venue (e.g., dinner after sessions end), and ICAPS reviewing cycles.
+                    If the incident(s) you wish to report occurred outside of these situations, including during research activities intended for eventual ICAPS publication, you must consult with the appropriate institution for the proper reporting mechanism.
+                    Data compiled from this form are used to inform the ICAPS Executive Council and ICAPS Community about the ICAPS climate; we will make our best efforts to maintain anonymity in all reports. </p>
+
+                <p>Please see the current ICAPS Code of Conduct at https://www.icaps-conference.org/icaps-code-of-conduct/. Incidents of concern not in violation of the Code of Conduct should still be reported.</p>
+
+                <p>If you would like to report privately or speak privately about an incident during the conference, please contact the current ICAPS 2021 Advocates, Shirin Sohrabi (shirin.sohrabi@gmail.com) and Liangda Fang (fangld@jnu.edu.cn), either by email or other means. Incidents reported only to ICAPS Advocates may not end up reported to the ICAPS Inclusion Chair or ICAPS Executive Council.</p>
+
+                <p>The information reported using this form is accessible to the ICAPS Inclusion Chair (currently Shirin Sohrabi). Others may obtain access to this information under the following circumstances:</p>
+                <ul>
+                    <li>There is an apparent ongoing risk to personal safety requiring intervention by local authorities</li>
+                    <li>Law enforcement officials request this information</li>
+                    <li>Local laws have been violated that require a report to authorities</li>
+                    <li>Legal concerns arise which require consultation or reporting to other individuals (e.g., legal professionals, participants in legal proceedings)</li>
+                    <li>You wish a follow-up with an ICAPS Advocate (they will be given data from the submitted report)</li>
+                </ul>
+
+                <p>The ICAPS Inclusion Chair will otherwise do all in their power to maintain your privacy. </p>
+
+                <p>You will have the opportunity to add contact information if you wish a follow-up from the ICAPS Inclusion Chair or an ICAPS Advocate. If you do not provide this information, we cannot follow-up. You must report incidents directly to the ICAPS Inclusion Chair or an ICAPS Advocate before any actions regarding an incident can occur.</p>
+
+                <p>Answers to questions are optional unless otherwise marked.</p>
+
+                <p>You cannot edit this form after submitting.</p>
+
+                <p style="text-color: red">* - required fields.</p>
+                <br>
+                <form action="../survey/incident_report" method="post">
+                      <hr>
+                      <label >Q1. Affiliation with the incident:</label><br/>
+                       <input type="radio" id="victim" name="affiliation" value="victim"> <label for="victim">I am a victim/survivor of the incident</label><br/>
+                       <input type="radio" id="thirdparty" name="affiliation" value="thirdparty"> <label for="thirdparty">I am a third party (e.g., friend, supervisor/advisor, colleague, witness)</label><br/>
+                       <input type="radio" id="other" name="affiliation" value="other"> <label for="other">Other</label> <input type="text" name="other_descr"><br/>
+                      <hr>
+                      <label >Q2. Type of incident(s) (check all that apply):</label><br/>
+                       <input type="Checkbox" id="ncsc" name="type_ncsc" value="Non-Consensual Sexual Contact"> <label for="ncsc">Non-Consensual Sexual Contact</label><br/>
+                       <input type="Checkbox" id="ncsir" name="type_ncsir" value="Non-Consensual Sexual Intercourse or Rape"> <label for="ncsir">Non-Consensual Sexual Intercourse or Rape</label><br/>
+                       <input type="Checkbox" id="sh" name="type_sh" value="Sexual Harassment"> <label for="sh">Sexual Harassment</label><br/>
+                       <input type="Checkbox" id="ra" name="type_ra" value="Relationship Abuse (reviewer/author, ICAPS mentor/student, or similar relationship)"> <label for="ra">Relationship Abuse (reviewer/author, ICAPS mentor/student, or similar relationship)</label><br/>
+                       <input type="Checkbox" id="viol" name="type_viol" value="Violence"> <label for="viol">Violence</label><br/>
+                       <input type="Checkbox" id="dh" name="type_dh" value="Discriminatory Harassment (e.g., denigrating an individual based on personal characteristics)"> <label for="dh">Discriminatory Harassment (e.g., denigrating an individual based on personal characteristics)</label><br/>
+                       <input type="Checkbox" id="stalking" name="type_stalking" value="Stalking (including Cyberstalking)"> <label for="stalking">Stalking (including Cyberstalking)</label><br/>
+                       <input type="Checkbox" id="oimph" name="type_oimph" value="Online Impersonation for the Purpose of Harassment"> <label for="oimph">Online Impersonation for the Purpose of Harassment</label><br/>
+                       <input type="Checkbox" id="unknown" name="type_unknown" value="Unknown"> <label for="unknown">Unknown</label><br/>
+                       <input type="Checkbox" id="other_type" name="type" value="other_type"> <label for="other">Other</label> <input type="text" name="other_type_descr"><br/>
+                      <hr>
+                      <label >Q3. Have you made any previous reports about this incident to an ICAPS Advocate or the ICAPS Inclusion Chair?</label><br/>
+                       <input type="radio" id="yes" name="prev_report" value="Yes"> <label for="yes">Yes</label><br/>
+                       <input type="radio" id="No" name="prev_report" value="No"> <label for="No">No</label><br/>
+                       <input type="radio" id="nob" name="prev_report" value="No, but I have previously reported this incident to another place"> <label for="nob">No, but I have previously reported this incident to another place</label><br/>
+                       <input type="radio" id="other_prev_report" name="prev_report" value="other_prev_report"> <label for="other">Other</label> <input type="text" name="other_prev_report_descr"><br/>
+                      <hr>
+                    <hr>
+                    <label><strong>The following questions ask about the incident(s). Please leave answers blank if you do not know, prefer not to answer, or the question does not apply to the incident. We understand that the victim/survivor and perpetrator information may involve allegations (e.g., if you are reporting as an non-witness, external third-party). Please answer to the best of your ability. You will have an opportunity to explain at the end of this form.</strong></label>
+                    <hr>
+                      <label >Q4. Date of incident(s): Include day, month, and year, if known. Write full date in English or use DD/MM/YYYY format.</label><br/>
+                     <input type="text" name="date_of_incident"><br/>
+                    <hr>
+<!--                    <label >Q5. Date of incident(s): Include day, month, and year, if known. Write full date in English or use DD/MM/YYYY format.</label><br/>-->
+<!--                     <input type="text" name="date_of_incident"><br/>-->
+<!--                    <hr>-->
+                    <label>Q5. Approximate time of incident (if you are reporting more than one incident, explain in description): Enter time, if known.</label><br/>
+                     <input type="text" name="time_of_incident"><br/>
+                    <hr>
+                    <label>Q6. Optional - victim/survivor's gender (inclusive of whether the victim/survivor is non-binary; if multiple victims/survivors, indicate in the incident description below):</label>
+                    <input type="text" name="gender_of_incident"><br/>
+                    <hr>
+                      <label >Q7. Is there ongoing abuse or harassment?</label><br/>
+                       <input type="radio" id="yes_ongoing" name="ongoing" value="Yes"> <label for="yes_ongoing">Yes</label><br/>
+                       <input type="radio" id="No_ongoing" name="ongoing" value="No"> <label for="No_ongoing">No</label><br/>
+                       <input type="radio" id="unsure_ongoing" name="ongoing" value="Unsure/Unknown/Not Applicable/Will Explain"> <label for="unsure_ongoing">Unsure/Unknown/Not Applicable/Will Explain</label><br/>
+                      <hr>
+                      <label >Q8. Is the victim/survivor a student?</label><br/>
+                       <input type="radio" id="yes_student" name="is_student" value="Yes"> <label for="yes_student">Yes</label><br/>
+                       <input type="radio" id="No_student" name="is_student" value="No"> <label for="No_student">No</label><br/>
+                       <input type="radio" id="unsure_student" name="is_student" value="Unsure/Unknown/Not Applicable/Will Explain (e.g., multiple victims)"> <label for="unsure_student">Unsure/Unknown/Not Applicable/Will Explain (e.g., multiple victims)</label><br/>
+                    <hr>
+                      <label >Q9. Optional - perpetrator's gender (inclusive of whether the perpetrator is non-binary; if multiple perpetrators, indicate in the incident description below):</label><br/>
+                     <input type="text" name="perpetrator_gender"><br/>
+                    <hr>
+                      <label >Q10. Is the perpetrator a student?</label><br/>
+                       <input type="radio" id="yes_perpetrator" name="is_student_perpetrator" value="Yes"> <label for="yes_student">Yes</label><br/>
+                       <input type="radio" id="no_perpetrator" name="is_student_perpetrator" value="No"> <label for="No_student">No</label><br/>
+                       <input type="radio" id="unsure_perpetrator" name="is_student_perpetrator" value="Unsure/Unknown/Not Applicable/Will Explain (e.g., multiple perpetrators)"> <label for="unsure_student">Unsure/Unknown/Not Applicable/Will Explain (e.g., multiple perpetrators)</label><br/>
+                    <hr>
+                      <label >Q11. Did the incident(s) occur during a review cycle?</label><br/>
+                       <input type="radio" id="yes_review_cycle" name="is_review_cycle" value="Yes"> <label for="yes_review_cycle">Yes</label><br/>
+                       <input type="radio" id="no_review_cycle" name="is_review_cycle" value="No"> <label for="no_review_cycle">No</label><br/>
+                       <input type="radio" id="other_review_cycle" name="is_review_cycle" value="Other"> <label for="unsure_student">Other</label> <input type="text" name="review_cycle"><br/>
+                    <hr>
+                      <label >Q12. If the incident(s) occurred in person, please give the event and location:</label><br/>
+                     <input type="text" name="event_location" style="width:70%"><br/>
+                    <hr>
+                    <label >Q13. Please briefly describe the incident(s) to the best of your ability.</label><br/>
+                    <textarea rows = "5" cols = "60" name = "event_description" ></textarea>
+<!--                     <input type="text" name="event_description"><br/>-->
+                    <hr>
+                    <label>* Q14. Would you like someone to contact you regarding this incident? (required)<br/>
+                        <i>If you would like someone to contact you, you must also give your information below. Do not give any one else's name and email address. If you choose to have an ICAPS Conference Advocate contact you, they will be informed of this incident information by the ICAPS Inclusion Chair.</i>
+                    </label>
+                       <input type="radio" id="no_contact" name="contact" value="No" required> <label for="yes_review_cycle">Yes</label><br/>
+                       <input type="radio" id="yes_inclusion_chair" name="contact" value="Yes, the ICAPS Inclusion Chair"> <label for="yes_inclusion_chair">Yes, the ICAPS Inclusion Chair</label><br/>
+                       <input type="radio" id="yes_icaps_conf_advocate" name="contact" value="Yes, an ICAPS Conference Advocate"> <label for="yes_icaps_conf_advocate">Yes, an ICAPS Conference Advocate</label><br/>
+                    <hr>
+                      <label >Q15. Your Name: Please only give the name of the person filling out this form.</label><br/>
+                     <input type="text" name="name"><br/>
+                    <hr>
+                    <label >Q16. Your Email Address</label><br/>
+                     <input type="email" name="email_id"><br/>
+                    <hr>
+                    <label >Q17. Please add any suggestions about this report form that might be helpful</label><br/>
+                     <input type="text" name="suggestions"><br/>
+                    <hr>
+
+                    <input type="submit" value="Submit">
+                </form>
+			</div>
+		</div>
+	</div>
+
+    <footer class="footer m-5">
+      <div class="container">
+        <hr />
+        <div class="row d-flex justify-content-center">
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
+            &copy; ICAPS 2021
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+            <a href="../privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+            <a href="../terms-of-use.html">Terms of Use</a>
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center">
+            <a href="../code-of-conduct.html">Code of Conduct</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
