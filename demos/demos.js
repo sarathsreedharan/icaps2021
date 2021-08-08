@@ -20,6 +20,66 @@ $(document).ready(function () {
     );
   });
 
+  let top3_votes_url = "http://ae-robots.com:8080/demoscripts/";
+  let total_votes_url = "http://ae-robots.com:8080/demoscripts/total_count";
+  let post_vote_url = "http://ae-robots.com:8080/demoscripts/vote";
+  var cache_total_vote = 0;
+
+  $.ajax({
+    url: total_votes_url,
+    type: "GET",
+    dataType: "json",
+    cors: true,
+    contentType: "application/json",
+    secure: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    success: function (data) {
+      cache_total_vote = data["total_count"];
+      $("#total-vote-count").text(cache_total_vote);
+
+      $.ajax({
+        url: top3_votes_url,
+        type: "GET",
+        dataType: "json",
+        cors: true,
+        contentType: "application/json",
+        secure: true,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        success: function (data) {
+          data["top_3"].forEach(function (item, index) {
+            let percentage_count = 0;
+
+            if (cache_total_vote > 0)
+              percentage_count = (100 * item) / cache_total_vote;
+
+            $("#vote-number-" + index).text(percentage_count + "%");
+            $("#vote-number-" + index)
+              .siblings(".progress-bar")
+              .css("width", percentage_count + "%");
+          });
+        },
+      });
+    },
+  });
+
+  $(".log-software-click").click(function (e) {
+    $.ajax({
+      url: e.currentTarget.attributes.loggerref.value,
+      type: "GET",
+      dataType: "json",
+      cors: true,
+      contentType: "application/json",
+      secure: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  });
+
   $(document).on("click", ".log-demo-click", function (e) {
     data = {
       type: "demo",

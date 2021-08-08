@@ -103,7 +103,9 @@
             <div class="card card-no-border mb-3">
               <div class="card-body">
                 <h5 class="card-title">ICAPS Best Demo Award</h5>
-                <h6 class="card-subtitle mb-2 text-muted">0 votes</h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <span id="total-vote-count">X</span> votes
+                </h6>
                 <p class="card-text small">
                   The best system demo is decided by people's choice. Vote for
                   your favorite demo now!
@@ -115,15 +117,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-gold
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-0"></span>
                   </div>
 
                   <div class="progress mb-2">
@@ -131,15 +130,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-silver
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-1"></span>
                   </div>
 
                   <div class="progress mb-2">
@@ -147,15 +143,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-bronze
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-2"></span>
                   </div>
                 </div>
 

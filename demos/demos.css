@@ -26,3 +26,15 @@
 .disabled-button {
   cursor: not-allowed;
 }
+
+.bg-gold {
+  background-color: #ffd11e;
+}
+
+.bg-silver {
+  background-color: silver;
+}
+
+.bg-bronze {
+  background-color: #cd7f32;
+}
