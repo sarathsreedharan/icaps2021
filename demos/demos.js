@@ -37,7 +37,7 @@ $(document).ready(function () {
             headers: {
               "Access-Control-Allow-Origin": "*",
             },
-            body: { votes: votes },
+            body: { id: $("#email").val(), votes: votes },
           });
         }
 
