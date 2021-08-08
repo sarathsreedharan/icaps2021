@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- <script src="../assets/js/vue.min.js"></script> -->
+    <link
+            rel="shortcut icon"
+            type="image/png"
+            href="../assets/images/favicon.png"
+    />
+    <!-- <link rel="stylesheet" href="https://www.orchome.com/css/bootstrap/5.0.1/bootstrap.min.css"> -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+    <title>ICAPS 2021</title>
+
+    <!-- Bootstrap Overrides -->
+    <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link
+            href="/assets/css/bootstrap-icons.css"
+    />
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
+</head>
+<body class="bg-light">
+<div id='icaps-header'>
+    <myheader></myheader>
+</div>
+<div id="app" v-cloak>
+<div class="album mt-3">
+    <div style="height: 100px;" class="d-none d-md-block">
+        <!-- padding hack for the fixed navbar -->
+    </div>
+</div>
+    <div class="container" style="min-height: 68vh" >
+        <div class="row">
+    
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="position: relative;min-height: 4em;margin-top: 1em;" :hidden='!isRegistration'>
+<!--        <div  style="font-size: small;color: grey;margin-bottom: 1em;width: 100%;">If you prefer going to gather, please click gather!</div>-->
+                <button class="gtg" onclick="window.open('https\:\/\/gather.town/app/V6z77iZjpGdUzBPo/ICAPS21')">Go to Gather --></button>
+    </div>
+        </div>
+         <br>
+         <br>
+
+                <div class="row">
+
+            <div class="accordion accordion-flush" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        If you prefer not going to gather, click here
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+                <div style="position:relative;width: 100%;left: 0;">
+        <table style="margin-top:0.5em;width: 100%;border: solid 1px black;" cellspacing="0">
+            <tr>
+<!--               <th>Aug. 2</th>-->
+<!--               <th>Aug. 3</th>-->
+<!--               <th>Aug. 4</th>-->
+               <th>Aug. 5</th>
+               <th>Aug. 6</th>
+               <th>Aug. 9-13</td>
+            </tr>
+            <tr>
+<!--                <td><button style="background-color: rgb(117, 206, 170);width: 100%;margin: 0 auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09')">DC</button></td>-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(221, 165, 186);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09 ')">Tut-DSCC</button></div>-->
+<!--                    <div><button style="background-color: #b0b9f0;width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86228072958?pwd=dXZyVWNLdG12bTVLWUFvZWk4UmxjQT09 ')">Tut-Trustworthy-AI</button></div>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83401704292')">HSDIP</button></div> -->
+<!--                    <div><button style="background-color: rgb(177, 219, 233);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09')">WIPC</button></div>-->
+<!--                    <div><button style="background-color: rgb(212, 178, 235);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09')">PLANROB-1</button></div>-->
+<!--                    <div><button style="background-color: rgb(165, 216, 177);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09')">SPARK</button></div>-->
+<!--                </td>-->
+                <td>
+                    <div><button style="background-color: rgb(235, 233, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89832598315')">FINPLAN</button></div>
+                    <div><button style="background-color: rgb(178, 235, 207);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09')">PRL-1</button></div>
+                    <div><button style="background-color: rgb(178, 207, 235);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09')">KEPS-1</button></div>
+                    <div><button style="background-color: rgb(178, 235, 215);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09')">PLANROB-2</button></div>
+                </td>
+                <td>
+                    <div><button style="background-color: rgb(221, 235, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/84563671218?pwd=NktlOGhud1c3U1ZidXlRaG40RTNFdz09')">INTEX</button></div>
+                    <div><button style="background-color: rgb(235, 199, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88519098495?pwd=Wnd0TXlGQTNZd1g5RmtmQTJ5aThiZz09')">XAIP</button></div>
+                    <div><button style="background-color: rgb(207, 235, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/anu.zoom.us/j/88399882726?pwd=WFFxeVNSUEtWTSttS3dQS1N6bm9IZz09')">HPLAN</button></div>
+                    <div><button style="background-color: rgb(178, 235, 227);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83805632807?pwd=Y0VXN1dGZWVZeGpETVBTc2ZBN0pMUT09')">PRL-2</button></div>
+                    <div><button style="background-color: rgb(235, 178, 213);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09')">KEPS-2</button></div>
+                </td>
+                <td>
+                                    <div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0.5em auto;height: 70px;" onclick="window.open('https\:\/\/icaps21.icaps-conference.org/live/')">Main Live</button></div>
+                    <div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0.5em auto;height: 50%;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09')">Main Zoom</button></div>
+                </td>
+
+            </tr>
+
+        <tbody id="tbMain"></tbody>
+    </table>
+       </div>
+      </div>
+    </div>
+  </div>
+            </div>
+<!--       <div style="margin-top: 0.5em;font-size: small;color: grey;margin-bottom: 1em;">If you prefer not going to gather, please click the links below</div>-->
+<!--       <div style="position:relative;width: 100%;left: 0;">-->
+<!--        <table style="margin-top:0.5em;width: 100%;border: solid 1px black;" cellspacing="0">-->
+<!--            <tr>-->
+<!--&lt;!&ndash;               <th>Aug. 2</th>&ndash;&gt;-->
+<!--               <th>Aug. 3</th>-->
+<!--               <th>Aug. 4</th>-->
+<!--               <th>Aug. 5</th>-->
+<!--               <th>Aug. 6</th>-->
+<!--               <th>Aug. 9-13</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--&lt;!&ndash;                <td><button style="background-color: rgb(117, 206, 170);width: 100%;margin: 0 auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09')">DC</button></td>&ndash;&gt;-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(221, 165, 186);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09 ')">Tut-DSCC</button></div>-->
+<!--                    <div><button style="background-color: #b0b9f0;width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86228072958?pwd=dXZyVWNLdG12bTVLWUFvZWk4UmxjQT09 ')">Tut-Trustworthy-AI</button></div>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83730978067?pwd=blcwUEJDRXJpRWxjaXg4YVlmN3RyUT09')">HSDIP</button></div>-->
+<!--                    <div><button style="background-color: rgb(177, 219, 233);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09')">WIPC</button></div>-->
+<!--                    <div><button style="background-color: rgb(212, 178, 235);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09')">PLANROB-1</button></div>-->
+<!--                    <div><button style="background-color: rgb(165, 216, 177);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09')">SPARK</button></div>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(235, 233, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88292865429?pwd=K1NlQU5wWmJ1aUdSSXBqaWd5QlQ0UT09')">FINPLAN</button></div>-->
+<!--                    <div><button style="background-color: rgb(178, 235, 207);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09')">PRL-1</button></div>-->
+<!--                    <div><button style="background-color: rgb(178, 207, 235);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09')">KEPS-1</button></div>-->
+<!--                    <div><button style="background-color: rgb(178, 235, 215);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/83539379071?pwd=UXE4UUtrdmUrWVRobVp1MFREa0FDQT09')">PLANROB-2</button></div>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                    <div><button style="background-color: rgb(221, 235, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/82007557737?pwd=SXhlcUxWeG9pNUtJT2liTjFLaktDZz09')">INTEX</button></div>-->
+<!--                    <div><button style="background-color: rgb(235, 199, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/85846596481?pwd=bHYvNTRjRm5RUUFsV0MwQ0hmc0dHUT09')">XAIP</button></div>-->
+<!--                    <div><button style="background-color: rgb(207, 235, 178);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/anu.zoom.us/j/88399882726?pwd=WFFxeVNSUEtWTSttS3dQS1N6bm9IZz09')">HPLAN</button></div>-->
+<!--                    <div><button style="background-color: rgb(178, 235, 227);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88072812056?pwd=V2JlNG5CMHQxckpjaWROdlFsZXJadz09')">PRL-2</button></div>-->
+<!--                    <div><button style="background-color: rgb(235, 178, 213);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89848442521?pwd=K3ZpRE5zUjg3WUVwZ1dDOUZUeXpIUT09')">KEPS-2</button></div>-->
+<!--                </td>-->
+<!--                <td><div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0 auto;height: 50%;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09')">Main</button></div></td>-->
+<!--            </tr>-->
+<!--    -->
+<!--        <tbody id="tbMain"></tbody>-->
+<!--    </table>-->
+<!--       </div>-->
+
+    </div>
+
+        <div class="mt-5">
+                <div style="height: 100%"></div>
+        </div>
+        
+    </div>
+  
+    <div class="modal" tabindex="-1" id='tips'>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-body" style="background-color: rgb(231, 241, 255);">
+                    <p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
+                        {{modalmsg}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer m-5">
+        <div class="container">
+            <hr />
+            <div class="row d-flex justify-content-center">
+                <div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
+                    &copy; ICAPS 2021
+                </div>
+                <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+                    <a href="../privacy-policy.html">Privacy Policy</a>
+                </div>
+                <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+                    <a href="../terms-of-use.html">Terms of Use</a>
+                </div>
+                <div class="col col-12 col-lg-2 d-flex justify-content-center">
+                    <a href="../code-of-conduct.html">Code of Conduct</a>
+                </div>
+                <div class="col col-12 col-lg-2 d-flex justify-content-center">
+                    <a href="mailto:icapsgz2021@gmail.com">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+    table tr th, table tr td { border:1px solid #0094ff; text-align: center;}
+    
+    @media(min-width:1000px){
+        .gtg{
+            font-size: 2.5em;background-color: #4358dc;color: white;border: solid #4358dc 1px;border-radius: 8px;width: 100%;
+        }
+    }
+    @media(max-width:999px){
+        .gtg{
+            font-size: 2.2em;background-color: #4358dc;color: white;border: solid #4358dc 1px;border-radius: 8px;width: 100%;
+        }
+    }
+   
+</style>

@@ -70,7 +70,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9" style="text-align: left"  >
-                    <select class="form-select"  v-model="user.profile[key]" v-if="!Edit && columns[key] == 'Country'">
+                    <select class="form-select"  v-model="user.profile[key]" v-if="!Edit && columns[key] == 'Country/Region'">
                         <option v-for="item in country" :value="item" >{{item}}</option>
                     </select>
                     <select class="form-select"   v-model="user.profile[key]" v-else-if="!Edit && columns[key]=='Pronoun'">
@@ -96,52 +96,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6" style="position: relative;min-height: 4em;margin-top: 1em;" :hidden='!isRegistration'>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <button style="font-size: 2.5em;background-color: #4358dc;color: white;border: solid #4358dc 1px;border-radius: 8px;width: 100%;" onclick="window.open('https\:\/\/gather.town/app/V6z77iZjpGdUzBPo/ICAPS21')">Go to Gather --></button>
-            </div>
-       <div  class=" col-xs-12 col-sm-12 col-md-6" style="font-size: small;color: grey;">If you prefer going to gather, please click gather!</div>
-        </div>
-       <div style="margin-top: 0.5em;font-size: small;color: grey;">If you prefer not going to gather, please click the links below</div>
-       <table style="margin-top:0.5em;width: 100%;border: solid 1px black;" cellspacing="0">
-        <tr>
-           <th>August2</th>
-           <th>August3</th>
-           <th>August4</th>
-           <th>August5</th>
-           <th>August6</th>
-           <th>August9-13</td>
-        </tr>
-        <tr>
-            <td><button style="background-color: rgb(117, 206, 170);width: 100%;margin: 0 auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/85897877064?pwd=ckFYY1pKVW8xV1F6L3dvQVRVVUhlQT09')">DC</button></td>
-            <td>
-                <div><button style="background-color: rgb(221, 165, 186);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09 ')">Tu+1</button></div>
-                <div><button style="background-color: #b0b9f0;width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/89922262543?pwd=N20wVDI2aWd2TllIVUF6dlljVWJXZz09 ')">Tu+2</button></div>
-            </td>
-            <td>
-                <div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/837309710067?pwd=blcwUEJDRXJpRWxjaXg4YVlmN3RyUT09')">HSDIP</button></div>
-                <div><button style="background-color: rgb(177, 219, 233);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/86477847323?pwd=enhEUVBDVXcwcXF4ZGVPZzFuQjBSUT09')">WIDC</button></div>
-                <div><button style="background-color: rgb(212, 178, 235);width: 100%;margin: 0.5em auto;">PLANROB</button></div>
-                <div><button style="background-color: rgb(165, 216, 177);width: 100%;margin: 0.5em auto;" onclick="window.open('https\:\/\/us02web.zoom.us/j/88170357015?pwd=dk9xNWtidFY5cTdoRTBYT0JzQjFpQT09')">SPARK</button></div>
-            </td>
-            <td>
-                <div><button style="background-color: rgb(235, 233, 178);width: 100%;margin: 0.5em auto;">FINPLAN</button></div>
-                <div><button style="background-color: rgb(178, 235, 207);width: 100%;margin: 0.5em auto;">PRL</button></div>
-                <div><button style="background-color: rgb(178, 207, 235);width: 100%;margin: 0.5em auto;">KEPS</button></div>
-                <div><button style="background-color: rgb(178, 235, 215);width: 100%;margin: 0.5em auto;">PLANROB</button></div>
-            </td>
-            <td>
-                <div><button style="background-color: rgb(221, 235, 178);width: 100%;margin: 0.5em auto;">INTEX</button></div>
-                <div><button style="background-color: rgb(235, 199, 178);width: 100%;margin: 0.5em auto;">XAIP</button></div>
-                <div><button style="background-color: rgb(207, 235, 178);width: 100%;margin: 0.5em auto;">HPLAN</button></div>
-                <div><button style="background-color: rgb(178, 235, 227);width: 100%;margin: 0.5em auto;">PRL</button></div>
-                <div><button style="background-color: rgb(235, 178, 213);width: 100%;margin: 0.5em auto;">KEPS</button></div>
-            </td>
-            <td><div><button style="background-color: rgb(203, 159, 162);width: 100%;margin: 0 auto;height: 50%;" onclick="window.open('https\:\/\/gather.town/app/V6z77iZjpGdUzBPo/ICAPS21')">Main</button></div></td>
-        </tr>
-
-    <tbody id="tbMain"></tbody>
+    
 </table>
     </div>
 

@@ -14,7 +14,7 @@ var app = new Vue({
     nowZone: new Date().getTimezoneOffset() / -60,
     nowHour: new Date().getTimezoneOffset() / 60 - 4 + new Date().getHours(),
     day: [{ sty: "style_day" }, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-    week: 1,
+    week: 2,
     keywords: "",
     searchShow: {},
     zone: new Date().getTimezoneOffset() / -60,
@@ -1052,18 +1052,17 @@ var app = new Vue({
         this.nowDay++;
       }
       // console.log(this.nowYear,this.nowMonth,this.nowDay,this.nowHour);
-      if (this.nowYear > 2021) return false;
-      else if (this.nowYear == 2021 && this.nowMonth > 8) return false;
+      if (this.nowYear > 2021) return "text-decoration: line-through;";
+      else if (this.nowYear == 2021 && this.nowMonth > 8) return "text-decoration: line-through;"
       else if (this.nowYear == 2021 && this.nowMonth == 8 && this.nowDay > day)
-        return false;
+        return "text-decoration: line-through;"
       else if (
         this.nowYear == 2021 &&
         this.nowMonth == 8 &&
         this.nowDay == day &&
         this.nowHour > hour
       )
-        return false;
-      else return true;
+        return "text-decoration: line-through;";
     },
 	sessionText: function(num){
 		if (this.session[num].length > 16){
