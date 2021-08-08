@@ -66,6 +66,7 @@ var app = new Vue({
       if(id == 'sysu') this.id='Sun Yat-Sen University'
       if(id == 'artificial_intelligence') this.id='artificial-intelligenc'
       if(id == 'huawei' || id=='huaweiVideo') this.id='Huawei'
+      if(this.type=='Demo' && (this.id== 388 || this.id==390 || this.id==392 || this.id==393)) this.id='CLICK HERE'
       
       document.getElementById('open_link').click()
 
