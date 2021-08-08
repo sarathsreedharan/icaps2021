@@ -12,7 +12,8 @@ var app = new Vue({
         'PRL-posters':['http://'+url+'/link/posters/prl-posters.html?id=',''],
         'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=',''],
         'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=',''],
-        'HPlan-posters':['http://'+url+'/link/posters/hplan-posters.html?id=',''],
+        'HPlan-posters': ['http://' + url + '/link/posters/hplan-posters.html?id=', ''],
+        'Demo-posters':['http://' + url + '/link/posters/demo-posters.html?id=', ''],
         Demo:['http://'+url+'/link/demo/index.html?id=','']
     },
       sponsor:{
