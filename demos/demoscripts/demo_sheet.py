@@ -13,20 +13,71 @@ app = Flask(__name__)
 
 from firebase import Firebase
 firebase = Firebase(FIREBASE_CONFIG)
+firebase_vote = Firebase(FIREBASE_CONFIG_2)
 db = firebase.database()
+db_vote = firebase_vote.database()
 
+DEMO_LIST = ['vote-376','vote-382','vote-391','vote-392','vote-383','vote-380','vote-388','vote-393','vote-381','vote-387','vote-385','vote-384','vote-375','vote-374','vote-386','vote-390','vote-378','vote-389','vote-377']
 
 @app.route("/")
 def index():
     vote_count = {}
-    r = requests.get('https://sheets.googleapis.com/v4/spreadsheets/1im28-bXbSmg73ooUejdvSu0Dn6mt2ZYFAN2S-3SWY_s/values/C2:C1000?key='+GOOGLE_API_KEY)
-    response_map = json.loads(r.text)
-    for val_list in response_map['values']:
-        val = val_list[0]
-        if val not in vote_count:
-           vote_count[val] = 0
-        vote_count[val] += 1
-    return json.dumps(vote_count)
+    #db_vote
+    data = db_vote.child("vote_tally").get().val()
+    if not data:
+       return json.dumps({'top_3': [0,0,0]})
+    for vote_id in data:
+        demo_name = data['demo_name']
+        if demo_name not in vote_count:
+           vote_count[demo_name] = 0
+        vote_count[demo_name] += 1
+    if len(vote_counts_top_3) >= 3:
+       vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
+    else:
+       vote_keys = list(vote_count.keys())
+       for i in range(3):
+           if i < len(vote_keys):
+              unsorted_top_3.append(vote_count[vote_keys[i]])
+           else:
+              unsorted_top_3.append(0)
+       vote_counts_top_3 = sorted(unsorted_top_3)
+    return json.dumps({'top_3': vote_counts_top_3})
+
+@app.route("/total_count")
+def count():
+    vote_count = {}
+    #db_vote
+    data = db_vote.child("vote_tally").get().val()
+    if not data:
+       return json.dumps({'total_count':0})
+
+    else:
+       return json.dumps({'total_count':len(data)})
+    for vote_id in data:
+        demo_name = data['demo_name']
+        if demo_name not in vote_count:
+           vote_count[demo_name] = 0
+        vote_count[demo_name] += 1
+    if len(vote_counts_top_3) >= 3:
+       vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
+    else:
+       vote_keys = list(vote_count.keys())
+       for i in range(3):
+           if i < len(vote_keys):
+              unsorted_top_3.append(vote_count[vote_keys[i]])
+           else:
+              unsorted_top_3.append(0)
+       vote_counts_top_3 = sorted(unsorted_top_3)
+    return json.dumps(vote_counts_top_3)
+
+
+@app.route("/vote", methods=['POST'])
+def vote():
+    votes = []
+    for demo in DEMO_LIST:
+        demo_vote = request.form.get(demo, None)
+        if demo_vote:
+           db.child("click_stats").push({"clicked":"fd", "timestamp":time.time()})
 
 @app.route("/fd")
 def fd_clicked():
