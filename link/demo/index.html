@@ -25,12 +25,12 @@
         var app = new Vue({
             el: '#video',
             data:{
-                src:backendBaseUrl + '/api/link/video?name=demovideo'+id
+                src:backendBaseUrl + '/api/link/video?name=demovideo'
             },
             mounted(){
                 let query = location.search;
                 let searchParams = new URLSearchParams(query);
-                var id = searchParams.get(id)
+                var id = searchParams.get('id')
                 this.src = this.src + id
             }
         })
