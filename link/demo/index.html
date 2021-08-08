@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
+    <script src="/assets/js/vue.min.js"></script>
+    <title>ICAPS2021</title>
+</head>
+<body>
+ 
+    <div id="video">
+        <video controls preload="auto">
+            <source :src="src" type="video/mp4">
+            {{src}}
+        </video>
+    </div>
+
+    <script type="module">
+       import {backendBaseUrl} from "/assets/js/backendBaseUrl.js"
+       window.onload = function(){
+           
+       }
+        var app = new Vue({
+            el: '#video',
+            data:{
+                src:backendBaseUrl + '/api/link/video?name=demovideo'+id
+            },
+            mounted(){
+                let query = location.search;
+                let searchParams = new URLSearchParams(query);
+                var id = searchParams.get(id)
+                this.src = this.src + id
+            }
+        })
+    </script>
+</body>
+<style>
+    video{
+        position: absolute;
+        width: 100%;
+        max-height: 90%;
+    }
+</style>

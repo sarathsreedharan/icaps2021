@@ -13,6 +13,7 @@ var app = new Vue({
         'PlanRob-posters':['http://'+url+'/link/posters/planRob-posters.html?id=',''],
         'IntEx-posters':['http://'+url+'/link/posters/intex-posters.html?id=',''],
         'HPlan-posters':['http://'+url+'/link/posters/hplan-posters.html?id=',''],
+        Demo:['http://'+url+'/link/demo/index.html?id=','']
     },
       sponsor:{
         ibm:'https://ibm.biz/icaps2021',
@@ -38,6 +39,9 @@ var app = new Vue({
         'FinPlan':'https://us02web.zoom.us/j/89832598315',
         'XAIP':'https://us02web.zoom.us/j/88519098495?pwd=Wnd0TXlGQTNZd1g5RmtmQTJ5aThiZz09',
       },
+      Diversity_Event:{
+          '01':'https://us02web.zoom.us/j/81744386811?pwd=eGZqMGdIRjJiS1ozMmhuUzNlMG1yZz09#success'
+      }
   },
   mounted(){
       let query = location.search;
@@ -46,15 +50,16 @@ var app = new Vue({
       var id = searchParams.get('id');
       this.type = type;
       this.id = id;
-      if(type=='workshops'){
+
+      
+      if(type=='workshops'  ){
         this.goal_url = this.workshops[id]
-        console.log(this.goal_url)
       }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence' || id=='portrait'){
         this.goal_url = this.sponsor[id]
-        console.log(this.goal_url)
+      }else if(type=='Diversity_Event'){
+        this.goal_url = this.Diversity_Event [id]
       }else{
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
-        console.log(this.goal_url)
       }
 
       if(id == 'sysu') this.id='Sun Yat-Sen University'
