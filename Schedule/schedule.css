@@ -75,15 +75,6 @@
   font-size: 15px;
 }
 
-.gather:hover {
-	margin: 0em 0em 0em 0em;
-  border-radius: 25px;
-  background-color: #80bff9;
-  text-align: center;
-  font-size: 15px;
-  cursor: pointer;
-}
-
 .style_session {
 	margin: 0em 0em 0em 0em;
   word-break: break-word;
