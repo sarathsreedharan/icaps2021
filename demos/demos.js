@@ -1,6 +1,11 @@
 $(document).ready(function () {
   // 'use strict'
 
+  let top3_votes_url = "http://ae-robots.com:8080/demoscripts/";
+  let total_votes_url = "http://ae-robots.com:8080/demoscripts/total_count";
+  let post_vote_url = "http://ae-robots.com:8080/demoscripts/vote";
+  var cache_total_vote = 0;
+
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
   var forms = document.querySelectorAll(".needs-validation");
 
@@ -12,6 +17,28 @@ $(document).ready(function () {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
+        } else {
+          let votes = [];
+
+          $("#vote-candidates")
+            .closest("form")
+            .find("input:checkbox:checked")
+            .each(function (index, item) {
+              votes.push(item.getAttribute("id"));
+            });
+
+          $.ajax({
+            url: post_vote_url,
+            type: "POST",
+            dataType: "json",
+            cors: true,
+            contentType: "application/json",
+            secure: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: { votes: votes },
+          });
         }
 
         form.classList.add("was-validated");
@@ -19,11 +46,6 @@ $(document).ready(function () {
       false
     );
   });
-
-  let top3_votes_url = "http://ae-robots.com:8080/demoscripts/";
-  let total_votes_url = "http://ae-robots.com:8080/demoscripts/total_count";
-  let post_vote_url = "http://ae-robots.com:8080/demoscripts/vote";
-  var cache_total_vote = 0;
 
   $.ajax({
     url: total_votes_url,
