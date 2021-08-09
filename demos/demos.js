@@ -1,8 +1,7 @@
 $(document).ready(function () {
   // 'use strict'
 
-  let top3_votes_url = "https://icaps21.icaps-conference.org/demoscripts/";
-  let total_votes_url = "https://icaps21.icaps-conference.org/demoscripts/total_count";
+  let get_votes_url = "https://icaps21.icaps-conference.org/demoscripts";
   let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
   var cache_total_vote = 0;
 
@@ -19,7 +18,7 @@ $(document).ready(function () {
           event.stopPropagation();
         } else {
           let votes = [];
-	   alert("this");
+
           $("#vote-candidates")
             .closest("form")
             .find("input:checkbox:checked")
@@ -27,13 +26,22 @@ $(document).ready(function () {
               votes.push(item.getAttribute("id"));
             });
 
+          votes.splice(votes.indexOf("invalidCheck"), 1);
+
           $.ajax({
             url: post_vote_url,
             type: "POST",
             contentType: "application/json",
-	    data: JSON.stringify({ id: $("#email").val(), Votes: votes}), //JSON.JSON.stringify(votes) }, //{ id: $("#email").val(), votes: votes },
+            data: JSON.stringify({ id: $("#email").val(), Votes: votes }),
+            success: function (data) {
+              alert("Your vote was saved successfully!");
+            },
+            error: function (data) {
+              alert(
+                "Your vote could not be saved. Please notify the demo chairs about this error."
+              );
+            },
           });
-	  console.log(JSON.stringify({ id: $("#email").val(), votes: votes }));
         }
 
         form.classList.add("was-validated");
@@ -43,7 +51,7 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    url: total_votes_url,
+    url: get_votes_url,
     type: "GET",
     dataType: "json",
     cors: true,
@@ -53,32 +61,19 @@ $(document).ready(function () {
       "Access-Control-Allow-Origin": "*",
     },
     success: function (data) {
-      cache_total_vote = data["total_count"];
+      var cache_total_vote = data["total"];
       $("#total-vote-count").text(cache_total_vote);
 
-      $.ajax({
-        url: top3_votes_url,
-        type: "GET",
-        dataType: "json",
-        cors: true,
-        contentType: "application/json",
-        secure: true,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-        success: function (data) {
-          data["top_3"].forEach(function (item, index) {
-            let percentage_count = 0;
+      data["top_3"].forEach(function (item, index) {
+        let percentage_count = 0;
 
-            if (cache_total_vote > 0)
-              percentage_count = (100 * item) / cache_total_vote;
+        if (cache_total_vote > 0)
+          percentage_count = (100 * item) / cache_total_vote;
 
-            $("#vote-number-" + index).text(percentage_count + "%");
-            $("#vote-number-" + index)
-              .siblings(".progress-bar")
-              .css("width", percentage_count + "%");
-          });
-        },
+        $("#vote-number-" + index).text(percentage_count + "%");
+        $("#vote-number-" + index)
+          .siblings(".progress-bar")
+          .css("width", percentage_count + "%");
       });
     },
   });
@@ -124,7 +119,7 @@ $(document).ready(function () {
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
   let demo_element =
-    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank">Watch</a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank">Read</a></div></div></div>';
+    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank"><i class="bi bi-cursor"></i></a></div></div></div>';
 
   let demo_data = get_demo_data();
   let randomized_demo_data = demo_data
@@ -144,6 +139,9 @@ $(document).ready(function () {
       new_vote_element = new_vote_element.replaceAll("[" + key + "]", value);
     });
 
+    if (!item["website"])
+      new_demo_element = new_demo_element.replace("website-d-none", "d-none");
+
     if (column_tally > 18) column_tally = 18;
 
     let current_id = "#demo-area-" + Math.ceil(column_tally / 6);
@@ -151,8 +149,8 @@ $(document).ready(function () {
     $("#vote-candidates").html($("#vote-candidates").html() + new_vote_element);
   });
 
-  function login_view(){
-     $("#login-area").addClass("d-none");
+  function login_view() {
+    $("#login-area").addClass("d-none");
     $("#form-area").removeClass("d-none");
   }
 
@@ -289,6 +287,7 @@ $(document).ready(function () {
           "We consider the problem of human-machine collaborative problem solving as a planning task coupled with natural language communication. Our framework consists of three components -- a natural language engine that parses the language utterances to a formal representation and vice-versa, a concept learner that induces generalized concepts for plans based on limited interactions with the user and an HTN planner that solves the task based on human interaction. We illustrate the ability of this framework to address the key challenges of collaborative problem solving by demonstrating it on a collaborative building task in a Minecraft-based blocksworld domain.",
         link: "../attending",
         video: "https://www.youtube.com/watch?v=q1pWe4aahF0&feature=youtu.be",
+        website: "https://starling.utdallas.edu/papers/collaborative-ps/",
         id: 375,
       },
       {
@@ -331,6 +330,7 @@ $(document).ready(function () {
           "Recent advances in visualisation technologies have opened up new possibilities for human-agent communication. In particular, visualisation of agent planned actions can play an important role in allowing human users to understand agent intentions and to help decide when control can be delegated or when human decision making is required. This is especially true for application domains where branched plans are required due to the typical uncertainty experienced. We have developed an interface which uses 3D visualisation to communicate key details of such plans to practitioners. The system has been used in experiments to evaluate the impact of presentation mode on practitioner understanding.",
         link: "../attending",
         video: "https://youtu.be/xhkqNbAa4Bs",
+        website: "https://bab.bournemouth.ac.uk/icapswebgl/",
         id: 378,
       },
       {
@@ -341,6 +341,7 @@ $(document).ready(function () {
           "An aggregated assistant is realized as an orchestrated set of individual capabilities called skills. In this demo, we will show how complex behaviors of such an assistant can be composed on the fly using automated planning.",
         link: "../attending",
         video: "https://youtu.be/K7FPcl-IYgE",
+        website: "https://www.ibm.com/cloud/automation/watson-orchestrate",
         id: 389,
       },
       {
