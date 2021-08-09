@@ -330,7 +330,8 @@ var app = new Vue({
                 })
             }
         },
-        submitSurvey(){
+        submitSurvey() {
+            
             axios.post(backendBaseUrl + '/api/registrations/survey', this.survey,{
                 headers: {
                     "Authorization": localStorage.getItem('token')
@@ -444,6 +445,10 @@ var app = new Vue({
         }).catch(err => {
             console.log(err)
         })
+        this.survey.submit = {
+                fail:false,
+                success:false,
+            }
     },
     watch: {
         token: async function () {

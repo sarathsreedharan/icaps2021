@@ -14,11 +14,18 @@
 <body>
     <div id="app" style="position: absolute;left: 50%;top: 40%;" v-cloak>
         <p style="text-align: center;position:relative;top: -50%;left: -50%;">
-            To enter, click this button:
+            If you prefer attending via live broadcast, please click:  
             <br>
             <br>
-            <button @click="open()" target="_blank" id="open_link" 
-                style="background-color: rgb(67, 88, 220);border: solid 1px rgb(67, 88, 220);color: white;font-size: larger;border-radius: 4px;">{{type}} : {{id}}</button>
+            <button onclick="window.open('https:\/\/us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09')" target="_blank" 
+                style="background-color: rgb(67, 88, 220);border: solid 1px rgb(67, 88, 220);color: white;font-size: larger;border-radius: 4px;">Main Zoom</button>
+            <br>
+            <br>
+            Otherwise you can attend via Zoom meeting: 
+            <br>
+            <br>
+            <button  target="_blank" onclick="window.open('https:\/\/icaps21.icaps-conference.org/live/')"
+                style="background-color: rgb(67, 88, 220);border: solid 1px rgb(67, 88, 220);color: white;font-size: larger;border-radius: 4px;">Main : Live</button>
             <br>
             <br>
             Clidking the link will disable your audio/video on Gather, so it won't interfere
