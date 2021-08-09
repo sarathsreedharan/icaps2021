@@ -116,7 +116,7 @@ Vue.component('myheader',async function(resolve,reject){
                 }
             }).then(res => {
                 this.survey = res.data;
-                if (!this.isNSTshirt && (this.survey.phone == '' || this.survey.phone==null)) {
+                if ((!this.isNSTshirt && (this.survey.phone == '' || this.survey.phone==null))&&(this.$props.curpage=='userInfo' || this.$props.curpage=='registration')) {
                     this.phoneModal.show()
                 }
             }).catch(err => {
