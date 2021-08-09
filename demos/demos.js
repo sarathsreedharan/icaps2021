@@ -13,10 +13,7 @@ $(document).ready(function () {
     form.addEventListener(
       "submit",
       function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
+        if (form.checkValidity()) {
           let votes = [];
 
           $("#vote-candidates")
@@ -43,6 +40,9 @@ $(document).ready(function () {
             },
           });
         }
+
+        event.preventDefault();
+        event.stopPropagation();
 
         form.classList.add("was-validated");
       },
