@@ -25,15 +25,15 @@ const store = new Vuex.Store({
     }
 })
 async function getTemplate(){
-    let storage=window.localStorage;
-    if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>2) {
-        storage.setItem("header",(await axios.get("/assets/component/myheader.html")).data);
-        storage.setItem("header_cnt",0);
-    }
-    let cnt = Number(storage.getItem("header_cnt"));
-    storage.setItem("header_cnt",cnt+1);
-    return storage.getItem("header");
-    // return (await axios.get("/assets/component/myheader.html")).data;
+    // let storage=window.localStorage;
+    // if (storage.getItem("header")==null||storage.getItem("header")==""||Number(storage.getItem("header_cnt"))>2) {
+    //     storage.setItem("header",(await axios.get("/assets/component/myheader.html")).data);
+    //     storage.setItem("header_cnt",0);
+    // }
+    // let cnt = Number(storage.getItem("header_cnt"));
+    // storage.setItem("header_cnt",cnt+1);
+    // return storage.getItem("header");
+    return (await axios.get("/assets/component/myheader.html")).data;
 }
 
 
