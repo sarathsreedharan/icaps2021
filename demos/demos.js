@@ -93,13 +93,17 @@ $(document).ready(function () {
   });
 
   $(document).on("click", ".log-demo-click", function (e) {
-    data = {
-      type: "demo",
-      name: $(this).parent().attr("id"),
-      mode: e.currentTarget.innerText,
+    let url = "https://icaps21.icaps-conference.org/demoscripts/button_clicks";
+    let click_data = {
+      demo_id: $(this).parent().attr("id").replace("card-", ""),
+      button_type: e.currentTarget.name,
     };
 
-    console.log(data);
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: click_data,
+    });
   });
 
   $(".log-software-click").click(function (e) {
@@ -119,7 +123,7 @@ $(document).ready(function () {
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
   let demo_element =
-    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank"><i class="bi bi-cursor"></i></a></div></div></div>';
+    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]" name="interact">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
 
   let demo_data = get_demo_data();
   let randomized_demo_data = demo_data
