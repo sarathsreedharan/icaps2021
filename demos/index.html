@@ -28,6 +28,7 @@
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     <script src="demos.js"></script>
+    <script type="module" src="demo_vue.js"></script>
   </head>
   <body>
     <div id="icaps-header">
@@ -44,7 +45,13 @@
         <div class="row">
           <div class="col-12 col-md-8">
             <div class="alert alert-icaps" role="alert">
-              Demo links will go live at the time of the conference on Aug 9th.
+              Demos are now live! The live interacive session will be on Aug 11.
+              <a href="../Schedule"
+                ><span class="badge bg-danger">Schedule</span></a
+              >
+              <a class="vote" href="#voting-area"
+                ><span class="badge bg-icaps">Vote</span></a
+              >
             </div>
 
             <div class="row">
@@ -54,17 +61,78 @@
 
               <div class="col-12 col-md-6 col-lg-4" id="demo-area-3"></div>
             </div>
+            <div id="demo_app" v-cloak>
+              <div class="card" id="voting-area">
+                <div class="card-body">
+                  <div v-if="login_view(isLogin)"></div>
+                  <div id="login-area" class="alert alert-primary" role="alert">
+                    You must log in to vote.
+                    <a class="btn btn-sm btn-primary text-white" href="../login"
+                      >Login</a
+                    >
+                  </div>
+                  <div id="form-area" class="d-none">
+                    <h3>
+                      <i class="bi bi-trophy-fill trophy trophy-1"></i>
+                      <i class="bi bi-trophy-fill trophy trophy-2"></i>
+                      <i class="bi bi-trophy-fill trophy trophy-3"></i>
+                    </h3>
+
+                    <hr />
+
+                    <form class="row g-3 needs-validation" novalidate>
+                      <div class="col-12">
+                        <input
+                          type="hidden"
+                          id="email"
+                          name="email"
+                          v-bind:value="user.email"
+                        />
+                        <div class="form-check">
+                          <div id="vote-candidates"></div>
+
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="invalidCheck"
+                            required
+                          />
+                          <label class="form-check-label" for="invalidCheck">
+                            I am not voting for myself.
+                            <span class="text-danger"
+                              >Voting for self will cause
+                              disqualification.</span
+                            >
+                          </label>
+                          <div class="invalid-feedback">
+                            You must agree before submitting.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-primary" type="submit">
+                          Submit vote
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="col-12 col-md-4">
             <div class="card card-no-border mb-3">
               <div class="card-body">
                 <h5 class="card-title">ICAPS Best Demo Award</h5>
-                <h6 class="card-subtitle mb-2 text-muted">0 votes</h6>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <span id="total-vote-count">X</span> votes
+                </h6>
                 <p class="card-text small">
-                  The best system demo is decided by people's choice. Vote for
-                  your favorite demo now!
-                  <span class="text-icaps">Voting starts Aug 9.</span>
+                  The best demo is decided by people's choice. Vote for your
+                  favorite demo now!
+                  <span class="text-icaps">Voting ends Wed Aug 11 UTC-12.</span>
                 </p>
 
                 <div class="mb-3">
@@ -73,15 +141,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-gold
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-0"></span>
                   </div>
 
                   <div class="progress mb-2">
@@ -89,15 +154,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-silver
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-1"></span>
                   </div>
 
                   <div class="progress mb-2">
@@ -105,15 +167,12 @@
                     <div
                       class="
                         progress-bar progress-bar-striped progress-bar-animated
-                        bg-secondary
+                        bg-bronze
                       "
                       role="progressbar"
-                      aria-valuenow="0"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
                       style="width: 0%"
                     ></div>
-                    <span class="vote-number">0%</span>
+                    <span class="vote-number" id="vote-number-2"></span>
                   </div>
                 </div>
 
@@ -124,7 +183,7 @@
                   </p>
                 </div>
 
-                <a class="btn btn-icaps text-white disabled-button" id="vote"
+                <a class="btn btn-icaps text-white vote" href="#voting-area"
                   >Vote</a
                 >
 
