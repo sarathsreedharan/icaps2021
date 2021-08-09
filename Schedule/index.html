@@ -648,16 +648,16 @@
                           <hr />
                         </a>
                         <div style="text-align: end">
-                          <strong>Time</strong>:
-                          <small
-                            ><i
-                              >{{showModalDay()}}</i
-                            ></small
-                          ><br />
                           <strong>Chairs</strong>:
                           <small
                             ><i
                               >{{modal_chairs}}</i
+                            ></small
+                          ><br />
+                          <strong>Time</strong>:
+                          <small
+                            ><i
+                              >{{showModalDay()}}</i
                             ></small
                           ><br />
                           <strong>Place</strong>:
@@ -756,19 +756,13 @@
                         <div style="text-align: center">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <strong>Place</strong>: <small><i>Demo Building in 
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                          <strong>Place</strong>: <small><i>Demo Building in Gather.Town</i></small><br>
                         </div><br>
                         <strong>Diversity Event: </strong><br>
                         <div style="text-align: center">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <strong>Place</strong>: <small><i>Diversity Event Building in 
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br>
+                          <strong>Place</strong>: <small><i>Diversity Event Building in Gather.Town</i></small><br>
                         </div>
                       </div>
                       <div v-else>
@@ -788,22 +782,11 @@
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
-                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo Building in 
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
-                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster Building in 
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
-                          <div v-else-if="modal_type == 'Diversity Event'"><strong>Place</strong>: <small><i>Diversity Event Building in 
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small><br></div>
-                          <div v-else><strong>Place</strong>: <small><i>Session room in
-                            <a href="https://gather.town/app/V6z77iZjpGdUzBPo/ICAPS21"
-                                target="_blank"
-                                style="color: black"><span class="modalGather">Gather.Town</span></a></i></small> <br></div>
+                          <div v-if="modal_type == 'Demos'"><strong>Place</strong>: <small><i>Demo Building in Gather.Town</i></small><br></div>
+                          <div v-else-if="modal_type == 'Posters'"><strong>Place</strong>: <small><i>Poster Building in Gather.Town</i></small><br></div>
+                          <div v-else-if="modal_type == 'Community Socializing'"><strong>Place</strong>: <small><i>Bar Building in Gather.Town</i></small><br></div>
+                          <div v-else-if="modal_type == 'Diversity Event'"><strong>Place</strong>: <small><i>Diversity Event Building in Gather.Town</i></small><br></div>
+                          <div v-else><strong>Place</strong>: <small><i>Session room in Gather.Town</i></small> <br></div>
                         </div>
                       </div>
                     </div>
