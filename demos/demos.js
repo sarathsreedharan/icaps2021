@@ -68,7 +68,7 @@ $(document).ready(function () {
         let percentage_count = 0;
 
         if (cache_total_vote > 0)
-          percentage_count = (100 * item) / cache_total_vote;
+          percentage_count = Math.floor((100 * item) / cache_total_vote);
 
         $("#vote-number-" + index).text(percentage_count + "%");
         $("#vote-number-" + index)

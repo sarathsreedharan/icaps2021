@@ -27,17 +27,17 @@ def index():
     data = db_vote.child("vote_tally").get().val()
     if not data:
        return json.dumps({'top_3': [0,0,0]})
-    email_ids_seen = set()
+    email_ids_seen_dict = {}
     for item in data:
         #raise Exception(str(data[item]['data']))
         data_map = data[item]['data']
-        if data_map['id'] not in email_ids_seen:
-            email_ids_seen.add(data_map['id'])
-            for vote in data_map['Votes']:
-                if vote not in vote_count:
-                    vote_count[vote] = 0
-                vote_count[vote] += 1
-                total_count += 1
+        email_ids_seen_dict[data_map['id']] = data_map['Votes']
+    for key in  email_ids_seen_dict:
+        for vote in email_ids_seen_dict[key]:
+            if vote not in vote_count:
+                vote_count[vote] = 0
+            vote_count[vote] += 1
+            total_count += 1
     
     if len(vote_count) >= 3:
        vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
