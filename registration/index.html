@@ -521,7 +521,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" style="margin: 1em 0 0.5em 0.8em">Phone Number</label>
                                                     <input type="text" class="form-control" :class="{warn:isFirst_name}" placeholder=""
-                                                        v-model="survey.phone" :disabled="surveySubmit">
+                                                        v-model="survey.phone">
                                                 </div>
                                             </div>
                                             <div class="clearfix col-md-6 col-xs-12 col-sm-12 col-lg-3">
@@ -567,7 +567,12 @@
                                                     </ul>
                                                 </small>
                                                 <button type="button" class="btn btn-primary" @click="nextWindow2()"
-                                                    style="margin: 1.5em 0 0.5em 0em">Next</button>
+                                                    style="margin: 1.5em 0 0.5em 0em" v-if="!surveySubmit">Next</button>
+                                                <button type="button" class="btn btn-primary" @click="submitSurvey()"
+                                                    style="margin: 1.5em 0 0.5em 0em" v-else>Submit</button>
+                                                    <p style="color: red;text-align: center;" v-if="survey.submit.fail">
+                                                        Fail to submit,Please retry again
+                                                    </p>
                                             </div>
                                         </div>
                                     </div>
