@@ -114,6 +114,13 @@ var demo_app = new Vue({
             },
             userInfo() {
                 window.location.href = '/userInfo';
-            }
+            },
+	      login_view(islogin){
+		      if (islogin){
+     $("#login-area").addClass("d-none");
+    $("#form-area").removeClass("d-none");
+     return true;
+		      }
+	      return false;}
         },
 });

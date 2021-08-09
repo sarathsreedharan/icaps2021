@@ -1,9 +1,9 @@
 $(document).ready(function () {
   // 'use strict'
 
-  let top3_votes_url = "http://ae-robots.com:8080/demoscripts/";
-  let total_votes_url = "http://ae-robots.com:8080/demoscripts/total_count";
-  let post_vote_url = "http://ae-robots.com:8080/demoscripts/vote";
+  let top3_votes_url = "https://icaps21.icaps-conference.org/demoscripts/";
+  let total_votes_url = "https://icaps21.icaps-conference.org/demoscripts/total_count";
+  let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
   var cache_total_vote = 0;
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -19,7 +19,7 @@ $(document).ready(function () {
           event.stopPropagation();
         } else {
           let votes = [];
-
+	   alert("this");
           $("#vote-candidates")
             .closest("form")
             .find("input:checkbox:checked")
@@ -30,15 +30,10 @@ $(document).ready(function () {
           $.ajax({
             url: post_vote_url,
             type: "POST",
-            dataType: "json",
-            cors: true,
             contentType: "application/json",
-            secure: true,
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-            body: { id: $("#email").val(), votes: votes },
+	    data: JSON.stringify({ id: $("#email").val(), Votes: votes}), //JSON.JSON.stringify(votes) }, //{ id: $("#email").val(), votes: votes },
           });
+	  console.log(JSON.stringify({ id: $("#email").val(), votes: votes }));
         }
 
         form.classList.add("was-validated");
@@ -155,6 +150,11 @@ $(document).ready(function () {
     $(current_id).html($(current_id).html() + new_demo_element);
     $("#vote-candidates").html($("#vote-candidates").html() + new_vote_element);
   });
+
+  function login_view(){
+     $("#login-area").addClass("d-none");
+    $("#form-area").removeClass("d-none");
+  }
 
   function get_demo_data() {
     return [

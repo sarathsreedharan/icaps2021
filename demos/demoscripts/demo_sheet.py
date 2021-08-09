@@ -23,15 +23,23 @@ DEMO_LIST = ['vote-376','vote-382','vote-391','vote-392','vote-383','vote-380','
 def index():
     vote_count = {}
     #db_vote
+    total_count = 0
     data = db_vote.child("vote_tally").get().val()
     if not data:
        return json.dumps({'top_3': [0,0,0]})
-    for vote_id in data:
-        demo_name = data['demo_name']
-        if demo_name not in vote_count:
-           vote_count[demo_name] = 0
-        vote_count[demo_name] += 1
-    if len(vote_counts_top_3) >= 3:
+    email_ids_seen = set()
+    for item in data:
+        #raise Exception(str(data[item]['data']))
+        data_map = data[item]['data']
+        if data_map['id'] not in email_ids_seen:
+            email_ids_seen.add(data_map['id'])
+            for vote in data_map['Votes']:
+                if vote not in vote_count:
+                    vote_count[vote] = 0
+                vote_count[vote] += 1
+                total_count += 1
+    
+    if len(vote_count) >= 3:
        vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
     else:
        vote_keys = list(vote_count.keys())
@@ -41,7 +49,7 @@ def index():
            else:
               unsorted_top_3.append(0)
        vote_counts_top_3 = sorted(unsorted_top_3)
-    return json.dumps({'top_3': vote_counts_top_3})
+    return json.dumps({'top_3': vote_counts_top_3, 'total': total_count})
 
 @app.route("/total_count")
 def count():
@@ -53,31 +61,13 @@ def count():
 
     else:
        return json.dumps({'total_count':len(data)})
-    for vote_id in data:
-        demo_name = data['demo_name']
-        if demo_name not in vote_count:
-           vote_count[demo_name] = 0
-        vote_count[demo_name] += 1
-    if len(vote_counts_top_3) >= 3:
-       vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
-    else:
-       vote_keys = list(vote_count.keys())
-       for i in range(3):
-           if i < len(vote_keys):
-              unsorted_top_3.append(vote_count[vote_keys[i]])
-           else:
-              unsorted_top_3.append(0)
-       vote_counts_top_3 = sorted(unsorted_top_3)
-    return json.dumps(vote_counts_top_3)
 
-
-@app.route("/vote", methods=['POST'])
+@app.route("/vote", methods=['GET', 'POST'])
 def vote():
-    votes = []
-    for demo in DEMO_LIST:
-        demo_vote = request.form.get(demo, None)
-        if demo_vote:
-           db.child("click_stats").push({"clicked":"fd", "timestamp":time.time()})
+    data = request.data.decode('utf-8') #get_json(force=True)
+    db_vote.child("vote_tally").push({'data': json.loads(data)})
+            #{'id':data['id'], 'votes':data['Votes']})#"email_id":email_id,"demo_votes":votes})
+    return ""
 
 @app.route("/fd")
 def fd_clicked():

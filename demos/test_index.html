@@ -64,8 +64,9 @@
             <div id="demo_app" v-cloak>
               <div class="card" id="voting-area">
                 <div class="card-body">
-                  <div v-if="!isLogin">
-                    <div class="alert alert-primary" role="alert">
+                  <div v-if="login_view(isLogin)">
+                  </div>
+                    <div id="login-area" class="alert alert-primary" role="alert">
                       You must log in to vote.
                       <a
                         class="btn btn-sm btn-primary text-white"
@@ -73,9 +74,7 @@
                         >Login</a
                       >
                     </div>
-                  </div>
-                  <div v-else>
-                    <div id="form-area">
+                    <div id="form-area" class="d-none">
                       <h3>
                         <i class="bi bi-trophy-fill trophy trophy-1"></i>
                         <i class="bi bi-trophy-fill trophy trophy-2"></i>
@@ -120,7 +119,6 @@
                           </button>
                         </div>
                       </form>
-                    </div>
                   </div>
                 </div>
               </div>
