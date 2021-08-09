@@ -30,8 +30,8 @@ def index():
     email_ids_seen_dict = {}
     for item in data:
         #raise Exception(str(data[item]['data']))
-        data_map = data[item]['data']
-        email_ids_seen_dict[data_map['id']] = data_map['Votes']
+        data_map = data[item].get('data','')
+        email_ids_seen_dict[data_map['id']] = data_map.get('Votes',[])
     for key in  email_ids_seen_dict:
         for vote in email_ids_seen_dict[key]:
             if vote not in vote_count:
@@ -40,15 +40,16 @@ def index():
             total_count += 1
     
     if len(vote_count) >= 3:
-       vote_counts_top_3 = sorted(list(vote_count.values()), reverse=3)[:3]
+       vote_counts_top_3 = sorted(list(vote_count.values()), reverse=True)[:3]
     else:
+       unsorted_top_3 = []
        vote_keys = list(vote_count.keys())
        for i in range(3):
            if i < len(vote_keys):
               unsorted_top_3.append(vote_count[vote_keys[i]])
            else:
               unsorted_top_3.append(0)
-       vote_counts_top_3 = sorted(unsorted_top_3)
+       vote_counts_top_3 = sorted(unsorted_top_3,reverse=True)
     return json.dumps({'top_3': vote_counts_top_3, 'total': total_count})
 
 @app.route("/total_count")
