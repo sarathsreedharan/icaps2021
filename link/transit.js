@@ -5,7 +5,6 @@ var app = new Vue({
       goal_url:'',
       type:'',
       id:'',
-      isMain:false,
       select:{
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
@@ -44,15 +43,12 @@ var app = new Vue({
       Diversity_Event:{
           '01':'https://us02web.zoom.us/j/81744386811?pwd=eGZqMGdIRjJiS1ozMmhuUzNlMG1yZz09#success'
       },
-      Main:{
-        Live:'https://icaps21.icaps-conference.org/live/',
-        Zoom:'https://us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09'
-      },
       Demo_Website:{
         '378':'https://bab.bournemouth.ac.uk/icapswebgl/'
       }
   },
-  mounted(){
+  mounted() {
+    window.a = this
       let query = location.search;
       let searchParams = new URLSearchParams(query);
       var type = searchParams.get('type');
@@ -65,9 +61,6 @@ var app = new Vue({
         this.goal_url = this.sponsor[id]
       }else if(type=='Diversity_Event'){
         this.goal_url = this.Diversity_Event[id]
-      }else if(type=='Main'){
-        this.isMain=true;
-        this.goal_url = this.Main.Zoom
       }else if(type=='Demo_Website'){
         this.goal_url = this.Demo_Website[id]
       }else if(type == 'Demo-posters' && id==375){
