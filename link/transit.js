@@ -5,6 +5,7 @@ var app = new Vue({
       goal_url:'',
       type:'',
       id:'',
+      isMain:false,
       select:{
         sponsor:['http://'+url+'/link/sponsors/','.html'],
         posters:['http://'+url+'/link/posters/index.html?id=',''],
@@ -42,6 +43,10 @@ var app = new Vue({
       },
       Diversity_Event:{
           '01':'https://us02web.zoom.us/j/81744386811?pwd=eGZqMGdIRjJiS1ozMmhuUzNlMG1yZz09#success'
+      },
+      Main:{
+        Live:'https://icaps21.icaps-conference.org/live/',
+        Zoom:'https://us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09'
       }
   },
   mounted(){
@@ -51,15 +56,17 @@ var app = new Vue({
       var id = searchParams.get('id');
       this.type = type;
       this.id = id;
-
-      
       if(type=='workshops'){
         this.goal_url = this.workshops[id]
       }else if(id == 'huawei' || id == 'ibm' || id=='artificial_intelligence' || id=='portrait'){
         this.goal_url = this.sponsor[id]
       }else if(type=='Diversity_Event'){
         this.goal_url = this.Diversity_Event[id]
-      }else{
+      }else if(type=='Main'){
+        this.isMain=true;
+        this.goal_url = this.Main.Zoom
+      }
+      else{
         this.goal_url =  this.select[type][0]+id+this.select[type][1]
       }
 
@@ -67,8 +74,8 @@ var app = new Vue({
       if(id == 'artificial_intelligence') this.id='artificial-intelligenc'
       if(id == 'huawei' || id=='huaweiVideo') this.id='Huawei'
       if((this.type=='Demo' || this.type=='Demo-posters') && (this.id== 388 || this.id==390 || this.id==392 || this.id==393)) this.id='CLICK HERE'
-      
       document.getElementById('open_link').click()
+      
 
   },
   methods:{
