@@ -474,7 +474,7 @@
                                   class="row align-items-center"
                                   data-bs-toggle="modal"
                                   data-bs-target="#modal"
-                                  @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
+                                  @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin, item.chairs)"
                                 >
                                   <div
                                     class="tip tip-buttom col align-self-center"
@@ -501,7 +501,7 @@
                                   class="row align-items-center"
                                   data-bs-toggle="modal"
                                   data-bs-target="#modal"
-                                  @click="setModalDetailMin(item.num, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2)"
+                                  @click="setModalDetailMin(item.num, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2, item.chairs)"
                                 >
                                   <div
                                     class="tip tip-buttom col align-self-center"
@@ -517,7 +517,7 @@
                                   class="style_event row"
                                   data-bs-toggle="modal"
                                   data-bs-target="#modal"
-                                  @click="setModalDetailMin(0, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2);setInvitedNum(j)"
+                                  @click="setModalDetailMin(0, item.type2, Week2[j][0].day, item.time2, item.timeMin2, item.end2, item.endMin2, '');setInvitedNum(j)"
                                   :style="setInsideHeight(item.time2, item.end2)"
                                 >
                                   <div class="tip tip-buttom col align-self-center" :data-tip=item.type2>
@@ -534,7 +534,7 @@
                             class="row align-items-center"
                             data-bs-toggle="modal"
                             data-bs-target="#modal"
-                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin)"
+                            @click="setModalDetailMin(item.num, item.type, Week2[j][0].day, item.time, item.timeMin, item.end, item.endMin, item.chairs)"
                           >
                             <div
                               class="tip tip-buttom col align-self-center"
@@ -550,7 +550,7 @@
                             class="style_socializing row"
                             data-bs-toggle="modal"
                             data-bs-target="#modal"
-                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0')"
+                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0', '')"
                             :style="setInsideHeight(item.time, item.end)"
                           >
                             <div class="tip tip-buttom col align-self-center" data-tip="Socializing">
@@ -571,7 +571,7 @@
                             class="style_event row"
                             data-bs-toggle="modal"
                             data-bs-target="#modal"
-                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0');setInvitedNum(j)"
+                            @click="setModalDetailMin(0, item.type, Week2[j][0].day, item.time, '0', item.end, '0', '');setInvitedNum(j)"
                             :style="setInsideHeight(item.time, item.end)"
                           >
                             <div class="tip tip-buttom col align-self-center" :data-tip=item.type>
@@ -652,6 +652,12 @@
                           <small
                             ><i
                               >{{showModalDay()}}</i
+                            ></small
+                          ><br />
+                          <strong>Chairs</strong>:
+                          <small
+                            ><i
+                              >{{modal_chairs}}</i
                             ></small
                           ><br />
                           <strong>Place</strong>:
