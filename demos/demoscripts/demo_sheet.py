@@ -69,6 +69,15 @@ def vote():
             #{'id':data['id'], 'votes':data['Votes']})#"email_id":email_id,"demo_votes":votes})
     return ""
 
+@app.route("/button_clicks", methods=['GET'])
+def button_clicks():
+    demo_id = request.args.get('demo_id') #get_json(force=True)
+    button_type = request.args.get('button_type') #get_json(force=True)
+
+    db.child("demo_cards_tally").push({'demo_id': demo_id, 'button_type': button_type})
+            #{'id':data['id'], 'votes':data['Votes']})#"email_id":email_id,"demo_votes":votes})
+    return ""
+
 @app.route("/fd")
 def fd_clicked():
     db.child("click_stats").push({"clicked":"fd", "timestamp":time.time()})
