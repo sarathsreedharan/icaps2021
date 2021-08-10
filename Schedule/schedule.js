@@ -778,7 +778,10 @@ var app = new Vue({
 		{title:"Planning for Controlling Business-to-business Applications", authors:"Hector Palacious"},
 		{title:"Designing Goal-Oriented Conversational Agents using Automated Planning", authors:"Tathagata Chakraborti"},
 		{title:"Autonomously responding to the environment with a distributed space system", authors:"Nick Cramer"}
-	]
+	],
+  recordLink:[
+    {'1':'https://icaps21.icaps-conference.org/record?date=1'}
+  ]
   },
   //computed:{
   //setWorkShopClass:function(workshop_name){

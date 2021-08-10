@@ -81,9 +81,6 @@
                 ></label>
               </div>
             </div>
-            <div class="col col-auto align-self-center">
-              <button class="btn btn-primary" @click="open('https://icaps21.icaps-conference.org/record?date=1')">Recording</button>
-            </div>
             <!-- Search function -->
             <div class="col col-auto align-self-center" v-if="week == 2">
               <div class="input-group" style="margin-top: 1em">
@@ -445,6 +442,7 @@
                       <span class="badge badge-light text-dark">
                         Day {{j+1}}
                       </span>
+                      <button class="btn btn-primary" @click="open(recordLink[j][j+1])" v-if='recordLink[j]'>Recording</button>
                     </h3>
                     <hr />
                   </div>
