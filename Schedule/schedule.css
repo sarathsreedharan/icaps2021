@@ -344,12 +344,6 @@
   background-color: #bbdfff;
 }
 
-.gather:hover {
-  border-radius: unset;
-  border: none;
-  background-color: #80bff9;
-}
-
 .style_socializing {
   border: none;
   background-color: #ced5df;
