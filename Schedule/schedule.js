@@ -301,9 +301,9 @@ var app = new Vue({
         { type: "session", num: 13, time: 7, end: 8, chairs: "Enrico Scala" },
         { type: "session", num: 14, time: 8, end: 9, chairs: "Aswin Raghavan"},
         { type: "Invited Talk", time: 9, end: 10 },
-		    { type: "Demos", time: 10, end: 11 },		
+		{ type: "Demos", time: 10, end: 11 },		
         { type: "Demos/ Diversity Event", time: 11, end: 12 },
-    		{ type: "Diversity Event", time: 12, end: 13 },
+    	{ type: "Diversity Event", time: 12, end: 13 },
         { type: "Socializing", time: 13, end: 14 },
         { type: "session", num: 12, time: 14, end: 15, chairs: "Sven Koenig" },
         { type: "session", num: 11, time: 15, end: 16, chairs: "Hector Palacios" },
@@ -1084,10 +1084,12 @@ var app = new Vue({
 		this.modal_type = type;
 		this.modal_date = date;
 		this.modal_time = time;
-		this.modal_timeMin = timeMin;
+		if (num == 10 && time == 16) this.modal_timeMin = 0 
+		else this.modal_timeMin = timeMin;
 		this.modal_end = end;
-		this.modal_endMin = endMin;
-    this.modal_chairs = chairs;
+		if (num == 10 && time == 16) this.modal_endMin = 45 
+		else this.modal_endMin = endMin;
+  	    this.modal_chairs = chairs;
 	},
     setModalColor: function (type) {
       if (type == "session" || type == "dc_session") return "background:#E2EFDA";
