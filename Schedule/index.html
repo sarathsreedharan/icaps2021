@@ -629,7 +629,8 @@
                         <a
                           v-for="item in paper[modal_sessionNum]"
                           @click="setChannelID(item.id)"
-                          style="color: #51585e;pointer-events: none;"
+                          style="color: #51585e;"
+                          :style="isSessionOver"
                           :href="'../exhibition/index.html?channel='+item.id"
                           target="_blank"
                         >

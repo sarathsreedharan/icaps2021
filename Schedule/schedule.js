@@ -13,6 +13,7 @@ var app = new Vue({
     nowDay: new Date().getDate(),
     nowZone: new Date().getTimezoneOffset() / -60,
     nowHour: new Date().getTimezoneOffset() / 60 - 4 + new Date().getHours(),
+	isSessionOver: "",
     day: [{ sty: "style_day" }, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
     week: 2,
     keywords: "",
@@ -1056,7 +1057,7 @@ var app = new Vue({
         this.nowDay++;
       }
       // console.log(this.nowYear,this.nowMonth,this.nowDay,this.nowHour);
-      if (this.nowYear > 2021) return "text-decoration: line-through;";
+      if (this.nowYear > 2021) return "text-decoration: line-through;"
       else if (this.nowYear == 2021 && this.nowMonth > 8) return "text-decoration: line-through;"
       else if (this.nowYear == 2021 && this.nowMonth == 8 && this.nowDay > day)
         return "text-decoration: line-through;"
@@ -1093,6 +1094,8 @@ var app = new Vue({
 		if (num == 10 && time == 16) this.modal_endMin = 45 
 		else this.modal_endMin = endMin;
   	    this.modal_chairs = chairs;
+		if (this.isOver(date, time)) this.isSessionOver = ""
+		else this.isSessionOver = "pointer-events: none";
 	},
     setModalColor: function (type) {
       if (type == "session" || type == "dc_session") return "background:#E2EFDA";
