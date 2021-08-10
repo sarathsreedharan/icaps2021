@@ -6,7 +6,7 @@ var app = new Vue({
     el: '#app2',
     store: store,
     data: {
-        channel: "live1",
+        channel: "live2",
         timer: "",
         slideId: "",
         tipsModal: {},
@@ -45,7 +45,7 @@ var app = new Vue({
             })
         }
 
-        this.slideId = 38965452;
+        this.slideId = 38965453;
         let embed = new SlidesLiveEmbed('presentation-embed', {
             presentationId: this.slideId,
             autoPlay: false, // change to true to autoplay the embedded presentation
