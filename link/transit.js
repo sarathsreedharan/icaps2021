@@ -41,7 +41,7 @@ var app = new Vue({
         'XAIP':'https://us02web.zoom.us/j/88519098495?pwd=Wnd0TXlGQTNZd1g5RmtmQTJ5aThiZz09',
       },
       Diversity_Event:{
-          '01':'https://us02web.zoom.us/j/81744386811?pwd=eGZqMGdIRjJiS1ozMmhuUzNlMG1yZz09#success'
+          '01':'https://us02web.zoom.us/j/86198823618?pwd=ZHNFSi9ERGY5UGtOOE1xbnhwVzYrUT09'
       },
       Demo_Website:{
         '378':'https://bab.bournemouth.ac.uk/icapswebgl/'
