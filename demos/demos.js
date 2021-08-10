@@ -199,7 +199,7 @@ $(document).ready(function () {
         abstract:
           "The implementation of use cases in Social Autonomous Robotics is a complex and time-consuming task to be developed by domain experts and engineers, involving a large knowledge acquisition process. The resulting use case description must also be formalized taking into account stochastic events that may occur in the real world. Existing works rely on Automated Planning to deploy robotic use cases, where the standard Planning Domain Description Language (PDDL) is assumed. In order to facilitate to domain experts the description of the use case we propose a novel tool to create the model through state transition diagrams. From this diagram, the system automatically generates the PDDL files. A video demonstration is available.",
         link: "../attending",
-        video: "http://bit.ly/icaps2021demo",
+        video: "https://youtu.be/PWRDI6-qqN0",
         id: 392,
       },
       {
@@ -228,8 +228,7 @@ $(document).ready(function () {
         abstract:
           "Planning is a central area in Artificial Intelligence (AI) concerned with the decision making performed by autonomous agents with the aim of achieving some goals. In the last decades, extensive literature has been produced in Fully Observable Non-Deterministic (FOND) planning for temporally extended goals when the specification is expressed using one of the several finite trace variants of LTL. Numerous applications have been developed to solve the problem, but most of them require special knowledge. In this demonstration, we present FOND4LTLf, a web service tool that allows solving FOND planning for LTLf/PLTLf goals as an integrated tool with editor, planners and policy visualizer.",
         link: "../attending",
-        video:
-          "https://drive.google.com/file/d/1HdJpLWJXekyxCaa4UbrUcBymsHGNcd24/view?usp=sharing",
+        video: "https://youtu.be/vYY8mmkKtQs",
         id: 388,
       },
       {
@@ -323,7 +322,7 @@ $(document).ready(function () {
         abstract:
           "This demo paper presents the first system for playing the popular Angry Birds game using a domain-independent planner. Our system models Angry Birds levels using PDDL+, a planning language for mixed discrete/continuous domains. It uses a domain-independent PDDL+ planner to generate plans and executes them. In this demo paper, we present the system's PDDL+ model for this domain, identify key design decisions that reduce the problem complexity, and compare the performance of our system to model-specific methods for this domain. The results show that our system's performance is on par with other domain-specific systems for Angry Birds, suggesting the applicability of domain-independent planning to this benchmark AI challenge.",
         link: "../attending",
-        video: "https://bit.ly/35065UZ",
+        video: "https://youtu.be/pUIvV4AW9QY",
         id: 390,
       },
       {
