@@ -781,7 +781,9 @@ var app = new Vue({
 		{title:"Autonomously responding to the environment with a distributed space system", authors:"Nick Cramer"}
 	],
   recordLink:[
-    {'1':'https://icaps21.icaps-conference.org/record?date=1'}
+    {'1':'https://icaps21.icaps-conference.org/record?date=1'},
+    {'2':'https://icaps21.icaps-conference.org/record?date=2'},
+
   ]
   },
   //computed:{
