@@ -44,6 +44,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-8">
+            <!-- 
             <div class="alert alert-icaps" role="alert">
               Demos are now live! The live interacive session will be on Aug 11.
               <a href="../Schedule"
@@ -53,7 +54,7 @@
                 ><span class="badge bg-icaps">Vote</span></a
               >
             </div>
-
+ -->
             <div class="row">
               <div class="col-12 col-md-6 col-lg-4" id="demo-area-1"></div>
 
@@ -61,7 +62,7 @@
 
               <div class="col-12 col-md-6 col-lg-4" id="demo-area-3"></div>
             </div>
-            <div id="demo_app" v-cloak>
+            <div id="demo_app" v-cloak class="d-none">
               <div class="card" id="voting-area">
                 <div class="card-body">
                   <div v-if="login_view(isLogin)"></div>
@@ -111,8 +112,10 @@
                         </div>
                       </div>
                       <div class="col-12">
-                        <span class="m-2 text-icaps">Voting ends Aug 12 4:00 AM
-   UTC. Your last vote will be counted as final.</span><br/><br/>
+                        <span class="m-2 text-icaps"
+                          >Voting ends Aug 12 4:00 AM UTC. Your last vote will
+                          be counted as final.</span
+                        ><br /><br />
                         <button class="btn btn-primary" type="submit">
                           Submit vote
                         </button>
@@ -132,10 +135,9 @@
                   <span id="total-vote-count">X</span> votes
                 </h6>
                 <p class="card-text small">
-                  The best demo is decided by people's choice. Vote for your
-                  favorite demo now!
-<span class="text-icaps">Voting ends Aug 12 4:00 AM
-  GMT.</span></p>
+                  The best demo is decided by people's choice. This is the final
+                  vote count.
+                </p>
 
                 <div class="mb-3">
                   <div class="progress mb-2">
@@ -177,7 +179,7 @@
                     <span class="vote-number" id="vote-number-2"></span>
                   </div>
                 </div>
-
+                <!-- 
                 <div class="mb-2">
                   <p class="text-muted small">
                     This is a live vote count. The names on the top 3 spots will
@@ -188,12 +190,18 @@
                 <a class="btn btn-icaps text-white vote" href="#voting-area"
                   >Vote</a
                 >
-
+ -->
                 <div class="card mt-5 mb-0">
                   <div class="card-body">
                     <h5 class="card-title">Spread the word!</h5>
                     <a
-                      href="https://twitter.com/icapsconference"
+                      href="https://twitter.com/ICAPSConference/status/1425249998355066883"
+                      target="_blank"
+                      class="btn btn-info text-white mt-2"
+                      ><i class="bi bi-twitter"></i
+                    ></a>
+                    <a
+                      href="https://twitter.com/tchakra2/status/1425451614526230529"
                       target="_blank"
                       class="btn btn-info text-white mt-2"
                       ><i class="bi bi-twitter"></i
