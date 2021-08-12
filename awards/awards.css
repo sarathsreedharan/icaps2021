@@ -1,0 +1,9 @@
+.bckg{
+ background-image: url("../assets/images/Background/image.png");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-color: white;
+}
+.award_cards{
+background-color: rgba(255,255,255,0.75);
+}
