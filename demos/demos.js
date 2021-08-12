@@ -123,7 +123,7 @@ $(document).ready(function () {
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
   let demo_element =
-    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
+    '<div class="mb-4"> <div class="card"><div class="award-area p-3 bg-gold-fade gold d-none"><h4><i class="bi bi-trophy-fill trophy-1"></i></h4></div> <div class="card"><div class="award-area p-3 bg-silver-fade silver d-none"><h4><i class="bi bi-trophy-fill trophy-2"></i></h4></div> <div class="card"><div class="award-area p-3 bg-bronze-fade bronze d-none"><h4><i class="bi bi-trophy-fill trophy-3"></i></h4></div> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-outline-primary log-demo-click" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
 
   let demo_data = get_demo_data();
   let randomized_demo_data = demo_data
@@ -145,6 +145,12 @@ $(document).ready(function () {
 
     if (!item["website"])
       new_demo_element = new_demo_element.replace("website-d-none", "d-none");
+
+    if (item["award"])
+      new_demo_element = new_demo_element.replace(
+        item["award"] + " d-none",
+        ""
+      );
 
     if (column_tally > 18) column_tally = 18;
 
@@ -179,6 +185,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://www.youtube.com/watch?v=rc-cxvUSxeM",
         id: 382,
+        award: "silver",
       },
       {
         title:
@@ -280,6 +287,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://youtu.be/Pw4GBL1UhPA",
         id: 384,
+        award: "gold",
       },
       {
         title:
@@ -356,6 +364,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://www.youtube.com/watch?v=avR_WZfe5E8",
         id: 377,
+        award: "bronze",
       },
     ];
   }
