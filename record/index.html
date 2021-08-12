@@ -44,10 +44,19 @@
             <!-- padding hack for the fixed navbar -->
         </div>
     </div>
+
     <main style="min-height: 80vh;padding: 0 3rem 3rem 3rem;">
         <div class="album mt-3">
         </div>
         <div id="app2" class="row">
+            <ul class="nav nav-tabs" v-if="date[0]==='3'||date[0]==='4'">
+                <li class="nav-item">
+                    <a class="nav-link" :href="'?date='+date[0]">Part1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" :href="'?date='+date[0]+'-2'">Part2</a>
+                </li>
+            </ul>
             <div class="modal" tabindex="-1" id='tips'>
                 <div class="modal-dialog ">
                     <div class="modal-content">

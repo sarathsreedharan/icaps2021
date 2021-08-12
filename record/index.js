@@ -11,6 +11,7 @@ var app = new Vue({
         slideId: "",
         tipsModal: {},
         modalmsg: '',
+        date: "",
         rocketchatUrl: rocketchatUrl
     },
     methods: {
@@ -45,14 +46,32 @@ var app = new Vue({
             })
         }
         let url = window.location.href;
-        let date = url.split('?date=')[1]
-        this.channel = "live" + date;
-        this.slideId = 38965451 + Number(date);
-        let embed = new SlidesLiveEmbed('presentation-embed', {
-            presentationId: this.slideId,
-            autoPlay: false, // change to true to autoplay the embedded presentation
-            verticalEnabled: true
-        });
+        this.date = url.split('?date=')[1]
+        if (this.date.length === 1) {
+            this.channel = "live" + this.date;
+            this.slideId = 38965451 + Number(this.date);
+            let embed = new SlidesLiveEmbed('presentation-embed', {
+                presentationId: this.slideId,
+                autoPlay: false, // change to true to autoplay the embedded presentation
+                verticalEnabled: true
+            });
+        }
+        else if (this.date === '3-2') {
+            this.channel = "live" + this.date[0];
+            let embed1 = new SlidesLiveEmbed('presentation-embed', {
+                presentationId: 38965497,
+                autoPlay: false, // change to true to autoplay the embedded presentation
+                verticalEnabled: true
+            });
+        }
+        else if (this.date === '4-2') {
+            this.channel = "live" + this.date[0];
+            let embed1 = new SlidesLiveEmbed('presentation-embed', {
+                presentationId: 38965498,
+                autoPlay: false, // change to true to autoplay the embedded presentation
+                verticalEnabled: true
+            });
+        }
     },
     beforeDestroy() {
         clearInterval(this.timer);
