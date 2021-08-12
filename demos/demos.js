@@ -1,82 +1,82 @@
 $(document).ready(function () {
   // 'use strict'
 
-  let get_votes_url = "https://icaps21.icaps-conference.org/demoscripts";
-  let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
-  var cache_total_vote = 0;
+  // let get_votes_url = "https://icaps21.icaps-conference.org/demoscripts";
+  // let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
+  // var cache_total_vote = 0;
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll(".needs-validation");
+  // var forms = document.querySelectorAll(".needs-validation");
 
   // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (form.checkValidity()) {
-          let votes = [];
+  // Array.prototype.slice.call(forms).forEach(function (form) {
+  //   form.addEventListener(
+  //     "submit",
+  //     function (event) {
+  //       if (form.checkValidity()) {
+  //         let votes = [];
 
-          $("#vote-candidates")
-            .closest("form")
-            .find("input:checkbox:checked")
-            .each(function (index, item) {
-              votes.push(item.getAttribute("id"));
-            });
+  //         $("#vote-candidates")
+  //           .closest("form")
+  //           .find("input:checkbox:checked")
+  //           .each(function (index, item) {
+  //             votes.push(item.getAttribute("id"));
+  //           });
 
-          votes.splice(votes.indexOf("invalidCheck"), 1);
+  //         votes.splice(votes.indexOf("invalidCheck"), 1);
 
-          $.ajax({
-            url: post_vote_url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: $("#email").val(), Votes: votes }),
-            success: function (data) {
-              alert("Your vote was saved successfully!");
-            },
-            error: function (data) {
-              alert(
-                "Your vote could not be saved. Please notify the demo chairs about this error."
-              );
-            },
-          });
-        }
+  //         $.ajax({
+  //           url: post_vote_url,
+  //           type: "POST",
+  //           contentType: "application/json",
+  //           data: JSON.stringify({ id: $("#email").val(), Votes: votes }),
+  //           success: function (data) {
+  //             alert("Your vote was saved successfully!");
+  //           },
+  //           error: function (data) {
+  //             alert(
+  //               "Your vote could not be saved. Please notify the demo chairs about this error."
+  //             );
+  //           },
+  //         });
+  //       }
 
-        event.preventDefault();
-        event.stopPropagation();
+  //       event.preventDefault();
+  //       event.stopPropagation();
 
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
+  //       form.classList.add("was-validated");
+  //     },
+  //     false
+  //   );
+  // });
 
-  $.ajax({
-    url: get_votes_url,
-    type: "GET",
-    dataType: "json",
-    cors: true,
-    contentType: "application/json",
-    secure: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-    success: function (data) {
-      var cache_total_vote = data["total"];
-      $("#total-vote-count").text(cache_total_vote);
+  // $.ajax({
+  //   url: get_votes_url,
+  //   type: "GET",
+  //   dataType: "json",
+  //   cors: true,
+  //   contentType: "application/json",
+  //   secure: true,
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //   },
+  //   success: function (data) {
+  //     var cache_total_vote = data["total"];
+  //     $("#total-vote-count").text(cache_total_vote);
 
-      data["top_3"].forEach(function (item, index) {
-        let percentage_count = 0;
+  //     data["top_3"].forEach(function (item, index) {
+  //       let percentage_count = 0;
 
-        if (cache_total_vote > 0)
-          percentage_count = Math.floor((100 * item) / cache_total_vote);
+  //       if (cache_total_vote > 0)
+  //         percentage_count = Math.floor((100 * item) / cache_total_vote);
 
-        $("#vote-number-" + index).text(percentage_count + "%");
-        $("#vote-number-" + index)
-          .siblings(".progress-bar")
-          .css("width", percentage_count + "%");
-      });
-    },
-  });
+  //       $("#vote-number-" + index).text(percentage_count + "%");
+  //       $("#vote-number-" + index)
+  //         .siblings(".progress-bar")
+  //         .css("width", percentage_count + "%");
+  //     });
+  //   },
+  // });
 
   $(".log-software-click").click(function (e) {
     $.ajax({
@@ -123,7 +123,7 @@ $(document).ready(function () {
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
   let demo_element =
-    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]" name="interact">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
+    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
 
   let demo_data = get_demo_data();
   let randomized_demo_data = demo_data
