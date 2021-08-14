@@ -785,6 +785,7 @@ var app = new Vue({
     {'2':'https://icaps21.icaps-conference.org/record?date=2'},
     { '3': 'https://icaps21.icaps-conference.org/record?date=3' },
     { '4': 'https://icaps21.icaps-conference.org/record?date=4' },
+    { '5': 'https://icaps21.icaps-conference.org/record?date=5' },
   ]
   },
   //computed:{
