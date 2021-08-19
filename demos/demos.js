@@ -1,82 +1,82 @@
 $(document).ready(function () {
   // 'use strict'
 
-  let get_votes_url = "https://icaps21.icaps-conference.org/demoscripts";
-  let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
-  var cache_total_vote = 0;
+  // let get_votes_url = "https://icaps21.icaps-conference.org/demoscripts";
+  // let post_vote_url = "https://icaps21.icaps-conference.org/demoscripts/vote";
+  // var cache_total_vote = 0;
 
   // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll(".needs-validation");
+  // var forms = document.querySelectorAll(".needs-validation");
 
   // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      "submit",
-      function (event) {
-        if (form.checkValidity()) {
-          let votes = [];
+  // Array.prototype.slice.call(forms).forEach(function (form) {
+  //   form.addEventListener(
+  //     "submit",
+  //     function (event) {
+  //       if (form.checkValidity()) {
+  //         let votes = [];
 
-          $("#vote-candidates")
-            .closest("form")
-            .find("input:checkbox:checked")
-            .each(function (index, item) {
-              votes.push(item.getAttribute("id"));
-            });
+  //         $("#vote-candidates")
+  //           .closest("form")
+  //           .find("input:checkbox:checked")
+  //           .each(function (index, item) {
+  //             votes.push(item.getAttribute("id"));
+  //           });
 
-          votes.splice(votes.indexOf("invalidCheck"), 1);
+  //         votes.splice(votes.indexOf("invalidCheck"), 1);
 
-          $.ajax({
-            url: post_vote_url,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ id: $("#email").val(), Votes: votes }),
-            success: function (data) {
-              alert("Your vote was saved successfully!");
-            },
-            error: function (data) {
-              alert(
-                "Your vote could not be saved. Please notify the demo chairs about this error."
-              );
-            },
-          });
-        }
+  //         $.ajax({
+  //           url: post_vote_url,
+  //           type: "POST",
+  //           contentType: "application/json",
+  //           data: JSON.stringify({ id: $("#email").val(), Votes: votes }),
+  //           success: function (data) {
+  //             alert("Your vote was saved successfully!");
+  //           },
+  //           error: function (data) {
+  //             alert(
+  //               "Your vote could not be saved. Please notify the demo chairs about this error."
+  //             );
+  //           },
+  //         });
+  //       }
 
-        event.preventDefault();
-        event.stopPropagation();
+  //       event.preventDefault();
+  //       event.stopPropagation();
 
-        form.classList.add("was-validated");
-      },
-      false
-    );
-  });
+  //       form.classList.add("was-validated");
+  //     },
+  //     false
+  //   );
+  // });
 
-  $.ajax({
-    url: get_votes_url,
-    type: "GET",
-    dataType: "json",
-    cors: true,
-    contentType: "application/json",
-    secure: true,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-    success: function (data) {
-      var cache_total_vote = data["total"];
-      $("#total-vote-count").text(cache_total_vote);
+  // $.ajax({
+  //   url: get_votes_url,
+  //   type: "GET",
+  //   dataType: "json",
+  //   cors: true,
+  //   contentType: "application/json",
+  //   secure: true,
+  //   headers: {
+  //     "Access-Control-Allow-Origin": "*",
+  //   },
+  //   success: function (data) {
+  //     var cache_total_vote = data["total"];
+  //     $("#total-vote-count").text(cache_total_vote);
 
-      data["top_3"].forEach(function (item, index) {
-        let percentage_count = 0;
+  //     data["top_3"].forEach(function (item, index) {
+  //       let percentage_count = 0;
 
-        if (cache_total_vote > 0)
-          percentage_count = Math.floor((100 * item) / cache_total_vote);
+  //       if (cache_total_vote > 0)
+  //         percentage_count = Math.floor((100 * item) / cache_total_vote);
 
-        $("#vote-number-" + index).text(percentage_count + "%");
-        $("#vote-number-" + index)
-          .siblings(".progress-bar")
-          .css("width", percentage_count + "%");
-      });
-    },
-  });
+  //       $("#vote-number-" + index).text(percentage_count + "%");
+  //       $("#vote-number-" + index)
+  //         .siblings(".progress-bar")
+  //         .css("width", percentage_count + "%");
+  //     });
+  //   },
+  // });
 
   $(".log-software-click").click(function (e) {
     $.ajax({
@@ -123,7 +123,7 @@ $(document).ready(function () {
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
   let demo_element =
-    '<div class="mb-4"> <div class="card"> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-danger log-demo-click" href="[link]" name="interact">Interact</a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2 website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
+    '<div class="mb-4"> <div class="card"><div class="award-area p-3 bg-gold-fade gold d-none"><h4><i class="bi bi-trophy-fill trophy-1"></i></h4></div> <div class="card"><div class="award-area p-3 bg-silver-fade silver d-none"><h4><i class="bi bi-trophy-fill trophy-2"></i></h4></div> <div class="card"><div class="award-area p-3 bg-bronze-fade bronze d-none"><h4><i class="bi bi-trophy-fill trophy-3"></i></h4></div> <img src="../assets/images/demos/[id].png" class="card-img-top"/><div id="card-[id]" class="card-body"><p class="card-text small"><strong>[title]</strong> by [authors].</p><a class="btn btn-sm btn-outline-primary log-demo-click" href="[video]" target="_blank" name="video"><i class="bi bi-camera-reels"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click m-2" href="demos/[id].pdf" target="_blank" name="read"><i class="bi bi-book"></i></a><a class="btn btn-sm btn-outline-primary log-demo-click website-d-none" href="[website]" target="_blank" name="website"><i class="bi bi-cursor"></i></a></div></div></div>';
 
   let demo_data = get_demo_data();
   let randomized_demo_data = demo_data
@@ -145,6 +145,12 @@ $(document).ready(function () {
 
     if (!item["website"])
       new_demo_element = new_demo_element.replace("website-d-none", "d-none");
+
+    if (item["award"])
+      new_demo_element = new_demo_element.replace(
+        item["award"] + " d-none",
+        ""
+      );
 
     if (column_tally > 18) column_tally = 18;
 
@@ -179,6 +185,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://www.youtube.com/watch?v=rc-cxvUSxeM",
         id: 382,
+        award: "silver",
       },
       {
         title:
@@ -199,7 +206,7 @@ $(document).ready(function () {
         abstract:
           "The implementation of use cases in Social Autonomous Robotics is a complex and time-consuming task to be developed by domain experts and engineers, involving a large knowledge acquisition process. The resulting use case description must also be formalized taking into account stochastic events that may occur in the real world. Existing works rely on Automated Planning to deploy robotic use cases, where the standard Planning Domain Description Language (PDDL) is assumed. In order to facilitate to domain experts the description of the use case we propose a novel tool to create the model through state transition diagrams. From this diagram, the system automatically generates the PDDL files. A video demonstration is available.",
         link: "../attending",
-        video: "http://bit.ly/icaps2021demo",
+        video: "https://youtu.be/PWRDI6-qqN0",
         id: 392,
       },
       {
@@ -228,8 +235,7 @@ $(document).ready(function () {
         abstract:
           "Planning is a central area in Artificial Intelligence (AI) concerned with the decision making performed by autonomous agents with the aim of achieving some goals. In the last decades, extensive literature has been produced in Fully Observable Non-Deterministic (FOND) planning for temporally extended goals when the specification is expressed using one of the several finite trace variants of LTL. Numerous applications have been developed to solve the problem, but most of them require special knowledge. In this demonstration, we present FOND4LTLf, a web service tool that allows solving FOND planning for LTLf/PLTLf goals as an integrated tool with editor, planners and policy visualizer.",
         link: "../attending",
-        video:
-          "https://drive.google.com/file/d/1HdJpLWJXekyxCaa4UbrUcBymsHGNcd24/view?usp=sharing",
+        video: "https://youtu.be/vYY8mmkKtQs",
         id: 388,
       },
       {
@@ -281,6 +287,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://youtu.be/Pw4GBL1UhPA",
         id: 384,
+        award: "gold",
       },
       {
         title:
@@ -323,7 +330,7 @@ $(document).ready(function () {
         abstract:
           "This demo paper presents the first system for playing the popular Angry Birds game using a domain-independent planner. Our system models Angry Birds levels using PDDL+, a planning language for mixed discrete/continuous domains. It uses a domain-independent PDDL+ planner to generate plans and executes them. In this demo paper, we present the system's PDDL+ model for this domain, identify key design decisions that reduce the problem complexity, and compare the performance of our system to model-specific methods for this domain. The results show that our system's performance is on par with other domain-specific systems for Angry Birds, suggesting the applicability of domain-independent planning to this benchmark AI challenge.",
         link: "../attending",
-        video: "https://bit.ly/35065UZ",
+        video: "https://youtu.be/pUIvV4AW9QY",
         id: 390,
       },
       {
@@ -357,6 +364,7 @@ $(document).ready(function () {
         link: "../attending",
         video: "https://www.youtube.com/watch?v=avR_WZfe5E8",
         id: 377,
+        award: "bronze",
       },
     ];
   }

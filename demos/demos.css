@@ -31,12 +31,24 @@
   background-color: #ffd11e;
 }
 
+.bg-gold-fade {
+  background-color: #ffefaf;
+}
+
 .bg-silver {
   background-color: silver;
 }
 
+.bg-silver-fade {
+  background-color: #efefef;
+}
+
 .bg-bronze {
   background-color: #cd7f32;
+}
+
+.bg-bronze-fade {
+  background-color: #ffcf9f;
 }
 
 .bg-icaps {

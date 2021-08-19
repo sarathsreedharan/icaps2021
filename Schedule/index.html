@@ -442,7 +442,7 @@
                       <span class="badge badge-light text-dark">
                         Day {{j+1}}
                       </span>
-                      <button class="btn btn-primary" @click="open(recordLink[j][j+1])" v-if='recordLink[j]'>Recording</button>
+                      <!--<button class="btn btn-primary" @click="open(recordLink[j][j+1])" v-if='recordLink[j]'>Recording</button>-->
                     </h3>
                     <hr />
                   </div>
@@ -577,7 +577,7 @@
                           >
                             <div class="tip tip-buttom col align-self-center" :data-tip=item.type>
                               <strong>
-                                <div v-if="item.type == 'Demos/ Diversity Event'">Demos/ DE</div>
+                                <div v-if="item.type == 'Demos/ Diversity Event'">Demos/ Diversity Event</div>
                                 <div v-else>{{item.type}}</div>
                               </strong>
                             </div>
