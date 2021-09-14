@@ -368,6 +368,10 @@
   background-color: #bedbac !important;
 }
 
+.eventsTitle-link:hover {
+  background-color: #f8c05f !important;
+}
+
 @media (max-width: 1490px){
 	.mobileVanished{
 		display:none;

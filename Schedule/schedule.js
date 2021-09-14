@@ -769,20 +769,21 @@ var app = new Vue({
     sum: 0,
     oldTime: new Date(),
     min_str: "00",
-	invitedNum: "",
+  	invitedNum: "",
     InvitedSpeakers: [
       { name: "Manuela Veloso", id: 403 },
       { name: "Stefan Edelkamp", id: 404 },
       { name: "Jieping Ye", id: 401 },
+      {},
       { name: "Richard Sutton", id: 402 }],
     Chairs: ["Robert Goldman", "Susanne	Biundo", "Qiang	Yang", "", "Michael Katz"],
     IndustryTalk: [
       { title: "Industrial Scheduling and Planning", authors: "Yuan Mingxuan", id: 500 },
       { title: "Environment Learning - Data-Driven Approaches for Real-World Decision Optimization", authors: "Wei-Wei Tu", id: 504 },
-      { title: "Automated Planning and Constraint Reasoning for High Throughput Laboratory Automation", authors: "Dan Bryce", id=501 },
-      { title: "Planning for Controlling Business-to-business Applications", authors: "Hector Palacious", id=502 },
-      { title: "Designing Goal-Oriented Conversational Agents using Automated Planning", authors: "Tathagata Chakraborti", id=503 },
-      { title: "Autonomously responding to the environment with a distributed space system", authors: "Nick Cramer", id=505 }
+      { title: "Automated Planning and Constraint Reasoning for High Throughput Laboratory Automation", authors: "Dan Bryce", id: 501 },
+      { title: "Planning for Controlling Business-to-business Applications", authors: "Hector Palacious", id: 502 },
+      { title: "Designing Goal-Oriented Conversational Agents using Automated Planning", authors: "Tathagata Chakraborti", id: 503 },
+      { title: "Autonomously responding to the environment with a distributed space system", authors: "Nick Cramer", id: 505 }
     ],
   recordLink:[
     {'1':'https://icaps21.icaps-conference.org/record?date=1'},
