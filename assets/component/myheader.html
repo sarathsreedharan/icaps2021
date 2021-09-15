@@ -17,46 +17,17 @@
                             <li class="nav-item">
                                 <a href="/home" class="nav-link px-2" :class="{active:curpage=='home'}">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/papers" class="nav-link px-2"  :class="{active:curpage=='papers'}">Papers</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
-                            </li> -->
-                            <li class="nav-item">
-                                <a href="/awards" class="nav-link px-2"  :class="{active:curpage=='awards'}">Awards</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='schedule'}" href="" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Schedule
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="/Schedule/index.html" :class="{active:curitem=='index'}">Schedule
-                                            Overview</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/Schedule/invited-speakers.html"
-                                            :class="{active:curitem=='invited-speakers'}">Invited Speakers</a>
-                                    </li>
-                                    <!-- <li>
-                                        <a class="dropdown-item" href="/Schedule/industry-session.html"
-                                            :class="{active:curitem=='industry-session'}">Industry Session</a>
-                                    </li> -->
-                                </ul>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
-                            </li> -->
-
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" :class="{active:curpage=='program'}" href="" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Program
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
+                            <li >
+                                <a href="/papers" class="dropdown-item"  :class="{active:curpage=='papers'}">Papers</a>
+                            </li>
+    
+				<li>
                                         <a class="dropdown-item" href="/workshops" :class="{active:curitem=='workshops'}">Workshops</a>
                                     </li>
                                     <li>
@@ -69,11 +40,27 @@
                                         <a class="dropdown-item" href="/Competitions" :class="{active:curitem=='competitions'}">Competitions</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="/Chat" :class="{active:curitem=='chat'}">Senior/Junior Chat</a>
+                                        <a class="dropdown-item" href="/Schedule/invited-speakers.html"
+                                            :class="{active:curitem=='invited-speakers'}">Invited Speakers</a>
                                     </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/industry-session.html"
+                                            :class="{active:curitem=='industry-session'}">Industry Session</a>
+                                    </li> 
 
                                 </ul>
                             </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a href="/awards" class="nav-link px-2"  :class="{active:curpage=='awards'}">Awards</a>
+                            </li>
+                              <!-- <li class="nav-item">
+                                <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
+                            </li> -->
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" :class="{active:curpage=='calls'}" href="" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,11 +80,6 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Attending
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="/registration" :class="{active:curitem=='registration'}">Registration</a>
-                                    </li>
-                                </ul>
                             </li> -->
                             <li class="nav-item">
                                 <a href="/Committee" class="nav-link px-2"  :class="{active:curpage=='committee'}">Committee</a>
@@ -105,7 +87,6 @@
                             <!-- <li class="nav-item">
                                 <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
                             </li> --><li class="nav-item">
-                                <a href="/registration/" class="nav-link px-2" :class="{active:curpage=='registration'}">Registration</a>
                             </li>
                             <li class="nav-item">
                                 <a href="/code-of-conduct.html" class="nav-link px-2"  :class="{active:curpage=='codeOfConduct'}">Code of conduct</a>
