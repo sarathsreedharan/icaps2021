@@ -109,9 +109,9 @@
     <script src="/assets/component/myheader.js" type="module"></script>
   </head>
   <body>
-  <div id="icaps-header">
-    <myheader curpage='papers'></myheader>
-  </div>
+    <div id="icaps-header">
+      <myheader curpage="papers"></myheader>
+    </div>
     <main class="container" style="min-height: 80vh">
       <div class="album mt-3 p-4">
         <div style="height: 100px" class="d-none d-md-block">
@@ -121,15 +121,70 @@
           <section>
             <header>
               <h4 class="top align-middle">
-                <span> ICAPS 2021 Papers </span>
-                &nbsp;<a
+                <span> ICAPS 2021 Recordings </span>
+                <a
                   id="proc_text"
                   href="https://ojs.aaai.org/index.php/ICAPS/issue/view/380"
                   target="_blank"
                   type="button"
-                  class="btn btn-sm btn-outline-icaps"
-                  >Proceedings</a
+                  class="btn btn-sm btn-primary m-2"
+                  >Download Proceedings</a
                 >
+              </h4>
+              <hr />
+            </header>
+
+            <div class="row">
+              <div class="col col-12 col-sm-12 col-md-3 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Paper Talks</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      Main &middot; Applications &middot; Robotics &middot;
+                      Learning &middot; Journals
+                    </h6>
+                    <p class="card-text">
+                      Links to recordings for individual papers are available in
+                      the paper metadata below.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col col-12 col-sm-12 col-md-9">
+                <a
+                  href="../Schedule/invited-speakers.html"
+                  class="card-link btn btn-outline-primary mb-2"
+                  ><i class="bi bi-camera-reels"></i> Invited Talks</a
+                >
+                <br />
+                <a
+                  href="../Schedule/industry-session.html"
+                  class="card-link btn btn-outline-primary mb-2"
+                  ><i class="bi bi-camera-reels"></i> Industry Talks</a
+                >
+                <br />
+                <a
+                  href="../demos"
+                  class="card-link btn btn-outline-primary mb-2"
+                  ><i class="bi bi-camera-reels"></i> System Demonstrations</a
+                >
+                <br />
+                <a
+                  href="../competitions"
+                  class="card-link btn btn-outline-primary mb-2"
+                  ><i class="bi bi-camera-reels"></i> Competition Track</a
+                >
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-5">
+            <header>
+              <h4 class="top align-middle">
+                <span> Paper Data </span>
+
+                &nbsp;
 
                 <div
                   class="btn-group btn-group-sm d-none d-lg-inline-flex"
@@ -143,7 +198,7 @@
                     checked
                   />
                   <label class="btn btn-outline-dark" for="btnradio1"
-                    >List</label
+                    >List View</label
                   >
 
                   <input
@@ -154,7 +209,7 @@
                     onchange="currentTippy = null;start()"
                   />
                   <label class="btn btn-outline-dark" for="btnradio2"
-                    >Graph</label
+                    >Graph View</label
                   >
                 </div>
                 <span
@@ -171,7 +226,9 @@
             </header>
             <div class="row">
               <div
-                class="col col-12 col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8"
+                class="
+                  col col-12 col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8
+                "
               >
                 <div class="input-group">
                   <span class="input-group-text" style="margin-top: 10px"
@@ -231,17 +288,9 @@
                     <li>
                       <a
                         class="dropdown-item dropdown-item-track"
-                        href='javascript:render_with_topics("demo");currentTippy = null;start()'
+                        href='javascript:render_with_topics("DEMO");currentTippy = null;start()'
                         name="System Demonstrations"
                         >System Demonstrations</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item dropdown-item-track"
-                        href='javascript:render_with_topics("dc");currentTippy = null;start()'
-                        name="Doctoral Consortium"
-                        >Doctoral Consortium</a
                       >
                     </li>
                     <li>
