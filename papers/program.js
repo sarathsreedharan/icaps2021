@@ -1522,7 +1522,7 @@ function initialize_program() {
       track: "DEMO",
       video:
         "https://www.youtube.com/watch?v=nsMXzXfeEmM&t=14s&ab_channel=LearningHowMachineLearns",
-      UID: 11376,
+      UID: "11376",
     },
     {
       title: "Demos for a Course in Single-Agent Heuristic Search",
@@ -1534,7 +1534,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=rc-cxvUSxeM",
-      UID: 11382,
+      UID: "11382",
       award: "silver",
     },
     {
@@ -1554,7 +1554,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=T1ZkBmHrERk",
-      UID: 11391,
+      UID: "11391",
     },
     {
       title:
@@ -1572,7 +1572,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/PWRDI6-qqN0",
-      UID: 11392,
+      UID: "11392",
     },
     {
       title: "Alternative Pathfinding in Game Maps and Indoor Venues",
@@ -1585,7 +1585,7 @@ function initialize_program() {
       track: "DEMO",
       video:
         "https://www.youtube.com/watch?v=-Q74GYFZnBI&ab_channel=LingxiaoLi",
-      UID: 11383,
+      UID: "11383",
     },
     {
       title:
@@ -1598,7 +1598,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=jIan_k-FOBg&ab_channel=FF",
-      UID: 11380,
+      UID: "11380",
     },
     {
       title: "FOND4LTLf: FOND Planning for LTLf/PLTLf Goals as a Service",
@@ -1610,7 +1610,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/vYY8mmkKtQs",
-      UID: 11388,
+      UID: "11388",
     },
     {
       title: "Lydia: A Tool for Compositional LTLf/LDLf Synthesis",
@@ -1623,7 +1623,7 @@ function initialize_program() {
       track: "DEMO",
       video:
         "https://drive.google.com/file/d/1bP7nD2RdoEfMxCsUXivHqbfvJex6i20A/view?usp=sharing",
-      UID: 11393,
+      UID: "11393",
     },
     {
       title:
@@ -1636,7 +1636,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/X2l7eW6dyBc",
-      UID: 11381,
+      UID: "11381",
     },
     {
       title:
@@ -1649,7 +1649,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=5CRYWIcFIw4",
-      UID: 11387,
+      UID: "11387",
     },
     {
       title: "Visual Planning Domain Design for PDDL using Blockly",
@@ -1661,7 +1661,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=dEV2mICb11g",
-      UID: 11385,
+      UID: "11385",
     },
     {
       title:
@@ -1683,7 +1683,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/Pw4GBL1UhPA",
-      UID: 11384,
+      UID: "11384",
       award: "gold",
     },
     {
@@ -1712,7 +1712,7 @@ function initialize_program() {
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=q1pWe4aahF0&feature=youtu.be",
       website: "https://starling.utdallas.edu/papers/collaborative-ps/",
-      UID: 11375,
+      UID: "11375",
     },
     {
       title:
@@ -1732,7 +1732,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/0-G-o4E0gKM",
-      UID: 11374,
+      UID: "11374",
     },
     {
       title:
@@ -1751,7 +1751,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/jsxGKxXSeNs",
-      UID: 11386,
+      UID: "11386",
     },
     {
       title: "Playing Angry Birds with a Domain-Independent PDDL+ Planner",
@@ -1770,7 +1770,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://youtu.be/pUIvV4AW9QY",
-      UID: 11390,
+      UID: "11390",
     },
     {
       title:
@@ -1784,7 +1784,7 @@ function initialize_program() {
       track: "DEMO",
       video: "https://youtu.be/xhkqNbAa4Bs",
       website: "https://bab.bournemouth.ac.uk/icapswebgl/",
-      UID: 11378,
+      UID: "11378",
     },
     {
       title: "Planning for Automated Composition of Aggregated Assistants",
@@ -1806,7 +1806,7 @@ function initialize_program() {
       track: "DEMO",
       video: "https://youtu.be/K7FPcl-IYgE",
       website: "https://www.ibm.com/cloud/automation/watson-orchestrate",
-      UID: 11389,
+      UID: "11389",
     },
     {
       title: "A Planning.Domains Plugin for Heuristic Visualization",
@@ -1823,7 +1823,7 @@ function initialize_program() {
       topics: [],
       track: "DEMO",
       video: "https://www.youtube.com/watch?v=avR_WZfe5E8",
-      UID: 11377,
+      UID: "11377",
       award: "bronze",
     },
   ];
