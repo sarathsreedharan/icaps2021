@@ -27,7 +27,7 @@
                                 <a href="/papers" class="dropdown-item"  :class="{active:curpage=='papers'}">Papers</a>
                             </li>
     
-				<li>
+				                <li>
                                         <a class="dropdown-item" href="/workshops" :class="{active:curitem=='workshops'}">Workshops</a>
                                     </li>
                                     <li>
@@ -62,11 +62,11 @@
                             </li> -->
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='calls'}" href="" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='calls'}" href="" id="navbarDropdown_calls" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Calls
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown_calls">
                                     <li>
                                         <a class="dropdown-item" href="/Calls" :class="{active:curitem=='calls4par'}">Calls for Participation</a>
                                     </li>
@@ -81,9 +81,21 @@
                                     Attending
                                 </a>
                             </li> -->
-                            <li class="nav-item">
-                                <a href="/Committee" class="nav-link px-2"  :class="{active:curpage=='committee'}">Committee</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='committee'}" href="" id="navbarDropdown_commitee" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Committee
+                                </a><ul class="dropdown-menu" aria-labelledby="navbarDropdown_commitee">
+
+                            <li>
+                                <a href="/Committee" class="dropdown-item"  :class="{active:curitem=='organizing'}">Organizing Team</a>
                             </li>
+                                <li>
+                                <a href="/Committee/reviewers.html" class="dropdown-item"  :class="{active:curitem=='reviewers'}">Committee Members & Reviewers</a>
+                            </li>
+                                                            </ul>
+                                                        </li>
+
                             <!-- <li class="nav-item">
                                 <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
                             </li> --><li class="nav-item">
