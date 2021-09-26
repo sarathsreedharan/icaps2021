@@ -108,26 +108,26 @@
                             </li>
                         </ul>
                         <!-- login and user info button -->
-                        <span class="btn-group dropdown navbar-right">
-                            <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">
-                            Login
-                            </button>
-                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">
-                                <span >{{user.profile.first_name  }}</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                            <li>
-                                <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >
-                                    Profile
-                                </button>
-                                <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>
-                            </li>
-                            </ul>
-                            &ensp;
-                            <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">
-                                <span>Attending</span>
-                            </button>
-                        </span>
+<!--                        <span class="btn-group dropdown navbar-right">-->
+<!--                            <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">-->
+<!--                            Login-->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">-->
+<!--                                <span >{{user.profile.first_name  }}</span>-->
+<!--                            </button>-->
+<!--                            <ul class="dropdown-menu">-->
+<!--                            <li>-->
+<!--                                <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >-->
+<!--                                    Profile-->
+<!--                                </button>-->
+<!--                                <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>-->
+<!--                            </li>-->
+<!--                            </ul>-->
+<!--                            &ensp;-->
+<!--                            <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">-->
+<!--                                <span>Attending</span>-->
+<!--                            </button>-->
+<!--                        </span>-->
                     </div>
                 </div>
             </nav>
