@@ -78,47 +78,47 @@ $(document).ready(function () {
   //   },
   // });
 
-  $(".log-software-click").click(function (e) {
-    $.ajax({
-      url: e.currentTarget.attributes.loggerref.value,
-      type: "GET",
-      dataType: "json",
-      cors: true,
-      contentType: "application/json",
-      secure: true,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-  });
-
-  $(document).on("click", ".log-demo-click", function (e) {
-    let url = "https://icaps21.icaps-conference.org/demoscripts/button_clicks";
-    let click_data = {
-      demo_id: $(this).parent().attr("id").replace("card-", ""),
-      button_type: e.currentTarget.name,
-    };
-
-    $.ajax({
-      url: url,
-      type: "GET",
-      data: click_data,
-    });
-  });
-
-  $(".log-software-click").click(function (e) {
-    $.ajax({
-      url: e.currentTarget.attributes.loggerref.value,
-      type: "GET",
-      dataType: "json",
-      cors: true,
-      contentType: "application/json",
-      secure: true,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-  });
+//  $(".log-software-click").click(function (e) {
+//    $.ajax({
+//      url: e.currentTarget.attributes.loggerref.value,
+//      type: "GET",
+//      dataType: "json",
+//      cors: true,
+//      contentType: "application/json",
+//      secure: true,
+//      headers: {
+//        "Access-Control-Allow-Origin": "*",
+//      },
+//    });
+//  });
+//
+//  $(document).on("click", ".log-demo-click", function (e) {
+//    let url = "https://icaps21.icaps-conference.org/demoscripts/button_clicks";
+//    let click_data = {
+//      demo_id: $(this).parent().attr("id").replace("card-", ""),
+//      button_type: e.currentTarget.name,
+//    };
+//
+//    $.ajax({
+//      url: url,
+//      type: "GET",
+//      data: click_data,
+//    });
+//  });
+//
+//  $(".log-software-click").click(function (e) {
+//    $.ajax({
+//      url: e.currentTarget.attributes.loggerref.value,
+//      type: "GET",
+//      dataType: "json",
+//      cors: true,
+//      contentType: "application/json",
+//      secure: true,
+//      headers: {
+//        "Access-Control-Allow-Origin": "*",
+//      },
+//    });
+//  });
 
   let vote_element =
     '<input class="form-check-input" type="checkbox" value="" id="votd-[id]"><label class="form-check-label" for="votd-[id]"><strong>[title]</strong> by [authors]</label><hr/>';
