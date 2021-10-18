@@ -29,10 +29,46 @@
     <script src="../../assets/js/custom.js"></script>
   </head>
   <body>
-    <div id='icaps-header'>
-      <myheader curpage='program' curitem="workshops"></myheader>
-    </div>
-    <script src="/assets/component/myheader.js" type="module"></script>
+    <header class="navbar fixed-top p-3 border-bottom">
+      <nav class="navbar navbar-light navbar-expand-lg">
+        <div class="container-fluid d-flex">
+          <a class="navbar-brand text-dark">ICAPS 2021</a>
+          <div>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="../home" class="nav-link px-2">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../../Calls" class="nav-link px-2">Calls</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../../workshops" class="nav-link px-2 active"
+                    >Workshops</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="../../Competitions" class="nav-link px-2"
+                    >Competitions</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="../../Committee" class="nav-link px-2">Committee</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
     <div class="album mt-3">
       <div style="height: 100px" class="d-none d-md-block">
@@ -188,7 +224,7 @@
                     <li>Paper Submission: June 13</li>
                     <li>Notification of acceptance/rejection: July 12</li>
                     <li>Camera-ready paper submissions: August 1</li>
-                    <li>WIPC Workshop: Wednesday, 4 August, 2021 (2 hours), see <a href="https://icaps21.icaps-conference.org/Schedule/index.html#0">ICAPS schedule (day 3)</a> for time zone selection! Some selected time zones:</li>
+                    <li>HPlan Workshop: Wednesday, 4 August, 2021 (2 hours), see <a href="https://icaps21.icaps-conference.org/Schedule/index.html#0">ICAPS schedule (day 3)</a> for time zone selection! Some selected time zones:</li>
                     <ul>
                       <li>3 am to 5 am in parts of USA (EST)</li>
                       <li>4 am to 6 am in e.g., Brasilia, Brazil (BRT)</li>
@@ -210,18 +246,24 @@
 				  </ul>
 				  <br>
 
+				  <h3 class="mt-4">Proceedings</h3>
+				  The workshop proceedings are <a href="https://gki.informatik.uni-freiburg.de/competition/wipc_2020_proceedings.pdf">available</a>
+				  
 				  <h3 class="mt-4">Schedule</h3>
-
+                  
                   7:00-9:00 GMT, <b>Plenum Session:</b>
                   <ul>
                     <li><i>7:00-7:15:</i> Recap of IPC 2020 on Hierarchical Planning</li>
-					<li><i>7:15-7:30:</i> IPC 2020 Planner Presentation: HyperTensioN </li>
-					<li><i>7:30-7:45:</i> IPC 2020 Planner Presentation: Lilotane </li>
-					<li><i>7:45-8:00:</i> IPC 2020 Planner Presentation: pyHiPOP </li>
-					<li><i>8:00-8:25:</i> Online Policy Improvement for Probabilistic Planning: Benchmarks and Baselines </li>
-					<li><i>8:25-8:45:</i> Designing an Adaptable Benchmark and Competition Simulation for Integrated Planning and Execution</li>
-					<li><i>8:45-9:00:</i> An ELO System for Skat and other Games of Chance</li>
+					<li><i>7:15-7:30:</i> IPC 2020 Planner Presentation: HyperTensioN <a href="https://gki.informatik.uni-freiburg.de/competition/HyperTensioN_-_HTN_ICAPS_2021.pdf">(slides)</a></li>
+					<li><i>7:30-7:45:</i> IPC 2020 Planner Presentation: Lilotane <a href="https://gki.informatik.uni-freiburg.de/competition/presentation_wipc_lilotane.pdf">(slides)</a></li>
+					<li><i>7:45-8:00:</i> IPC 2020 Planner Presentation: pyHiPOP <a href="https://gki.informatik.uni-freiburg.de/competition/WIPC_albore.pdf">(slides)</a> </li>
+					<li><i>8:00-8:25:</i> Online Policy Improvement for Probabilistic Planning: Benchmarks and Baselines <a href="https://gki.informatik.uni-freiburg.de/competition/Murugeswari_WIPC2021_Presentation.pdf">(slides)</a></li>
+					<li><i>8:25-8:45:</i> Designing an Adaptable Benchmark and Competition Simulation for Integrated Planning and Execution<a href="https://gki.informatik.uni-freiburg.de/competition/WIPC2021-CraftBots.pdf">(slides)</a></li>
+					<li><i>8:45-9:00:</i> An ELO System for Skat and other Games of Chance<a href="https://gki.informatik.uni-freiburg.de/competition/ELO_System_for_Games_of_Chance.odp">(slides)</a></li>
                   </ul><br>
+                  
+
+
                   <h3>Organizers</h3>
                   <ul>
                     <li>Gregor Behnke (University of Freiburg)</li>
