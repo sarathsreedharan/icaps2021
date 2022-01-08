@@ -1,0 +1,7 @@
+.ul ul li{margin-left:5%;list-style:square;}
+.ul form{margin-left:2%}
+.ul form button{margin-left:2%}
+.ul form input,select{margin-left:8%}
+.ul label{width:auto;}
+.layui-input-block-new{margin-left:2%;margin:0;left:0;position:relative;min-height:36px;}
+.layui-input-block-new p{line-height:30px;}

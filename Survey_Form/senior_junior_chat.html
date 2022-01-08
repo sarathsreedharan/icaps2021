@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+		rel="shortcut icon"
+		type="image/png"
+		href="../assets/images/favicon.png"
+		/>
+		<title>ICAPS 2021</title>
+
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+
+		<!-- Bootstrap Overrides -->
+		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+		<link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- Schedule CSS -->
+<!--    <link rel="stylesheet" type="text/css" href="./schedule.css"/> -->
+
+    <!-- jQuery -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- import axios  -->
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../assets/js/vue.min.js"></script>
+
+        <script type="text/javascript">
+                function flip_other_researcher_visibility(value) {
+                if (value == "junior") {
+                    document.getElementById("other_researchers_div").style.display = "block";
+<!--                    document.getElementById("other_researchers_label").style.display = "block";-->
+
+                } else {
+                    document.getElementById("other_researchers_div").style.display = "none";
+<!--                    document.getElementById("other_researchers_label").style.display = "none";-->
+
+                }
+            }
+        </script>
+
+
+  </head>
+  <body class="bg-light">
+    <div id='icaps-header'>
+      <myheader curpage='schedule' curitem="index"></myheader>
+    </div>
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak class="album mt-3 p-4" style="min-height: 80vh;">
+		<div style="height: 100px" class="d-none d-md-block"></div>
+		<div class="container">
+			<div class="mb-5">
+				<h4>Senior/Junior Chat Survey</h4>
+				<hr>
+                <form action="../survey/chat" method="post">
+                      <label for="name">Name:</label>
+                      <input type="text" id="name" name="name"><br><br>
+                      <label for="email">Email Id:</label>
+                      <input type="email" id="email" name="email"><br><br>
+                      <label>Are you a </label><br/>
+                      <input type="radio" id="senior" name="status" value="senior" onchange="flip_other_researcher_visibility('senior')">
+                      <label for="senior">A Senior researcher who would like to talk to junior community members </label><br><br>
+                      <input type="radio" id="junior" name="status" value="junior" onchange="flip_other_researcher_visibility('junior')">
+                      <label for="junior">A Junior researcher who would like to talk to senior community members </label><br><br>
+                     <div id="other_researchers_div" style="display: none;">
+                      <label for="other_researchers" id="other_researchers_label" >Are there any researchers you would like to talk (Please provide a comma separated list):</label><br/><br/>
+                      <input type="text" id="other_researchers" name="other_researchers" style="width:70%"><br><br>
+                     </div>
+                      <label>Please select all timeslots where would be able to attend <strong>(All Times are in GMT)</strong></label><br/>
+                      <div class="row row-col-5">
+                          <div class="col">
+                      <input type="checkbox" id="aug_9_8" name="aug_9_8" value="1">
+                      <label>August 9th 8:00</label><br><br>
+                      <input type="checkbox" id="aug_9_9" name="aug_9_9" value="1">
+                      <label>August 9th 9:00</label><br><br>
+                      <input type="checkbox" id="aug_9_16" name="aug_9_16" value="1">
+                      <label>August 9th 16:00</label><br><br>
+                      <input type="checkbox" id="aug_9_17" name="aug_9_17" value="1">
+                      <label>August 9th 17:00</label><br><br>
+                      <input type="checkbox" id="aug_9_22" name="aug_9_22" value="1">
+                      <label>August 9th 22:00</label><br><br>
+                      <input type="checkbox" id="aug_9_23" name="aug_9_23" value="1">
+                      <label>August 9th 23:00</label><br><br>
+                      </div>
+                      <div class="col">
+                      <input type="checkbox" id="aug_10_8" name="aug_10_8" value="1">
+                      <label>August 10th 8:00</label><br><br>
+                      <input type="checkbox" id="aug_10_9" name="aug_10_9" value="1">
+                      <label>August 10th 9:00</label><br><br>
+                      <input type="checkbox" id="aug_10_16" name="aug_10_16" value="1">
+                      <label>August 10th 16:00</label><br><br>
+                      <input type="checkbox" id="aug_10_17" name="aug_10_17" value="1">
+                      <label>August 10th 17:00</label><br><br>
+                      <input type="checkbox" id="aug_10_22" name="aug_10_22" value="1">
+                      <label>August 10th 22:00</label><br><br>
+                      <input type="checkbox" id="aug_10_23" name="aug_10_23" value="1">
+                      <label>August 10th 23:00</label><br><br>
+                      </div>
+                      <div class="col">
+                      <input type="checkbox" id="aug_11_8" name="aug_11_8" value="1">
+                      <label>August 11th 8:00</label><br><br>
+                      <input type="checkbox" id="aug_11_9" name="aug_11_9" value="1">
+                      <label>August 11th 9:00</label><br><br>
+                      <input type="checkbox" id="aug_11_17" name="aug_11_17" value="1">
+                      <label>August 11th 17:00</label><br><br>
+                      <input type="checkbox" id="aug_11_22" name="aug_11_22" value="1">
+                      <label>August 11th 22:00</label><br><br>
+                      <input type="checkbox" id="aug_11_23" name="aug_11_23" value="1">
+                      <label>August 11th 23:00</label><br><br>
+                      </div>
+                                                   <div class="col">
+                      <input type="checkbox" id="aug_12_8" name="aug_12_8" value="1">
+                      <label>August 12th 8:00</label><br><br>
+                      <input type="checkbox" id="aug_12_9" name="aug_12_9" value="1">
+                      <label>August 12th 9:00</label><br><br>
+                      <input type="checkbox" id="aug_12_16" name="aug_12_16" value="1">
+                      <label>August 12th 16:00</label><br><br>
+                      <input type="checkbox" id="aug_12_17" name="aug_12_17" value="1">
+                      <label>August 12th 17:00</label><br><br>
+                      <input type="checkbox" id="aug_12_22" name="aug_12_22" value="1">
+                      <label>August 12th 22:00</label><br><br>
+                      <input type="checkbox" id="aug_12_23" name="aug_12_23" value="1">
+                      <label>August 12th 23:00</label><br><br>
+                      </div>
+                      <div class="col">
+                      <input type="checkbox" id="aug_13_8" name="aug_13_8" value="1">
+                      <label>August 13th 8:00</label><br><br>
+                      <input type="checkbox" id="aug_13_9" name="aug_13_9" value="1">
+                      <label>August 13th 9:00</label><br><br>
+                      <input type="checkbox" id="aug_13_16" name="aug_13_16" value="1">
+                      <label>August 13th 16:00</label><br><br>
+                      <input type="checkbox" id="aug_13_17" name="aug_13_17" value="1">
+                      <label>August 13th 17:00</label><br><br>
+                      <input type="checkbox" id="aug_13_22" name="aug_13_22" value="1">
+                      <label>August 13th 22:00</label><br><br>
+                      <input type="checkbox" id="aug_13_23" name="aug_13_23" value="1">
+                      <label>August 13th 23:00</label><br><br>
+                      </div>
+                      </div>
+                    <input type="submit" value="Submit">
+                </form>
+			</div>
+		</div>
+	</div>
+
+    <footer class="footer m-5">
+      <div class="container">
+        <hr />
+        <div class="row d-flex justify-content-center">
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
+            &copy; ICAPS 2021
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+            <a href="../privacy-policy.html">Privacy Policy</a>
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+            <a href="../terms-of-use.html">Terms of Use</a>
+          </div>
+          <div class="col col-12 col-lg-2 d-flex justify-content-center">
+            <a href="../code-of-conduct.html">Code of Conduct</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+

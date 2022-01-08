@@ -17,36 +17,36 @@ var app = new Vue({
         posterLink:'',
     },
     methods: {
-        forceQuit: function (msg) {
-            this.modalmsg = msg;
-            this.tipsModal.show();
-            setTimeout(() => {
-                window.location.href = "/login"
-            }, 1500);
-        }
+        // forceQuit: function (msg) {
+        //     this.modalmsg = msg;
+        //     this.tipsModal.show();
+        //     setTimeout(() => {
+        //         window.location.href = "/login"
+        //     }, 1500);
+        // }
     },
     async mounted() {
         axios.defaults.withCredentials = true;
-        this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
-        let token = window.localStorage.getItem("token");
-        if (token == null || token == "") {
-            console.log("No token detected");
-            return this.forceQuit("Please login to visit this page!");
-        } else {
-            axios.get(backendBaseUrl + '/api/users/profile', {
-                headers: {
-                    "Authorization": localStorage.getItem('token')
-                }
-            }).then(res => {
-                if (!res.data.reg || !res.data.reg.registration) {
-                    console.log("have not registration");
-                    return this.forceQuit("Please visit this page after payment of registration!");
-                }
-            }).catch(err => {
-                console.log(err);
-                return this.forceQuit("Please login to visit this page!");
-            })
-        }
+        // this.tipsModal = new bootstrap.Modal(document.getElementById('tips'));
+        // let token = window.localStorage.getItem("token");
+        // if (token == null || token == "") {
+        //     console.log("No token detected");
+        //     return this.forceQuit("Please login to visit this page!");
+        // } else {
+        //     axios.get(backendBaseUrl + '/api/users/profile', {
+        //         headers: {
+        //             "Authorization": localStorage.getItem('token')
+        //         }
+        //     }).then(res => {
+        //         if (!res.data.reg || !res.data.reg.registration) {
+        //             console.log("have not registration");
+        //             return this.forceQuit("Please visit this page after payment of registration!");
+        //         }
+        //     }).catch(err => {
+        //         console.log(err);
+        //         return this.forceQuit("Please login to visit this page!");
+        //     })
+        // }
         let query = location.search;
         let searchParams = new URLSearchParams(query);
         var id = searchParams.get('channel');
