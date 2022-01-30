@@ -25,7 +25,134 @@
   </head>
   <body>
     <div id="icaps-header">
-      <myheader curpage='program' curitem="workshops"></myheader>
+              <link href="../assets/component/myheader.css" rel="stylesheet" />
+        <nav class="navbar navbar-light  navbar-expand-lg ">
+            <div class="container-fluid d-flex">
+               <a class="navbar-brand text-dark">ICAPS 2021</a>
+                    <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link px-2" >Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"  href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Program
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li >
+                                <a href="/papers" class="dropdown-item" >Papers</a>
+                            </li>
+
+				                <li>
+                                        <a class="dropdown-item" href="/workshops" >Workshops</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/tutorials">Tutorials</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/demos">Demos</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Competitions" >Competitions</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/invited-speakers.html"
+                                            >Invited Speakers</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/industry-session.html"
+                                            >Industry Session</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a href="/awards" class="nav-link px-2" >Awards</a>
+                            </li>
+                              <!-- <li class="nav-item">
+                                <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
+                            </li> -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_calls" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Calls
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown_calls">
+                                    <li>
+                                        <a class="dropdown-item" href="/Calls">Calls for Participation</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sponsorship" >Sponsorship</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='attending'}" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Attending
+                                </a>
+                            </li> -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_commitee" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Committee
+                                </a><ul class="dropdown-menu" aria-labelledby="navbarDropdown_commitee">
+
+                            <li>
+                                <a href="/Committee" class="dropdown-item" >Organizing Team</a>
+                            </li>
+                                <li>
+                                <a href="/Committee/reviewers.html" class="dropdown-item">Committee Members & Reviewers</a>
+                            </li>
+                                                            </ul>
+                                                        </li>
+
+                            <!-- <li class="nav-item">
+                                <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
+                            </li> --><li class="nav-item">
+                            </li>
+                            <li class="nav-item">
+                                <a href="/code-of-conduct.html" class="nav-link px-2" >Code of conduct</a>
+                            </li>
+                        </ul>
+                        <!-- login and user info button -->
+<!--                        <span class="btn-group dropdown navbar-right">-->
+<!--                            <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">-->
+<!--                            Login-->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">-->
+<!--                                <span >{{user.profile.first_name  }}</span>-->
+<!--                            </button>-->
+<!--                            <ul class="dropdown-menu">-->
+<!--                            <li>-->
+<!--                                <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >-->
+<!--                                    Profile-->
+<!--                                </button>-->
+<!--                                <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>-->
+<!--                            </li>-->
+<!--                            </ul>-->
+<!--                            &ensp;-->
+<!--                            <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">-->
+<!--                                <span>Attending</span>-->
+<!--                            </button>-->
+<!--                        </span>-->
+                    </div>
+                </div>
+            </nav>
     </div>
     <script src="/assets/component/myheader.js" type="module"></script>
 
