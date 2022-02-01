@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../assets/images/favicon.png"
-    />
-    <title>ICAPS 2021</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+		rel="shortcut icon"
+		type="image/png"
+		href="../assets/images/favicon.png"
+		/>
+		<title>ICAPS 2021</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
 
-    <!-- Bootstrap Overrides -->
-    <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
-    <link href="../assets/css/custom.css" rel="stylesheet" />
-    <link href="tutorial.css" rel="stylesheet" />
-
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-    />
+		<!-- Bootstrap Overrides -->
+		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+		<link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- Schedule CSS -->
+    <link rel="stylesheet" type="text/css" href="./schedule.css"/> 
 
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-    <script src="/assets/component/myheader.js" type="module"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- import axios  -->
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../assets/js/vue.min.js"></script>
+
 
   </head>
-  <body>
+  <body class="bg-light">
     <div id='icaps-header'>
               <link href="../assets/component/myheader.css" rel="stylesheet" />
         <nav class="navbar navbar-light  navbar-expand-lg ">
@@ -161,33 +162,19 @@
                 </div>
             </nav>
     </div>
-
-    <div class="album mt-3 p-4">
-      <div style="height: 100px" class="d-none d-md-block">
-        <!-- padding hack for the fixed navbar -->
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-          <a href="./tutorial_1.html" type="button" class="btn btn-light call-button mb-2"
-            ><span class="p-3"
-              >Hands-on Introduction to dcss-ai-wrapper: A Dungeon Crawl Stone Soup API for AI Planning
-              </span
-            ></a
-          >
-        </div>
-
-        <div class="row">
-          <a href="./tutorial_2.html" type="button" class="btn btn-light call-button mb-2"
-            ><span class="p-3"
-              >Trustworthy AI: A Computational Perspective
-              </span
-            ></a
-          >
-        </div>
-      </div>
-    </div>
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak class="album mt-3 p-4" style="min-height: 80vh;">
+		<div style="height: 100px" class="d-none d-md-block"></div>
+		<div class="container">
+			<div class="mb-5">
+				<h4>Hands-on Introduction to dcss-ai-wrapper: A Dungeon Crawl Stone Soup API for AI Planning</h4>
+				<hr>
+					<div>
+                        <h3>Description</h3> <p>dcss-ai-wrapper aims to enable the Dungeon Crawl Stone Soup (DCSS) video game to be used as a new benchmark for AI research. While more traditional planning benchmarks exist (i.e. IPC domains) and more traditional RL benchmarks exist (i.e. open-ai gym), it is often difficult to compare an RL agent on IPC domains or a planner on RL domains. DCSS is a complex domain that has built-in support for both automated planning and RL, as well as other properties that make it worthwhile to study.</p><p>Dungeon Crawl Stone Soup is a single-player, free, and open-source rogue-like turn-based video game that consists of a procedurally generated 2-dimensional grid world. To win the game, a player must navigate their character through a series of levels to collect "The Orb of Zot" and then return to the starting location. Along the way, the player encounters a wide variety of monsters and items. Players equip and use items to make themselves stronger or consume them to aid in difficult situations. The DCSS environment is dynamic, stochastic, partially observable, and complex with the number of instantiated actions the player may take reaching into the hundreds.</p><p>dcss-ai-wrapper is the first AI-friendly API designed to enable planning-based agents to play Dungeon Crawl Stone Soup. In this tutorial we will guide participants through multiple live-coding exercises, providing them with the hands-on experience needed to apply their own custom planning algorithms and techniques to control an agent in DCSS for AI research.</p><h4>Outline</h4><p>The main objective of this tutorial is to provide a hands-on tutorial of the software. By the end of the tutorial, the attendees will be able to install the game / API wrapper, understand various API functionalities, be able to run sample Automated Planning and Reinforcement Learning agents, and understand the experimental metrics that can be used. We propose a 3 hour tutorial with the following schedule.</p><ul><li> <b>-1 week:</b> Provide attendees will setup videos to ensure no day-of configuration issues<li><b>-2 hr to Tutorial Start:</b> Open session to ensure attendee’s environments are properly configured<li><b>Tutorial Start Time - 30 min:</b> Introductory Lecture to the DCSS Game and the API<li><b>30 min - 1 hr:</b> Learning objective #1 - Get a classical planning agent (using Fastdownward) running in the game<li><b>1.0 hr to 1.5 hr:</b> Learning objective #2 - Obtain and visualize data about the performance of the planning agent against other baseline agents<li><b>1.5 hr to 2.0 hr:</b> Learning objective #3 - Extend the planning agent with more goal types, including attacking monsters and picking up items.<li><b> 2.0 hr - Tutorial End:</b> Extra Credit Exercises:<ul><li> Extend the planning agent with goals and other behaviors to see how far it can travel in the dungeon before dying<li> Customize PDDL knowledge for an alternative planner to FastDownward</ul></ul><p> Please visit the url <a href="https://dcss-ai-wrapper.readthedocs.io/en/latest/tutorials/icaps2021tutorial.html">https://dcss-ai-wrapper.readthedocs.io/en/latest/tutorials/icaps2021tutorial.html</a>, for information on the pre-tutorial set up.</p><br/><br/><h4>Organisers</h4><ul><li> Dr. Dustin Dannenhauer, Parallax Advanced Research Corporation</li><li> Dr. Amos-Binks, ARA</li><li> Dr. Michael Floyd, Knexus Research Corporation</li><li> Dr. Zohreh Dannenhauer, Knexus Research Corporation</li></ul>
+                    </div>
+			</div>
+		</div>
+	</div>
 
     <footer class="footer m-5">
       <div class="container">
@@ -208,7 +195,10 @@
         </div>
       </div>
     </footer>
-
-    <script src="../assets/js/bootstrap.min.js"></script>
   </body>
+  <script
+    type="module"
+    src="/Schedule/schedule.js"
+    crossorigin="anonymous"
+  ></script>
 </html>

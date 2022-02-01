@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../assets/images/favicon.png"
-    />
-    <title>ICAPS 2021</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+		rel="shortcut icon"
+		type="image/png"
+		href="../assets/images/favicon.png"
+		/>
+		<title>ICAPS 2021</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+		<!-- Bootstrap core CSS -->
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
 
-    <!-- Bootstrap Overrides -->
-    <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
-    <link href="../assets/css/custom.css" rel="stylesheet" />
-    <link href="tutorial.css" rel="stylesheet" />
-
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
-    />
+		<!-- Bootstrap Overrides -->
+		<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+		<link href="../assets/css/custom.css" rel="stylesheet" />
+    <!-- Schedule CSS -->
+    <link rel="stylesheet" type="text/css" href="./schedule.css"/> 
 
     <!-- jQuery -->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/custom.js"></script>
-    <script src="/assets/component/myheader.js" type="module"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+
+    <!-- import axios  -->
+    <script src="../assets/js/axios.min.js"></script>
+    <!-- vue dev version -->
+    <script src="../assets/js/vue.min.js"></script>
+
 
   </head>
-  <body>
+  <body class="bg-light">
     <div id='icaps-header'>
               <link href="../assets/component/myheader.css" rel="stylesheet" />
         <nav class="navbar navbar-light  navbar-expand-lg ">
@@ -161,33 +162,19 @@
                 </div>
             </nav>
     </div>
-
-    <div class="album mt-3 p-4">
-      <div style="height: 100px" class="d-none d-md-block">
-        <!-- padding hack for the fixed navbar -->
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-          <a href="./tutorial_1.html" type="button" class="btn btn-light call-button mb-2"
-            ><span class="p-3"
-              >Hands-on Introduction to dcss-ai-wrapper: A Dungeon Crawl Stone Soup API for AI Planning
-              </span
-            ></a
-          >
-        </div>
-
-        <div class="row">
-          <a href="./tutorial_2.html" type="button" class="btn btn-light call-button mb-2"
-            ><span class="p-3"
-              >Trustworthy AI: A Computational Perspective
-              </span
-            ></a
-          >
-        </div>
-      </div>
-    </div>
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <div id="app" v-cloak class="album mt-3 p-4" style="min-height: 80vh;">
+		<div style="height: 100px" class="d-none d-md-block"></div>
+		<div class="container">
+			<div class="mb-5">
+				<h4>Trustworthy AI: A Computational Perspective</h4>
+				<hr>
+					<div>
+                        <h4>Description</h4> <p>The past few decades have witnessed the rise of artificial intelligence (AI) technology. However, recent studies show evidence that AI algorithms may not be trustworthy. For example, they could be vulnerable to slight perturbations of input data; they could undermine fairness by showing bias and stereotypes towards certain groups of people; and their decisions could be hard to explain due to their opaque model architectures. With the widespread use of AI applications in our daily life, whether an AI algorithm is trustworthy or not has become a problem of great concern to researchers, developers and users.</p> <p>Recently, a great amount of research on trustworthy AI has emerged. In this tutorial, we aim to provide a comprehensive overview of the cutting-edge research progress on trustworthy AI from a computational perspective. Specifically, we focus on the six most important dimensions in realizing trustworthy AI: (i) Safety & Robustness, (ii) Non-discrimination & Fairness, (iii) Explainability, (iv) Privacy, (v) Accountability & Auditability, and (vi) Environmental Well-Being. We will introduce the latest technologies and real-world applications in each dimension according to a taxonomy, and discuss the accordant and conflicting interactions among various dimensions. Besides, we will discuss potential future research directions in this field.</p> <p>We expect that researchers and practitioners can gain a broad overview and a deep insight of trustworthy AI from this tutorial, so as to advance the progress of this field.</p> <h4> Outline</h4> The tutorial is to be presented as a 3-hour online lecture. <ul> <li> Introduction (10 mins)</li> <li> Dimension I: Safety & Robustness (30 mins),</li> <li> Dimension II: Non-discrimination & Fairness (30 mins),</li> <li> Dimension III: Explainability (30 mins),</li> <li> Dimension IV: Privacy (30 mins),</li> <li> Dimension V: Accountability & Auditability (15 mins),</li> <li> Dimension VI: Environmental Wellbeing (15 mins),</li> <li> Dimension Interactions and Future Directions (20 mins).</li> </ul> URL: <a href="https://sites.google.com/msu.edu/trustworthy-ai/home">https://sites.google.com/msu.edu/trustworthy-ai/home</a><br/><br/> <h4>Organisers</h4> <ul> <li> Haochen Liu, Xiaorui Liu, Yaxin Li, Jiliang Tang and Yiqi Wang, Michigan State University</li> <li> Wenqi Fan, Hong Kong Polytechnic University</li> </ul>
+                    </div>
+			</div>
+		</div>
+	</div>
 
     <footer class="footer m-5">
       <div class="container">
@@ -208,7 +195,10 @@
         </div>
       </div>
     </footer>
-
-    <script src="../assets/js/bootstrap.min.js"></script>
   </body>
+  <script
+    type="module"
+    src="/Schedule/schedule.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
