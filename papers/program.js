@@ -2092,7 +2092,7 @@ function render_paper_list() {
         recording_str = element["video"];
       } else {
         recording_str =
-          "https://icaps21.icaps-conference.org/exhibition/index.html?channel=" +
+          "../exhibition/index.html?channel=" +
           element["UID"];
       }
       // if (element["track"] == "DEMO") {
