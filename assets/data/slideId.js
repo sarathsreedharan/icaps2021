@@ -450,9 +450,49 @@
         "slideId": 38963007
     },
     {
-        "id": "130",
-        "Title": "Knowledge Compilation for Nondeterministic Action Languages",
-        "slideId": 38962946
+        "id": "403",
+        "Title": "From AI in Robots to AI in Finance: Planning Examples and Discussion",
+        "slideId": 38965432
+    },
+    {
+        "id": "500",
+        "Title": "Industrial Scheduling and Planning",
+        "slideId": 38965433
+    },
+        {
+        "id": "501",
+        "Title": "Automated Planning and Constraint Reasoning for High Throughput Laboratory Automation",
+        "slideId": 38965434
+    },
+        {
+        "id": "502",
+        "Title": "Planning for Controlling Business-to-business Applications",
+        "slideId": 38965435
+    },
+    {
+        "id": "503",
+        "Title": "Designing Goal-Oriented Conversational Agents using Automated Planning",
+        "slideId": 38965436
+    },
+    {
+        "id": "504",
+        "Title": "Environment Learning - Data-Driven Approaches for Real-World Decision Optimization",
+        "slideId": 38965437
+    },
+    {
+        "id": "505",
+        "Title": "Autonomously responding to the environment with a distributed space system",
+        "slideId": 38965438
+    },
+    {
+        "id": "600",
+        "Title": "Target Assignment and Path Planning for Navigation Tasks with Teams of Agents",
+        "slideId": 38965439
+    },
+        {
+        "id": "601",
+        "Title": "Planning under Uncertainty in Constrained and Partially Observable Environments",
+        "slideId": 38965440
     },
     {
         "id": "309",

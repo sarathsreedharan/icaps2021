@@ -663,10 +663,17 @@
                         </div>
                       </div>
                       <div v-else-if="modal_type == 'Invited Talk'">
-                        <div class="text-center">
-                          <font size="3"><strong>Invited Speakers: {{InvitedSpeakers[invitedNum]}}<br><br>
-                          Chairs: {{Chairs[invitedNum]}}<br><br></strong></font>
-                        </div>
+                        <a 
+                          style="color: #000000;"
+                          @click="setChannelID(InvitedSpeakers[invitedNum].id)"
+                          :href="'../exhibition/index.html?channel='+InvitedSpeakers[invitedNum].id"
+                          target="_blank"
+                        >
+                          <div class="text-center eventsTitle-link">
+                            <font size="3"><strong>Invited Speakers: {{InvitedSpeakers[invitedNum].name}}<br><br>
+                            Chairs: {{Chairs[invitedNum]}}<br><br></strong></font>
+                          </div>
+                        </a>
                         <div style="text-align: end">
                           <strong>Time</strong>:
                           <small><i>{{showModalDay()}}</i></small><br>
@@ -685,9 +692,18 @@
                         </div>
                       </div>
                       <div v-else-if="modal_type == 'Industry Talks'">
-                        <div v-for="item in IndustryTalk">
-                          <strong>{{item.title}}<br></strong><div style="font-size: x-small"><strong><br>Authors:</strong> {{item.authors}}<hr></div>
-                        </div>
+                        <a  
+                          v-for="item in IndustryTalk"
+                          style="color: #000000;"
+                          @click="setChannelID(item.id)"
+                          :href="'../exhibition/index.html?channel='+item.id"
+                          target="_blank"
+                        >
+                          <div class="eventsTitle-link">
+                            <strong>{{item.title}}<br></strong><div style="font-size: x-small"><strong><br>Authors:</strong> {{item.authors}}</div>
+                          </div>
+                          <hr>
+                        </a>
                         <div style="text-align: end">
                           <strong>Time</strong>: <small><i>{{showModalDay()}}</i></small><br>
                           <div v-if="modal_type == 'Demos/ Diversity Event'"><strong>Place</strong>: <small><i>Demo Building in Gather.Town</i></small><br></div>

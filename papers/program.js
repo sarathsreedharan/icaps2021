@@ -1372,7 +1372,7 @@ function initialize_program() {
         "In domains such as electric vehicle charging, smart distribution grids and autonomous warehouses, multiple agents share the same resources. When planning the use of these resources, agents need to deal with the uncertainty in these domains. Although several models and algorithms for such constrained multiagent planning problems under uncertainty have been proposed in the literature, it remains unclear when which algorithm can be applied. In this survey we conceptualize these domains and establish a generic problem class based on Markov decision processes. We identify and compare the conditions under which algorithms from the planning literature for problems in this class can be applied: whether constraints are soft or hard, whether agents are continuously connected, whether the domain is fully observable, whether a constraint is momentarily (instantaneous) or on a budget, and whether the constraint is on a single resource or on multiple. Further we discuss the advantages and disadvantages of these algorithms. We conclude by identifying open problems that are directly related to the conceptualized domains, as well as in adjacent research areas.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://www.jair.org/index.php/jair/article/view/12233",
     },
     {
       UID: "361",
@@ -1384,7 +1384,7 @@ function initialize_program() {
         "Factories in the automotive supply industry paint a large number of items requested by car manufacturing companies on a daily basis. As these factories face numerous constraints and optimization objectives, finding a good schedule becomes a challenging task in practice, and full-time employees are expected to manually create feasible production plans.\n In this study, we propose novel constraint programming models for a real-life paint shop scheduling problem. We evaluate and compare our models experimentally by performing a series of benchmark experiments using real-life instances in the industry. We also show that the decision variant of the paint shop scheduling problem is NP-complete.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://dl.acm.org/doi/abs/10.1145/3430710",
     },
     {
       UID: "362",
@@ -1396,7 +1396,7 @@ function initialize_program() {
         "The architecture described in this paper encodes a theory of intentions based on the key principles of non-procrastination, persistence, and refinement, and by automatically limiting reasoning to relevant knowledge and observations. The architecture reasons with transition diagrams of any given domain at two different resolutions, with the fine-resolution description defined as a refinement of, and hence tightly-coupled to, a coarse-resolution description. For any given goal, non-monotonic logical reasoning with the coarse-resolution description computes an activity, i.e., a plan, comprising a sequence of abstract actions to be executed to achieve the goal. Each abstract action is implemented as a sequence of concrete actions by automatically zooming to and reasoning with the part of the fine-resolution transition diagram relevant to the current coarse-resolution transition and the goal. Each concrete action in this sequence is executed using probabilistic models of the uncertainty in sensing and actuation, and the corresponding fine-resolution outcomes are used to infer coarse-resolution observations that are added to the coarse-resolution history. The architecture’s capabilities are evaluated in the context of a simulated robot assisting humans in an office domain, on a physical robot (Baxter) manipulating tabletop objects, and on a wheeled robot (Turtlebot) moving objects to particular places or people. The experimental results indicate improvements in reliability and computational efficiency compared with an architecture that does not include the theory of intentions, and an architecture that does not include zooming for fine-resolution reasoning.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://link.springer.com/article/10.1007/s10472-019-09672-4",
     },
     {
       UID: "363",
@@ -1413,7 +1413,7 @@ function initialize_program() {
         "Domain-independent planning decouples planning task specification and planning engines. As the specification is usually describing only the physics of the environment, actions and a goal, the planning engines being generic solvers designed to solve any planning task tend to struggle with tasks that can be easily solved by domain-specific algorithms. Additional control knowledge can, to large extent, bridge such a performance gap. Instead of providing a specific planner supporting a given form of control knowledge, control knowledge can be directly encoded within the planning task specification and thus can be exploited by generic planners. In this paper, we propose Attributed Transition-Based Domain Control Knowledge (ATB-DCK) that is represented by a finite state automaton with attributed states, referring to specific states of objects, connected by transitions imposing constraints on action applicability. ATB-DCK, roughly speaking, represents “grammar” of solution plans that guides the search. We show that ATB-DCK can be compiled into a classical planning task and thus it complements domain-independent planning techniques. Using several domains from the International Planning Competitions as benchmarks, we demonstrate that this approach often considerably improves efficiency of existing state-of-the-art planning engines.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://ieeexplore.ieee.org/document/9253709",
     },
     {
       UID: "364",
@@ -1424,7 +1424,7 @@ function initialize_program() {
         "Recognizing goals and plans from complete or partial observations can be efficiently achieved through automated planning techniques. In many applications, it is important to recognize goals and plans not only accurately, but also quickly. To address this challenge, we develop novel goal recognition approaches based on planning techniques that rely on planning landmarks. In automated planning, landmarks are properties (or actions) that cannot be avoided to achieve a goal. We show the applicability of a number of planning techniques with an emphasis on landmarks for goal recognition tasks in two settings: (1) we use the concept of landmarks to develop goal recognition heuristics; and (2) we develop a landmark-based filtering method to refine existing planning-based goal and plan recognition approaches. These recognition approaches are empirically evaluated in experiments over several classical planning domains. We show that our goal recognition approaches yield not only accuracy comparable to (and often higher than) other state-of-the-art techniques, but also result in substantially faster recognition time over existing techniques.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://www.sciencedirect.com/science/article/abs/pii/S0004370219300013",
     },
     {
       UID: "365",
@@ -1452,7 +1452,7 @@ function initialize_program() {
         "Achieving consistently high levels of productivity has been a challenge for Mars surface missions. While the rovers have made major discoveries and dramatically increased our understanding of Mars, they require a great deal of interaction from the operations teams, and achieving mission objectives can take longer than anticipated when productivity is paced by the ground teams' ability to react. We have conducted a project to explore technologies and techniques for creating Self-Reliant Rovers: rovers that are able to maintain high levels of productivity with reduced reliance on ground interactions. This paper describes the design of Self-Reliant Rovers and a prototype implementation that we deployed on a research rover. We evaluated the system by conducting a simulated campaign in which members of the Mars Science Laboratory (Curiosity rover) science team used our rover to explore a geographical region. The evaluation demonstrated the system's ability to maintain high levels of productivity with limited communication with operators.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://onlinelibrary.wiley.com/doi/abs/10.1002/rob.21979",
     },
     {
       UID: "366",
@@ -1470,7 +1470,7 @@ function initialize_program() {
         "In many real-world scenarios, the time it takes for a mobile agent, e.g., a robot, to move from one location to another may vary due to exogenous events and be difficult to predict accurately. Planning in such scenarios is challenging, especially in the context of Multi-Agent Pathfinding (MAPF), where the goal is to find paths to multiple agents and temporal coordination is necessary to avoid collisions. In this work, we consider a MAPF problem with this form of time uncertainty, where we are only given upper and lower bounds on the time it takes each agent to move. The objective is to find a safe solution, which is a solution that can be executed by all agents and is guaranteed to avoid collisions.\n We propose two complete and optimal algorithms for finding safe solutions based on well-known MAPF algorithms, namely, A* with Operator Decomposition (A*+OD) and Conflict-Based Search (CBS). Experimentally, we observe that on several standard MAPF grids the CBS-based algorithm performs better. We also explore the option of online replanning in this context, i.e., modifying the agents' plans during execution, to reduce the overall execution cost. We consider two online settings: (a) when an agent can sense the current time and its current location, and (b) when the agents can also communicate seamlessly during execution. For each setting, we propose a replanning algorithm and analyze its behavior theoretically and empirically. Our experimental evaluation confirms that indeed online replanning in both settings can significantly reduce solution cost.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://www.jair.org/index.php/jair/article/view/12397",
     },
     {
       UID: "367",
@@ -1486,7 +1486,7 @@ function initialize_program() {
         "In Path Integral control problems a representation of an optimally controlled dynamical system can be formally computed and serve as a guidepost to learn a parametrized policy. The Path Integral Cross-Entropy (PICE) method tries to exploit this, but is hampered by poor sample efficiency. We propose a model-free algorithm called ASPIC (Adaptive Smoothing of Path Integral Control) that applies an inf-convolution to the cost function to speedup convergence of policy optimization. We identify PICE as the infinite smoothing limit of such technique and show that the sample efficiency problems that PICE suffers disappear for finite levels of smoothing. For zero smoothing, ASPIC becomes a greedy optimization of the cost, which is the standard approach in current reinforcement learning. ASPIC adapts the smoothness parameter to keep the variance of the gradient estimator at a predefined level, independently of the number of samples. We show analytically and empirically that intermediate levels of smoothing are optimal, which renders the new method superior to both PICE and direct cost optimization.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://jmlr.org/papers/v21/18-624.html",
     },
     {
       UID: "368",
@@ -1498,7 +1498,7 @@ function initialize_program() {
         "Symmetry-based pruning is a powerful method for reducing the search effort in finite-domain planning. This method is based on exploiting an automorphism group connected to the ground description of the planning task – these automorphisms are known as structural symmetries. In particular, we are interested in the StructSym problem where the generators of this group are to be computed. It has been observed in practice that the StructSym problem is surprisingly easy to solve. We explain this phenomenon by showing that StructSym is GI-complete, i.e., the graph isomorphism problem is polynomial-time equivalent to it and, consequently, solvable in quasi-polynomial time. This implies that it is solvable substantially faster than most computationally hard problems encountered in AI. We accompany this result by identifying natural restrictions of the planning task and its causal graph that ensure that StructSym can be solved in polynomial time. Given that the StructSym problem is GI-complete and thus solvable quite efficiently, it is interesting to analyse if other symmetries (than those that are encompassed by the StructSym problem) can be computed and/or analysed efficiently, too. To this end, we present a highly negative result: checking whether there exists an automorphism of the state transition graph that maps one state s into another state t is a PSPACE-hard problem and, consequently, at least as hard as the planning problem itself.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://www.jair.org/index.php/jair/article/view/12283",
     },
     {
       UID: "370",
@@ -1509,7 +1509,322 @@ function initialize_program() {
         "Planning deals with the task of finding an ordered set of actions that achieves some goals from an initial state. In many real-world applications it is unfeasible to find a plan achieving all goals due to limitations in the available resources. A common case consists of having a bound on a given cost measure that is less than the optimal cost needed to achieve all goals. Oversubscription planning (OSP) is the field of Automated Planning dealing with such kinds of problems. Usually, OSP generates plans that achieve only a subset of the goals set. In this paper we present a new technique to a priori select goals in no-hard-goals satisficing OSP by searching in the space of subsets of goals. A key property of the proposed approach is that it is planner-independent once the goals have been selected; it creates a new non-OSP problem that can be solved using off-the-shelf planners. Extensive experimental results show that the proposed approach outperforms state-of-the-art OSP techniques in several domains of the International Planning Competition.",
       topics: [],
       track: "JOURNAL",
-      url: "",
+      url: "https://www.sciencedirect.com/science/article/abs/pii/S0004370220301636",
+    },
+    {
+      title: "A Decentralized Reinforcement Learning System for Patrol Routing",
+      authors: ["Avijit Roy", "Nisheeth Srivastava"],
+      abstract:
+        "We model the placement of first-responder patrol vehicles on a city map as a multi-agent reinforcement learning problem, where individual agents learn desirable locations for parking based on dynamically updated geo-localized emergency call records. The model is able to outline reasonable patrol locations and routes, adapting to changes in the geographical pattern of call locations, and permits optimization of routes accommodating fuel economy and other cost-based concerns into account in a principled way. We also present an actual patrolling system we have developed around this model, and present simulated results comparing its performance vis-a-vis centroid-based patrol location prediction and judgments made by humans.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video:
+        "https://www.youtube.com/watch?v=nsMXzXfeEmM&t=14s&ab_channel=LearningHowMachineLearns",
+      UID: "11376",
+    },
+    {
+      title: "Demos for a Course in Single-Agent Heuristic Search",
+      authors: ["Nathan Sturtevant"],
+      abstract:
+        "This abstract describes material from a course in Single-Agent Heuristic Search which is available at <a href='http://www.movingai.com/SAS/' target='_blank'>http://www.movingai.com/SAS/</a>. We cover the motivation and history of the material, as well as a brief description of the content.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=rc-cxvUSxeM",
+      UID: "11382",
+      award: "silver",
+    },
+    {
+      title:
+        "A Demonstration of Refinement Acting, Planning and Learning System Using Operational Models",
+      authors: [
+        "Sunandita Patra",
+        "James Mason",
+        "Malik Ghallab",
+        "Paolo Traverso",
+        "Dana Nau",
+      ],
+      abstract:
+        "We demonstrate a system with integrated acting, planning, and learning algorithms that uses hierarchical operational models to perform tasks in dynamically changing environments. In AI research, synthesizing a plan of action has typically used descriptive models of the actions that abstractly specify what might happen as a result of an action and are tailored for efficiently computing state transitions. However, executing the planned actions has needed operational models, in which rich computational control structures and closed-loop online decision-making are used to specify how to perform an action in a nondeterministic execution context, react to events and adapt to an unfolding situation. Deliberative actors, which integrate acting and planning, have typically needed to use both of these models together---which causes problems when attempting to develop the different models, verify their consistency, and smoothly interleave acting and planning. As an alternative, we demonstrate an acting and planning engine in which both planning and acting use the same operational models. These rely on hierarchical task-oriented refinement methods offering rich control structures. In addition, we also have learning strategies that guide the actor and the planner.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=T1ZkBmHrERk",
+      UID: "11391",
+    },
+    {
+      title:
+        "Model and Graphical Tool to Formalize Human-Robot Interaction Based on Automated Planning",
+      authors: [
+        "Alba Gragera",
+        "Ángel García-Olaya",
+        "Fernando Fernández",
+        "Rebeca Marfil",
+      ],
+      abstract:
+        "The implementation of use cases in Social Autonomous Robotics is a complex and time-consuming task to be developed by domain experts and engineers, involving a large knowledge acquisition process. The resulting use case description must also be formalized taking into account stochastic events that may occur in the real world. Existing works rely on Automated Planning to deploy robotic use cases, where the standard Planning Domain Description Language (PDDL) is assumed. In order to facilitate to domain experts the description of the use case we propose a novel tool to create the model through state transition diagrams. From this diagram, the system automatically generates the PDDL files. A video demonstration is available.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/PWRDI6-qqN0",
+      UID: "11392",
+    },
+    {
+      title: "Alternative Pathfinding in Game Maps and Indoor Venues",
+      authors: ["Lingxiao Li", "Muhammad Aamir Cheema"],
+      abstract:
+        "Given a source s and a target t, alternative pathfinding aims to return a set of k alternative paths from s to t such that these paths are short, meaningful (e.g., no un-necessary detours), and significantly different from each other. While alternative pathfinding in road networks has received significant attention, to the best of our knowledge, it has not been studied in maps with obstacles such as game maps and indoor venues, e.g., airport, shopping center etc. Furthermore, it is not clear whether the techniques designed for road networks generate high-quality alternative paths for game maps and indoor venues. To this end, we present a web-based demonstration system that visualises the alternative paths in game maps and indoor venues generated by three of the most popular techniques originally designed for the road networks. This system will help evaluating these techniques and identifying potential limitations that must be addressed for better alternative pathfinding in game maps and indoor venues.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video:
+        "https://www.youtube.com/watch?v=-Q74GYFZnBI&ab_channel=LingxiaoLi",
+      UID: "11383",
+    },
+    {
+      title:
+        "Multi-Robot Coordination in Operations and Maintenance of Off Shore Wind Farms with Temporal Planning",
+      authors: ["Ferdian Jovan", "Sara Bernardini"],
+      abstract:
+        "This paper explores the use of temporal planning for multi-robot coordination in operation and maintenance applications. Due to limited resources and energy to perform multiple missions, an efficient tool capable of optimising mission allocations without the need for major re-planning of the missions is required. We improve the performance of centralised mission planner by combining an adaptive problem generator with temporal planning to obtain feasible plans. We create a simulator, a GAZEBO simulated environment unifying heterogeneous autonomous systems for offshore wind farms application, integrate our method, and demonstrate our approach to plan generation for an inspection, maintenance, and repair of an offshore wind turbine.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=jIan_k-FOBg&ab_channel=FF",
+      UID: "11380",
+    },
+    {
+      title: "FOND4LTLf: FOND Planning for LTLf/PLTLf Goals as a Service",
+      authors: ["Giuseppe De Giacomo", "Francesco Fuggitti"],
+      abstract:
+        "Planning is a central area in Artificial Intelligence (AI) concerned with the decision making performed by autonomous agents with the aim of achieving some goals. In the last decades, extensive literature has been produced in Fully Observable Non-Deterministic (FOND) planning for temporally extended goals when the specification is expressed using one of the several finite trace variants of LTL. Numerous applications have been developed to solve the problem, but most of them require special knowledge. In this demonstration, we present FOND4LTLf, a web service tool that allows solving FOND planning for LTLf/PLTLf goals as an integrated tool with editor, planners and policy visualizer.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/vYY8mmkKtQs",
+      UID: "11388",
+    },
+    {
+      title: "Lydia: A Tool for Compositional LTLf/LDLf Synthesis",
+      authors: ["Marco Favorito", "Giuseppe De Giacomo"],
+      abstract:
+        "This demonstration describes Lydia, a tool for the translation of Linear Temporal Logic on Finite Traces (LTLf) and Linear Dynamic Logic on Finite Traces (LDLf) into Deterministic Finite Automata (DFA), and for performing LTLf/LDLf synthesis. Lydia implements a novel *compositional* technique to handle such transformation, and the contribution has been accepted as a publication to the main track. This demo is a companion of the accepted publication. Notably, it is the first tool that provides the transformation from LDLf to DFA. The tool can be used in different ways: as a command-line tool, as a C++ library, through an exposed web service, with a web app, and using the Python programming language.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video:
+        "https://drive.google.com/file/d/1bP7nD2RdoEfMxCsUXivHqbfvJex6i20A/view?usp=sharing",
+      UID: "11393",
+    },
+    {
+      title:
+        "PRUDENT - A Generic Dialog Agent for Information Retrieval That Can Flexibly Mix Automated Planning and Reinforcement Learning",
+      authors: ["Vishal Pallagani", "Biplav Srivastava", "Sparsh Agrawal"],
+      abstract:
+        "With easy availability of large data sets online, like product catalogs and open data, a common business problem is to allow users to search them for information. However, this information is inaccessible to a lot of people as they are unaware of query languages used for searching through data. In this demonstration, we present PRUDENT - where we harness the power of dialog systems to help the user search for information using natural language. PRUDENT makes use of a planner to adapt to the content structure of the data source and retrieve results, thereby, making the dialog agent generic. However, PDDL based planning needs models and one would want to learn plans over time. Hence, RL based plan generation is also desirable. We show a system which can do this and demonstrate the viability of our approach on large data sets of UNSPSC and ICD-10.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/X2l7eW6dyBc",
+      UID: "11381",
+    },
+    {
+      title:
+        "PDSim: Simulating Classical Planning Domains with the Unity Game Engine",
+      authors: ["Emanuele De Pellegrin", "Ronald Petrick"],
+      abstract:
+        "The solution of a classical planning problem consists of a sequence of actions mapping the initial state to the goal state. The output of a plan is often provided as raw text, which can be difficult to follow and interpret, especially with large plans. Simulating a plan generated by an automated planner using visual feedback, such as animations of 3D models and environments, can be an important tool for quickly evaluating the quality of a plan and improving the design of planning domains and problems. In this system demonstration, we present the latest version of PDSim, an external tool that can be installed on the Unity game engine adding support for the simulation of classical plans using 3D animations and visualisation methods that can be defined by the user.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=5CRYWIcFIw4",
+      UID: "11387",
+    },
+    {
+      title: "Visual Planning Domain Design for PDDL using Blockly",
+      authors: ["Filip Dvorak", "Anil Agarwal", "Nikolay Baklanov"],
+      abstract:
+        "Industrialization of automated planning leads to a need to manage the life-cycle of planning models, and quite often the life cycle will include non-expert users, for whom the verbose logical models in planning languages are not the best communication instrument. We are attempting to bridge the gap using popular drag-and drop visual framework Blockly, developing an open-source tool that would seamlessly translate between Problem Domain Definition Language (PDDL) and Blockly.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=dEV2mICb11g",
+      UID: "11385",
+    },
+    {
+      title:
+        "Scalable Rail Planning and Replanning: Winning the 2020 Flatland Challenge",
+      authors: [
+        "Jiaoyang Li",
+        "Zhe Chen",
+        "Yi Zheng",
+        "Shao-Hung Chan",
+        "Daniel Harabor",
+        "Peter J. Stuckey",
+        "Hang Ma",
+        "Sven Koenig",
+      ],
+      abstract:
+        "Multi-Agent Path Finding (MAPF) is the combinatorial problem of finding collision-free paths for multiple agents on a graph. This abstract describes MAPF-based software for solving train planning and replanning problems on large-scale rail networks under uncertainty. The software recently won the 2020 Flatland Challenge, a NeurIPS competition trying to efficiently manage dense traffic on rail networks. The software incorporates many state-of-the-art MAPF or, in general, optimization technologies, such as prioritized planning, safe interval path planning, parallel computing, simulated annealing, large neighborhood search, and minimum communication policies. It can plan collision-free paths for thousands of trains within a few minutes and deliver deadlock-free actions in real-time during execution.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/Pw4GBL1UhPA",
+      UID: "11384",
+      award: "gold",
+    },
+    {
+      title:
+        "Human-guided Collaborative Problem Solving: A Natural Language based Framework",
+      authors: [
+        "Harsha Kokel",
+        "Mayukh Das",
+        "Rakibul Islam",
+        "Julia Bonn",
+        "Jon Cai",
+        "Soham Dan",
+        "Anjali Narayan-Chen",
+        "Prashant Jayannavar",
+        "Janardhan Doppa",
+        "Julia Hockenmaier",
+        "Sriraam Natarajan",
+        "Martha Palmer,",
+        "Dan Roth",
+      ],
+      abstract:
+        "We consider the problem of human-machine collaborative problem solving as a planning task coupled with natural language communication. Our framework consists of three components -- a natural language engine that parses the language utterances to a formal representation and vice-versa, a concept learner that induces generalized concepts for plans based on limited interactions with the user and an HTN planner that solves the task based on human interaction. We illustrate the ability of this framework to address the key challenges of collaborative problem solving by demonstrating it on a collaborative building task in a Minecraft-based blocksworld domain.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=q1pWe4aahF0&feature=youtu.be",
+      website: "https://starling.utdallas.edu/papers/collaborative-ps/",
+      UID: "11375",
+    },
+    {
+      title:
+        "FairVizARD: A Visualization System for Assessing Fairness of Ride-Sharing Matching Algorithms",
+      authors: [
+        "Ashwin Kumar",
+        "Sanket Shah",
+        "Meghna Lowalekar",
+        "Pradeep Varakantham",
+        "Alvitta Ottley",
+        "William Yeoh",
+      ],
+      abstract:
+        "There is growing interest in algorithms that match passengers with drivers in ride-sharing problems, and it is of interest to visualize pertinent information of the output of these algorithms in order to evaluate their performance across different metrics and tradeoffs between them. In this paper, we introduce a system, called FairVizARD, that visualizes the output of these algorithms across different geographic and temporal resolutions, allowing users to easily compare the performance and fairness of multiple ride-sharing allocation algorithms.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/0-G-o4E0gKM",
+      UID: "11374",
+    },
+    {
+      title:
+        "GRAND-VISION: An Intelligent System for Optimized Deployment Scheduling of Law Enforcement Agents",
+      authors: [
+        "Jonathan Chase",
+        "Phong Tran",
+        "Long Kang",
+        "Tony Le",
+        "Hoong Chuin Lau",
+      ],
+      abstract:
+        "Law enforcement agencies in dense urban environments, faced with a wide range of incidents and limited manpower, are turning to data-driven AI to inform their policing strategy. We present an intelligent patrol scheduling system called GRAND-VISION: Ground Response Allocation and Deployment - Visualization, Simulation, and Optimization. The system employs deep learning, trained on real historical incident data, to generate incident sets that are used to plan daily patrol schedules that can accommodate varying manpower, break times, manual pre-allocations, and a variety of spatio-temporal demand features. The complexity of the scenario results in a system with real world applicability, which we have developed in partnership with a large urban law enforcement agency.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/jsxGKxXSeNs",
+      UID: "11386",
+    },
+    {
+      title: "Playing Angry Birds with a Domain-Independent PDDL+ Planner",
+      authors: [
+        "Wiktor Piotrowski",
+        "Roni Stern",
+        "Matthew Klenk",
+        "Shiwali Mohan",
+        "Jacob Le",
+        "Johan de Kleer",
+      ],
+      abstract:
+        "This demo paper presents the first system for playing the popular Angry Birds game using a domain-independent planner. Our system models Angry Birds levels using PDDL+, a planning language for mixed discrete/continuous domains. It uses a domain-independent PDDL+ planner to generate plans and executes them. In this demo paper, we present the system's PDDL+ model for this domain, identify key design decisions that reduce the problem complexity, and compare the performance of our system to model-specific methods for this domain. The results show that our system's performance is on par with other domain-specific systems for Angry Birds, suggesting the applicability of domain-independent planning to this benchmark AI challenge.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/pUIvV4AW9QY",
+      UID: "11390",
+    },
+    {
+      title:
+        "An Interface for Communicating Branching Plans for Human-Agent Decision Making",
+      authors: ["Julie Porteous", "Alan Lindsay", "Fred Charles"],
+      abstract:
+        "Recent advances in visualisation technologies have opened up new possibilities for human-agent communication. In particular, visualisation of agent planned actions can play an important role in allowing human users to understand agent intentions and to help decide when control can be delegated or when human decision making is required. This is especially true for application domains where branched plans are required due to the typical uncertainty experienced. We have developed an interface which uses 3D visualisation to communicate key details of such plans to practitioners. The system has been used in experiments to evaluate the impact of presentation mode on practitioner understanding.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/xhkqNbAa4Bs",
+      website: "https://bab.bournemouth.ac.uk/icapswebgl/",
+      UID: "11378",
+    },
+    {
+      title: "Planning for Automated Composition of Aggregated Assistants",
+      authors: [
+        "Tathagata Chakraborti",
+        "Shubham Agarwal",
+        "Krissy Brimijoin",
+        "Prerna Agarwal",
+        "Yara Rizk",
+        "Dario Silva Moran",
+        "Scott Boag",
+        "Yasaman Khazaeni",
+      ],
+      abstract:
+        "An aggregated assistant is realized as an orchestrated set of individual capabilities called skills. In this demo, we will show how complex behaviors of such an assistant can be composed on the fly using automated planning.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://youtu.be/K7FPcl-IYgE",
+      website: "https://www.ibm.com/cloud/automation/watson-orchestrate",
+      UID: "11389",
+    },
+    {
+      title: "A Planning.Domains Plugin for Heuristic Visualization",
+      authors: [
+        "Caitlin Aspinall",
+        "Cam Cunningham",
+        "Ellie Sekine",
+        "Christian Muise",
+      ],
+      abstract:
+        "Heuristics are at the heart of every planner. From the simple to the complex, they drive both satisficing and optimal planning approaches. Despite their pervasiveness, there has been relatively little effort towards systematically visualizing them. We introduce a plugin for the online editor at Planning.Domains that is capable of visualizing the heuristic computation of a manually explored state space. Our initial implementation demonstrates the hadd heuristic, but the framework serves as an extensible base for other heuristics in the field of automated planning.",
+      url: "../demos",
+      keyphrases: "",
+      topics: [],
+      track: "DEMO",
+      video: "https://www.youtube.com/watch?v=avR_WZfe5E8",
+      UID: "11377",
+      award: "bronze",
     },
   ];
   keyword_filter = [];
@@ -1733,6 +2048,9 @@ function render_paper_list() {
                         <a href=@URL@ target="_blank" type="button" class="btn btn-outline-dark btn-sm @DISPLAY@">
                           PDF
                         </a>
+                        <a href=@RECORDING@ target="_blank" type="button" class="btn btn-primary btn-sm @DISPLAY@">
+                          <i class="bi bi-camera-reels"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -1758,6 +2076,10 @@ function render_paper_list() {
       } else {
         url_str = "#";
       }
+      if (element["UID"] != "") {
+      } else {
+        recording_str = "#";
+      }
       if (element["authors"].length > 1) {
         author_str =
           element["authors"].slice(0, -1).join(", ") +
@@ -1766,11 +2088,19 @@ function render_paper_list() {
       } else {
         author_str = element["authors"][0];
       }
-      if (element["track"] == "JOURNAL") {
-        display_str = "d-none";
+      if (element["track"] == "DEMO") {
+        recording_str = element["video"];
       } else {
-        display_str = "";
+        recording_str =
+          "https://icaps21.icaps-conference.org/exhibition/index.html?channel=" +
+          element["UID"];
       }
+      // if (element["track"] == "DEMO") {
+      //   display_str = "d-none";
+      // } else {
+      //   display_str = "";
+      // }
+      display_str = "";
       str += template_str
         .replace(/@ID@/g, element["UID"])
         .replace(/@TITLE@/g, element["title"])
@@ -1778,7 +2108,8 @@ function render_paper_list() {
         .replace(/@AUTHOR_STR@/g, author_str)
         .replace(/@ABSTRACT@/g, element["abstract"])
         .replace(/@DISPLAY@/g, display_str)
-        .replace(/@URL@/g, url_str);
+        .replace(/@URL@/g, url_str)
+        .replace(/@RECORDING@/g, recording_str);
     }
   }
 
