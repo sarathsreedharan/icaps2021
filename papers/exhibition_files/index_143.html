@@ -87,15 +87,9 @@
                                 </ul>
                             </li>
 
-                            <!-- <li class="nav-item">
-                                <a href="/InvitedSpeakers/" class="nav-link px-2"  :class="{active:curpage=='invitedSpeakers'}">Invited Speakers</a>
-                            </li> -->
                             <li class="nav-item">
                                 <a href="/awards" class="nav-link px-2" >Awards</a>
                             </li>
-                              <!-- <li class="nav-item">
-                                <a href="/Calls" class="nav-link px-2"  :class="{active:curpage=='calls'}">Calls</a>
-                            </li> -->
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_calls" role="button"
@@ -111,13 +105,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" :class="{active:curpage=='attending'}" href="" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Attending
-                                </a>
-                            </li> -->
-                            <li class="nav-item dropdown">
+                                                        <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_commitee" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Committee
@@ -132,9 +120,7 @@
                                                             </ul>
                                                         </li>
 
-                            <!-- <li class="nav-item">
-                                <a href="/exhibition/" class="nav-link px-2"  :class="{active:curpage=='exhibition'}">Exhibition</a>
-                            </li> --><li class="nav-item">
+                           <li class="nav-item">
                             </li>
                             <li class="nav-item">
                                 <a href="/code-of-conduct.html" class="nav-link px-2" >Code of conduct</a>
@@ -146,7 +132,7 @@
 <!--                            Login-->
 <!--                            </button>-->
 <!--                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">-->
-<!--                                <span >{{user.profile.first_name  }}</span>-->
+<!--                                <span >{user.profile.first_name  }</span>-->
 <!--                            </button>-->
 <!--                            <ul class="dropdown-menu">-->
 <!--                            <li>-->
@@ -174,19 +160,36 @@
 	<main style="min-height: 80vh;padding: 0 3rem 3rem 3rem;">
 		<div class="album mt-3">
 		</div>
-		<div id="app" v-cloak style="margin-bottom: 2em;">
-			<h4><strong>{{curPaper.title}}</strong></h4>
+		<div id="app" style="margin-bottom: 2em;">
+			<h4><strong>Decentralized Refinement Planning and Acting</strong></h4>
 			<table style="width:100%">
 				<tr>
 					<td style="vertical-align: middle;" class="card-text">
-						<span v-for="key in keywords" class="badge bg-secondary"
-							style="margin-right: 1em;">{{key}}</span>
+						
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Multi-agent systems</span>
+
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Decentralized cooperative agents</span>
+
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Hierarchical task refinement</span>
+
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Integrating acting and planning</span>
+
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Operational models</span>
+
+
+<span class="badge bg-secondary" style="margin-right: 1em;">Online planning</span>
+
 					</td>
 					<td style="text-align: right;vertical-align: middle;">
 						<span class="d-inline-flex text-center text-white rounded p-1 card-text" data-toggle="tooltip"
 							title="Poster ID in the virtual conference center."
 							style="cursor: default;background-color: #f5821f;">
-							<span class="my-auto pl-1 font-weight-bold">PaperID: {{curPaper.id}}</span>
+							<span class="my-auto pl-1 font-weight-bold">PaperID: 143</span>
 						</span>
 						<a :href="curPdf.link" class="btn btn-link" target="_blank" v-if="isPdf">
 							<div class="d-inline-flex" style="width: 2.5em;height: 3em;vertical-align: middle;fill: currentColor;overflow: hidden;">
@@ -248,7 +251,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" style="text-align:justify;">
-						{{curPaper.abstract}}
+						
 					</td>
 				</tr>
 			</table>
@@ -257,7 +260,7 @@
 					<div class="modal-content">
 						<div class="modal-body" style="background-color: rgb(231, 241, 255);">
 							<p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
-								{{modalmsg}}</p>
+								</p>
 						</div>
 					</div>
 				</div>
@@ -295,16 +298,45 @@
 
 				<div class="container">
 					<div class="mb-5">
-						<h4>Session {{sessionNum}}: {{session[sessionNum]}}</h4>
-						<a v-for='item in paper[sessionNum]' style="color: #51585E;"
-							:href="'../exhibition/index.html?channel='+item.id">
-							<hr>
-							<p class="paperTitle" :style="sessionSelect(item.id)">{{item.title}} <br>
-								<span style="font-size:x-small;"><strong>Authors: </strong><I>{{item.authors}} </I>
-									<span v-if="item.keywords != ''"><br><strong>Keywords:
-										</strong><I>{{item.keywords}}</I>
-							</P></span></span>
-						</a>
+						<h4>Session 22: Representation | Partial Order Planning | Multi-Agent Planning</h4>
+						
+<a style="color: #51585E;" href="./exhibition_files/index_37.html">
+                                                        <hr>
+                                                        <p class="paperTitle" >A Closer Look at Causal Links: Complexity Results for Delete-Relaxation in Partial Order Causal Link (POCL) Planning <br>
+                                                                <span style="font-size:x-small;"><strong>Authors: </strong><I>Pascal Bercher </I> 
+<span><br><strong>Keywords:
+                                                                                </strong><I>POPPOCL planningplan-based searchplan existence problemcomplexity results</I>
+                                                        </P></span></span>
+
+                                                </a>
+
+<a style="color: #51585E;" href="./exhibition_files/index_143.html">
+                                                        <hr>
+                                                        <p class="paperTitle" style="font-weight: 700;">Decentralized Refinement Planning and Acting <br>
+                                                                <span style="font-size:x-small;"><strong>Authors: </strong><I>Ruoxi Li, Sunandita Patra and Dana Nau </I> 
+<span><br><strong>Keywords:
+                                                                                </strong><I>Multi-agent systemsDecentralized cooperative agentsHierarchical task refinementIntegrating acting and planningOperational modelsOnline planning</I>
+                                                        </P></span></span>
+
+                                                </a>
+
+<a style="color: #51585E;" href="./exhibition_files/index_163.html">
+                                                        <hr>
+                                                        <p class="paperTitle" >Automated design of fMRI paradigms <br>
+                                                                <span style="font-size:x-small;"><strong>Authors: </strong><I>Katherine Esper and Felipe Meneguzzi </I> 
+<span><br><strong>Keywords:
+                                                                                </strong><I>PDDL+Neuroscience DomainsNovel Planning Domains</I>
+                                                        </P></span></span>
+
+                                                </a>
+
+<a style="color: #51585E;" href="./exhibition_files/index_364.html">
+                                                        <hr>
+                                                        <p class="paperTitle" >Landmark-based approaches for goal recognition as planning <br>
+                                                                <span style="font-size:x-small;"><strong>Authors: </strong><I>Ramon Fraga Pereira, Nir Oren and Felipe Meneguzzi </I> 
+                                                </a>
+
+						
 					</div>
 				</div>
 			</div>

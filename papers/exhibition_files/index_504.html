@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="../assets/js/axios.min.js"></script>
+	<!-- <script src="../assets/js/vue.min.js"></script> -->
+	<link rel="shortcut icon" type="image/png" href="../assets/images/favicon.png" />
+	<link rel="stylesheet" href="../assets/bootstrap/css/styles.css">
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<title>ICAPS 2021</title>
+
+	<!-- Bootstrap core CSS -->
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+
+	<!-- Bootstrap Overrides -->
+	<link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
+	<link href="../assets/css/custom.css" rel="stylesheet" />
+	<link href="./style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../Schedule/schedule.css">
+	<script type="application/json" src="../assets/data/paper.json"></script>
+	<!--    <link href="home.css" rel="stylesheet" />-->
+
+	<!-- Bootstrap Icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+	<!-- jQuery -->
+	<script src="../assets/js/jquery-3.6.0.min.js"></script>
+	<script src="../assets/js/custom.js"></script>
+	<script src="/assets/component/myheader.js" type='module'></script>
+	<script type="module" src="./index.js"></script>
+	<script src='https://slideslive.com/embed_presentation.js'></script>
+</head>
+
+
+<body class="bg-light">
+	<div id='icaps-header'>
+              <link href="../assets/component/myheader.css" rel="stylesheet" />
+        <nav class="navbar navbar-light  navbar-expand-lg ">
+            <div class="container-fluid d-flex">
+               <a class="navbar-brand text-dark">ICAPS 2021</a>
+                    <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a href="/home" class="nav-link px-2" >Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"  href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Program
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li >
+                                <a href="/papers" class="dropdown-item" >Papers</a>
+                            </li>
+
+				                <li>
+                                        <a class="dropdown-item" href="/workshops" >Workshops</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/tutorials">Tutorials</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/demos">Demos</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Competitions" >Competitions</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/invited-speakers.html"
+                                            >Invited Speakers</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Schedule/industry-session.html"
+                                            >Industry Session</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/awards" class="nav-link px-2" >Awards</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_calls" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Calls
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown_calls">
+                                    <li>
+                                        <a class="dropdown-item" href="/Calls">Calls for Participation</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/sponsorship" >Sponsorship</a>
+                                    </li>
+                                </ul>
+                            </li>
+                                                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown_commitee" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Committee
+                                </a><ul class="dropdown-menu" aria-labelledby="navbarDropdown_commitee">
+
+                            <li>
+                                <a href="/Committee" class="dropdown-item" >Organizing Team</a>
+                            </li>
+                                <li>
+                                <a href="/Committee/reviewers.html" class="dropdown-item">Committee Members & Reviewers</a>
+                            </li>
+                                                            </ul>
+                                                        </li>
+
+                           <li class="nav-item">
+                            </li>
+                            <li class="nav-item">
+                                <a href="/code-of-conduct.html" class="nav-link px-2" >Code of conduct</a>
+                            </li>
+                        </ul>
+                        <!-- login and user info button -->
+<!--                        <span class="btn-group dropdown navbar-right">-->
+<!--                            <button type="button" class="btn btn-sm btn-primary" @click="login()" v-if="!isLogin" style="color: white;">-->
+<!--                            Login-->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" v-if="isLogin">-->
+<!--                                <span >{user.profile.first_name  }</span>-->
+<!--                            </button>-->
+<!--                            <ul class="dropdown-menu">-->
+<!--                            <li>-->
+<!--                                <button  class="dropdown-item" @click="userInfo()" v-if="isLogin && user.profile.first_name" >-->
+<!--                                    Profile-->
+<!--                                </button>-->
+<!--                                <button class="dropdown-item " @click="logout" v-if="isLogin">Logout</button>-->
+<!--                            </li>-->
+<!--                            </ul>-->
+<!--                            &ensp;-->
+<!--                            <button type="button" class="btn btn-sm btn-primary " @click="attending" v-if="isRegistration">-->
+<!--                                <span>Attending</span>-->
+<!--                            </button>-->
+<!--                        </span>-->
+                    </div>
+                </div>
+            </nav>
+	</div>
+
+	<div class="album mt-3">
+		<div style="height: 100px;" class="d-none d-md-block">
+			<!-- padding hack for the fixed navbar -->
+		</div>
+	</div>
+	<main style="min-height: 80vh;padding: 0 3rem 3rem 3rem;">
+		<div class="album mt-3">
+		</div>
+		<div id="app" style="margin-bottom: 2em;">
+			<h4><strong>Environment Learning - Data-Driven Approaches for Real-World Decision Optimization</strong></h4>
+			<table style="width:100%">
+				<tr>
+					<td style="vertical-align: middle;" class="card-text">
+						
+
+<span class="badge bg-secondary" style="margin-right: 1em;"></span>
+
+					</td>
+					<td style="text-align: right;vertical-align: middle;">
+						<span class="d-inline-flex text-center text-white rounded p-1 card-text" data-toggle="tooltip"
+							title="Poster ID in the virtual conference center."
+							style="cursor: default;background-color: #f5821f;">
+							<span class="my-auto pl-1 font-weight-bold">PaperID: 504</span>
+						</span>
+						<a :href="curPdf.link" class="btn btn-link" target="_blank" v-if="isPdf">
+							<div class="d-inline-flex" style="width: 2.5em;height: 3em;vertical-align: middle;fill: currentColor;overflow: hidden;">
+								<img src="../assets/images/pdflogo.jpg" style="width: 2.5em; height: 3em;" alt="">
+							</div>
+							pdf
+						</a>
+
+						<a :href="posterLink" class="btn btn-link" target="_blank" v-if="isPoster">
+							<!-- <div class="d-inline-flex">
+								<background-image src="../assets/images/poster.png" style="width: 2.5em; height: 3em;" alt="">poster</background-image>
+								
+							</div> -->
+							<div class="icon-twrap" p-id="1323"><svg class="icon"
+									style="width: 2.5em;height: 3em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+									viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1325">
+									<path d="M0.118 42.764h1023.766v938.472H0.118z" fill="#FC6E51" p-id="1326"></path>
+									<path
+										d="M85.426 981.236H1023.886v-42.678h-42.68v-85.292h42.68v-42.678h-191.958v-85.292H1023.886v-42.678h-42.68v-85.292h42.68v-42.678h-191.958v-85.292H1023.886v-42.678h-42.68v-85.292h42.68v-42.678h-191.958v-85.292H1023.886V170.734h-42.68V85.442h42.68V42.764H0.118v42.678H42.78v85.292H0.118v42.678H192.09v85.292H0.118v42.678H42.78v85.292H0.118v42.678H192.09v85.292H0.118v42.678H42.78v85.292H0.118v42.678H192.09v85.292H0.118v42.678H42.78v85.292H0.118v42.678H85.426z m255.942-170.648h-106.632v-85.292h255.942v85.292h-149.31z m191.97-255.942v-85.292h255.91v85.292H533.338z m106.63 42.678v85.292h-255.94v-85.292h255.94z m0-170.648h-255.94v-85.292h255.94v85.292z m-149.292 42.678v85.292H234.734v-85.292h255.942z m149.292 469.204h-255.94v-85.292h255.94v85.292z m0-127.97h-106.63v-85.292h255.91v85.292h-149.28z m298.56 42.678v85.292h-255.88v-85.292h255.88z m0-255.942v85.292h-255.88v-85.292h255.88z m0-255.942v85.292h-255.88v-85.292h255.88z m-255.88-255.94h255.88v85.292h-255.88V85.442z m0 127.97h106.6v85.292H533.338v-85.292h149.31z m-298.62-127.97h255.94v85.292h-255.94V85.442z m-42.66 127.97h149.31v85.292H234.736v-85.292h106.632zM85.426 170.734V85.442h255.942v85.292H85.426z m0 255.942v-85.292h255.942v85.292H85.426z m0 255.942v-85.292h255.942v85.292H85.426z m0 170.648h255.942v85.292H85.426v-85.292z"
+										fill="#E9573F" p-id="1327"></path>
+									<path d="M678.96 128.088H192.074v767.824h639.852V281.054l-12.496-12.496-127.972-127.97-12.498-12.5z"
+										fill="#F5F7FA" p-id="1328"></path>
+									<path d="M298.69 554.646l106.132-170.616 106.132 170.616z" fill="#E9573F" p-id="1329"></path>
+									<path d="M426.3 554.646l149.466-255.94 149.464 255.94z" fill="#FC6E51" p-id="1330"></path>
+									<path
+										d="M575.984 767.942h-170.632c-11.778 0-21.324-9.56-21.324-21.34 0-11.778 9.544-21.306 21.324-21.306h170.632c11.78 0 21.308 9.53 21.308 21.306 0 11.778-9.528 21.34-21.308 21.34zM661.278 682.618H320.044c-11.78 0-21.324-9.53-21.324-21.308s9.544-21.338 21.324-21.338h341.234c11.81 0 21.372 9.56 21.372 21.338-0.002 11.778-9.562 21.308-21.372 21.308z"
+										fill="#434A54" p-id="1331"></path>
+									<path d="M678.96 128.088v152.964h152.966z" fill="#CCD1D9" p-id="1332"></path>
+								</svg>
+							poster</div>
+								
+							
+						</a>
+
+						<!-- 						
+							<a href="" class="btn btn-link">
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>library_books</small>
+								</span>
+								<span class="">
+									Poster
+								</span>
+								</div>
+							</a> -->
+
+
+						<!-- <a href="" class="btn btn-link">
+								<div class="d-inline-flex">
+								<span class="d-inline-flex my-auto material-icons pr-1">
+									<small>menu_book</small>
+								</span>
+								<span class="">
+									BibTeX
+								</span>
+								</div>
+							</a> -->
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align:justify;">
+						
+					</td>
+				</tr>
+			</table>
+			<div class="modal" tabindex="-1" id='tips'>
+				<div class="modal-dialog ">
+					<div class="modal-content">
+						<div class="modal-body" style="background-color: rgb(231, 241, 255);">
+							<p style="text-align: center;font-size: larger;color: rgb(12, 99, 228);">
+								</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="app2" class="row">
+			<div class=" col-12" style="position: relative;">
+				<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
+					<div class="card-body" style="padding: 0 0 0 0;background-color: #f5e3d3;">
+						<!-- <div style="position: absolute;top:40%;left: 50%;">
+							<div style="position: relative;left:-50%;font-size: 3em;font-weight: bolder;color: #f5821f;">
+								Slideslive coming soon</div>
+						</div> -->
+						<div id="presentation-embed"></div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-xs-12 col-sm-12 col-md-3 ">
+				<div v-cloak>
+					<div class="card shadow-sm mb-4" style="min-height: 40.75rem;">
+						<div class="card-body" style="padding: 0 0 0 0;">
+							<ul class="list-group list-group-flush">
+								<iframe v-bind:src="rocketchatUrl+'/channel/'+channel+'/?layout=embedded'" height=640
+									title="myframe" id="iframe"></iframe>
+								<div style="font-size: small;color:grey;text-align: center;">You can modify your chat
+									name on the profile page</div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<div id="app3" v-cloak style="border: solid 2px #d7dcdf;border-radius: 5px;">
+			<div style="margin:2% 2% 2% 2%">
+
+				<div class="container">
+					<div class="mb-5">
+						<h4>Session 0: </h4>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+	<footer class="footer m-5">
+		<div class="container">
+			<hr />
+			<div class="row d-flex justify-content-center">
+				<div class="col col-12 col-lg-2 d-flex justify-content-center mb-2">
+					&copy; ICAPS 2021
+				</div>
+				<div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+					<a href="../privacy-policy.html">Privacy Policy</a>
+				</div>
+				<div class="col col-12 col-lg-2 d-flex justify-content-center mb-1">
+					<a href="../terms-of-use.html">Terms of Use</a>
+				</div>
+				<div class="col col-12 col-lg-2 d-flex justify-content-center">
+					<a href="../code-of-conduct.html">Code of Conduct</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>
