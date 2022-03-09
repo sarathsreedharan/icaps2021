@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +13,6 @@
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
-    
 
     <!-- Bootstrap Overrides -->
     <link href="../assets/bootstrap/css/styles.css" rel="stylesheet" />
@@ -23,15 +23,14 @@
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/custom.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
-  <!-- import axios  -->
-  <script src="../assets/js/axios.min.js"></script>
-  <!-- vue dev version -->
-  <script src="../assets/js/vue.min.js"></script>
-	<script src="/assets/component/myheader.js" type="module"></script>
 
+    <!-- import axios  -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <!-- vue dev version -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
   </head>
   <body class="bg-light">
-    <div id='icaps-header'>
+    <div id="icaps-header">
               <link href="../assets/component/myheader.css" rel="stylesheet" />
         <nav class="navbar navbar-light  navbar-expand-lg ">
             <div class="container-fluid d-flex">
@@ -161,8 +160,79 @@
                 </div>
             </nav>
     </div>
-    <div id="app" v-cloak>
-    <div class="album mt-3 p-4" >
+    <script src="/assets/component/myheader.js" type="module"></script>
+    <!-- <header class="navbar fixed-top p-3 border-bottom">
+      <nav class="navbar navbar-light navbar-expand-lg">
+        <div class="container-fluid d-flex">
+          <a class="navbar-brand text-dark">ICAPS 2021</a>
+          <div>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="../home" class="nav-link px-2">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../papers" class="nav-link px-2">Papers</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href=""
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Schedule
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                      <a class="dropdown-item" href="index.html"
+                        >Schedule Overview</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item active">Invited Speakers</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="industry-session.html"
+                        >Industry Session</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="../Calls" class="nav-link px-2">Calls</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../workshops" class="nav-link px-2">Workshops</a>
+                </li>
+                <li class="nav-item">
+                  <a href="../Competitions" class="nav-link px-2"
+                    >Competitions</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="../Committee" class="nav-link px-2">Committee</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header> -->
+
+    <div class="album mt-3 p-4">
       <div style="height: 100px" class="d-none d-md-block">
         <!-- padding hack for the fixed navbar -->
       </div>
@@ -171,60 +241,549 @@
         <div class="mb-5">
           <h4>Invited Speakers</h4>
           <hr />
-            <!-- <div class="row" >
-              <div class="col-6 col-lg-2 col-md-4 col-sm-6 col-xs-6" v-for="speaker in speakers">
-                <div
-                  class="card shadow-sm mb-4 d-flex justify-content-center align-self-center"
-                >
-                  <img
-                    :src="'../assets/images/speakers/'+speaker.name.split('\n')[0].toLowerCase()+'.jpg'"
-                    class="card-img-top"
-                  />
-                  <div class="card-body bg-light">
-                    <h5>{{speaker.name}}</h5>
+
+          <div class="row">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+              <div class="card mb-4">
+                <div class="container-fluid">
+                  <div class="row pic-row">
+                    <div class="col-sm-3 p-0">
+                      <img
+                        src="../assets/images/speakers/richard.jpg"
+                        class="card-img"
+                      />
+                    </div>
+                    <div class="col-sm-9 p-3">
+                      <h5 class="card-title mb-1">Richard Sutton</h5>
+                      <p class="card-text small mt-0">University of Alberta</p>
+                    </div>
                   </div>
-                  <div class="card-body">
-                    <p class="card-text">{{speaker.department}}</p>
+                </div>
+
+                <div class="card-body bg-light">
+                  <nav>
+                    <div class="nav nav-tabs" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-abstract-tab-richard"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-abstract-richard"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-abstract-richard"
+                        aria-selected="true"
+                      >
+                        Talk
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-bio-tab-richard"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-bio-richard"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-bio-richard"
+                        aria-selected="false"
+                      >
+                        Bio
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div
+                      class="tab-pane fade show active"
+                      id="nav-abstract-richard"
+                      role="tabpanel"
+                      aria-labelledby="nav-abstract-tab-richard"
+                    >
+                      <h5 class="mt-2 mb-2">
+                        Gaps in the Foundations of Planning with Approximation
+                      </h5>
+                      <p class="card-text">
+                        Planning consists of imagining courses of action and
+                        their consequences, and deciding ahead of time which
+                        ones to do. In the standard reinforcement-learning model
+                        of an intelligent agent, the component that does the
+                        imagining of consequences is called the transition model
+                        of the environment, and the deciding in advance is via a
+                        change in the agent’s policy. Planning and model
+                        learning have been studied for seven decades and yet
+                        remain largely unsolved in the face of genuine
+                        approximation—models that do not become exact in the
+                        high-data limit. In this talk I briefly assess the
+                        challenges of extending dynamic-programming-style
+                        planning (value iteration) in the five most important
+                        ways: function approximation, partial observability,
+                        stochastic transitions, average reward, and temporal
+                        abstraction (options). My assessment is that these
+                        extensions are straightforward until they are combined
+                        with genuine approximation in the model, in which case
+                        we have barely a clue how to proceed in a scalable way.
+                        Nevertheless, we do have a few clues; I suggest the
+                        ideas of expectation models, metadata, and
+                        representation search as general strategies for learning
+                        approximate environment models suitable for use in
+                        planning.
+                      </p>
+                      <a
+                        href="https://icaps21.icaps-conference.org/exhibition/index.html?channel=402"
+                        target="_blank"
+                        type="button"
+                        class="btn btn-sm btn-primary text-white"
+                        >Recording</a
+                      >
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="nav-bio-richard"
+                      role="tabpanel"
+                      aria-labelledby="nav-bio-tab-richard"
+                    >
+                      <p class="card-text">
+                        Richard S. Sutton is a distinguished research scientist
+                        at DeepMind Alberta and a professor in the Department of
+                        Computing Science at the University of Alberta. Prior to
+                        joining DeepMind in 2017 and the University of Alberta
+                        in 2003, he worked in industry at AT&amp;T and GTE Labs,
+                        and in academia at the University of Massachusetts. He
+                        received a PhD in computer science from the University
+                        of Massachusetts in 1984 and a BA in psychology from
+                        Stanford University in 1978. He is co-author of the
+                        textbook Reinforcement Learning: An Introduction from
+                        MIT Press. He is also a fellow of the Royal Society, the
+                        Royal Society of Canada, the Association for the
+                        Advancement of Artificial Intelligence, the Alberta
+                        Machine Intelligence Institute (Amii), and CIFAR. His
+                        research interests center on the learning problems
+                        facing a decision-maker interacting with its
+                        environment, which he sees as central to intelligence.
+                        He has additional interests in animal learning
+                        psychology, in connectionist networks, and generally in
+                        systems that continually improve their representations
+                        and models of the world. His scientific publications
+                        have been cited more than 100,000 times. He is also a
+                        libertarian, a chess player, and a cancer survivor.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div> -->
-          
-            <div class="row clearfix" >
-              <div class="col-12 col-lg-6 col-md-12 col-sm-12" v-for="speaker in speakers">
-                <div
-                  class="card mb-3" style="white-space: pre-line;"
-                >
-                  <div class="row no-gutters" >
 
-                    <div class="col-md-3">
-                      <img  :src="'../assets/images/speakers/'+speaker.name.split(' ')[0].toLowerCase()+'.jpg'" class="card-img" />
+              <div class="card mb-4">
+                <div class="container-fluid">
+                  <div class="row pic-row">
+                    <div class="col-sm-3 p-0">
+                      <img
+                        src="../assets/images/speakers/stefan.jpg"
+                        class="card-img"
+                      />
                     </div>
-                    <div class="col-md-9 clearfix">
-                      <div class="card-body">
-                        <h5 class="card-title">{{speaker.name}}</h5>
-                        <p class="card-text" style="font-size: small">{{speaker.department}}</p>
-                      </div>
+                    <div class="col-sm-9 p-3">
+                      <h5 class="card-title mb-1">Stefan Edelkamp</h5>
+                      <p class="card-text small mt-0">
+                        Czech Technical University in Prague
+                      </p>
                     </div>
                   </div>
-                  <div  style="height:30vh;overflow-y: auto">
-                  <div class="card-body bg-light clearfix" >
-                    <p class="card-text clearfix">BIO: {{'bio' in speaker?speaker.bio:"TBD"}}</p>
-                  </div>
-                  <div class="card-body clearfix" >
-                    <p class="card-text">Abstract: {{'abstract' in speaker?speaker.abstract:"TBD"}}</p>
-                  </div>
+                </div>
+
+                <div class="card-body bg-light">
+                  <nav>
+                    <div class="nav nav-tabs" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-abstract-tab-stefan"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-abstract-stefan"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-abstract-stefan"
+                        aria-selected="true"
+                      >
+                        Talk
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-bio-tab-stefan"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-bio-stefan"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-bio-stefan"
+                        aria-selected="false"
+                      >
+                        Bio
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div
+                      class="tab-pane fade show active"
+                      id="nav-abstract-stefan"
+                      role="tabpanel"
+                      aria-labelledby="nav-abstract-tab-stefan"
+                    >
+                      <h5 class="mt-2 mb-2">
+                        Combining task with motion planning
+                      </h5>
+                      <p class="card-text">
+                        Multi-goal task planning has been an optimization
+                        question in Operation Research and Logistics for a long
+                        time. We will present novel advances for high-speed
+                        solving these discrete planning problems. With fast
+                        single-source shortest path search, the map is condensed
+                        into a graph of customer orders.
+                      </p>
+                      <p class="card-text">
+                        While the discrete multi-goal task planning problem is
+                        already hard, the "physical" motion planning problem is
+                        even more demanding. The integration of task and motion
+                        planning is considered one the most important problems
+                        in robotics nowadays. Robots have sizes, heading, and
+                        velocity, and their motion can often be described only
+                        according to non-linear differential equations. The
+                        dynamics of movements, existing obstacles and many
+                        waypoints to visit are only some of the challenges to
+                        face. In real-world problems, we often have additional
+                        constraints like inspecting areas of interest in some
+                        certain order, while still minimizing the time for the
+                        travel. The trickiest part is to solve the hard
+                        combinatorial discrete tasks like the generalized and
+                        clustered traveling salesman problems, and - at the same
+                        time - providing valid trajectories for the robot. We
+                        extend a framework in which a motion tree is steadily
+                        grown, and abstractions to discrete planning problems
+                        are used as a heuristic guidance for the on-going
+                        solution process to eventually visit all waypoints. In
+                        case of inspection, we generate the waypoints fully
+                        automatically, using a combination of skeletonization
+                        methods together with a filtering mechanism based on
+                        hitting sets.
+                      </p>
+                      <p class="card-text">
+                        Robots used for inspection or moving of goods are also
+                        often required to visit certain locations subject to
+                        time and resource consumption. This requires not only
+                        planning collision-free and dynamically feasible
+                        motions, but also reasoning about constraints. To
+                        effectively solve this open problem, we couple task
+                        planning over a discrete abstraction with sampling-based
+                        motion planning over the continuous state space of
+                        feasible motions. The discrete abstraction is obtained
+                        by imposing a roadmap that captures the connectivity of
+                        the free space. We increase the expressiveness and
+                        scalability of the approach, as we raise the number of
+                        goals and the difficulty of satisfying the time and
+                        resource constraints. With our technology we are able to
+                        efficiently generate and execute long-term missions in
+                        real-time. The robot, the environment model, and the
+                        planning problem specification can be modified
+                        non-intrusively, essential in many application
+                        scenarios. Other topics of interest are robot planning
+                        with limits in energy consumption.
+                      </p>
+                      <a
+                        href="https://icaps21.icaps-conference.org/exhibition/index.html?channel=404"
+                        target="_blank"
+                        type="button"
+                        class="btn btn-sm btn-primary text-white"
+                        >Recording</a
+                      >
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="nav-bio-stefan"
+                      role="tabpanel"
+                      aria-labelledby="nav-bio-tab-stefan"
+                    >
+                      <p class="card-text">
+                        Before joining the AI Center, Faculty of Electrical
+                        Engineering, Czech Technical University in Prague (CTU)
+                        as Full Professor, Stefan Edelkamp was leading the
+                        planning group at King's College London. During his
+                        exciting research career, Stefan was also working in the
+                        Department of Computer Science at Freiburg University,
+                        at the Institute for Artificial Intelligence, Faculty of
+                        Computer Science and Mathematics of the University of
+                        Bremen, and at the University of Applied Science in
+                        Darmstadt. For a short period of time, he held the
+                        position of an Interim Professor at the University of
+                        Koblenz-Landau, and at the University Paris-Dauphine.
+                        Stefan earned his Ph.D. and habilitation degree from
+                        Freiburg University and led a junior research group at
+                        Technical University of Dortmund.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-		</div>
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+              <div class="card mb-4">
+                <div class="container-fluid">
+                  <div class="row pic-row">
+                    <div class="col-sm-3 p-0">
+                      <img
+                        src="../assets/images/speakers/manuela.jpg"
+                        class="card-img"
+                      />
+                    </div>
+                    <div class="col-sm-9 p-3">
+                      <h5 class="card-title mb-1">Manuela Veloso</h5>
+                      <p class="card-text small mt-0">
+                        Head of JPMorgan AI Research<br />
+                        Herbert A. Simon University Professor Emeritus, Carnegie
+                        Mellon University
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body bg-light">
+                  <nav>
+                    <div class="nav nav-tabs" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-abstract-tab-manuela"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-abstract-manuela"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-abstract-manuela"
+                        aria-selected="true"
+                      >
+                        Talk
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-bio-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-bio-manuela"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-bio-manuela"
+                        aria-selected="false"
+                      >
+                        Bio
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div
+                      class="tab-pane fade show active"
+                      id="nav-abstract-manuela"
+                      role="tabpanel"
+                      aria-labelledby="nav-abstract-tab-manuela"
+                    >
+                      <h5 class="mt-2 mb-2">
+                        From AI in Robots to AI in Finance: Planning Examples
+                        and Discussion
+                      </h5>
+                      <p class="card-text">
+                        After many years of research in academia on AI and
+                        autonomous robots, for the last three years, I have been
+                        the head of AI research at JPMorgan. During all this
+                        time, I have looked at many challenges with an AI
+                        approach, addressing knowledge, representation of
+                        states, actions, behaviors, planning, multiagent
+                        interactions, learning. In this talk, I will share
+                        several interesting problems that we have encountered
+                        and solutions that we devised in AI in Robots and AI in
+                        Finance. I will focus on planning examples and will
+                        discuss novel ideas in planning, execution, and
+                        learning, which have the potential of great
+                        applicability and great impact in real domains.
+                      </p>
+                      <a
+                        href="https://icaps21.icaps-conference.org/exhibition/index.html?channel=403"
+                        target="_blank"
+                        type="button"
+                        class="btn btn-sm btn-primary text-white"
+                        >Recording</a
+                      >
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="nav-bio-manuela"
+                      role="tabpanel"
+                      aria-labelledby="nav-bio-tab-manuela"
+                    >
+                      <p class="card-text">
+                        Manuela M. Veloso is the Head of J.P. Morgan AI
+                        Research, which pursues fundamental research in areas of
+                        core relevance to financial services, including data
+                        mining and cryptography, machine learning,
+                        explainability, and human-AI interaction. J.P. Morgan AI
+                        Research partners with applied data analytics teams
+                        across the firm as well as with leading academic
+                        institutions globally. Professor Veloso is on leave from
+                        Carnegie Mellon University as the Herbert A. Simon
+                        University Professor in the School of Computer Science,
+                        and the past Head of the Machine Learning Department.
+                        With her students, she had led research in AI, with a
+                        focus on robotics and machine learning, having
+                        concretely researched and developed a variety of
+                        autonomous robots, including teams of soccer robots, and
+                        mobile service robots. Her robot soccer teams have been
+                        RoboCup world champions several times, and the CoBot
+                        mobile robots have autonomously navigated for more than
+                        1,000km in university buildings.
+                      </p>
+                      <p class="card-text">
+                        Professor Veloso is the Past President of AAAI, (the
+                        Association for the Advancement of Artificial
+                        Intelligence), and the co-founder, Trustee, and Past
+                        President of RoboCup. Professor Veloso has been
+                        recognized with a multiple honors, including being a
+                        Fellow of the ACM, IEEE, AAAS, and AAAI. She is the
+                        recipient of several best paper awards, the Einstein
+                        Chair of the Chinese Academy of Science, the ACM/SIGART
+                        Autonomous Agents Research Award, an NSF Career Award,
+                        and the Allen Newell Medal for Excellence in Research.
+                      </p>
+                      <p class="card-text">
+                        Professor Veloso earned a Bachelor and Master of Science
+                        degrees in Electrical and Computer Engineering from
+                        Instituto Superior Tecnico in Lisbon, Portugal, a Master
+                        of Arts in Computer Science from Boston University, and
+                        Master of Science and PhD in Computer Science from
+                        Carnegie Mellon University. See
+                        <a
+                          href="www.cs.cmu.edu/~mmv/Veloso.html"
+                          target="_blank"
+                          >www.cs.cmu.edu/~mmv/Veloso.html</a
+                        >
+                        for her scientific publications.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-4">
+                <div class="container-fluid">
+                  <div class="row pic-row">
+                    <div class="col-sm-3 p-0">
+                      <img
+                        src="../assets/images/speakers/jieping.jpg"
+                        class="card-img"
+                      />
+                    </div>
+                    <div class="col-sm-9 p-3">
+                      <h5 class="card-title mb-1">Jieping Ye</h5>
+                      <p class="card-text small mt-0">
+                        University of Michigan & Beike<br />
+                        Vice President, Chief Scientist, Beike Inc.<br />
+                        Professor, University of Michigan, Ann Arbor<br />
+                        IEEE Fellow, ACM Distinguished Scientist
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body bg-light">
+                  <nav>
+                    <div class="nav nav-tabs" role="tablist">
+                      <button
+                        class="nav-link active"
+                        id="nav-abstract-tab-jieping"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-abstract-jieping"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-abstract-jieping"
+                        aria-selected="true"
+                      >
+                        Talk
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="nav-bio-tab-jieping"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nav-bio-jieping"
+                        type="button"
+                        role="tab"
+                        aria-controls="nav-bio-jieping"
+                        aria-selected="false"
+                      >
+                        Bio
+                      </button>
+                    </div>
+                  </nav>
+                  <div class="tab-content">
+                    <div
+                      class="tab-pane fade show active"
+                      id="nav-abstract-jieping"
+                      role="tabpanel"
+                      aria-labelledby="nav-abstract-tab-jieping"
+                    >
+                      <h5 class="mt-2 mb-2">AI for Housing</h5>
+                      <p class="card-text">
+                        Marketplace KE Holdings Inc. (“Beike”) is a leading
+                        integrated online and offline platform for housing
+                        transactions and services. The company is a pioneer in
+                        building the industry infrastructure and standards in
+                        China to reinvent how service providers and housing
+                        customers efficiently navigate and consummate housing
+                        transactions, ranging from existing and new home sales,
+                        home rentals, to home renovation, real estate financial
+                        solutions, and other services. In this talk, we will
+                        discuss the challenges and opptunites for AI in housing
+                        marketplace, especially modern housing platforms like
+                        Beike. We will introduce how AI technologies have been
+                        applied to analyze unique data (including data for
+                        property, housing customers and agents) on Beike’s
+                        platform, to improve service efficiency and customer
+                        experience.
+                      </p>
+                      <a
+                        href="https://icaps21.icaps-conference.org/exhibition/index.html?channel=401"
+                        target="_blank"
+                        type="button"
+                        class="btn btn-sm btn-primary text-white"
+                        >Recording</a
+                      >
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="nav-bio-jieping"
+                      role="tabpanel"
+                      aria-labelledby="nav-bio-tab-jieping"
+                    >
+                      <p class="card-text">
+                        Dr. Jieping Ye is a VP and Chief Scientist of Beike. He
+                        is also a professor of University of Michigan, Ann
+                        Arbor. Prior to Beike, he worked at Didi Chuxing where
+                        he led DiDi AI Labs. His research interests include big
+                        data, machine learning, and data mining with
+                        applications in housing, transportation and biomedicine.
+                        He has served as a Senior Program Committee/Area
+                        Chair/Program Committee Vice Chair of many conferences
+                        including NIPS, ICML, KDD, IJCAI, ICDM, and SDM. He
+                        serves as an Associate Editor of Data Mining and
+                        Knowledge Discovery, IEEE Transactions on Knowledge and
+                        Data Engineering. He won the NSF CAREER Award in 2010.
+                        His papers have been selected for the outstanding
+                        student paper at ICML in 2004, the KDD best research
+                        paper runner up in 2013, and the KDD best student paper
+                        award in 2014. He has also won the first place in 2019
+                        INFORMS Daniel H. Wagner Prize, one of the top awards in
+                        operation research practice. Dr. Ye was elevated to an
+                        IEEE Fellow in 2019 and named an ACM Distinguished
+                        Scientist in 2020 for his contributions to the
+                        methodology and application of machine learning and data
+                        mining.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    </div>
-    
-
     <footer class="footer m-5">
       <div class="container">
         <hr />
@@ -247,3 +806,4 @@
   </body>
   <script src="./index.js"></script>
 </html>
+
