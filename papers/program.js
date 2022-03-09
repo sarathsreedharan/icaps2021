@@ -2092,8 +2092,8 @@ function render_paper_list() {
         recording_str = element["video"];
       } else {
         recording_str =
-          "../exhibition/index.html?channel=" +
-          element["UID"];
+          "./exhibition_files/index_" +
+          element["UID"]+".html";
       }
       // if (element["track"] == "DEMO") {
       //   display_str = "d-none";
